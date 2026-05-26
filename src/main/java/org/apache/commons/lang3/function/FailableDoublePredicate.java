@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -29,11 +28,15 @@ import java.util.function.DoublePredicate;
 @FunctionalInterface
 public interface FailableDoublePredicate<E extends Throwable> {
 
-    /** FALSE singleton */
+    /**
+     * FALSE singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableDoublePredicate FALSE = t -> false;
 
-    /** TRUE singleton */
+    /**
+     * TRUE singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableDoublePredicate TRUE = t -> true;
 
@@ -43,9 +46,9 @@ public interface FailableDoublePredicate<E extends Throwable> {
      * @param <E> The kind of thrown exception or error.
      * @return The NOP singleton.
      */
-   @SuppressWarnings("unchecked")
-   static <E extends Throwable> FailableDoublePredicate<E> falsePredicate() {
-        return FALSE;
+    @SuppressWarnings("unchecked")
+    static <E extends Throwable> FailableDoublePredicate<E> falsePredicate() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -54,9 +57,9 @@ public interface FailableDoublePredicate<E extends Throwable> {
      * @param <E> The kind of thrown exception or error.
      * @return The NOP singleton.
      */
-   @SuppressWarnings("unchecked")
-   static <E extends Throwable> FailableDoublePredicate<E> truePredicate() {
-        return TRUE;
+    @SuppressWarnings("unchecked")
+    static <E extends Throwable> FailableDoublePredicate<E> truePredicate() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -67,8 +70,7 @@ public interface FailableDoublePredicate<E extends Throwable> {
      * @throws NullPointerException if other is null
      */
     default FailableDoublePredicate<E> and(final FailableDoublePredicate<E> other) {
-        Objects.requireNonNull(other);
-        return t -> test(t) && other.test(t);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -77,7 +79,7 @@ public interface FailableDoublePredicate<E extends Throwable> {
      * @return a predicate that negates this predicate.
      */
     default FailableDoublePredicate<E> negate() {
-        return t -> !test(t);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -88,8 +90,7 @@ public interface FailableDoublePredicate<E extends Throwable> {
      * @throws NullPointerException if other is null
      */
     default FailableDoublePredicate<E> or(final FailableDoublePredicate<E> other) {
-        Objects.requireNonNull(other);
-        return t -> test(t) || other.test(t);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

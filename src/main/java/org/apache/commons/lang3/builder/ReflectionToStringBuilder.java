@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.builder;
 
 import java.lang.reflect.Field;
@@ -23,7 +22,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Objects;
-
 import org.apache.commons.lang3.ArraySorter;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ClassUtils;
@@ -109,10 +107,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @return A new array of Strings.
      */
     static String[] toNoNullStringArray(final Collection<String> collection) {
-        if (collection == null) {
-            return ArrayUtils.EMPTY_STRING_ARRAY;
-        }
-        return toNoNullStringArray(collection.toArray());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -125,7 +120,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @return The given array or a new array without null.
      */
     static String[] toNoNullStringArray(final Object[] array) {
-        return Streams.nonNull(array).map(Objects::toString).toArray(String[]::new);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -152,7 +147,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @see ToStringSummary
      */
     public static String toString(final Object object) {
-        return toString(object, null, false, false, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -185,7 +180,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @see ToStringSummary
      */
     public static String toString(final Object object, final ToStringStyle style) {
-        return toString(object, style, false, false, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -224,7 +219,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @see ToStringSummary
      */
     public static String toString(final Object object, final ToStringStyle style, final boolean outputTransients) {
-        return toString(object, style, outputTransients, false, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -271,7 +266,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @since 2.1
      */
     public static String toString(final Object object, final ToStringStyle style, final boolean outputTransients, final boolean outputStatics) {
-        return toString(object, style, outputTransients, outputStatics, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -324,11 +319,8 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @see ToStringSummary
      * @since 3.6
      */
-    public static <T> String toString(
-            final T object, final ToStringStyle style, final boolean outputTransients,
-            final boolean outputStatics, final boolean excludeNullValues, final Class<? super T> reflectUpToClass) {
-        return new ReflectionToStringBuilder(object, style, null, reflectUpToClass, outputTransients, outputStatics, excludeNullValues)
-                .toString();
+    public static <T> String toString(final T object, final ToStringStyle style, final boolean outputTransients, final boolean outputStatics, final boolean excludeNullValues, final Class<? super T> reflectUpToClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -379,11 +371,8 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @see ToStringSummary
      * @since 2.1
      */
-    public static <T> String toString(
-            final T object, final ToStringStyle style, final boolean outputTransients,
-            final boolean outputStatics, final Class<? super T> reflectUpToClass) {
-        return new ReflectionToStringBuilder(object, style, null, reflectUpToClass, outputTransients, outputStatics)
-                .toString();
+    public static <T> String toString(final T object, final ToStringStyle style, final boolean outputTransients, final boolean outputStatics, final Class<? super T> reflectUpToClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -396,7 +385,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @return The toString value.
      */
     public static String toStringExclude(final Object object, final Collection<String> excludeFieldNames) {
-        return toStringExclude(object, toNoNullStringArray(excludeFieldNames));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -409,7 +398,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @return The toString value.
      */
     public static String toStringExclude(final Object object, final String... excludeFieldNames) {
-        return new ReflectionToStringBuilder(object).setExcludeFieldNames(excludeFieldNames).toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -423,7 +412,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @since 3.13.0
      */
     public static String toStringInclude(final Object object, final Collection<String> includeFieldNames) {
-        return toStringInclude(object, toNoNullStringArray(includeFieldNames));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -438,7 +427,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @since 3.13.0
      */
     public static String toStringInclude(final Object object, final String... includeFieldNames) {
-        return new ReflectionToStringBuilder(object).setIncludeFieldNames(includeFieldNames).toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -546,9 +535,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      *            whether to include static fields
      * @since 2.1
      */
-    public <T> ReflectionToStringBuilder(
-            final T object, final ToStringStyle style, final StringBuffer buffer,
-            final Class<? super T> reflectUpToClass, final boolean outputTransients, final boolean outputStatics) {
+    public <T> ReflectionToStringBuilder(final T object, final ToStringStyle style, final StringBuffer buffer, final Class<? super T> reflectUpToClass, final boolean outputTransients, final boolean outputStatics) {
         super(object, style, buffer);
         setUpToClass(reflectUpToClass);
         setAppendTransients(outputTransients);
@@ -576,10 +563,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      *            whether to exclude fields who value is null
      * @since 3.6
      */
-    public <T> ReflectionToStringBuilder(
-            final T object, final ToStringStyle style, final StringBuffer buffer,
-            final Class<? super T> reflectUpToClass, final boolean outputTransients, final boolean outputStatics,
-            final boolean excludeNullValues) {
+    public <T> ReflectionToStringBuilder(final T object, final ToStringStyle style, final StringBuffer buffer, final Class<? super T> reflectUpToClass, final boolean outputTransients, final boolean outputStatics, final boolean excludeNullValues) {
         super(object, style, buffer);
         setUpToClass(reflectUpToClass);
         setAppendTransients(outputTransients);
@@ -600,27 +584,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @return Whether or not to append the given {@link Field}.
      */
     protected boolean accept(final Field field) {
-        if (field.getName().indexOf(ClassUtils.INNER_CLASS_SEPARATOR_CHAR) != -1) {
-            // Reject field from inner class.
-            return false;
-        }
-        if (Modifier.isTransient(field.getModifiers()) && !isAppendTransients()) {
-            // Reject transient fields.
-            return false;
-        }
-        if (Modifier.isStatic(field.getModifiers()) && !isAppendStatics()) {
-            // Reject static fields.
-            return false;
-        }
-        if (this.excludeFieldNames != null && Arrays.binarySearch(this.excludeFieldNames, field.getName()) >= 0) {
-            // Reject fields from the getExcludeFieldNames list.
-            return false;
-        }
-        if (ArrayUtils.isNotEmpty(includeFieldNames)) {
-            // Accept fields from the getIncludeFieldNames list. {@code null} or empty means all fields are included. All fields are included by default.
-            return Arrays.binarySearch(this.includeFieldNames, field.getName()) >= 0;
-        }
-        return !field.isAnnotationPresent(ToStringExclude.class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -635,30 +599,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      *            The class of object parameter
      */
     protected void appendFieldsIn(final Class<?> clazz) {
-        if (clazz.isArray()) {
-            reflectionAppendArray(getObject());
-            return;
-        }
-        // The elements in the returned array are not sorted and are not in any particular order.
-        final Field[] fields = ArraySorter.sort(clazz.getDeclaredFields(), Comparator.comparing(Field::getName));
-        for (final Field field : fields) {
-            final String fieldName = field.getName();
-            if (accept(field)) {
-                setAccessible(field);
-                try {
-                    // Warning: Field.get(Object) creates wrappers objects
-                    // for primitive types.
-                    final Object fieldValue = field.isAccessible() ? getValue(field) : null;
-                    if (!excludeNullValues || fieldValue != null) {
-                        this.append(fieldName, fieldValue, !field.isAnnotationPresent(ToStringSummary.class));
-                    }
-                } catch (final IllegalAccessException e) {
-                    // this can't happen. Would get a Security exception instead throw a runtime exception in case the
-                    // impossible happens.
-                    throw new IllegalStateException(e);
-                }
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -667,7 +608,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @return the excludeFieldNames.
      */
     public String[] getExcludeFieldNames() {
-        return this.excludeFieldNames.clone();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -677,7 +618,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @since 3.13.0
      */
     public String[] getIncludeFieldNames() {
-        return this.includeFieldNames.clone();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -686,7 +627,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @return The last super class to stop appending fields for.
      */
     public Class<?> getUpToClass() {
-        return this.upToClass;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -703,7 +644,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @see java.lang.reflect.Field#get(Object)
      */
     protected Object getValue(final Field field) throws IllegalAccessException {
-        return field.get(getObject());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -713,7 +654,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @since 2.1
      */
     public boolean isAppendStatics() {
-        return this.appendStatics;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -722,7 +663,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @return Whether or not to append transient fields.
      */
     public boolean isAppendTransients() {
-        return this.appendTransients;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -732,7 +673,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @since 3.6
      */
     public boolean isExcludeNullValues() {
-        return this.excludeNullValues;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -743,8 +684,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @return {@code this} instance.
      */
     public ReflectionToStringBuilder reflectionAppendArray(final Object array) {
-        getStyle().reflectionAppendArrayDetail(getStringBuffer(), null, array);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -755,7 +695,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @since 2.1
      */
     public void setAppendStatics(final boolean appendStatics) {
-        this.appendStatics = appendStatics;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -765,7 +705,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      *            Whether or not to append transient fields.
      */
     public void setAppendTransients(final boolean appendTransients) {
-        this.appendTransients = appendTransients;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -776,13 +716,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @return {@code this}
      */
     public ReflectionToStringBuilder setExcludeFieldNames(final String... excludeFieldNamesParam) {
-        if (excludeFieldNamesParam == null) {
-            this.excludeFieldNames = null;
-        } else {
-            // clone and remove nulls
-            this.excludeFieldNames = ArraySorter.sort(toNoNullStringArray(excludeFieldNamesParam));
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -793,7 +727,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @since 3.6
      */
     public void setExcludeNullValues(final boolean excludeNullValues) {
-        this.excludeNullValues = excludeNullValues;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -805,13 +739,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      * @since 3.13.0
      */
     public ReflectionToStringBuilder setIncludeFieldNames(final String... includeFieldNamesParam) {
-        if (includeFieldNamesParam == null) {
-            this.includeFieldNames = null;
-        } else {
-            // clone and remove nulls
-            this.includeFieldNames = ArraySorter.sort(toNoNullStringArray(includeFieldNamesParam));
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -821,13 +749,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      *            The last super class to stop appending fields for.
      */
     public void setUpToClass(final Class<?> clazz) {
-        if (clazz != null) {
-            final Object object = getObject();
-            if (object != null && !clazz.isInstance(object)) {
-                throw new IllegalArgumentException("Specified class is not a superclass of the object");
-            }
-        }
-        this.upToClass = clazz;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -837,19 +759,7 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
      */
     @Override
     public String toString() {
-        if (getObject() == null) {
-            return getStyle().getNullText();
-        }
-
-        validate();
-
-        Class<?> clazz = getObject().getClass();
-        appendFieldsIn(clazz);
-        while (clazz.getSuperclass() != null && clazz != getUpToClass()) {
-            clazz = clazz.getSuperclass();
-            appendFieldsIn(clazz);
-        }
-        return super.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -861,5 +771,4 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
             throw new IllegalStateException("includeFieldNames and excludeFieldNames must not intersect");
         }
     }
-
 }

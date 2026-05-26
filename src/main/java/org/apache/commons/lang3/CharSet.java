@@ -159,19 +159,12 @@ public class CharSet implements Serializable {
      * @since 2.4
      */
     public static CharSet getInstance(final String... setStrs) {
-        if (setStrs == null) {
-            return EMPTY;
-        }
-        if (setStrs.length == 1) {
-            final CharSet common = COMMON.get(setStrs[0]);
-            if (common != null) {
-                return common;
-            }
-        }
-        return new CharSet(setStrs);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** The set of CharRange objects. */
+    /**
+     * The set of CharRange objects.
+     */
     private final Set<CharRange> set = Collections.synchronizedSet(new LinkedHashSet<>());
 
     /**
@@ -191,31 +184,7 @@ public class CharSet implements Serializable {
      * @param str  set definition string
      */
     protected void add(final String str) {
-        if (str == null) {
-            return;
-        }
-        final int len = str.length();
-        int pos = 0;
-        while (pos < len) {
-            final int remainder = len - pos;
-            if (remainder >= 4 && str.charAt(pos) == '^' && str.charAt(pos + 2) == '-') {
-                // negated range
-                set.add(CharRange.isNotIn(str.charAt(pos + 1), str.charAt(pos + 3)));
-                pos += 4;
-            } else if (remainder >= 3 && str.charAt(pos + 1) == '-') {
-                // range
-                set.add(CharRange.isIn(str.charAt(pos), str.charAt(pos + 2)));
-                pos += 3;
-            } else if (remainder >= 2 && str.charAt(pos) == '^') {
-                // negated char
-                set.add(CharRange.isNot(str.charAt(pos + 1)));
-                pos += 2;
-            } else {
-                // char
-                set.add(CharRange.is(str.charAt(pos)));
-                pos += 1;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -237,9 +206,7 @@ public class CharSet implements Serializable {
      * @return {@code true} if the set contains the characters.
      */
     public boolean contains(final char ch) {
-        synchronized (set) {
-            return set.stream().anyMatch(range -> range.contains(ch));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -255,14 +222,7 @@ public class CharSet implements Serializable {
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof CharSet)) {
-            return false;
-        }
-        final CharSet other = (CharSet) obj;
-        return set.equals(other.set);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -274,7 +234,7 @@ public class CharSet implements Serializable {
      * @return the set of character ranges.
      */
     Set<CharRange> getCharRanges() {
-        return set;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -285,7 +245,7 @@ public class CharSet implements Serializable {
      */
     @Override
     public int hashCode() {
-        return 89 + set.hashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -295,7 +255,6 @@ public class CharSet implements Serializable {
      */
     @Override
     public String toString() {
-        return set.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

@@ -19,7 +19,6 @@ package org.apache.commons.lang3.tuple;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Objects;
-
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.function.FailableBiConsumer;
 import org.apache.commons.lang3.function.FailableBiFunction;
@@ -41,7 +40,9 @@ import org.apache.commons.lang3.function.FailableBiFunction;
  */
 public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, R>>, Serializable {
 
-    /** Serialization version */
+    /**
+     * Serialization version
+     */
     private static final long serialVersionUID = 4954918890077093841L;
 
     /**
@@ -64,7 +65,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      */
     @SuppressWarnings("unchecked")
     public static <L, R> Pair<L, R>[] emptyArray() {
-        return (Pair<L, R>[]) EMPTY_ARRAY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -77,7 +78,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      * @return an immutable pair formed from the two parameters, not null.
      */
     public static <L, R> Pair<L, R> of(final L left, final R right) {
-        return ImmutablePair.of(left, right);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -90,7 +91,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      * @since 3.10
      */
     public static <L, R> Pair<L, R> of(final Map.Entry<L, R> pair) {
-        return ImmutablePair.of(pair);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -105,7 +106,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      * @since 3.13.0
      */
     public static <L, R> Pair<L, R> ofNonNull(final L left, final R right) {
-        return ImmutablePair.ofNonNull(left, right);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -124,7 +125,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      * @since 3.13.0
      */
     public <E extends Throwable> void accept(final FailableBiConsumer<L, R, E> consumer) throws E {
-        consumer.accept(getKey(), getValue());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -138,7 +139,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      * @since 3.13.0
      */
     public <V, E extends Throwable> V apply(final FailableBiFunction<L, R, V, E> function) throws E {
-        return function.apply(getKey(), getValue());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -150,12 +151,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      */
     @Override
     public int compareTo(final Pair<L, R> other) {
-        // @formatter:off
-        return new CompareToBuilder()
-            .append(getLeft(), other.getLeft())
-            .append(getRight(), other.getRight())
-            .toComparison();
-        // @formatter:on
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -166,15 +162,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj instanceof Map.Entry<?, ?>) {
-            final Map.Entry<?, ?> other = (Map.Entry<?, ?>) obj;
-            return Objects.equals(getKey(), other.getKey())
-                    && Objects.equals(getValue(), other.getValue());
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -187,7 +175,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      */
     @Override
     public final L getKey() {
-        return getLeft();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -218,7 +206,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      */
     @Override
     public R getValue() {
-        return getRight();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -231,8 +219,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      */
     @Override
     public int hashCode() {
-        // See Map.Entry API specification
-        return Objects.hashCode(getKey()) ^ Objects.hashCode(getValue());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -242,7 +229,7 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      */
     @Override
     public String toString() {
-        return "(" + getLeft() + ',' + getRight() + ')';
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -258,7 +245,6 @@ public abstract class Pair<L, R> implements Map.Entry<L, R>, Comparable<Pair<L, 
      * @see String#format(String, Object...)
      */
     public String toString(final String format) {
-        return String.format(format, getLeft(), getRight());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

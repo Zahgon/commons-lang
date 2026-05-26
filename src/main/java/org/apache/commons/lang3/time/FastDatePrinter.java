@@ -31,7 +31,6 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-
 import org.apache.commons.lang3.CharUtils;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.LocaleUtils;
@@ -82,6 +81,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
  * @see FastDateParser
  */
 public class FastDatePrinter implements DatePrinter, Serializable {
+
     // A lot of the speed in this class comes from caching, but some comes
     // from the special int to StringBuffer conversion.
     //
@@ -93,11 +93,11 @@ public class FastDatePrinter implements DatePrinter, Serializable {
     // Note that Integer.toString() is not called, the conversion is simply
     // taking the value and adding (mathematically) the ASCII value for '0'.
     // So, don't change this code! It works and is very fast.
-
     /**
      * Inner class to output a constant single character.
      */
     private static final class CharacterLiteral implements Rule {
+
         private final char value;
 
         /**
@@ -115,7 +115,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            buffer.append(value);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -123,7 +123,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            return 1;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -131,6 +131,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output the numeric day in week.
      */
     private static final class DayInWeekField implements NumberRule {
+
         private final NumberRule rule;
 
         DayInWeekField(final NumberRule rule) {
@@ -139,18 +140,17 @@ public class FastDatePrinter implements DatePrinter, Serializable {
 
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            final int value = calendar.get(Calendar.DAY_OF_WEEK);
-            rule.appendTo(buffer, value == Calendar.SUNDAY ? 7 : value - 1);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void appendTo(final Appendable buffer, final int value) throws IOException {
-            rule.appendTo(buffer, value);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public int estimateLength() {
-            return rule.estimateLength();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -162,8 +162,10 @@ public class FastDatePrinter implements DatePrinter, Serializable {
 
         // Sign TwoDigitHours or Z
         static final Iso8601_Rule ISO8601_HOURS = new Iso8601_Rule(3);
+
         // Sign TwoDigitHours Minutes or Z
         static final Iso8601_Rule ISO8601_HOURS_MINUTES = new Iso8601_Rule(5);
+
         // Sign TwoDigitHours : Minutes or Z
         static final Iso8601_Rule ISO8601_HOURS_COLON_MINUTES = new Iso8601_Rule(6);
 
@@ -175,16 +177,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          *          rule exists, an IllegalArgumentException will be thrown.
          */
         static Iso8601_Rule getRule(final int tokenLen) {
-            switch (tokenLen) {
-            case 1:
-                return ISO8601_HOURS;
-            case 2:
-                return ISO8601_HOURS_MINUTES;
-            case 3:
-                return ISO8601_HOURS_COLON_MINUTES;
-            default:
-                throw new IllegalArgumentException("invalid number of X");
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         private final int length;
@@ -203,32 +196,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            int offset = calendar.get(Calendar.ZONE_OFFSET) + calendar.get(Calendar.DST_OFFSET);
-            if (offset == 0) {
-                buffer.append("Z");
-                return;
-            }
-
-            if (offset < 0) {
-                buffer.append('-');
-                offset = -offset;
-            } else {
-                buffer.append('+');
-            }
-
-            final int hours = offset / (60 * 60 * 1000);
-            appendDigits(buffer, hours);
-
-            if (length < 5) {
-                return;
-            }
-
-            if (length == 6) {
-                buffer.append(':');
-            }
-
-            final int minutes = offset / (60 * 1000) - 60 * hours;
-            appendDigits(buffer, minutes);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -236,7 +204,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            return length;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -259,8 +227,10 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output a padded number.
      */
     private static final class PaddedNumberField implements NumberRule {
+
         // Note: This is final to avoid Spotbugs CT_CONSTRUCTOR_THROW
         private final int field;
+
         private final int size;
 
         /**
@@ -283,16 +253,16 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            appendTo(buffer, calendar.get(field));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public /* final */ void appendTo(final Appendable buffer, final int value) throws IOException {
-            // Checkstyle complains about redundant qualifier
-            appendFullDigits(buffer, value, size);
+        public /* final */
+        void appendTo(final Appendable buffer, final int value) throws IOException {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -300,7 +270,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            return size;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -330,6 +300,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output a constant string.
      */
     private static final class StringLiteral implements Rule {
+
         private final String value;
 
         /**
@@ -347,7 +318,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            buffer.append(value);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -355,7 +326,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            return value.length();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -363,7 +334,9 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output one of a set of values.
      */
     private static final class TextField implements Rule {
+
         private final int field;
+
         private final String[] values;
 
         /**
@@ -383,7 +356,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            buffer.append(values[calendar.get(field)]);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -391,14 +364,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            int max = 0;
-            for (int i = values.length; --i >= 0;) {
-                final int len = values[i].length();
-                if (len > max) {
-                    max = len;
-                }
-            }
-            return max;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -406,8 +372,11 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class that acts as a compound key for time zone names.
      */
     private static final class TimeZoneDisplayKey {
+
         private final TimeZone timeZone;
+
         private final int style;
+
         private final Locale locale;
 
         /**
@@ -418,8 +387,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          * @param style the time zone style.
          * @param locale the time zone locale.
          */
-        TimeZoneDisplayKey(final TimeZone timeZone,
-                           final boolean daylight, final int style, final Locale locale) {
+        TimeZoneDisplayKey(final TimeZone timeZone, final boolean daylight, final int style, final Locale locale) {
             this.timeZone = timeZone;
             if (daylight) {
                 this.style = style | 0x80000000;
@@ -434,17 +402,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public boolean equals(final Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj instanceof TimeZoneDisplayKey) {
-                final TimeZoneDisplayKey other = (TimeZoneDisplayKey) obj;
-                return
-                    timeZone.equals(other.timeZone) &&
-                    style == other.style &&
-                    locale.equals(other.locale);
-            }
-            return false;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -452,7 +410,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int hashCode() {
-            return (style * 31 + locale.hashCode()) * 31 + timeZone.hashCode();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -460,9 +418,13 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output a time zone name.
      */
     private static final class TimeZoneNameRule implements Rule {
+
         private final Locale locale;
+
         private final int style;
+
         private final String standard;
+
         private final String daylight;
 
         /**
@@ -484,9 +446,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            final TimeZone zone = calendar.getTimeZone();
-            final boolean daylight = calendar.get(Calendar.DST_OFFSET) != 0;
-            buffer.append(getTimeZoneDisplay(zone, daylight, style, locale));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -494,10 +454,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            // We have no access to the Calendar object that will be passed to
-            // appendTo so base estimate on the TimeZone passed to the
-            // constructor
-            return Math.max(standard.length(), daylight.length());
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -506,7 +463,9 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * or {@code +/-HH:MM}.
      */
     private static final class TimeZoneNumberRule implements Rule {
+
         static final TimeZoneNumberRule INSTANCE_COLON = new TimeZoneNumberRule(true);
+
         static final TimeZoneNumberRule INSTANCE_NO_COLON = new TimeZoneNumberRule(false);
 
         private final boolean colon;
@@ -525,25 +484,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-
-            int offset = calendar.get(Calendar.ZONE_OFFSET) + calendar.get(Calendar.DST_OFFSET);
-
-            if (offset < 0) {
-                buffer.append('-');
-                offset = -offset;
-            } else {
-                buffer.append('+');
-            }
-
-            final int hours = offset / (60 * 60 * 1000);
-            appendDigits(buffer, hours);
-
-            if (colon) {
-                buffer.append(':');
-            }
-
-            final int minutes = offset / (60 * 1000) - 60 * hours;
-            appendDigits(buffer, minutes);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -551,7 +492,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            return 5;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -559,6 +500,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output the twelve hour field.
      */
     private static final class TwelveHourField implements NumberRule {
+
         private final NumberRule rule;
 
         /**
@@ -576,11 +518,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            int value = calendar.get(Calendar.HOUR);
-            if (value == 0) {
-                value = calendar.getLeastMaximum(Calendar.HOUR) + 1;
-            }
-            rule.appendTo(buffer, value);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -588,7 +526,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final int value) throws IOException {
-            rule.appendTo(buffer, value);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -596,7 +534,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            return rule.estimateLength();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -604,6 +542,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output the twenty four hour field.
      */
     private static final class TwentyFourHourField implements NumberRule {
+
         private final NumberRule rule;
 
         /**
@@ -621,11 +560,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            int value = calendar.get(Calendar.HOUR_OF_DAY);
-            if (value == 0) {
-                value = calendar.getMaximum(Calendar.HOUR_OF_DAY) + 1;
-            }
-            rule.appendTo(buffer, value);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -633,7 +568,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final int value) throws IOException {
-            rule.appendTo(buffer, value);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -641,7 +576,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            return rule.estimateLength();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -649,6 +584,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output a two digit month.
      */
     private static final class TwoDigitMonthField implements NumberRule {
+
         static final TwoDigitMonthField INSTANCE = new TwoDigitMonthField();
 
         /**
@@ -662,7 +598,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            appendTo(buffer, calendar.get(Calendar.MONTH) + 1);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -670,7 +606,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final int value) throws IOException {
-            appendDigits(buffer, value);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -678,7 +614,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            return 2;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -686,6 +622,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output a two digit number.
      */
     private static final class TwoDigitNumberField implements NumberRule {
+
         private final int field;
 
         /**
@@ -702,7 +639,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            appendTo(buffer, calendar.get(field));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -710,11 +647,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final int value) throws IOException {
-            if (value < 100) {
-                appendDigits(buffer, value);
-            } else {
-                appendFullDigits(buffer, value, 2);
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -722,7 +655,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            return 2;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -730,6 +663,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output a two digit year.
      */
     private static final class TwoDigitYearField implements NumberRule {
+
         static final TwoDigitYearField INSTANCE = new TwoDigitYearField();
 
         /**
@@ -743,7 +677,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            appendTo(buffer, calendar.get(Calendar.YEAR) % 100);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -751,7 +685,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final int value) throws IOException {
-            appendDigits(buffer, value % 100);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -759,7 +693,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            return 2;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -767,6 +701,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output an unpadded month.
      */
     private static final class UnpaddedMonthField implements NumberRule {
+
         static final UnpaddedMonthField INSTANCE = new UnpaddedMonthField();
 
         /**
@@ -780,7 +715,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            appendTo(buffer, calendar.get(Calendar.MONTH) + 1);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -788,11 +723,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final int value) throws IOException {
-            if (value < 10) {
-                buffer.append((char) (value + '0'));
-            } else {
-                appendDigits(buffer, value);
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -800,7 +731,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            return 2;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -808,6 +739,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output an unpadded number.
      */
     private static final class UnpaddedNumberField implements NumberRule {
+
         private final int field;
 
         /**
@@ -824,7 +756,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            appendTo(buffer, calendar.get(field));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -832,13 +764,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public void appendTo(final Appendable buffer, final int value) throws IOException {
-            if (value < 10) {
-                buffer.append((char) (value + '0'));
-            } else if (value < 100) {
-                appendDigits(buffer, value);
-            } else {
-               appendFullDigits(buffer, value, 1);
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -846,7 +772,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
          */
         @Override
         public int estimateLength() {
-            return 4;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -854,6 +780,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * Inner class to output the numeric day in week.
      */
     private static final class WeekYear implements NumberRule {
+
         private final NumberRule rule;
 
         WeekYear(final NumberRule rule) {
@@ -862,23 +789,23 @@ public class FastDatePrinter implements DatePrinter, Serializable {
 
         @Override
         public void appendTo(final Appendable buffer, final Calendar calendar) throws IOException {
-            // Some Calendar implementations (JapaneseImperialCalendar) do not support week-dates.
-            // Fall back to Calendar.YEAR in that case.
-            rule.appendTo(buffer, calendar.isWeekDateSupported() ? calendar.getWeekYear() : calendar.get(Calendar.YEAR));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void appendTo(final Appendable buffer, final int value) throws IOException {
-            rule.appendTo(buffer, value);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public int estimateLength() {
-            return rule.estimateLength();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
-    /** Empty array. */
+    /**
+     * Empty array.
+     */
     private static final Rule[] EMPTY_RULE_ARRAY = {};
 
     /**
@@ -908,7 +835,8 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     public static final int SHORT = DateFormat.SHORT;
 
-    private static final int MAX_DIGITS = 10; // log10(Integer.MAX_VALUE) ~= 9.3
+    // log10(Integer.MAX_VALUE) ~= 9.3
+    private static final int MAX_DIGITS = 10;
 
     private static final ConcurrentMap<TimeZoneDisplayKey, String> timeZoneDisplayCache = new ConcurrentHashMap<>(7);
 
@@ -937,7 +865,6 @@ public class FastDatePrinter implements DatePrinter, Serializable {
         // see LANG-1248
         if (value < 10000) {
             // less memory allocation path works for four digits or less
-
             int nDigits = 4;
             if (value < 1000) {
                 --nDigits;
@@ -952,34 +879,32 @@ public class FastDatePrinter implements DatePrinter, Serializable {
             for (int i = minFieldWidth - nDigits; i > 0; --i) {
                 buffer.append('0');
             }
-
-            switch (nDigits) {
-            case 4:
-                buffer.append((char) (value / 1000 + '0'));
-                value %= 1000;
+            switch(nDigits) {
+                case 4:
+                    buffer.append((char) (value / 1000 + '0'));
+                    value %= 1000;
                 // falls-through
-            case 3:
-                if (value >= 100) {
-                    buffer.append((char) (value / 100 + '0'));
-                    value %= 100;
-                } else {
-                    buffer.append('0');
-                }
+                case 3:
+                    if (value >= 100) {
+                        buffer.append((char) (value / 100 + '0'));
+                        value %= 100;
+                    } else {
+                        buffer.append('0');
+                    }
                 // falls-through
-            case 2:
-                if (value >= 10) {
-                    buffer.append((char) (value / 10 + '0'));
-                    value %= 10;
-                } else {
-                    buffer.append('0');
-                }
+                case 2:
+                    if (value >= 10) {
+                        buffer.append((char) (value / 10 + '0'));
+                        value %= 10;
+                    } else {
+                        buffer.append('0');
+                    }
                 // falls-through
-            case 1:
-                buffer.append((char) (value + '0'));
+                case 1:
+                    buffer.append((char) (value + '0'));
             }
         } else {
             // more memory allocation path works for any digits
-
             // build up decimal representation in reverse
             final char[] work = new char[MAX_DIGITS];
             int digit = 0;
@@ -987,13 +912,11 @@ public class FastDatePrinter implements DatePrinter, Serializable {
                 work[digit++] = (char) (value % 10 + '0');
                 value /= 10;
             }
-
             // pad with zeros
             while (digit < minFieldWidth) {
                 buffer.append('0');
                 --minFieldWidth;
             }
-
             // reverse
             while (--digit >= 0) {
                 buffer.append(work[digit]);
@@ -1002,7 +925,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
     }
 
     static void clear() {
-        timeZoneDisplayCache.clear();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1015,9 +938,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @return the textual name of the time zone.
      */
     static String getTimeZoneDisplay(final TimeZone tz, final boolean daylight, final int style, final Locale locale) {
-        final TimeZoneDisplayKey key = new TimeZoneDisplayKey(tz, daylight, style, locale);
-        // This is a very slow call, so cache the results.
-        return timeZoneDisplayCache.computeIfAbsent(key, k -> tz.getDisplayName(daylight, style, locale));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1114,13 +1035,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public boolean equals(final Object obj) {
-        if (!(obj instanceof FastDatePrinter)) {
-            return false;
-        }
-        final FastDatePrinter other = (FastDatePrinter) obj;
-        return pattern.equals(other.pattern)
-            && timeZone.equals(other.timeZone)
-            && locale.equals(other.locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /* (non-Javadoc)
@@ -1128,7 +1043,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public String format(final Calendar calendar) {
-        return format(calendar, new StringBuilder(maxLengthEstimate)).toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /* (non-Javadoc)
@@ -1136,13 +1051,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public <B extends Appendable> B format(final Calendar calendar, final B buf) {
-        // Don't edit the given Calendar, clone it only if needed.
-        Calendar actual = calendar;
-        if (!calendar.getTimeZone().equals(timeZone)) {
-            actual = (Calendar) calendar.clone();
-            actual.setTimeZone(timeZone);
-        }
-        return applyRules(actual, buf);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /* (non-Javadoc)
@@ -1150,8 +1059,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public StringBuffer format(final Calendar calendar, final StringBuffer buf) {
-        // do not pass in calendar directly, this will cause TimeZone of FastDatePrinter to be ignored
-        return format(calendar.getTime(), buf);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /* (non-Javadoc)
@@ -1159,9 +1067,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public String format(final Date date) {
-        final Calendar c = newCalendar();
-        c.setTime(date);
-        return applyRulesToString(c);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /* (non-Javadoc)
@@ -1169,9 +1075,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public <B extends Appendable> B format(final Date date, final B buf) {
-        final Calendar c = newCalendar();
-        c.setTime(date);
-        return applyRules(c, buf);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /* (non-Javadoc)
@@ -1179,9 +1083,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public StringBuffer format(final Date date, final StringBuffer buf) {
-        final Calendar c = newCalendar();
-        c.setTime(date);
-        return (StringBuffer) applyRules(c, (Appendable) buf);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /* (non-Javadoc)
@@ -1189,9 +1091,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public String format(final long millis) {
-        final Calendar c = newCalendar();
-        c.setTimeInMillis(millis);
-        return applyRulesToString(c);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /* (non-Javadoc)
@@ -1199,9 +1099,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public <B extends Appendable> B format(final long millis, final B buf) {
-        final Calendar c = newCalendar();
-        c.setTimeInMillis(millis);
-        return applyRules(c, buf);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /* (non-Javadoc)
@@ -1209,9 +1107,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public StringBuffer format(final long millis, final StringBuffer buf) {
-        final Calendar c = newCalendar();
-        c.setTimeInMillis(millis);
-        return (StringBuffer) applyRules(c, (Appendable) buf);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1223,16 +1119,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @since 3.5
      */
     String format(final Object obj) {
-        if (obj instanceof Date) {
-            return format((Date) obj);
-        }
-        if (obj instanceof Calendar) {
-            return format((Calendar) obj);
-        }
-        if (obj instanceof Long) {
-            return format(((Long) obj).longValue());
-        }
-        throw new IllegalArgumentException("Unknown class: " + ClassUtils.getName(obj, "<null>"));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1265,7 +1152,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public Locale getLocale() {
-        return locale;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1278,7 +1165,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @return the maximum formatted length.
      */
     public int getMaxLengthEstimate() {
-        return maxLengthEstimate;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /* (non-Javadoc)
@@ -1286,7 +1173,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public String getPattern() {
-        return pattern;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /* (non-Javadoc)
@@ -1294,7 +1181,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public TimeZone getTimeZone() {
-        return timeZone;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1304,7 +1191,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public int hashCode() {
-        return pattern.hashCode() + 13 * (timeZone.hashCode() + 13 * locale.hashCode());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1313,12 +1200,10 @@ public class FastDatePrinter implements DatePrinter, Serializable {
     private void init() {
         final List<Rule> rulesList = parsePattern();
         rules = rulesList.toArray(EMPTY_RULE_ARRAY);
-
         int len = 0;
-        for (int i = rules.length; --i >= 0;) {
+        for (int i = rules.length; --i >= 0; ) {
             len += rules[i].estimateLength();
         }
-
         maxLengthEstimate = len;
     }
 
@@ -1338,145 +1223,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @throws IllegalArgumentException if pattern is invalid.
      */
     protected List<Rule> parsePattern() {
-        final DateFormatSymbols symbols = new DateFormatSymbols(locale);
-        final List<Rule> rules = new ArrayList<>();
-
-        final String[] ERAs = symbols.getEras();
-        final String[] months = symbols.getMonths();
-        final String[] shortMonths = symbols.getShortMonths();
-        final String[] weekdays = symbols.getWeekdays();
-        final String[] shortWeekdays = symbols.getShortWeekdays();
-        final String[] AmPmStrings = symbols.getAmPmStrings();
-
-        final int length = pattern.length();
-        final int[] indexRef = new int[1];
-
-        for (int i = 0; i < length; i++) {
-            indexRef[0] = i;
-            final String token = parseToken(pattern, indexRef);
-            i = indexRef[0];
-
-            final int tokenLen = token.length();
-            if (tokenLen == 0) {
-                break;
-            }
-
-            Rule rule;
-            final char c = token.charAt(0);
-
-            switch (c) {
-            case 'G': // era designator (text)
-                rule = new TextField(Calendar.ERA, ERAs);
-                break;
-            case 'y': // year (number)
-            case 'Y': // week year
-                if (tokenLen == 2) {
-                    rule = TwoDigitYearField.INSTANCE;
-                } else {
-                    rule = selectNumberRule(Calendar.YEAR, Math.max(tokenLen, 4));
-                }
-                if (c == 'Y') {
-                    rule = new WeekYear((NumberRule) rule);
-                }
-                break;
-            case 'M': // month in year (text and number)
-                if (tokenLen >= 4) {
-                    rule = new TextField(Calendar.MONTH, months);
-                } else if (tokenLen == 3) {
-                    rule = new TextField(Calendar.MONTH, shortMonths);
-                } else if (tokenLen == 2) {
-                    rule = TwoDigitMonthField.INSTANCE;
-                } else {
-                    rule = UnpaddedMonthField.INSTANCE;
-                }
-                break;
-            case 'L': // month in year (text and number)
-                if (tokenLen >= 4) {
-                    rule = new TextField(Calendar.MONTH, CalendarUtils.getInstance(locale).getStandaloneLongMonthNames());
-                } else if (tokenLen == 3) {
-                    rule = new TextField(Calendar.MONTH, CalendarUtils.getInstance(locale).getStandaloneShortMonthNames());
-                } else if (tokenLen == 2) {
-                    rule = TwoDigitMonthField.INSTANCE;
-                } else {
-                    rule = UnpaddedMonthField.INSTANCE;
-                }
-                break;
-            case 'd': // day in month (number)
-                rule = selectNumberRule(Calendar.DAY_OF_MONTH, tokenLen);
-                break;
-            case 'h': // hour in am/pm (number, 1..12)
-                rule = new TwelveHourField(selectNumberRule(Calendar.HOUR, tokenLen));
-                break;
-            case 'H': // hour in day (number, 0..23)
-                rule = selectNumberRule(Calendar.HOUR_OF_DAY, tokenLen);
-                break;
-            case 'm': // minute in hour (number)
-                rule = selectNumberRule(Calendar.MINUTE, tokenLen);
-                break;
-            case 's': // second in minute (number)
-                rule = selectNumberRule(Calendar.SECOND, tokenLen);
-                break;
-            case 'S': // millisecond (number)
-                rule = selectNumberRule(Calendar.MILLISECOND, tokenLen);
-                break;
-            case 'E': // day in week (text)
-                rule = new TextField(Calendar.DAY_OF_WEEK, tokenLen < 4 ? shortWeekdays : weekdays);
-                break;
-            case 'u': // day in week (number)
-                rule = new DayInWeekField(selectNumberRule(Calendar.DAY_OF_WEEK, tokenLen));
-                break;
-            case 'D': // day in year (number)
-                rule = selectNumberRule(Calendar.DAY_OF_YEAR, tokenLen);
-                break;
-            case 'F': // day of week in month (number)
-                rule = selectNumberRule(Calendar.DAY_OF_WEEK_IN_MONTH, tokenLen);
-                break;
-            case 'w': // week in year (number)
-                rule = selectNumberRule(Calendar.WEEK_OF_YEAR, tokenLen);
-                break;
-            case 'W': // week in month (number)
-                rule = selectNumberRule(Calendar.WEEK_OF_MONTH, tokenLen);
-                break;
-            case 'a': // am/pm marker (text)
-                rule = new TextField(Calendar.AM_PM, AmPmStrings);
-                break;
-            case 'k': // hour in day (1..24)
-                rule = new TwentyFourHourField(selectNumberRule(Calendar.HOUR_OF_DAY, tokenLen));
-                break;
-            case 'K': // hour in am/pm (0..11)
-                rule = selectNumberRule(Calendar.HOUR, tokenLen);
-                break;
-            case 'X': // ISO 8601
-                rule = Iso8601_Rule.getRule(tokenLen);
-                break;
-            case 'z': // time zone (text)
-                rule = new TimeZoneNameRule(timeZone, locale, tokenLen >= 4 ? TimeZone.LONG : TimeZone.SHORT);
-                break;
-            case 'Z': // time zone (value)
-                if (tokenLen == 1) {
-                    rule = TimeZoneNumberRule.INSTANCE_NO_COLON;
-                } else if (tokenLen == 2) {
-                    rule = Iso8601_Rule.ISO8601_HOURS_COLON_MINUTES;
-                } else {
-                    rule = TimeZoneNumberRule.INSTANCE_COLON;
-                }
-                break;
-            case '\'': // literal text
-                final String sub = token.substring(1);
-                if (sub.length() == 1) {
-                    rule = new CharacterLiteral(sub.charAt(0));
-                } else {
-                    rule = new StringLiteral(sub);
-                }
-                break;
-            default:
-                throw new IllegalArgumentException("Illegal pattern component: " + token);
-            }
-
-            rules.add(rule);
-        }
-
-        return rules;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1487,49 +1234,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @return parsed token.
      */
     protected String parseToken(final String pattern, final int[] indexRef) {
-        final StringBuilder buf = new StringBuilder();
-        int i = indexRef[0];
-        final int length = pattern.length();
-        char c = pattern.charAt(i);
-        final char c1 = c;
-        if (CharUtils.isAsciiAlpha(c1)) {
-            // Scan a run of the same character, which indicates a time
-            // pattern.
-            buf.append(c);
-            while (i + 1 < length) {
-                final char peek = pattern.charAt(i + 1);
-                if (peek != c) {
-                    break;
-                }
-                buf.append(c);
-                i++;
-            }
-        } else {
-            // This will identify token as text.
-            buf.append('\'');
-            boolean inLiteral = false;
-            for (; i < length; i++) {
-                c = pattern.charAt(i);
-                if (c == '\'') {
-                    if (i + 1 < length && pattern.charAt(i + 1) == '\'') {
-                        // '' is treated as escaped '
-                        i++;
-                        buf.append(c);
-                    } else {
-                        inLiteral = !inLiteral;
-                    }
-                } else {
-                    final char c2 = c;
-                    if (!inLiteral && CharUtils.isAsciiAlpha(c2)) {
-                        i--;
-                        break;
-                    }
-                    buf.append(c);
-                }
-            }
-        }
-        indexRef[0] = i;
-        return buf.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1553,14 +1258,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      * @return a new rule with the correct padding.
      */
     protected NumberRule selectNumberRule(final int field, final int padding) {
-        switch (padding) {
-        case 1:
-            return new UnpaddedNumberField(field);
-        case 2:
-            return new TwoDigitNumberField(field);
-        default:
-            return new PaddedNumberField(field, padding);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1570,6 +1268,6 @@ public class FastDatePrinter implements DatePrinter, Serializable {
      */
     @Override
     public String toString() {
-        return "FastDatePrinter[" + pattern + "," + locale + "," + timeZone.getID() + "]";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -33,7 +32,9 @@ import java.util.function.Function;
 @FunctionalInterface
 public interface FailableBiFunction<T, U, R, E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableBiFunction NOP = (t, u) -> null;
 
@@ -48,7 +49,7 @@ public interface FailableBiFunction<T, U, R, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, U, R, E extends Throwable> FailableBiFunction<T, U, R, E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -60,8 +61,7 @@ public interface FailableBiFunction<T, U, R, E extends Throwable> {
      * @throws NullPointerException when {@code after} is null.
      */
     default <V> FailableBiFunction<T, U, V, E> andThen(final FailableFunction<? super R, ? extends V, E> after) {
-        Objects.requireNonNull(after);
-        return (final T t, final U u) -> after.apply(apply(t, u));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

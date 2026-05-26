@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.mutable;
 
 import java.io.Serializable;
@@ -40,7 +39,9 @@ public class MutableObject<T> implements Mutable<T>, Serializable {
      */
     private static final long serialVersionUID = 86241875189L;
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private T value;
 
     /**
@@ -70,17 +71,7 @@ public class MutableObject<T> implements Mutable<T>, Serializable {
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this == obj) {
-            return true;
-        }
-        if (this.getClass() == obj.getClass()) {
-            final MutableObject<?> that = (MutableObject<?>) obj;
-            return Objects.equals(this.value, that.value);
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -102,7 +93,7 @@ public class MutableObject<T> implements Mutable<T>, Serializable {
      */
     @Override
     public int hashCode() {
-        return Objects.hashCode(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -112,7 +103,7 @@ public class MutableObject<T> implements Mutable<T>, Serializable {
      */
     @Override
     public void setValue(final T value) {
-        this.value = value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -122,7 +113,6 @@ public class MutableObject<T> implements Mutable<T>, Serializable {
      */
     @Override
     public String toString() {
-        return Objects.toString(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

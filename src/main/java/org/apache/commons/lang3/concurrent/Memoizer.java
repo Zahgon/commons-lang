@@ -22,7 +22,6 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.function.Function;
-
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 /**
@@ -47,7 +46,9 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 public class Memoizer<I, O> implements Computable<I, O> {
 
     private final ConcurrentMap<I, Future<O>> cache = new ConcurrentHashMap<>();
+
     private final Function<? super I, ? extends Future<O>> mappingFunction;
+
     private final boolean recalculate;
 
     /**
@@ -101,7 +102,7 @@ public class Memoizer<I, O> implements Computable<I, O> {
      *        failed
      * @since 2.13.0
      */
-     public Memoizer(final Function<I, O> function, final boolean recalculate) {
+    public Memoizer(final Function<I, O> function, final boolean recalculate) {
         this.recalculate = recalculate;
         this.mappingFunction = k -> FutureTasks.run(() -> function.apply(k));
     }
@@ -121,19 +122,7 @@ public class Memoizer<I, O> implements Computable<I, O> {
      */
     @Override
     public O compute(final I arg) throws InterruptedException {
-        while (true) {
-            final Future<O> future = cache.computeIfAbsent(arg, mappingFunction);
-            try {
-                return future.get();
-            } catch (final CancellationException e) {
-                cache.remove(arg, future);
-            } catch (final ExecutionException e) {
-                if (recalculate) {
-                    cache.remove(arg, future);
-                }
-                throw launderException(e.getCause());
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

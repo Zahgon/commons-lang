@@ -33,7 +33,6 @@ import java.util.TreeSet;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
-
 import org.apache.commons.lang3.exception.CloneFailedException;
 import org.apache.commons.lang3.function.Consumers;
 import org.apache.commons.lang3.function.Suppliers;
@@ -58,9 +57,10 @@ import org.apache.commons.lang3.time.DurationUtils;
  * @since 1.0
  */
 //@Immutable
-@SuppressWarnings("deprecation") // deprecated class StrBuilder is imported
-// because it is part of the signature of deprecated methods
-public class ObjectUtils {
+// deprecated class StrBuilder is imported
+@SuppressWarnings("deprecation")
+public class // because it is part of the signature of deprecated methods
+ObjectUtils {
 
     /**
      * Class used as a null placeholder where {@code null} has another meaning.
@@ -143,7 +143,7 @@ public class ObjectUtils {
      * @since 3.5
      */
     public static boolean allNotNull(final Object... values) {
-        return values != null && Stream.of(values).noneMatch(Objects::isNull);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -167,7 +167,7 @@ public class ObjectUtils {
      * @since 3.11
      */
     public static boolean allNull(final Object... values) {
-        return !anyNotNull(values);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -192,7 +192,7 @@ public class ObjectUtils {
      * @since 3.5
      */
     public static boolean anyNotNull(final Object... values) {
-        return firstNonNull(values) != null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -218,7 +218,7 @@ public class ObjectUtils {
      * @since 3.11
      */
     public static boolean anyNull(final Object... values) {
-        return !allNotNull(values);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -231,30 +231,7 @@ public class ObjectUtils {
      * @since 3.0
      */
     public static <T> T clone(final T obj) {
-        if (obj instanceof Cloneable) {
-            final Object result;
-            final Class<?> objClass = obj.getClass();
-            if (isArray(obj)) {
-                final Class<?> componentType = objClass.getComponentType();
-                if (componentType.isPrimitive()) {
-                    int length = Array.getLength(obj);
-                    result = Array.newInstance(componentType, length);
-                    while (length-- > 0) {
-                        Array.set(result, length, Array.get(obj, length));
-                    }
-                } else {
-                    result = ((Object[]) obj).clone();
-                }
-            } else {
-                try {
-                    result = objClass.getMethod("clone").invoke(obj);
-                } catch (final ReflectiveOperationException e) {
-                    throw new CloneFailedException("Exception cloning Cloneable type " + objClass.getName(), e);
-                }
-            }
-            return (T) result;
-        }
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -274,8 +251,7 @@ public class ObjectUtils {
      * @since 3.0
      */
     public static <T> T cloneIfPossible(final T obj) {
-        final T clone = clone(obj);
-        return clone == null ? obj : clone;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -290,7 +266,7 @@ public class ObjectUtils {
      * @return a negative value if c1 &lt; c2, zero if c1 = c2 and a positive value if c1 &gt; c2.
      */
     public static <T extends Comparable<? super T>> int compare(final T c1, final T c2) {
-        return compare(c1, c2, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -308,16 +284,7 @@ public class ObjectUtils {
      * @see java.util.Comparator#compare(Object, Object)
      */
     public static <T extends Comparable<? super T>> int compare(final T c1, final T c2, final boolean nullGreater) {
-        if (c1 == c2) {
-            return 0;
-        }
-        if (c1 == null) {
-            return nullGreater ? 1 : -1;
-        }
-        if (c2 == null) {
-            return nullGreater ? -1 : 1;
-        }
-        return c1.compareTo(c2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -334,7 +301,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static boolean CONST(final boolean v) {
-        return v;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -351,7 +318,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static byte CONST(final byte v) {
-        return v;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -368,7 +335,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static char CONST(final char v) {
-        return v;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -385,7 +352,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static double CONST(final double v) {
-        return v;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -402,7 +369,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static float CONST(final float v) {
-        return v;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -419,7 +386,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static int CONST(final int v) {
-        return v;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -436,7 +403,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static long CONST(final long v) {
-        return v;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -453,7 +420,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static short CONST(final short v) {
-        return v;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -471,7 +438,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static <T> T CONST(final T v) {
-        return v;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -489,10 +456,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static byte CONST_BYTE(final int v) {
-        if (v < Byte.MIN_VALUE || v > Byte.MAX_VALUE) {
-            throw new IllegalArgumentException("Supplied value must be a valid byte literal between -128 and 127: [" + v + "]");
-        }
-        return (byte) v;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -510,10 +474,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static short CONST_SHORT(final int v) {
-        if (v < Short.MIN_VALUE || v > Short.MAX_VALUE) {
-            throw new IllegalArgumentException("Supplied value must be a valid byte literal between -32768 and 32767: [" + v + "]");
-        }
-        return (short) v;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -590,7 +551,7 @@ public class ObjectUtils {
      */
     @SafeVarargs
     public static <T> T firstNonNull(final T... values) {
-        return Streams.of(values).filter(Objects::nonNull).findFirst().orElse(null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -603,7 +564,7 @@ public class ObjectUtils {
      */
     @SuppressWarnings("unchecked")
     public static <T> Class<T> getClass(final T object) {
-        return object == null ? null : (Class<T>) object.getClass();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -632,7 +593,7 @@ public class ObjectUtils {
      */
     @SafeVarargs
     public static <T> T getFirstNonNull(final Supplier<T>... suppliers) {
-        return Streams.of(suppliers).filter(Objects::nonNull).map(Supplier::get).filter(Objects::nonNull).findFirst().orElse(null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -665,7 +626,7 @@ public class ObjectUtils {
      * @since 3.10
      */
     public static <T> T getIfNull(final T object, final Supplier<T> defaultSupplier) {
-        return object != null ? object : Suppliers.get(defaultSupplier);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -692,7 +653,7 @@ public class ObjectUtils {
      * @since 3.18.0
      */
     public static <T> T getIfNull(final T object, final T defaultValue) {
-        return object != null ? object : defaultValue;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -725,7 +686,7 @@ public class ObjectUtils {
      * @since 3.13.0
      */
     public static String hashCodeHex(final Object object) {
-        return Integer.toHexString(Objects.hashCode(object));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -772,7 +733,7 @@ public class ObjectUtils {
      * @since 3.13.0
      */
     public static String identityHashCodeHex(final Object object) {
-        return Integer.toHexString(System.identityHashCode(object));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -792,10 +753,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static void identityToString(final Appendable appendable, final Object object) throws IOException {
-        Objects.requireNonNull(object, "object");
-        appendable.append(object.getClass().getName())
-              .append(AT_SIGN)
-              .append(identityHashCodeHex(object));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -811,18 +769,7 @@ public class ObjectUtils {
      * @return the default toString text, or {@code null} if {@code null} passed in.
      */
     public static String identityToString(final Object object) {
-        if (object == null) {
-            return null;
-        }
-        final String name = object.getClass().getName();
-        final String hexString = identityHashCodeHex(object);
-        final StringBuilder builder = new StringBuilder(name.length() + 1 + hexString.length());
-        // @formatter:off
-        builder.append(name)
-              .append(AT_SIGN)
-              .append(hexString);
-        // @formatter:on
-        return builder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -847,10 +794,8 @@ public class ObjectUtils {
         Objects.requireNonNull(object, "object");
         final String name = object.getClass().getName();
         final String hexString = identityHashCodeHex(object);
-        builder.ensureCapacity(builder.length() +  name.length() + 1 + hexString.length());
-        builder.append(name)
-              .append(AT_SIGN)
-              .append(hexString);
+        builder.ensureCapacity(builder.length() + name.length() + 1 + hexString.length());
+        builder.append(name).append(AT_SIGN).append(hexString);
     }
 
     /**
@@ -869,13 +814,7 @@ public class ObjectUtils {
      * @since 2.4
      */
     public static void identityToString(final StringBuffer buffer, final Object object) {
-        Objects.requireNonNull(object, "object");
-        final String name = object.getClass().getName();
-        final String hexString = identityHashCodeHex(object);
-        buffer.ensureCapacity(buffer.length() + name.length() + 1 + hexString.length());
-        buffer.append(name)
-              .append(AT_SIGN)
-              .append(hexString);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -894,13 +833,7 @@ public class ObjectUtils {
      * @since 3.2
      */
     public static void identityToString(final StringBuilder builder, final Object object) {
-        Objects.requireNonNull(object, "object");
-        final String name = object.getClass().getName();
-        final String hexString = identityHashCodeHex(object);
-        builder.ensureCapacity(builder.length() +  name.length() + 1 + hexString.length());
-        builder.append(name)
-              .append(AT_SIGN)
-              .append(hexString);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -924,7 +857,7 @@ public class ObjectUtils {
      * @since 3.13.0
      */
     public static boolean isArray(final Object object) {
-        return object != null && object.getClass().isArray();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -957,26 +890,7 @@ public class ObjectUtils {
      * @since 3.9
      */
     public static boolean isEmpty(final Object object) {
-        if (object == null) {
-            return true;
-        }
-        if (object instanceof CharSequence) {
-            return ((CharSequence) object).length() == 0;
-        }
-        if (isArray(object)) {
-            return Array.getLength(object) == 0;
-        }
-        if (object instanceof Collection<?>) {
-            return ((Collection<?>) object).isEmpty();
-        }
-        if (object instanceof Map<?, ?>) {
-            return ((Map<?, ?>) object).isEmpty();
-        }
-        if (object instanceof Optional<?>) {
-            // TODO Java 11 Use Optional#isEmpty()
-            return !((Optional<?>) object).isPresent();
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1009,7 +923,7 @@ public class ObjectUtils {
      * @since 3.9
      */
     public static boolean isNotEmpty(final Object object) {
-        return !isEmpty(object);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1030,15 +944,7 @@ public class ObjectUtils {
      */
     @SafeVarargs
     public static <T extends Comparable<? super T>> T max(final T... values) {
-        T result = null;
-        if (values != null) {
-            for (final T value : values) {
-                if (compare(value, result, false) > 0) {
-                    result = value;
-                }
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1055,12 +961,7 @@ public class ObjectUtils {
      */
     @SafeVarargs
     public static <T> T median(final Comparator<T> comparator, final T... items) {
-        Validate.notEmpty(items, "null/empty items");
-        Validate.noNullElements(items);
-        Objects.requireNonNull(comparator, "comparator");
-        final TreeSet<T> treeSet = new TreeSet<>(comparator);
-        Collections.addAll(treeSet, items);
-        return (T) treeSet.toArray()[(treeSet.size() - 1) / 2];
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1075,11 +976,7 @@ public class ObjectUtils {
      */
     @SafeVarargs
     public static <T extends Comparable<? super T>> T median(final T... items) {
-        Validate.notEmpty(items);
-        Validate.noNullElements(items);
-        final TreeSet<T> sort = new TreeSet<>();
-        Collections.addAll(sort, items);
-        return (T) sort.toArray()[(sort.size() - 1) / 2];
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1100,15 +997,7 @@ public class ObjectUtils {
      */
     @SafeVarargs
     public static <T extends Comparable<? super T>> T min(final T... values) {
-        T result = null;
-        if (values != null) {
-            for (final T value : values) {
-                if (compare(value, result, true) < 0) {
-                    result = value;
-                }
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1121,25 +1010,7 @@ public class ObjectUtils {
      */
     @SafeVarargs
     public static <T> T mode(final T... items) {
-        if (ArrayUtils.isNotEmpty(items)) {
-            final HashMap<T, MutableInt> occurrences = new HashMap<>(items.length);
-            for (final T t : items) {
-                ArrayUtils.increment(occurrences, t);
-            }
-            T result = null;
-            int max = 0;
-            for (final Map.Entry<T, MutableInt> e : occurrences.entrySet()) {
-                final int cmp = e.getValue().intValue();
-                if (cmp == max) {
-                    result = null;
-                } else if (cmp > max) {
-                    max = cmp;
-                    result = e.getKey();
-                }
-            }
-            return result;
-        }
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1162,7 +1033,7 @@ public class ObjectUtils {
      * @return {@code false} if the values of both objects are the same.
      */
     public static boolean notEqual(final Object object1, final Object object2) {
-        return !Objects.equals(object1, object2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1183,8 +1054,8 @@ public class ObjectUtils {
      * @see #isEmpty(Object)
      * @since 3.12.0
      */
-    public static <T> T  requireNonEmpty(final T obj) {
-        return requireNonEmpty(obj, "object");
+    public static <T> T requireNonEmpty(final T obj) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1207,12 +1078,7 @@ public class ObjectUtils {
      * @since 3.12.0
      */
     public static <T> T requireNonEmpty(final T obj, final String message) {
-        // check for null first to give the most precise exception.
-        Objects.requireNonNull(obj, message);
-        if (isEmpty(obj)) {
-            throw new IllegalArgumentException(message);
-        }
-        return obj;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1234,7 +1100,7 @@ public class ObjectUtils {
      * @since 2.0
      */
     public static String toString(final Object obj) {
-        return Objects.toString(obj, StringUtils.EMPTY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1286,7 +1152,7 @@ public class ObjectUtils {
      * @since 3.14.0
      */
     public static String toString(final Supplier<Object> obj, final Supplier<String> supplier) {
-        return obj == null ? Suppliers.get(supplier) : toString(obj.get(), supplier);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1311,7 +1177,7 @@ public class ObjectUtils {
      * @since 3.11
      */
     public static <T> String toString(final T obj, final Supplier<String> supplier) {
-        return obj == null ? Suppliers.get(supplier) : obj.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1328,7 +1194,7 @@ public class ObjectUtils {
      * @since 3.12.0
      */
     public static void wait(final Object obj, final Duration duration) throws InterruptedException {
-        DurationUtils.accept(obj::wait, DurationUtils.zeroIfNull(duration));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1345,5 +1211,4 @@ public class ObjectUtils {
     public ObjectUtils() {
         // empty
     }
-
 }

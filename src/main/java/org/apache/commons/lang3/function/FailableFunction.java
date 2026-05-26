@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -31,7 +30,9 @@ import java.util.function.Function;
 @FunctionalInterface
 public interface FailableFunction<T, R, E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableFunction NOP = t -> null;
 
@@ -46,7 +47,7 @@ public interface FailableFunction<T, R, E extends Throwable> {
      * @since 3.14.0
      */
     static <T, R, E extends Throwable> FailableFunction<T, R, E> function(final FailableFunction<T, R, E> function) {
-        return function;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -57,7 +58,7 @@ public interface FailableFunction<T, R, E extends Throwable> {
      * @return a function that always returns its input argument
      */
     static <T, E extends Throwable> FailableFunction<T, T, E> identity() {
-        return t -> t;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -70,7 +71,7 @@ public interface FailableFunction<T, R, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, R, E extends Throwable> FailableFunction<T, R, E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -82,8 +83,7 @@ public interface FailableFunction<T, R, E extends Throwable> {
      * @throws NullPointerException when {@code after} is null.
      */
     default <V> FailableFunction<T, V, E> andThen(final FailableFunction<? super R, ? extends V, E> after) {
-        Objects.requireNonNull(after);
-        return (final T t) -> after.apply(apply(t));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -105,7 +105,6 @@ public interface FailableFunction<T, R, E extends Throwable> {
      * @see #andThen(FailableFunction)
      */
     default <V> FailableFunction<V, R, E> compose(final FailableFunction<? super V, ? extends T, E> before) {
-        Objects.requireNonNull(before);
-        return (final V v) -> apply(before.apply(v));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

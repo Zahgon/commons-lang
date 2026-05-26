@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3;
 
 /**
@@ -104,7 +103,7 @@ public class BitField {
      * @return the value of holder with the specified bits cleared (set to {@code 0}).
      */
     public int clear(final int holder) {
-        return (int) (holder & ~mask);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -115,7 +114,7 @@ public class BitField {
      * @since 3.21.0
      */
     public long clear(final long holder) {
-        return holder & ~mask;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -125,7 +124,7 @@ public class BitField {
      * @return the value of holder with the specified bits cleared (set to {@code 0}).
      */
     public byte clearByte(final byte holder) {
-        return (byte) clear(holder);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -135,7 +134,7 @@ public class BitField {
      * @return the value of holder with the specified bits cleared (set to {@code 0}).
      */
     public short clearShort(final short holder) {
-        return (short) clear(holder);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -145,7 +144,7 @@ public class BitField {
      * @return the selected bits.
      */
     public int getRawValue(final int holder) {
-        return (int) (holder & mask);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -156,7 +155,7 @@ public class BitField {
      * @since 3.21.0
      */
     public long getRawValue(final long holder) {
-        return holder & mask;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -166,7 +165,7 @@ public class BitField {
      * @return the selected bits.
      */
     public short getShortRawValue(final short holder) {
-        return (short) getRawValue(holder);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -181,7 +180,7 @@ public class BitField {
      * @see #setShortValue(short,short)
      */
     public short getShortValue(final short holder) {
-        return (short) getValue(holder);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -196,7 +195,7 @@ public class BitField {
      * @see #setValue(int,int)
      */
     public int getValue(final int holder) {
-        return getRawValue(holder) >> shiftCount;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -212,7 +211,7 @@ public class BitField {
      * @since 3.21.0
      */
     public long getValue(final long holder) {
-        return getRawValue(holder) >> shiftCount;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -225,7 +224,7 @@ public class BitField {
      * @return {@code true} if all of the bits are set, else {@code false}.
      */
     public boolean isAllSet(final int holder) {
-        return (holder & mask) == mask;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -239,7 +238,7 @@ public class BitField {
      * @since 3.21.0
      */
     public boolean isAllSet(final long holder) {
-        return (holder & mask) == mask;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -253,7 +252,7 @@ public class BitField {
      * @return {@code true} if any of the bits are set, else {@code false}
      */
     public boolean isSet(final int holder) {
-        return (holder & mask) != 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -268,7 +267,7 @@ public class BitField {
      * @since 3.21.0
      */
     public boolean isSet(final long holder) {
-        return (holder & mask) != 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -278,7 +277,7 @@ public class BitField {
      * @return the value of holder with the specified bits set to {@code 1}.
      */
     public int set(final int holder) {
-        return (int) (holder | mask);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -289,7 +288,7 @@ public class BitField {
      * @since 3.21.0
      */
     public long set(final long holder) {
-        return holder | mask;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -300,7 +299,7 @@ public class BitField {
      * @return the value of holder with the specified bits set or cleared.
      */
     public int setBoolean(final int holder, final boolean flag) {
-        return flag ? set(holder) : clear(holder);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -312,7 +311,7 @@ public class BitField {
      * @since 3.21.0
      */
     public long setBoolean(final long holder, final boolean flag) {
-        return flag ? set(holder) : clear(holder);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -322,7 +321,7 @@ public class BitField {
      * @return the value of holder with the specified bits set to {@code 1}
      */
     public byte setByte(final byte holder) {
-        return (byte) set(holder);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -333,7 +332,7 @@ public class BitField {
      * @return the value of holder with the specified bits set or cleared.
      */
     public byte setByteBoolean(final byte holder, final boolean flag) {
-        return flag ? setByte(holder) : clearByte(holder);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -343,7 +342,7 @@ public class BitField {
      * @return the value of holder with the specified bits set to {@code 1}.
      */
     public short setShort(final short holder) {
-        return (short) set(holder);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -354,7 +353,7 @@ public class BitField {
      * @return the value of holder with the specified bits set or cleared.
      */
     public short setShortBoolean(final short holder, final boolean flag) {
-        return flag ? setShort(holder) : clearShort(holder);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -366,7 +365,7 @@ public class BitField {
      * @see #getShortValue(short)
      */
     public short setShortValue(final short holder, final short value) {
-        return (short) setValue(holder, value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -378,7 +377,7 @@ public class BitField {
      * @see #getValue(int)
      */
     public int setValue(final int holder, final int value) {
-        return (int) (holder & ~mask | value << shiftCount & mask);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -391,6 +390,6 @@ public class BitField {
      * @since 3.21.0
      */
     public long setValue(final long holder, final long value) {
-        return holder & ~mask | value << shiftCount & mask;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -65,7 +65,7 @@ public class SerializationUtils {
      * <p>For more in-depth information about the problem for which this
      * class here is a workaround, see the JIRA issue LANG-626.</p>
      */
-     static final class ClassLoaderAwareObjectInputStream extends ObjectInputStream {
+    static final class ClassLoaderAwareObjectInputStream extends ObjectInputStream {
 
         private final ClassLoader classLoader;
 
@@ -93,22 +93,8 @@ public class SerializationUtils {
          */
         @Override
         protected Class<?> resolveClass(final ObjectStreamClass desc) throws IOException, ClassNotFoundException {
-            final String name = desc.getName();
-            try {
-                return Class.forName(name, false, classLoader);
-            } catch (final ClassNotFoundException ex) {
-                try {
-                    return Class.forName(name, false, Thread.currentThread().getContextClassLoader());
-                } catch (final ClassNotFoundException cnfe) {
-                    final Class<?> cls = ClassUtils.getPrimitiveClass(name);
-                    if (cls != null) {
-                        return cls;
-                    }
-                    throw cnfe;
-                }
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -126,19 +112,7 @@ public class SerializationUtils {
      * @throws SerializationException (runtime) if the serialization fails.
      */
     public static <T extends Serializable> T clone(final T object) {
-        if (object == null) {
-            return null;
-        }
-        final ByteArrayInputStream bais = new ByteArrayInputStream(serialize(object));
-        final Class<T> cls = ObjectUtils.getClass(object);
-        try (ClassLoaderAwareObjectInputStream in = new ClassLoaderAwareObjectInputStream(bais, cls.getClassLoader())) {
-            // When we serialize and deserialize an object, it is reasonable to assume the deserialized object is of the
-            // same type as the original serialized object
-            return (T) in.readObject();
-
-        } catch (final ClassNotFoundException | IOException ex) {
-            throw new SerializationException(String.format("%s while reading cloned object data", ex.getClass().getSimpleName()), ex);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -163,8 +137,7 @@ public class SerializationUtils {
      * @see org.apache.commons.io.serialization.ValidatingObjectInputStream
      */
     public static <T> T deserialize(final byte[] objectData) {
-        Objects.requireNonNull(objectData, "objectData");
-        return deserialize(new ByteArrayInputStream(objectData));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -198,16 +171,10 @@ public class SerializationUtils {
      * @throws SerializationException (runtime) if the serialization fails.
      * @see org.apache.commons.io.serialization.ValidatingObjectInputStream
      */
-    @SuppressWarnings("resource") // inputStream is managed by the caller
+    // inputStream is managed by the caller
+    @SuppressWarnings("resource")
     public static <T> T deserialize(final InputStream inputStream) {
-        Objects.requireNonNull(inputStream, "inputStream");
-        try (ObjectInputStream in = new ObjectInputStream(inputStream)) {
-            @SuppressWarnings("unchecked")
-            final T obj = (T) in.readObject();
-            return obj;
-        } catch (final ClassNotFoundException | IOException | NegativeArraySizeException ex) {
-            throw new SerializationException(ex);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -221,9 +188,10 @@ public class SerializationUtils {
      * @return the serialized and deserialized object.
      * @since 3.3
      */
-    @SuppressWarnings("unchecked") // OK, because we serialized a type `T`
+    // OK, because we serialized a type `T`
+    @SuppressWarnings("unchecked")
     public static <T extends Serializable> T roundtrip(final T obj) {
-        return (T) deserialize(serialize(obj));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -235,9 +203,7 @@ public class SerializationUtils {
      * @throws SerializationException (runtime) if the serialization fails.
      */
     public static byte[] serialize(final Serializable obj) {
-        final ByteArrayOutputStream baos = new ByteArrayOutputStream(512);
-        serialize(obj, baos);
-        return baos.toByteArray();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -255,14 +221,10 @@ public class SerializationUtils {
      * @throws NullPointerException if {@code outputStream} is {@code null}.
      * @throws SerializationException (runtime) if the serialization fails.
      */
-    @SuppressWarnings("resource") // outputStream is managed by the caller
+    // outputStream is managed by the caller
+    @SuppressWarnings("resource")
     public static void serialize(final Serializable obj, final OutputStream outputStream) {
-        Objects.requireNonNull(outputStream, "outputStream");
-        try (ObjectOutputStream out = new ObjectOutputStream(outputStream)) {
-            out.writeObject(obj);
-        } catch (final IOException ex) {
-            throw new SerializationException(ex);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -279,5 +241,4 @@ public class SerializationUtils {
     public SerializationUtils() {
         // empty
     }
-
 }

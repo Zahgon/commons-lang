@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -31,9 +30,13 @@ import java.util.function.BiConsumer;
 @FunctionalInterface
 public interface FailableBiConsumer<T, U, E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
-    FailableBiConsumer NOP = (t, u) -> { /* NOP */ };
+    FailableBiConsumer NOP = (t, u) -> {
+        /* NOP */
+    };
 
     /**
      * Gets the NOP singleton.
@@ -45,7 +48,7 @@ public interface FailableBiConsumer<T, U, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, U, E extends Throwable> FailableBiConsumer<T, U, E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -65,10 +68,6 @@ public interface FailableBiConsumer<T, U, E extends Throwable> {
      * @throws NullPointerException when {@code after} is null.
      */
     default FailableBiConsumer<T, U, E> andThen(final FailableBiConsumer<? super T, ? super U, E> after) {
-        Objects.requireNonNull(after);
-        return (t, u) -> {
-            accept(t, u);
-            after.accept(t, u);
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -14,14 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.builder;
 
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.util.Set;
 import java.util.function.Supplier;
-
 import org.apache.commons.lang3.SystemProperties;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -64,7 +62,7 @@ public abstract class AbstractReflection {
          */
         @SuppressWarnings("unchecked")
         protected B asThis() {
-            return (B) this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -92,8 +90,7 @@ public abstract class AbstractReflection {
          * @see AccessibleObject#setAccessible(boolean)
          */
         public B setForceAccessible(final boolean forceAccessible) {
-            this.forceAccessible = forceAccessible;
-            return asThis();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -110,17 +107,15 @@ public abstract class AbstractReflection {
      * @see Boolean#parseBoolean(String)
      */
     static boolean getForceAccessible() {
-        return SystemProperties.getBoolean(AbstractReflection.class, "forceAccessible", () -> true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     static boolean isRegistered(final Object lhs, final Object rhs, final Set<Pair<IDKey, IDKey>> registry) {
-        final Pair<IDKey, IDKey> pair = toRegisterPair(lhs, rhs);
-        final Pair<IDKey, IDKey> swappedPair = Pair.of(pair.getRight(), pair.getLeft());
-        return registry != null && (registry.contains(pair) || registry.contains(swappedPair));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     static void register(final Object lhs, final Object rhs, final Set<Pair<IDKey, IDKey>> registry) {
-        registry.add(toRegisterPair(lhs, rhs));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -135,7 +130,7 @@ public abstract class AbstractReflection {
      * @see SecurityManager#checkPermission
      */
     static boolean setAccessible(final boolean forceAccessible, final Field field) {
-        return !field.isAccessible() && forceAccessible && setAccessibleTrue(field);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -167,14 +162,11 @@ public abstract class AbstractReflection {
      * @return the pair.
      */
     static Pair<IDKey, IDKey> toRegisterPair(final Object lhs, final Object rhs) {
-        return Pair.of(new IDKey(lhs), new IDKey(rhs));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     static void unregister(final Object lhs, final Object rhs, final Set<Pair<IDKey, IDKey>> registry, final ThreadLocal<Set<Pair<IDKey, IDKey>>> registryTL) {
-        registry.remove(toRegisterPair(lhs, rhs));
-        if (registry.isEmpty()) {
-            registryTL.remove();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -198,7 +190,7 @@ public abstract class AbstractReflection {
      * @return whether fields should be made accessible with {@link AccessibleObject#setAccessible(boolean)}.
      */
     protected boolean isForceAccessible() {
-        return forceAccessible;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -212,6 +204,6 @@ public abstract class AbstractReflection {
      * @see SecurityManager#checkPermission
      */
     boolean setAccessible(final Field field) {
-        return setAccessible(isForceAccessible(), field);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

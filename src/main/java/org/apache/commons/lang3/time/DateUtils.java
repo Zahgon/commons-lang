@@ -30,7 +30,6 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.lang3.LocaleUtils;
 
 /**
@@ -62,7 +61,9 @@ public class DateUtils {
      * Date iterator.
      */
     static final class DateIterator implements Iterator<Calendar> {
+
         private final Calendar endFinal;
+
         private final Calendar spot;
 
         /**
@@ -84,7 +85,7 @@ public class DateUtils {
          */
         @Override
         public boolean hasNext() {
-            return spot.before(endFinal);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -94,11 +95,7 @@ public class DateUtils {
          */
         @Override
         public Calendar next() {
-            if (spot.equals(endFinal)) {
-                throw new NoSuchElementException();
-            }
-            spot.add(Calendar.DATE, 1);
-            return (Calendar) spot.clone();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -109,7 +106,7 @@ public class DateUtils {
          */
         @Override
         public void remove() {
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -122,12 +119,10 @@ public class DateUtils {
          * Truncation.
          */
         TRUNCATE,
-
         /**
          * Rounding.
          */
         ROUND,
-
         /**
          * Ceiling.
          */
@@ -167,17 +162,9 @@ public class DateUtils {
      * or bottom half of the month.
      */
     public static final int SEMI_MONTH = 1001;
-    private static final int[][] fields = {
-            {Calendar.MILLISECOND},
-            {Calendar.SECOND},
-            {Calendar.MINUTE},
-            {Calendar.HOUR_OF_DAY, Calendar.HOUR},
-            {Calendar.DATE, Calendar.DAY_OF_MONTH, Calendar.AM_PM
-                /* Calendar.DAY_OF_YEAR, Calendar.DAY_OF_WEEK, Calendar.DAY_OF_WEEK_IN_MONTH */
-            },
-            {Calendar.MONTH, SEMI_MONTH},
-            {Calendar.YEAR},
-            {Calendar.ERA}};
+
+    private static final int[][] fields = { { Calendar.MILLISECOND }, { Calendar.SECOND }, { Calendar.MINUTE }, { Calendar.HOUR_OF_DAY, Calendar.HOUR }, { Calendar.DATE, Calendar.DAY_OF_MONTH, Calendar.AM_PM /* Calendar.DAY_OF_YEAR, Calendar.DAY_OF_WEEK, Calendar.DAY_OF_WEEK_IN_MONTH */
+    }, { Calendar.MONTH, SEMI_MONTH }, { Calendar.YEAR }, { Calendar.ERA } };
 
     /**
      * A week range, starting on Sunday.
@@ -237,7 +224,7 @@ public class DateUtils {
      * @throws NullPointerException if the date is null.
      */
     public static Date addDays(final Date date, final int amount) {
-        return add(date, Calendar.DAY_OF_MONTH, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -250,7 +237,7 @@ public class DateUtils {
      * @throws NullPointerException if the date is null.
      */
     public static Date addHours(final Date date, final int amount) {
-        return add(date, Calendar.HOUR_OF_DAY, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -263,7 +250,7 @@ public class DateUtils {
      * @throws NullPointerException if the date is null.
      */
     public static Date addMilliseconds(final Date date, final int amount) {
-        return add(date, Calendar.MILLISECOND, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -276,7 +263,7 @@ public class DateUtils {
      * @throws NullPointerException if the date is null.
      */
     public static Date addMinutes(final Date date, final int amount) {
-        return add(date, Calendar.MINUTE, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -289,7 +276,7 @@ public class DateUtils {
      * @throws NullPointerException if the date is null.
      */
     public static Date addMonths(final Date date, final int amount) {
-        return add(date, Calendar.MONTH, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -302,7 +289,7 @@ public class DateUtils {
      * @throws NullPointerException if the date is null.
      */
     public static Date addSeconds(final Date date, final int amount) {
-        return add(date, Calendar.SECOND, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -315,7 +302,7 @@ public class DateUtils {
      * @throws NullPointerException if the date is null.
      */
     public static Date addWeeks(final Date date, final int amount) {
-        return add(date, Calendar.WEEK_OF_YEAR, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -328,7 +315,7 @@ public class DateUtils {
      * @throws NullPointerException if the date is null.
      */
     public static Date addYears(final Date date, final int amount) {
-        return add(date, Calendar.YEAR, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -348,8 +335,7 @@ public class DateUtils {
      * @since 2.5
      */
     public static Calendar ceiling(final Calendar calendar, final int field) {
-        Objects.requireNonNull(calendar, "calendar");
-        return modify((Calendar) calendar.clone(), field, ModifyType.CEILING);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -369,7 +355,7 @@ public class DateUtils {
      * @since 2.5
      */
     public static Date ceiling(final Date date, final int field) {
-        return modify(toCalendar(date), field, ModifyType.CEILING).getTime();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -390,14 +376,7 @@ public class DateUtils {
      * @since 2.5
      */
     public static Date ceiling(final Object date, final int field) {
-        Objects.requireNonNull(date, "date");
-        if (date instanceof Date) {
-            return ceiling((Date) date, field);
-        }
-        if (date instanceof Calendar) {
-            return ceiling((Calendar) date, field).getTime();
-        }
-        throw new ClassCastException("Could not find ceiling of for type: " + date.getClass());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -414,9 +393,8 @@ public class DateUtils {
         Objects.requireNonNull(calendar, "calendar");
         long result = 0;
         final int offset = unit == TimeUnit.DAYS ? 0 : 1;
-
         // Fragments bigger than a day require a breakdown to days
-        switch (fragment) {
+        switch(fragment) {
             case Calendar.YEAR:
                 result += unit.convert(calendar.get(Calendar.DAY_OF_YEAR) - offset, TimeUnit.DAYS);
                 break;
@@ -426,28 +404,29 @@ public class DateUtils {
             default:
                 break;
         }
-
-        switch (fragment) {
+        switch(fragment) {
             // Number of days already calculated for these cases
             case Calendar.YEAR:
             case Calendar.MONTH:
-
             // The rest of the valid cases
             case Calendar.DAY_OF_YEAR:
             case Calendar.DATE:
                 result += unit.convert(calendar.get(Calendar.HOUR_OF_DAY), TimeUnit.HOURS);
-                // falls-through
+            // falls-through
             case Calendar.HOUR_OF_DAY:
                 result += unit.convert(calendar.get(Calendar.MINUTE), TimeUnit.MINUTES);
-                // falls-through
+            // falls-through
             case Calendar.MINUTE:
                 result += unit.convert(calendar.get(Calendar.SECOND), TimeUnit.SECONDS);
-                // falls-through
+            // falls-through
             case Calendar.SECOND:
                 result += unit.convert(calendar.get(Calendar.MILLISECOND), TimeUnit.MILLISECONDS);
                 break;
-            case Calendar.MILLISECOND: break; //never useful
-                default: throw new IllegalArgumentException("The fragment " + fragment + " is not supported");
+            //never useful
+            case Calendar.MILLISECOND:
+                break;
+            default:
+                throw new IllegalArgumentException("The fragment " + fragment + " is not supported");
         }
         return result;
     }
@@ -507,7 +486,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static long getFragmentInDays(final Calendar calendar, final int fragment) {
-        return getFragment(calendar, fragment, TimeUnit.DAYS);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -545,7 +524,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static long getFragmentInDays(final Date date, final int fragment) {
-        return getFragment(date, fragment, TimeUnit.DAYS);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -583,7 +562,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static long getFragmentInHours(final Calendar calendar, final int fragment) {
-        return getFragment(calendar, fragment, TimeUnit.HOURS);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -621,7 +600,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static long getFragmentInHours(final Date date, final int fragment) {
-        return getFragment(date, fragment, TimeUnit.HOURS);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -658,9 +637,9 @@ public class DateUtils {
      * fragment is not supported.
      * @since 2.4
      */
-  public static long getFragmentInMilliseconds(final Calendar calendar, final int fragment) {
-    return getFragment(calendar, fragment, TimeUnit.MILLISECONDS);
-  }
+    public static long getFragmentInMilliseconds(final Calendar calendar, final int fragment) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
     /**
      * Gets the number of milliseconds within the
@@ -694,7 +673,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static long getFragmentInMilliseconds(final Date date, final int fragment) {
-        return getFragment(date, fragment, TimeUnit.MILLISECONDS);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -732,7 +711,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static long getFragmentInMinutes(final Calendar calendar, final int fragment) {
-        return getFragment(calendar, fragment, TimeUnit.MINUTES);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -770,7 +749,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static long getFragmentInMinutes(final Date date, final int fragment) {
-        return getFragment(date, fragment, TimeUnit.MINUTES);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -808,7 +787,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static long getFragmentInSeconds(final Calendar calendar, final int fragment) {
-        return getFragment(calendar, fragment, TimeUnit.SECONDS);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -846,7 +825,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static long getFragmentInSeconds(final Date date, final int fragment) {
-        return getFragment(date, fragment, TimeUnit.SECONDS);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -863,11 +842,7 @@ public class DateUtils {
      * @since 2.1
      */
     public static boolean isSameDay(final Calendar cal1, final Calendar cal2) {
-        Objects.requireNonNull(cal1, "cal1");
-        Objects.requireNonNull(cal2, "cal2");
-        return cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
-                cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
-                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -884,7 +859,7 @@ public class DateUtils {
      * @since 2.1
      */
     public static boolean isSameDay(final Date date1, final Date date2) {
-        return isSameDay(toCalendar(date1), toCalendar(date2));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -899,9 +874,7 @@ public class DateUtils {
      * @since 2.1
      */
     public static boolean isSameInstant(final Calendar cal1, final Calendar cal2) {
-        Objects.requireNonNull(cal1, "cal1");
-        Objects.requireNonNull(cal2, "cal2");
-        return cal1.getTime().getTime() == cal2.getTime().getTime();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -916,9 +889,7 @@ public class DateUtils {
      * @since 2.1
      */
     public static boolean isSameInstant(final Date date1, final Date date2) {
-        Objects.requireNonNull(date1, "date1");
-        Objects.requireNonNull(date2, "date2");
-        return date1.getTime() == date2.getTime();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -934,16 +905,7 @@ public class DateUtils {
      * @since 2.1
      */
     public static boolean isSameLocalTime(final Calendar cal1, final Calendar cal2) {
-        Objects.requireNonNull(cal1, "cal1");
-        Objects.requireNonNull(cal2, "cal2");
-        return cal1.get(Calendar.MILLISECOND) == cal2.get(Calendar.MILLISECOND) &&
-                cal1.get(Calendar.SECOND) == cal2.get(Calendar.SECOND) &&
-                cal1.get(Calendar.MINUTE) == cal2.get(Calendar.MINUTE) &&
-                cal1.get(Calendar.HOUR_OF_DAY) == cal2.get(Calendar.HOUR_OF_DAY) &&
-                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR) &&
-                cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
-                cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
-                cal1.getClass() == cal2.getClass();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -971,75 +933,7 @@ public class DateUtils {
      * @throws IllegalArgumentException if the rangeStyle is invalid.
      */
     public static Iterator<Calendar> iterator(final Calendar calendar, final int rangeStyle) {
-        Objects.requireNonNull(calendar, "calendar");
-        final Calendar start;
-        final Calendar end;
-        int startCutoff = Calendar.SUNDAY;
-        int endCutoff = Calendar.SATURDAY;
-        switch (rangeStyle) {
-            case RANGE_MONTH_SUNDAY:
-            case RANGE_MONTH_MONDAY:
-                //Set start to the first of the month
-                start = truncate(calendar, Calendar.MONTH);
-                //Set end to the last of the month
-                end = (Calendar) start.clone();
-                end.add(Calendar.MONTH, 1);
-                end.add(Calendar.DATE, -1);
-                //Loop start back to the previous sunday or monday
-                if (rangeStyle == RANGE_MONTH_MONDAY) {
-                    startCutoff = Calendar.MONDAY;
-                    endCutoff = Calendar.SUNDAY;
-                }
-                break;
-            case RANGE_WEEK_SUNDAY:
-            case RANGE_WEEK_MONDAY:
-            case RANGE_WEEK_RELATIVE:
-            case RANGE_WEEK_CENTER:
-                //Set start and end to the current date
-                start = truncate(calendar, Calendar.DATE);
-                end = truncate(calendar, Calendar.DATE);
-                switch (rangeStyle) {
-                    case RANGE_WEEK_SUNDAY:
-                        //already set by default
-                        break;
-                    case RANGE_WEEK_MONDAY:
-                        startCutoff = Calendar.MONDAY;
-                        endCutoff = Calendar.SUNDAY;
-                        break;
-                    case RANGE_WEEK_RELATIVE:
-                        startCutoff = calendar.get(Calendar.DAY_OF_WEEK);
-                        endCutoff = startCutoff - 1;
-                        break;
-                    case RANGE_WEEK_CENTER:
-                        startCutoff = calendar.get(Calendar.DAY_OF_WEEK) - 3;
-                        endCutoff = calendar.get(Calendar.DAY_OF_WEEK) + 3;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                throw new IllegalArgumentException("The range style " + rangeStyle + " is not valid.");
-        }
-        if (startCutoff < Calendar.SUNDAY) {
-            startCutoff += 7;
-        }
-        if (startCutoff > Calendar.SATURDAY) {
-            startCutoff -= 7;
-        }
-        if (endCutoff < Calendar.SUNDAY) {
-            endCutoff += 7;
-        }
-        if (endCutoff > Calendar.SATURDAY) {
-            endCutoff -= 7;
-        }
-        while (start.get(Calendar.DAY_OF_WEEK) != startCutoff) {
-            start.add(Calendar.DATE, -1);
-        }
-        while (end.get(Calendar.DAY_OF_WEEK) != endCutoff) {
-            end.add(Calendar.DATE, 1);
-        }
-        return new DateIterator(start, end);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1067,7 +961,7 @@ public class DateUtils {
      * @throws IllegalArgumentException if the rangeStyle is invalid.
      */
     public static Iterator<Calendar> iterator(final Date focus, final int rangeStyle) {
-        return iterator(toCalendar(focus), rangeStyle);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1087,14 +981,7 @@ public class DateUtils {
      * @throws ClassCastException if the object type is not a {@link Date} or {@link Calendar}.
      */
     public static Iterator<?> iterator(final Object calendar, final int rangeStyle) {
-        Objects.requireNonNull(calendar, "calendar");
-        if (calendar instanceof Date) {
-            return iterator((Date) calendar, rangeStyle);
-        }
-        if (calendar instanceof Calendar) {
-            return iterator((Calendar) calendar, rangeStyle);
-        }
-        throw new ClassCastException("Could not iterate based on " + calendar);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1190,37 +1077,37 @@ public class DateUtils {
             int offset = 0;
             boolean offsetSet = false;
             // These are special types of fields that require different rounding rules
-            switch (field) {
-            case SEMI_MONTH:
-                if (aField[0] == Calendar.DATE) {
-                    // If we're going to drop the DATE field's value,
-                    // we want to do this our own way.
-                    // We need to subtract 1 since the date has a minimum of 1
-                    offset = val.get(Calendar.DATE) - 1;
-                    // If we're above 15 days adjustment, that means we're in the
-                    // bottom half of the month and should stay accordingly.
-                    if (offset >= 15) {
-                        offset -= 15;
+            switch(field) {
+                case SEMI_MONTH:
+                    if (aField[0] == Calendar.DATE) {
+                        // If we're going to drop the DATE field's value,
+                        // we want to do this our own way.
+                        // We need to subtract 1 since the date has a minimum of 1
+                        offset = val.get(Calendar.DATE) - 1;
+                        // If we're above 15 days adjustment, that means we're in the
+                        // bottom half of the month and should stay accordingly.
+                        if (offset >= 15) {
+                            offset -= 15;
+                        }
+                        // Record whether we're in the top or bottom half of that range
+                        roundUp = offset > 7;
+                        offsetSet = true;
                     }
-                    // Record whether we're in the top or bottom half of that range
-                    roundUp = offset > 7;
-                    offsetSet = true;
-                }
-                break;
-            case Calendar.AM_PM:
-                if (aField[0] == Calendar.HOUR_OF_DAY) {
-                    // If we're going to drop the HOUR field's value,
-                    // we want to do this our own way.
-                    offset = val.get(Calendar.HOUR_OF_DAY);
-                    if (offset >= 12) {
-                        offset -= 12;
+                    break;
+                case Calendar.AM_PM:
+                    if (aField[0] == Calendar.HOUR_OF_DAY) {
+                        // If we're going to drop the HOUR field's value,
+                        // we want to do this our own way.
+                        offset = val.get(Calendar.HOUR_OF_DAY);
+                        if (offset >= 12) {
+                            offset -= 12;
+                        }
+                        roundUp = offset >= 6;
+                        offsetSet = true;
                     }
-                    roundUp = offset >= 6;
-                    offsetSet = true;
-                }
-                break;
-            default:
-                break;
+                    break;
+                default:
+                    break;
             }
             if (!offsetSet) {
                 final int min = val.getActualMinimum(aField[0]);
@@ -1257,7 +1144,7 @@ public class DateUtils {
      * @since 3.2
      */
     public static Date parseDate(final String str, final Locale locale, final String... parsePatterns) throws ParseException {
-        return parseDateWithLeniency(str, locale, parsePatterns, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1275,7 +1162,7 @@ public class DateUtils {
      * @throws ParseException if none of the date patterns were suitable (or there were none).
      */
     public static Date parseDate(final String str, final String... parsePatterns) throws ParseException {
-        return parseDate(str, null, parsePatterns);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1297,7 +1184,7 @@ public class DateUtils {
      * @since 3.2
      */
     public static Date parseDateStrictly(final String str, final Locale locale, final String... parsePatterns) throws ParseException {
-        return parseDateWithLeniency(str, locale, parsePatterns, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1316,7 +1203,7 @@ public class DateUtils {
      * @since 2.5
      */
     public static Date parseDateStrictly(final String str, final String... parsePatterns) throws ParseException {
-        return parseDateStrictly(str, null, parsePatterns);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1336,17 +1223,14 @@ public class DateUtils {
      * @throws ParseException if none of the date patterns were suitable.
      * @see java.util.Calendar#isLenient()
      */
-    private static Date parseDateWithLeniency(final String dateStr, final Locale locale, final String[] parsePatterns,
-        final boolean lenient) throws ParseException {
+    private static Date parseDateWithLeniency(final String dateStr, final Locale locale, final String[] parsePatterns, final boolean lenient) throws ParseException {
         Objects.requireNonNull(dateStr, "str");
         Objects.requireNonNull(parsePatterns, "parsePatterns");
-
         final TimeZone tz = TimeZone.getDefault();
         final Locale lcl = LocaleUtils.toLocale(locale);
         final ParsePosition pos = new ParsePosition(0);
         final Calendar calendar = Calendar.getInstance(tz, lcl);
         calendar.setLenient(lenient);
-
         for (final String parsePattern : parsePatterns) {
             final FastDateParser fdp = new FastDateParser(parsePattern, tz, lcl);
             calendar.clear();
@@ -1394,8 +1278,7 @@ public class DateUtils {
      * @throws ArithmeticException if the year is over 280 million.
      */
     public static Calendar round(final Calendar calendar, final int field) {
-        Objects.requireNonNull(calendar, "calendar");
-        return modify((Calendar) calendar.clone(), field, ModifyType.ROUND);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1426,7 +1309,7 @@ public class DateUtils {
      * @throws ArithmeticException if the year is over 280 million.
      */
     public static Date round(final Date date, final int field) {
-        return modify(toCalendar(date), field, ModifyType.ROUND).getTime();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1458,14 +1341,7 @@ public class DateUtils {
      * @throws ArithmeticException if the year is over 280 million.
      */
     public static Date round(final Object date, final int field) {
-        Objects.requireNonNull(date, "date");
-        if (date instanceof Date) {
-            return round((Date) date, field);
-        }
-        if (date instanceof Calendar) {
-            return round((Calendar) date, field).getTime();
-        }
-        throw new ClassCastException("Could not round " + date);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1503,7 +1379,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static Date setDays(final Date date, final int amount) {
-        return set(date, Calendar.DAY_OF_MONTH, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1520,7 +1396,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static Date setHours(final Date date, final int amount) {
-        return set(date, Calendar.HOUR_OF_DAY, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1536,7 +1412,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static Date setMilliseconds(final Date date, final int amount) {
-        return set(date, Calendar.MILLISECOND, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1552,7 +1428,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static Date setMinutes(final Date date, final int amount) {
-        return set(date, Calendar.MINUTE, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1568,7 +1444,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static Date setMonths(final Date date, final int amount) {
-        return set(date, Calendar.MONTH, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1584,7 +1460,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static Date setSeconds(final Date date, final int amount) {
-        return set(date, Calendar.SECOND, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1598,7 +1474,7 @@ public class DateUtils {
      * @since 2.4
      */
     public static Date setYears(final Date date, final int amount) {
-        return set(date, Calendar.YEAR, amount);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1610,9 +1486,7 @@ public class DateUtils {
      * @since 3.0
      */
     public static Calendar toCalendar(final Date date) {
-        final Calendar c = Calendar.getInstance();
-        c.setTime(Objects.requireNonNull(date, "date"));
-        return c;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1624,9 +1498,7 @@ public class DateUtils {
      * @throws NullPointerException if {@code date} or {@code tz} is null.
      */
     public static Calendar toCalendar(final Date date, final TimeZone tz) {
-        final Calendar c = Calendar.getInstance(tz);
-        c.setTime(Objects.requireNonNull(date, "date"));
-        return c;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1637,7 +1509,7 @@ public class DateUtils {
      * @since 3.19.0
      */
     public static LocalDateTime toLocalDateTime(final Date date) {
-        return toLocalDateTime(date, TimeZone.getDefault());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1649,7 +1521,7 @@ public class DateUtils {
      * @since 3.19.0
      */
     public static LocalDateTime toLocalDateTime(final Date date, final TimeZone timeZone) {
-        return LocalDateTime.ofInstant(date.toInstant(), toZoneId(timeZone));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1660,7 +1532,7 @@ public class DateUtils {
      * @since 3.19.0
      */
     public static OffsetDateTime toOffsetDateTime(final Date date) {
-        return toOffsetDateTime(date, TimeZone.getDefault());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1672,7 +1544,7 @@ public class DateUtils {
      * @since 3.19.0
      */
     public static OffsetDateTime toOffsetDateTime(final Date date, final TimeZone timeZone) {
-        return OffsetDateTime.ofInstant(date.toInstant(), toZoneId(timeZone));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1683,7 +1555,7 @@ public class DateUtils {
      * @since 3.19.0
      */
     public static ZonedDateTime toZonedDateTime(final Date date) {
-        return toZonedDateTime(date, TimeZone.getDefault());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1695,7 +1567,7 @@ public class DateUtils {
      * @since 3.19.0
      */
     public static ZonedDateTime toZonedDateTime(final Date date, final TimeZone timeZone) {
-        return ZonedDateTime.ofInstant(date.toInstant(), toZoneId(timeZone));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static ZoneId toZoneId(final TimeZone timeZone) {
@@ -1718,8 +1590,7 @@ public class DateUtils {
      * @throws ArithmeticException if the year is over 280 million.
      */
     public static Calendar truncate(final Calendar date, final int field) {
-        Objects.requireNonNull(date, "date");
-        return modify((Calendar) date.clone(), field, ModifyType.TRUNCATE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1738,7 +1609,7 @@ public class DateUtils {
      * @throws ArithmeticException if the year is over 280 million.
      */
     public static Date truncate(final Date date, final int field) {
-        return modify(toCalendar(date), field, ModifyType.TRUNCATE).getTime();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1758,14 +1629,7 @@ public class DateUtils {
      * @throws ArithmeticException if the year is over 280 million.
      */
     public static Date truncate(final Object date, final int field) {
-        Objects.requireNonNull(date, "date");
-        if (date instanceof Date) {
-            return truncate((Date) date, field);
-        }
-        if (date instanceof Calendar) {
-            return truncate((Calendar) date, field).getTime();
-        }
-        throw new ClassCastException("Could not truncate " + date);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1783,9 +1647,7 @@ public class DateUtils {
      * @since 3.0
      */
     public static int truncatedCompareTo(final Calendar cal1, final Calendar cal2, final int field) {
-        final Calendar truncatedCal1 = truncate(cal1, field);
-        final Calendar truncatedCal2 = truncate(cal2, field);
-        return truncatedCal1.compareTo(truncatedCal2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1803,9 +1665,7 @@ public class DateUtils {
      * @since 3.0
      */
     public static int truncatedCompareTo(final Date date1, final Date date2, final int field) {
-        final Date truncatedDate1 = truncate(date1, field);
-        final Date truncatedDate2 = truncate(date2, field);
-        return truncatedDate1.compareTo(truncatedDate2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1822,7 +1682,7 @@ public class DateUtils {
      * @since 3.0
      */
     public static boolean truncatedEquals(final Calendar cal1, final Calendar cal2, final int field) {
-        return truncatedCompareTo(cal1, cal2, field) == 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1839,7 +1699,7 @@ public class DateUtils {
      * @since 3.0
      */
     public static boolean truncatedEquals(final Date date1, final Date date2, final int field) {
-        return truncatedCompareTo(date1, date2, field) == 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1864,5 +1724,4 @@ public class DateUtils {
     public DateUtils() {
         // empty
     }
-
 }

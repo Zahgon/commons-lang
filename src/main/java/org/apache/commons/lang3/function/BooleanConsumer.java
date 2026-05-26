@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -29,8 +28,12 @@ import java.util.function.IntConsumer;
 @FunctionalInterface
 public interface BooleanConsumer {
 
-    /** NOP singleton */
-    BooleanConsumer NOP = t -> { /* NOP */ };
+    /**
+     * NOP singleton
+     */
+    BooleanConsumer NOP = t -> {
+        /* NOP */
+    };
 
     /**
      * Gets the NOP singleton.
@@ -38,7 +41,7 @@ public interface BooleanConsumer {
      * @return The NOP singleton.
      */
     static BooleanConsumer nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -59,10 +62,6 @@ public interface BooleanConsumer {
      * @throws NullPointerException if {@code after} is null
      */
     default BooleanConsumer andThen(final BooleanConsumer after) {
-        Objects.requireNonNull(after);
-        return (final boolean t) -> {
-            accept(t);
-            after.accept(t);
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

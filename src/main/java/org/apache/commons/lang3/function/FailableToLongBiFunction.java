@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.function.ToLongBiFunction;
@@ -30,7 +29,9 @@ import java.util.function.ToLongBiFunction;
 @FunctionalInterface
 public interface FailableToLongBiFunction<T, U, E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableToLongBiFunction NOP = (t, u) -> 0;
 
@@ -44,7 +45,7 @@ public interface FailableToLongBiFunction<T, U, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, U, E extends Throwable> FailableToLongBiFunction<T, U, E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

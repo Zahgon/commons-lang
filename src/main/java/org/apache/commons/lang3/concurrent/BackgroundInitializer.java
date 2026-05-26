@@ -22,7 +22,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
 import org.apache.commons.lang3.function.FailableConsumer;
 import org.apache.commons.lang3.function.FailableSupplier;
 
@@ -111,7 +110,7 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
         @SuppressWarnings("unchecked")
         @Override
         public I get() {
-            return (I) new BackgroundInitializer(getInitializer(), getCloser(), externalExecutor);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -122,15 +121,15 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
          * @return {@code this} instance.
          */
         public Builder<I, T> setExternalExecutor(final ExecutorService externalExecutor) {
-            this.externalExecutor = externalExecutor;
-            return asThis();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     private final class InitializationTask implements Callable<T> {
 
-        /** Stores the executor service to be destroyed at the end. */
+        /**
+         * Stores the executor service to be destroyed at the end.
+         */
         private final ExecutorService execFinally;
 
         /**
@@ -151,13 +150,7 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
          */
         @Override
         public T call() throws Exception {
-            try {
-                return initialize();
-            } finally {
-                if (execFinally != null) {
-                    execFinally.shutdown();
-                }
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -169,17 +162,26 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
      * @since 3.14.0
      */
     public static <T> Builder<BackgroundInitializer<T>, T> builder() {
-        return new Builder<>();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** The external executor service for executing tasks. */
-    private ExecutorService externalExecutor; // @GuardedBy("this")
+    /**
+     * The external executor service for executing tasks.
+     */
+    // @GuardedBy("this")
+    private ExecutorService externalExecutor;
 
-    /** A reference to the executor service that is actually used. */
-    private ExecutorService executor; // @GuardedBy("this")
+    /**
+     * A reference to the executor service that is actually used.
+     */
+    // @GuardedBy("this")
+    private ExecutorService executor;
 
-    /** Stores the handle to the background task. */
-    private Future<T> future;  // @GuardedBy("this")
+    /**
+     * Stores the handle to the background task.
+     */
+    // @GuardedBy("this")
+    private Future<T> future;
 
     /**
      * Creates a new instance of {@link BackgroundInitializer}. No external
@@ -256,16 +258,7 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
      */
     @Override
     public T get() throws ConcurrentException {
-        try {
-            return getFuture().get();
-        } catch (final ExecutionException execex) {
-            ConcurrentUtils.handleCause(execex);
-            return null; // should not be reached
-        } catch (final InterruptedException iex) {
-            // reset interrupted state
-            Thread.currentThread().interrupt();
-            throw new ConcurrentException(iex);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -278,7 +271,7 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
      * @return the {@link ExecutorService} for executing the background task.
      */
     protected final synchronized ExecutorService getActiveExecutor() {
-        return executor;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -287,7 +280,7 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
      * @return the {@link ExecutorService}.
      */
     public final synchronized ExecutorService getExternalExecutor() {
-        return externalExecutor;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -299,10 +292,7 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
      * @throws IllegalStateException if {@link #start()} has not been called.
      */
     public synchronized Future<T> getFuture() {
-        if (future == null) {
-            throw new IllegalStateException("start() must be called first.");
-        }
-        return future;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -317,7 +307,7 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
      * @return the number of background tasks required by this initializer.
      */
     protected int getTaskCount() {
-        return 1;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -325,8 +315,7 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
      */
     @Override
     protected Exception getTypedException(final Exception e) {
-        //This Exception object will be used for type comparison in AbstractConcurrentInitializer.initialize but not thrown
-        return new Exception(e);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -339,15 +328,7 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
      */
     @Override
     public synchronized boolean isInitialized() {
-        if (future == null || !future.isDone()) {
-            return false;
-        }
-        try {
-            future.get();
-            return true;
-        } catch (CancellationException | ExecutionException | InterruptedException e) {
-            return false;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -358,7 +339,7 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
      * called.
      */
     public synchronized boolean isStarted() {
-        return future != null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -376,10 +357,7 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
      * started.
      */
     public final synchronized void setExternalExecutor(final ExecutorService externalExecutor) {
-        if (isStarted()) {
-            throw new IllegalStateException("Cannot set ExecutorService after start().");
-        }
-        this.externalExecutor = externalExecutor;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -393,19 +371,6 @@ public class BackgroundInitializer<T> extends AbstractConcurrentInitializer<T, E
      * @return a flag whether the initializer could be started successfully.
      */
     public synchronized boolean start() {
-        // Not yet started?
-        if (!isStarted()) {
-            // Determine the executor to use and whether a temporary one has to be created.
-            final ExecutorService tempExec;
-            executor = getExternalExecutor();
-            if (executor == null) {
-                executor = tempExec = createExecutor();
-            } else {
-                tempExec = null;
-            }
-            future = executor.submit(createTask(tempExec));
-            return true;
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

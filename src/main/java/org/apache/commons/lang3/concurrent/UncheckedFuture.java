@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.concurrent;
 
 import java.util.Collection;
@@ -24,7 +23,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.apache.commons.lang3.exception.UncheckedInterruptedException;
 
 /**
@@ -45,7 +43,7 @@ public interface UncheckedFuture<V> extends Future<V> {
      * @return a new stream.
      */
     static <T> Stream<UncheckedFuture<T>> map(final Collection<Future<T>> futures) {
-        return futures.stream().map(UncheckedFuture::on);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -56,7 +54,7 @@ public interface UncheckedFuture<V> extends Future<V> {
      * @return a new collection.
      */
     static <T> Collection<UncheckedFuture<T>> on(final Collection<Future<T>> futures) {
-        return map(futures).collect(Collectors.toList());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -67,7 +65,7 @@ public interface UncheckedFuture<V> extends Future<V> {
      * @return a new instance.
      */
     static <T> UncheckedFuture<T> on(final Future<T> future) {
-        return new UncheckedFutureImpl<>(future);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -96,5 +94,4 @@ public interface UncheckedFuture<V> extends Future<V> {
      */
     @Override
     V get(long timeout, TimeUnit unit);
-
 }

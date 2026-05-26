@@ -37,7 +37,7 @@ public class UnicodeEscaper extends CodePointTranslator {
      * @return the newly created {@link UnicodeEscaper} instance.
      */
     public static UnicodeEscaper above(final int codePoint) {
-        return outsideOf(0, codePoint);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -47,7 +47,7 @@ public class UnicodeEscaper extends CodePointTranslator {
      * @return the newly created {@link UnicodeEscaper} instance.
      */
     public static UnicodeEscaper below(final int codePoint) {
-        return outsideOf(codePoint, Integer.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -58,7 +58,7 @@ public class UnicodeEscaper extends CodePointTranslator {
      * @return the newly created {@link UnicodeEscaper} instance.
      */
     public static UnicodeEscaper between(final int codePointLow, final int codePointHigh) {
-        return new UnicodeEscaper(codePointLow, codePointHigh, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -69,7 +69,7 @@ public class UnicodeEscaper extends CodePointTranslator {
      * @return the newly created {@link UnicodeEscaper} instance.
      */
     public static UnicodeEscaper outsideOf(final int codePointLow, final int codePointHigh) {
-        return new UnicodeEscaper(codePointLow, codePointHigh, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private final int below;
@@ -110,7 +110,7 @@ public class UnicodeEscaper extends CodePointTranslator {
      * @since 3.2
      */
     protected String toUtf16Escape(final int codePoint) {
-        return "\\u" + hex(codePoint);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -118,24 +118,6 @@ public class UnicodeEscaper extends CodePointTranslator {
      */
     @Override
     public boolean translate(final int codePoint, final Writer out) throws IOException {
-        if (between) {
-            if (codePoint < below || codePoint > above) {
-                return false;
-            }
-        } else if (codePoint >= below && codePoint <= above) {
-            return false;
-        }
-
-        // TODO: Handle potential + sign per various Unicode escape implementations
-        if (codePoint > 0xffff) {
-            out.write(toUtf16Escape(codePoint));
-        } else {
-          out.write("\\u");
-          out.write(HEX_DIGITS[codePoint >> 12 & 15]);
-          out.write(HEX_DIGITS[codePoint >> 8 & 15]);
-          out.write(HEX_DIGITS[codePoint >> 4 & 15]);
-          out.write(HEX_DIGITS[codePoint & 15]);
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

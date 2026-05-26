@@ -37,7 +37,6 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.function.Failable;
 import org.apache.commons.lang3.function.FailableConsumer;
@@ -82,7 +81,9 @@ public class Streams {
      * @param <E> The array type.
      */
     public static class ArrayCollector<E> implements Collector<E, List<E>, E[]> {
+
         private static final Set<Characteristics> characteristics = Collections.emptySet();
+
         private final Class<E> elementType;
 
         /**
@@ -96,30 +97,27 @@ public class Streams {
 
         @Override
         public BiConsumer<List<E>, E> accumulator() {
-            return List::add;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public Set<Characteristics> characteristics() {
-            return characteristics;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public BinaryOperator<List<E>> combiner() {
-            return (left, right) -> {
-                left.addAll(right);
-                return left;
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public Function<List<E>, E[]> finisher() {
-            return list -> list.toArray(ArrayUtils.newInstance(elementType, list.size()));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public Supplier<List<E>> supplier() {
-            return ArrayList::new;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -147,20 +145,17 @@ public class Streams {
 
         @Override
         public void forEachRemaining(final Consumer<? super T> action) {
-            while (enumeration.hasMoreElements()) {
-                next(action);
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         private boolean next(final Consumer<? super T> action) {
             action.accept(enumeration.nextElement());
             return true;
-
         }
 
         @Override
         public boolean tryAdvance(final Consumer<? super T> action) {
-            return enumeration.hasMoreElements() && next(action);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -172,6 +167,7 @@ public class Streams {
     public static class FailableStream<T> {
 
         private Stream<T> stream;
+
         private boolean terminated;
 
         /**
@@ -201,8 +197,7 @@ public class Streams {
          *         otherwise {@code false}.
          */
         public boolean allMatch(final FailablePredicate<T, ?> predicate) {
-            assertNotTerminated();
-            return stream().allMatch(Failable.asPredicate(predicate));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -221,8 +216,7 @@ public class Streams {
          * @return {@code true} if any elements of the stream match the provided predicate, otherwise {@code false}
          */
         public boolean anyMatch(final FailablePredicate<T, ?> predicate) {
-            assertNotTerminated();
-            return stream().anyMatch(Failable.asPredicate(predicate));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -231,9 +225,7 @@ public class Streams {
          * @throws IllegalStateException if this stream is already terminated.
          */
         protected void assertNotTerminated() {
-            if (terminated) {
-                throw new IllegalStateException("This stream is already terminated.");
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -294,8 +286,7 @@ public class Streams {
          * @see Collectors
          */
         public <A, R> R collect(final Collector<? super T, A, R> collector) {
-            makeTerminated();
-            return stream().collect(collector);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -346,8 +337,7 @@ public class Streams {
          * @return The result of the reduction
          */
         public <A, R> R collect(final Supplier<R> supplier, final BiConsumer<R, ? super T> accumulator, final BiConsumer<R, R> combiner) {
-            makeTerminated();
-            return stream().collect(supplier, accumulator, combiner);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -361,9 +351,7 @@ public class Streams {
          * @return the new stream
          */
         public FailableStream<T> filter(final FailablePredicate<T, ?> predicate) {
-            assertNotTerminated();
-            stream = stream.filter(Failable.asPredicate(predicate));
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -381,8 +369,7 @@ public class Streams {
          * @param action a non-interfering action to perform on the elements
          */
         public void forEach(final FailableConsumer<T, ?> action) {
-            makeTerminated();
-            stream().forEach(Failable.asConsumer(action));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -391,8 +378,7 @@ public class Streams {
          * @throws IllegalStateException if this stream is already terminated.
          */
         protected void makeTerminated() {
-            assertNotTerminated();
-            terminated = true;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -407,8 +393,7 @@ public class Streams {
          * @return the new stream
          */
         public <R> FailableStream<R> map(final FailableFunction<T, R, ?> mapper) {
-            assertNotTerminated();
-            return new FailableStream<>(stream.map(Failable.asFunction(mapper)));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -464,8 +449,7 @@ public class Streams {
          * @return the result of the reduction
          */
         public T reduce(final T identity, final BinaryOperator<T> accumulator) {
-            makeTerminated();
-            return stream().reduce(identity, accumulator);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -474,7 +458,7 @@ public class Streams {
          * @return A stream, which will return the same elements, which this FailableStream would return.
          */
         public Stream<T> stream() {
-            return stream;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -519,7 +503,7 @@ public class Streams {
      * @since 3.13.0
      */
     public static <T> FailableStream<T> failableStream(final Collection<T> stream) {
-        return failableStream(of(stream));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -563,7 +547,7 @@ public class Streams {
      * @since 3.13.0
      */
     public static <T> FailableStream<T> failableStream(final Stream<T> stream) {
-        return new FailableStream<>(stream);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -575,7 +559,7 @@ public class Streams {
      * @since 3.15.0
      */
     public static <T> FailableStream<T> failableStream(final T value) {
-        return failableStream(streamOf(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -586,9 +570,10 @@ public class Streams {
      * @return the new FailableStream on {@code values} or an empty stream.
      * @since 3.14.0
      */
-    @SafeVarargs // Creating a stream from an array is safe
+    // Creating a stream from an array is safe
+    @SafeVarargs
     public static <T> FailableStream<T> failableStream(final T... values) {
-        return failableStream(of(values));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -607,10 +592,11 @@ public class Streams {
      * @since 3.13.0
      */
     public static <E> Stream<E> instancesOf(final Class<? super E> clazz, final Collection<? super E> collection) {
-        return instancesOf(clazz, of(collection));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    @SuppressWarnings("unchecked") // After the isInstance check, we still need to type-cast.
+    // After the isInstance check, we still need to type-cast.
+    @SuppressWarnings("unchecked")
     private static <E> Stream<E> instancesOf(final Class<? super E> clazz, final Stream<?> stream) {
         return (Stream<E>) of(stream).filter(clazz::isInstance);
     }
@@ -624,7 +610,7 @@ public class Streams {
      * @since 3.13.0
      */
     public static <E> Stream<E> nonNull(final Collection<E> collection) {
-        return of(collection).filter(Objects::nonNull);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -636,7 +622,7 @@ public class Streams {
      * @since 3.15.0
      */
     public static <E> Stream<E> nonNull(final E array) {
-        return nonNull(streamOf(array));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -649,7 +635,7 @@ public class Streams {
      */
     @SafeVarargs
     public static <E> Stream<E> nonNull(final E... array) {
-        return nonNull(of(array));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -661,7 +647,7 @@ public class Streams {
      * @since 3.13.0
      */
     public static <E> Stream<E> nonNull(final Stream<E> stream) {
-        return of(stream).filter(Objects::nonNull);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -673,7 +659,7 @@ public class Streams {
      * @since 3.13.0
      */
     public static <E> Stream<E> of(final Collection<E> collection) {
-        return collection == null ? Stream.empty() : collection.stream();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -685,7 +671,7 @@ public class Streams {
      * @since 3.13.0
      */
     public static <E> Stream<E> of(final Enumeration<E> enumeration) {
-        return StreamSupport.stream(new EnumerationSpliterator<>(Long.MAX_VALUE, Spliterator.ORDERED, enumeration), false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -697,7 +683,7 @@ public class Streams {
      * @since 3.13.0
      */
     public static <E> Stream<E> of(final Iterable<E> iterable) {
-        return iterable == null ? Stream.empty() : StreamSupport.stream(iterable.spliterator(), false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -709,7 +695,7 @@ public class Streams {
      * @since 3.13.0
      */
     public static <E> Stream<E> of(final Iterator<E> iterator) {
-        return iterator == null ? Stream.empty() : StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, Spliterator.ORDERED), false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -732,9 +718,10 @@ public class Streams {
      * @return the new stream on {@code values} or {@link Stream#empty()}.
      * @since 3.13.0
      */
-    @SafeVarargs // Creating a stream from an array is safe
+    // Creating a stream from an array is safe
+    @SafeVarargs
     public static <T> Stream<T> of(final T... values) {
-        return values == null ? Stream.empty() : Stream.of(values);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -839,7 +826,7 @@ public class Streams {
      * @return a {@link Collector} which collects all the input elements into an array, in encounter order
      */
     public static <T> Collector<T, List<T>, T[]> toArray(final Class<T> elementType) {
-        return new ArrayCollector<>(elementType);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

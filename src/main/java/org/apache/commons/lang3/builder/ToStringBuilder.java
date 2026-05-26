@@ -17,7 +17,6 @@
 package org.apache.commons.lang3.builder;
 
 import java.util.Objects;
-
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.builder.AbstractReflection.AbstractBuilder;
 
@@ -102,7 +101,9 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
     public static class Builder extends AbstractBuilder<Builder> {
 
         private Object object;
+
         private ToStringStyle style;
+
         private StringBuffer buffer;
 
         /**
@@ -114,7 +115,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
 
         @Override
         public ToStringBuilder get() {
-            return new ToStringBuilder(this);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -124,8 +125,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
          * @return {@code this} builder instance.
          */
         public Builder setBuffer(final StringBuffer buffer) {
-            this.buffer = buffer;
-            return asThis();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -135,8 +135,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
          * @return {@code this} builder instance.
          */
         public Builder setObject(final Object object) {
-            this.object = object;
-            return asThis();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -146,8 +145,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
          * @return {@code this} builder instance.
          */
         public Builder setStyle(final ToStringStyle style) {
-            this.style = style;
-            return asThis();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -163,7 +161,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @since 3.21.0
      */
     public static Builder builder() {
-        return new Builder();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -185,7 +183,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return the default {@link ToStringStyle}, never null
      */
     public static ToStringStyle getDefaultStyle() {
-        return defaultStyle;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -197,7 +195,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @see ReflectionToStringBuilder#toString(Object)
      */
     public static String reflectionToString(final Object object) {
-        return ReflectionToStringBuilder.toString(object);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -210,7 +208,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @see ReflectionToStringBuilder#toString(Object,ToStringStyle)
      */
     public static String reflectionToString(final Object object, final ToStringStyle style) {
-        return ReflectionToStringBuilder.toString(object, style);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -224,7 +222,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @see ReflectionToStringBuilder#toString(Object,ToStringStyle,boolean)
      */
     public static String reflectionToString(final Object object, final ToStringStyle style, final boolean outputTransients) {
-        return ReflectionToStringBuilder.toString(object, style, outputTransients, false, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -240,12 +238,8 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @see ReflectionToStringBuilder#toString(Object,ToStringStyle,boolean,boolean,Class)
      * @since 2.0
      */
-    public static <T> String reflectionToString(
-        final T object,
-        final ToStringStyle style,
-        final boolean outputTransients,
-        final Class<? super T> reflectUpToClass) {
-        return ReflectionToStringBuilder.toString(object, style, outputTransients, false, reflectUpToClass);
+    public static <T> String reflectionToString(final T object, final ToStringStyle style, final boolean outputTransients, final Class<? super T> reflectUpToClass) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -264,7 +258,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @throws NullPointerException if the style is {@code null}
      */
     public static void setDefaultStyle(final ToStringStyle style) {
-        defaultStyle = Objects.requireNonNull(style, "style");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -336,8 +330,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final boolean value) {
-        style.append(buffer, null, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -348,8 +341,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final boolean[] array) {
-        style.append(buffer, null, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -360,8 +352,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final byte value) {
-        style.append(buffer, null, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -372,8 +363,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final byte[] array) {
-        style.append(buffer, null, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -384,8 +374,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final char value) {
-        style.append(buffer, null, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -396,8 +385,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final char[] array) {
-        style.append(buffer, null, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -408,8 +396,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final double value) {
-        style.append(buffer, null, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -420,8 +407,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final double[] array) {
-        style.append(buffer, null, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -432,8 +418,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final float value) {
-        style.append(buffer, null, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -444,8 +429,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final float[] array) {
-        style.append(buffer, null, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -456,8 +440,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final int value) {
-        style.append(buffer, null, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -468,8 +451,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final int[] array) {
-        style.append(buffer, null, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -480,8 +462,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final long value) {
-        style.append(buffer, null, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -492,8 +473,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final long[] array) {
-        style.append(buffer, null, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -504,8 +484,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final Object obj) {
-        style.append(buffer, null, obj, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -516,8 +495,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final Object[] array) {
-        style.append(buffer, null, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -528,8 +506,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final short value) {
-        style.append(buffer, null, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -540,8 +517,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final short[] array) {
-        style.append(buffer, null, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -553,8 +529,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final boolean value) {
-        style.append(buffer, fieldName, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -566,8 +541,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final boolean[] array) {
-        style.append(buffer, fieldName, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -586,8 +560,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final boolean[] array, final boolean fullDetail) {
-        style.append(buffer, fieldName, array, Boolean.valueOf(fullDetail));
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -599,8 +572,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final byte value) {
-        style.append(buffer, fieldName, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -611,8 +583,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final byte[] array) {
-        style.append(buffer, fieldName, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -631,8 +602,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final byte[] array, final boolean fullDetail) {
-        style.append(buffer, fieldName, array, Boolean.valueOf(fullDetail));
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -644,8 +614,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final char value) {
-        style.append(buffer, fieldName, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -657,8 +626,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final char[] array) {
-        style.append(buffer, fieldName, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -677,8 +645,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final char[] array, final boolean fullDetail) {
-        style.append(buffer, fieldName, array, Boolean.valueOf(fullDetail));
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -690,8 +657,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final double value) {
-        style.append(buffer, fieldName, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -703,8 +669,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final double[] array) {
-        style.append(buffer, fieldName, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -723,8 +688,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final double[] array, final boolean fullDetail) {
-        style.append(buffer, fieldName, array, Boolean.valueOf(fullDetail));
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -736,8 +700,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final float value) {
-        style.append(buffer, fieldName, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -749,8 +712,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final float[] array) {
-        style.append(buffer, fieldName, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -769,8 +731,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final float[] array, final boolean fullDetail) {
-        style.append(buffer, fieldName, array, Boolean.valueOf(fullDetail));
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -782,8 +743,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final int value) {
-        style.append(buffer, fieldName, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -795,8 +755,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final int[] array) {
-        style.append(buffer, fieldName, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -815,8 +774,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final int[] array, final boolean fullDetail) {
-        style.append(buffer, fieldName, array, Boolean.valueOf(fullDetail));
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -828,8 +786,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final long value) {
-        style.append(buffer, fieldName, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -841,8 +798,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final long[] array) {
-        style.append(buffer, fieldName, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -861,8 +817,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final long[] array, final boolean fullDetail) {
-        style.append(buffer, fieldName, array, Boolean.valueOf(fullDetail));
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -874,8 +829,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final Object obj) {
-        style.append(buffer, fieldName, obj, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -889,8 +843,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final Object obj, final boolean fullDetail) {
-        style.append(buffer, fieldName, obj, Boolean.valueOf(fullDetail));
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -902,8 +855,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final Object[] array) {
-        style.append(buffer, fieldName, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -922,8 +874,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final Object[] array, final boolean fullDetail) {
-        style.append(buffer, fieldName, array, Boolean.valueOf(fullDetail));
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -935,8 +886,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final short value) {
-        style.append(buffer, fieldName, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -948,8 +898,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final short[] array) {
-        style.append(buffer, fieldName, array, null);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -968,8 +917,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return {@code this} instance.
      */
     public ToStringBuilder append(final String fieldName, final short[] array, final boolean fullDetail) {
-        style.append(buffer, fieldName, array, Boolean.valueOf(fullDetail));
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -983,8 +931,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @since 2.0
      */
     public ToStringBuilder appendAsObjectToString(final Object srcObject) {
-        ObjectUtils.identityToString(getStringBuffer(), srcObject);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1000,10 +947,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @since 2.0
      */
     public ToStringBuilder appendSuper(final String superToString) {
-        if (superToString != null) {
-            style.appendSuper(buffer, superToString);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1034,10 +978,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @since 2.0
      */
     public ToStringBuilder appendToString(final String toString) {
-        if (toString != null) {
-            style.appendToString(buffer, toString);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1050,7 +991,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      */
     @Override
     public String build() {
-        return toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1060,7 +1001,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @since 2.0
      */
     public Object getObject() {
-        return object;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1069,7 +1010,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @return the {@link StringBuffer} being populated
      */
     public StringBuffer getStringBuffer() {
-        return buffer;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1079,7 +1020,7 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      * @since 2.0
      */
     public ToStringStyle getStyle() {
-        return style;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1094,11 +1035,6 @@ public class ToStringBuilder extends AbstractReflection implements Builder<Strin
      */
     @Override
     public String toString() {
-        if (getObject() == null) {
-            getStringBuffer().append(getStyle().getNullText());
-        } else {
-            style.appendEnd(getStringBuffer(), getObject());
-        }
-        return getStringBuffer().toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

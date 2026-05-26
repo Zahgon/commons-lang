@@ -24,7 +24,6 @@ import java.util.Collection;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
-
 import org.apache.commons.lang3.LocaleUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
@@ -78,10 +77,15 @@ import org.apache.commons.lang3.Validate;
 public class ExtendedMessageFormat extends MessageFormat {
 
     private static final long serialVersionUID = -2362048321261811743L;
+
     private static final String EMPTY_PATTERN = StringUtils.EMPTY;
+
     private static final char START_FMT = ',';
+
     private static final char END_FE = '}';
+
     private static final char START_FE = '{';
+
     private static final char QUOTE = '\'';
 
     /**
@@ -150,29 +154,23 @@ public class ExtendedMessageFormat extends MessageFormat {
      * @param appendTo optional StringBuilder to append
      * @return {@code appendTo}
      */
-    private StringBuilder appendQuotedString(final String pattern, final ParsePosition pos,
-            final StringBuilder appendTo) {
-        assert pattern.toCharArray()[pos.getIndex()] == QUOTE :
-            "Quoted string must start with quote character";
-
+    private StringBuilder appendQuotedString(final String pattern, final ParsePosition pos, final StringBuilder appendTo) {
+        assert pattern.toCharArray()[pos.getIndex()] == QUOTE : "Quoted string must start with quote character";
         // handle quote character at the beginning of the string
         if (appendTo != null) {
             appendTo.append(QUOTE);
         }
         next(pos);
-
         final int start = pos.getIndex();
         final char[] c = pattern.toCharArray();
         for (int i = pos.getIndex(); i < pattern.length(); i++) {
             if (c[pos.getIndex()] == QUOTE) {
                 next(pos);
-                return appendTo == null ? null : appendTo.append(c, start,
-                        pos.getIndex() - start);
+                return appendTo == null ? null : appendTo.append(c, start, pos.getIndex() - start);
             }
             next(pos);
         }
-        throw new IllegalArgumentException(
-                "Unterminated quoted string at position " + start);
+        throw new IllegalArgumentException("Unterminated quoted string at position " + start);
     }
 
     /**
@@ -182,69 +180,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      */
     @Override
     public final void applyPattern(final String pattern) {
-        if (registry == null) {
-            super.applyPattern(pattern);
-            toPattern = super.toPattern();
-            return;
-        }
-        final ArrayList<Format> foundFormats = new ArrayList<>();
-        final ArrayList<String> foundDescriptions = new ArrayList<>();
-        final StringBuilder stripCustom = new StringBuilder(pattern.length());
-
-        final ParsePosition pos = new ParsePosition(0);
-        final char[] c = pattern.toCharArray();
-        int fmtCount = 0;
-        while (pos.getIndex() < pattern.length()) {
-            switch (c[pos.getIndex()]) {
-            case QUOTE:
-                appendQuotedString(pattern, pos, stripCustom);
-                break;
-            case START_FE:
-                fmtCount++;
-                seekNonWs(pattern, pos);
-                final int start = pos.getIndex();
-                final int index = readArgumentIndex(pattern, next(pos));
-                stripCustom.append(START_FE).append(index);
-                seekNonWs(pattern, pos);
-                Format format = null;
-                String formatDescription = null;
-                if (c[pos.getIndex()] == START_FMT) {
-                    formatDescription = parseFormatDescription(pattern,
-                            next(pos));
-                    format = getFormat(formatDescription);
-                    if (format == null) {
-                        stripCustom.append(START_FMT).append(formatDescription);
-                    }
-                }
-                foundFormats.add(format);
-                foundDescriptions.add(format == null ? null : formatDescription);
-                Validate.isTrue(foundFormats.size() == fmtCount);
-                Validate.isTrue(foundDescriptions.size() == fmtCount);
-                if (c[pos.getIndex()] != END_FE) {
-                    throw new IllegalArgumentException(
-                            "Unreadable format element at position " + start);
-                }
-                // falls-through
-            default:
-                stripCustom.append(c[pos.getIndex()]);
-                next(pos);
-            }
-        }
-        super.applyPattern(stripCustom.toString());
-        toPattern = insertFormats(super.toPattern(), foundDescriptions);
-        if (containsElements(foundFormats)) {
-            final Format[] origFormats = getFormats();
-            // only loop over what we know we have, as MessageFormat on Java 1.3
-            // seems to provide an extra format element:
-            int i = 0;
-            for (final Format f : foundFormats) {
-                if (f != null) {
-                    origFormats[i] = f;
-                }
-                i++;
-            }
-            super.setFormats(origFormats);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -262,17 +198,7 @@ public class ExtendedMessageFormat extends MessageFormat {
 
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        if (!(obj instanceof ExtendedMessageFormat)) {
-            return false;
-        }
-        final ExtendedMessageFormat other = (ExtendedMessageFormat) obj;
-        return Objects.equals(registry, other.registry) && Objects.equals(toPattern, other.toPattern);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -310,9 +236,7 @@ public class ExtendedMessageFormat extends MessageFormat {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        final int result = super.hashCode();
-        return prime * result + Objects.hash(registry, toPattern);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -332,28 +256,28 @@ public class ExtendedMessageFormat extends MessageFormat {
         int depth = 0;
         while (pos.getIndex() < pattern.length()) {
             final char c = pattern.charAt(pos.getIndex());
-            switch (c) {
-            case QUOTE:
-                appendQuotedString(pattern, pos, sb);
-                break;
-            case START_FE:
-                depth++;
-                sb.append(START_FE).append(readArgumentIndex(pattern, next(pos)));
-                // do not look for custom patterns when they are embedded, e.g. in a choice
-                if (depth == 1) {
-                    fe++;
-                    final String customPattern = customPatterns.get(fe);
-                    if (customPattern != null) {
-                        sb.append(START_FMT).append(customPattern);
+            switch(c) {
+                case QUOTE:
+                    appendQuotedString(pattern, pos, sb);
+                    break;
+                case START_FE:
+                    depth++;
+                    sb.append(START_FE).append(readArgumentIndex(pattern, next(pos)));
+                    // do not look for custom patterns when they are embedded, e.g. in a choice
+                    if (depth == 1) {
+                        fe++;
+                        final String customPattern = customPatterns.get(fe);
+                        if (customPattern != null) {
+                            sb.append(START_FMT).append(customPattern);
+                        }
                     }
-                }
-                break;
-            case END_FE:
-                depth--;
+                    break;
+                case END_FE:
+                    depth--;
                 // falls-through
-            default:
-                sb.append(c);
-                next(pos);
+                default:
+                    sb.append(c);
+                    next(pos);
             }
         }
         return sb.toString();
@@ -383,25 +307,24 @@ public class ExtendedMessageFormat extends MessageFormat {
         final int text = pos.getIndex();
         int depth = 1;
         for (; pos.getIndex() < pattern.length(); next(pos)) {
-            switch (pattern.charAt(pos.getIndex())) {
-            case START_FE:
-                depth++;
-                break;
-            case END_FE:
-                depth--;
-                if (depth == 0) {
-                    return pattern.substring(text, pos.getIndex());
-                }
-                break;
-            case QUOTE:
-                getQuotedString(pattern, pos);
-                break;
-            default:
-                break;
+            switch(pattern.charAt(pos.getIndex())) {
+                case START_FE:
+                    depth++;
+                    break;
+                case END_FE:
+                    depth--;
+                    if (depth == 0) {
+                        return pattern.substring(text, pos.getIndex());
+                    }
+                    break;
+                case QUOTE:
+                    getQuotedString(pattern, pos);
+                    break;
+                default:
+                    break;
             }
         }
-        throw new IllegalArgumentException(
-                "Unterminated format element at position " + start);
+        throw new IllegalArgumentException("Unterminated format element at position " + start);
     }
 
     /**
@@ -438,12 +361,9 @@ public class ExtendedMessageFormat extends MessageFormat {
             result.append(c);
         }
         if (error) {
-            throw new IllegalArgumentException(
-                    "Invalid format argument index at position " + start + ": "
-                            + pattern.substring(start, pos.getIndex()));
+            throw new IllegalArgumentException("Invalid format argument index at position " + start + ": " + pattern.substring(start, pos.getIndex()));
         }
-        throw new IllegalArgumentException(
-                "Unterminated format element at position " + start);
+        throw new IllegalArgumentException("Unterminated format element at position " + start);
     }
 
     /**
@@ -470,7 +390,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      */
     @Override
     public void setFormat(final int formatElementIndex, final Format newFormat) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -482,7 +402,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      */
     @Override
     public void setFormatByArgumentIndex(final int argumentIndex, final Format newFormat) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -493,7 +413,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      */
     @Override
     public void setFormats(final Format[] newFormats) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -504,7 +424,7 @@ public class ExtendedMessageFormat extends MessageFormat {
      */
     @Override
     public void setFormatsByArgumentIndex(final Format[] newFormats) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -512,6 +432,6 @@ public class ExtendedMessageFormat extends MessageFormat {
      */
     @Override
     public String toPattern() {
-        return toPattern;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

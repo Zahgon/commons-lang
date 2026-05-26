@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.function.Supplier;
@@ -43,7 +42,7 @@ public class Suppliers {
      * @return Result of {@link Supplier#get()} or null.
      */
     public static <T> T get(final Supplier<T> supplier) {
-        return supplier == null ? null : supplier.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -58,7 +57,7 @@ public class Suppliers {
      */
     @SuppressWarnings("unchecked")
     public static <T> Supplier<T> nul() {
-        return NUL;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

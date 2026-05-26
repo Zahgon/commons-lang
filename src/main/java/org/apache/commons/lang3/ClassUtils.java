@@ -57,10 +57,13 @@ public class ClassUtils {
      */
     public enum Interfaces {
 
-        /** Includes interfaces. */
+        /**
+         * Includes interfaces.
+         */
         INCLUDE,
-
-        /** Excludes interfaces. */
+        /**
+         * Excludes interfaces.
+         */
         EXCLUDE
     }
 
@@ -168,7 +171,9 @@ public class ClassUtils {
      */
     private static final Map<String, String> REVERSE_ABBREVIATION_MAP;
 
-    /** Feed abbreviation maps. */
+    /**
+     * Feed abbreviation maps.
+     */
     static {
         final Map<String, String> map = new HashMap<>();
         map.put(Integer.TYPE.getName(), "I");
@@ -190,7 +195,7 @@ public class ClassUtils {
      * @since 3.13.0
      */
     public static Comparator<Class<?>> comparator() {
-        return COMPARATOR;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -205,7 +210,7 @@ public class ClassUtils {
      * @throws ClassCastException if {@code classes} contains a non-{@link Class} entry.
      */
     public static List<String> convertClassesToClassNames(final List<Class<?>> classes) {
-        return classes == null ? null : classes.stream().map(e -> getName(e, null)).collect(Collectors.toList());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -221,18 +226,7 @@ public class ClassUtils {
      * @throws ClassCastException if classNames contains a non String entry.
      */
     public static List<Class<?>> convertClassNamesToClasses(final List<String> classNames) {
-        if (classNames == null) {
-            return null;
-        }
-        final List<Class<?>> classes = new ArrayList<>(classNames.size());
-        classNames.forEach(className -> {
-            try {
-                classes.add(Class.forName(className));
-            } catch (final Exception ex) {
-                classes.add(null);
-            }
-        });
-        return classes;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -246,10 +240,7 @@ public class ClassUtils {
      * @since 3.4
      */
     public static String getAbbreviatedName(final Class<?> cls, final int lengthHint) {
-        if (cls == null) {
-            return StringUtils.EMPTY;
-        }
-        return getAbbreviatedName(cls.getName(), lengthHint);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -326,36 +317,7 @@ public class ClassUtils {
      * @since 3.4
      */
     public static String getAbbreviatedName(final String className, final int lengthHint) {
-        if (lengthHint <= 0) {
-            throw new IllegalArgumentException("len must be > 0");
-        }
-        if (className == null) {
-            return StringUtils.EMPTY;
-        }
-        if (className.length() <= lengthHint) {
-            return className;
-        }
-        final char[] abbreviated = className.toCharArray();
-        int target = 0;
-        int source = 0;
-        while (source < abbreviated.length) {
-            // copy the next part
-            int runAheadTarget = target;
-            while (source < abbreviated.length && abbreviated[source] != '.') {
-                abbreviated[runAheadTarget++] = abbreviated[source++];
-            }
-
-            ++target;
-            if (useFull(runAheadTarget, source, abbreviated.length, lengthHint) || target > runAheadTarget) {
-                target = runAheadTarget;
-            }
-
-            // copy the '.' unless it was the last part
-            if (source < abbreviated.length) {
-                abbreviated[target++] = abbreviated[source++];
-            }
-        }
-        return new String(abbreviated, 0, target);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -371,12 +333,7 @@ public class ClassUtils {
      * @return the {@link List} of interfaces in order, {@code null} if null input.
      */
     public static List<Class<?>> getAllInterfaces(final Class<?> cls) {
-        if (cls == null) {
-            return null;
-        }
-        final LinkedHashSet<Class<?>> interfacesFound = new LinkedHashSet<>();
-        getAllInterfaces(cls, interfacesFound);
-        return new ArrayList<>(interfacesFound);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -408,16 +365,7 @@ public class ClassUtils {
      * @return the {@link List} of superclasses in order going up from this one {@code null} if null input.
      */
     public static List<Class<?>> getAllSuperclasses(final Class<?> cls) {
-        if (cls == null) {
-            return null;
-        }
-        final List<Class<?>> classes = new ArrayList<>();
-        Class<?> superclass = cls.getSuperclass();
-        while (superclass != null) {
-            classes.add(superclass);
-            superclass = superclass.getSuperclass();
-        }
-        return classes;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -429,7 +377,7 @@ public class ClassUtils {
      * @see Class#getCanonicalName()
      */
     public static String getCanonicalName(final Class<?> cls) {
-        return getCanonicalName(cls, StringUtils.EMPTY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -442,11 +390,7 @@ public class ClassUtils {
      * @see Class#getCanonicalName()
      */
     public static String getCanonicalName(final Class<?> cls, final String valueIfNull) {
-        if (cls == null) {
-            return valueIfNull;
-        }
-        final String canonicalName = cls.getCanonicalName();
-        return canonicalName == null ? valueIfNull : canonicalName;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -458,7 +402,7 @@ public class ClassUtils {
      * @see Class#getCanonicalName()
      */
     public static String getCanonicalName(final Object object) {
-        return getCanonicalName(object, StringUtils.EMPTY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -471,11 +415,7 @@ public class ClassUtils {
      * @see Class#getCanonicalName()
      */
     public static String getCanonicalName(final Object object, final String valueIfNull) {
-        if (object == null) {
-            return valueIfNull;
-        }
-        final String canonicalName = object.getClass().getCanonicalName();
-        return canonicalName == null ? valueIfNull : canonicalName;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -563,7 +503,7 @@ public class ClassUtils {
      * @see <a href="https://docs.oracle.com/javase/specs/jls/se25/html/jls-13.html#jls-13.1">JLS: The Form of a Binary</a>
      */
     public static Class<?> getClass(final ClassLoader classLoader, final String className) throws ClassNotFoundException {
-        return getClass(classLoader, className, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -589,21 +529,7 @@ public class ClassUtils {
      * @see <a href="https://docs.oracle.com/javase/specs/jls/se25/html/jls-13.html#jls-13.1">JLS: The Form of a Binary</a>
      */
     public static Class<?> getClass(final ClassLoader classLoader, final String className, final boolean initialize) throws ClassNotFoundException {
-        // This method was re-written to avoid recursion and stack overflows found by fuzz testing.
-        String next = className;
-        int lastDotIndex = -1;
-        do {
-            try {
-                final Class<?> clazz = getPrimitiveClass(next);
-                return clazz != null ? clazz : Class.forName(toCleanName(next), initialize, classLoader);
-            } catch (final ClassNotFoundException ex) {
-                lastDotIndex = next.lastIndexOf(PACKAGE_SEPARATOR_CHAR);
-                if (lastDotIndex != -1) {
-                    next = next.substring(0, lastDotIndex) + INNER_CLASS_SEPARATOR_CHAR + next.substring(lastDotIndex + 1);
-                }
-            }
-        } while (lastDotIndex != -1);
-        throw new ClassNotFoundException(className);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -627,7 +553,7 @@ public class ClassUtils {
      * @see <a href="https://docs.oracle.com/javase/specs/jls/se25/html/jls-13.html#jls-13.1">JLS: The Form of a Binary</a>
      */
     public static Class<?> getClass(final String className) throws ClassNotFoundException {
-        return getClass(className, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -652,9 +578,7 @@ public class ClassUtils {
      * @see <a href="https://docs.oracle.com/javase/specs/jls/se25/html/jls-13.html#jls-13.1">JLS: The Form of a Binary</a>
      */
     public static Class<?> getClass(final String className, final boolean initialize) throws ClassNotFoundException {
-        final ClassLoader contextCL = Thread.currentThread().getContextClassLoader();
-        final ClassLoader loader = contextCL == null ? ClassUtils.class.getClassLoader() : contextCL;
-        return getClass(loader, className, initialize);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -668,7 +592,7 @@ public class ClassUtils {
      */
     @SuppressWarnings("unchecked")
     public static <T> Class<T> getComponentType(final Class<T[]> cls) {
-        return cls == null ? null : (Class<T>) cls.getComponentType();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -680,7 +604,7 @@ public class ClassUtils {
      * @see Class#getSimpleName()
      */
     public static String getName(final Class<?> cls) {
-        return getName(cls, StringUtils.EMPTY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -693,11 +617,11 @@ public class ClassUtils {
      * @see Class#getName()
      */
     public static String getName(final Class<?> cls, final String valueIfNull) {
-        return getName(cls, valueIfNull, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     static String getName(final Class<?> cls, final String valueIfNull, final boolean simple) {
-        return cls == null ? valueIfNull : simple ? cls.getSimpleName() : cls.getName();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -709,7 +633,7 @@ public class ClassUtils {
      * @see Class#getSimpleName()
      */
     public static String getName(final Object object) {
-        return getName(object, StringUtils.EMPTY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -722,7 +646,7 @@ public class ClassUtils {
      * @see Class#getName()
      */
     public static String getName(final Object object, final String valueIfNull) {
-        return object == null ? valueIfNull : object.getClass().getName();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -733,10 +657,7 @@ public class ClassUtils {
      * @since 2.4
      */
     public static String getPackageCanonicalName(final Class<?> cls) {
-        if (cls == null) {
-            return StringUtils.EMPTY;
-        }
-        return getPackageCanonicalName(cls.getName());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -748,10 +669,7 @@ public class ClassUtils {
      * @since 2.4
      */
     public static String getPackageCanonicalName(final Object object, final String valueIfNull) {
-        if (object == null) {
-            return valueIfNull;
-        }
-        return getPackageCanonicalName(object.getClass().getName());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -769,7 +687,7 @@ public class ClassUtils {
      * @since 2.4
      */
     public static String getPackageCanonicalName(final String name) {
-        return getPackageName(getCanonicalName(name));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -779,10 +697,7 @@ public class ClassUtils {
      * @return the package name or an empty string
      */
     public static String getPackageName(final Class<?> cls) {
-        if (cls == null) {
-            return StringUtils.EMPTY;
-        }
-        return getPackageName(cls.getName());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -793,10 +708,7 @@ public class ClassUtils {
      * @return the package name of the object, or the null value.
      */
     public static String getPackageName(final Object object, final String valueIfNull) {
-        if (object == null) {
-            return valueIfNull;
-        }
-        return getPackageName(object.getClass());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -813,24 +725,7 @@ public class ClassUtils {
      * @return the package name or an empty string.
      */
     public static String getPackageName(String className) {
-        if (StringUtils.isEmpty(className)) {
-            return StringUtils.EMPTY;
-        }
-        int i = 0;
-        // Strip array encoding
-        while (className.charAt(i) == '[') {
-            i++;
-        }
-        className = className.substring(i);
-        // Strip Object type encoding
-        if (className.charAt(0) == 'L' && className.charAt(className.length() - 1) == ';') {
-            className = className.substring(1);
-        }
-        i = className.lastIndexOf(PACKAGE_SEPARATOR_CHAR);
-        if (i == -1) {
-            return StringUtils.EMPTY;
-        }
-        return className.substring(0, i);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -840,7 +735,7 @@ public class ClassUtils {
      * @return the primitive class.
      */
     static Class<?> getPrimitiveClass(final String className) {
-        return NAME_PRIMITIVE_MAP.get(className);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -864,27 +759,7 @@ public class ClassUtils {
      *         requirements.
      */
     public static Method getPublicMethod(final Class<?> cls, final String methodName, final Class<?>... parameterTypes) throws NoSuchMethodException {
-        final Method declaredMethod = cls.getMethod(methodName, parameterTypes);
-        if (isPublic(declaredMethod.getDeclaringClass())) {
-            return declaredMethod;
-        }
-        final List<Class<?>> candidateClasses = new ArrayList<>(getAllInterfaces(cls));
-        candidateClasses.addAll(getAllSuperclasses(cls));
-        for (final Class<?> candidateClass : candidateClasses) {
-            if (!isPublic(candidateClass)) {
-                continue;
-            }
-            final Method candidateMethod;
-            try {
-                candidateMethod = candidateClass.getMethod(methodName, parameterTypes);
-            } catch (final NoSuchMethodException ex) {
-                continue;
-            }
-            if (Modifier.isPublic(candidateMethod.getDeclaringClass().getModifiers())) {
-                return candidateMethod;
-            }
-        }
-        throw new NoSuchMethodException("Can't find a public method for " + methodName + " " + ArrayUtils.toString(parameterTypes));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -896,7 +771,7 @@ public class ClassUtils {
      * @see Class#getCanonicalName()
      */
     public static String getShortCanonicalName(final Class<?> cls) {
-        return cls == null ? StringUtils.EMPTY : getShortCanonicalName(cls.getCanonicalName());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -909,7 +784,7 @@ public class ClassUtils {
      * @see Class#getCanonicalName()
      */
     public static String getShortCanonicalName(final Object object, final String valueIfNull) {
-        return object == null ? valueIfNull : getShortCanonicalName(object.getClass());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1007,7 +882,7 @@ public class ClassUtils {
      * @since 2.4
      */
     public static String getShortCanonicalName(final String canonicalName) {
-        return getShortClassName(getCanonicalName(canonicalName));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1018,36 +893,7 @@ public class ClassUtils {
      *         value will contain the outer class or classes separated with {@code .} (dot) character.
      */
     public static String getShortClassName(final Class<?> cls) {
-        if (cls == null) {
-            return StringUtils.EMPTY;
-        }
-        int dim = 0;
-        Class<?> c = cls;
-        while (c.isArray()) {
-            dim++;
-            c = c.getComponentType();
-        }
-        String base;
-        // c.isAnonymousClass() / isLocalClass() and the getDeclaringClass() chain
-        // can both throw NoClassDefFoundError when the enclosing class is
-        // missing from the classpath, so the try/catch wraps the whole block.
-        try {
-            // Preserve legacy behavior for anonymous/local classes (keeps compiler ordinals: $13, $10Named, etc.)
-            if (c.isAnonymousClass() || c.isLocalClass()) {
-                base = getShortClassName(c.getName());
-            } else {
-                final Deque<String> parts = new ArrayDeque<>();
-                Class<?> x = c;
-                while (x != null) {
-                    parts.push(x.getSimpleName());
-                    x = x.getDeclaringClass();
-                }
-                base = String.join(".", parts);
-            }
-        } catch (final NoClassDefFoundError ignored) {
-            base = getShortClassName(c.getName());
-        }
-        return base + StringUtils.repeat("[]", dim);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1059,10 +905,7 @@ public class ClassUtils {
      *         is {@code null}.
      */
     public static String getShortClassName(final Object object, final String valueIfNull) {
-        if (object == null) {
-            return valueIfNull;
-        }
-        return getShortClassName(object.getClass());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1097,31 +940,7 @@ public class ClassUtils {
      *         value contains the outer class or classes and the separator is replaced to be {@code .} (dot) character.
      */
     public static String getShortClassName(String className) {
-        if (StringUtils.isEmpty(className)) {
-            return StringUtils.EMPTY;
-        }
-        final StringBuilder arrayPrefix = new StringBuilder();
-        // Handle array encoding
-        if (className.startsWith("[")) {
-            while (className.charAt(0) == '[') {
-                className = className.substring(1);
-                arrayPrefix.append("[]");
-            }
-            // Strip Object type encoding
-            if (className.charAt(0) == 'L' && className.charAt(className.length() - 1) == ';') {
-                className = className.substring(1, className.length() - 1);
-            }
-            if (REVERSE_ABBREVIATION_MAP.containsKey(className)) {
-                className = REVERSE_ABBREVIATION_MAP.get(className);
-            }
-        }
-        final int lastDotIdx = className.lastIndexOf(PACKAGE_SEPARATOR_CHAR);
-        final int innerIdx = className.indexOf(INNER_CLASS_SEPARATOR_CHAR, lastDotIdx == -1 ? 0 : lastDotIdx + 1);
-        String out = className.substring(lastDotIdx + 1);
-        if (innerIdx != -1) {
-            out = out.replace(INNER_CLASS_SEPARATOR_CHAR, PACKAGE_SEPARATOR_CHAR);
-        }
-        return out + arrayPrefix;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1133,7 +952,7 @@ public class ClassUtils {
      * @see Class#getSimpleName()
      */
     public static String getSimpleName(final Class<?> cls) {
-        return getSimpleName(cls, StringUtils.EMPTY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1146,7 +965,7 @@ public class ClassUtils {
      * @see Class#getSimpleName()
      */
     public static String getSimpleName(final Class<?> cls, final String valueIfNull) {
-        return cls == null ? valueIfNull : cls.getSimpleName();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1166,7 +985,7 @@ public class ClassUtils {
      * @see Class#getSimpleName()
      */
     public static String getSimpleName(final Object object) {
-        return getSimpleName(object, StringUtils.EMPTY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1179,7 +998,7 @@ public class ClassUtils {
      * @see Class#getSimpleName()
      */
     public static String getSimpleName(final Object object, final String valueIfNull) {
-        return object == null ? valueIfNull : object.getClass().getSimpleName();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1191,7 +1010,7 @@ public class ClassUtils {
      * @since 3.2
      */
     public static Iterable<Class<?>> hierarchy(final Class<?> type) {
-        return hierarchy(type, Interfaces.EXCLUDE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1203,72 +1022,7 @@ public class ClassUtils {
      * @since 3.2
      */
     public static Iterable<Class<?>> hierarchy(final Class<?> type, final Interfaces interfacesBehavior) {
-        final Iterable<Class<?>> classes = () -> {
-            final AtomicReference<Class<?>> next = new AtomicReference<>(type);
-            return new Iterator<Class<?>>() {
-
-                @Override
-                public boolean hasNext() {
-                    return next.get() != null;
-                }
-
-                @Override
-                public Class<?> next() {
-                    return next.getAndUpdate(Class::getSuperclass);
-                }
-
-                @Override
-                public void remove() {
-                    throw new UnsupportedOperationException();
-                }
-
-            };
-        };
-        if (interfacesBehavior != Interfaces.INCLUDE) {
-            return classes;
-        }
-        return () -> {
-            final Set<Class<?>> seenInterfaces = new HashSet<>();
-            final Iterator<Class<?>> wrapped = classes.iterator();
-
-            return new Iterator<Class<?>>() {
-                Iterator<Class<?>> interfaces = Collections.emptyIterator();
-
-                @Override
-                public boolean hasNext() {
-                    return interfaces.hasNext() || wrapped.hasNext();
-                }
-
-                @Override
-                public Class<?> next() {
-                    if (interfaces.hasNext()) {
-                        final Class<?> nextInterface = interfaces.next();
-                        seenInterfaces.add(nextInterface);
-                        return nextInterface;
-                    }
-                    final Class<?> nextSuperclass = wrapped.next();
-                    final Set<Class<?>> currentInterfaces = new LinkedHashSet<>();
-                    walkInterfaces(currentInterfaces, nextSuperclass);
-                    interfaces = currentInterfaces.iterator();
-                    return nextSuperclass;
-                }
-
-                @Override
-                public void remove() {
-                    throw new UnsupportedOperationException();
-                }
-
-                private void walkInterfaces(final Set<Class<?>> addTo, final Class<?> c) {
-                    for (final Class<?> iface : c.getInterfaces()) {
-                        if (!seenInterfaces.contains(iface)) {
-                            addTo.add(iface);
-                        }
-                        walkInterfaces(addTo, iface);
-                    }
-                }
-
-            };
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1307,7 +1061,7 @@ public class ClassUtils {
      * @return {@code true} if assignment possible.
      */
     public static boolean isAssignable(final Class<?> cls, final Class<?> toClass) {
-        return isAssignable(cls, toClass, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1341,61 +1095,7 @@ public class ClassUtils {
      * @return {@code true} if assignment possible.
      */
     public static boolean isAssignable(Class<?> cls, final Class<?> toClass, final boolean autoboxing) {
-        if (toClass == null) {
-            return false;
-        }
-        // have to check for null, as isAssignableFrom doesn't
-        if (cls == null) {
-            return !toClass.isPrimitive();
-        }
-        // autoboxing:
-        if (autoboxing) {
-            if (cls.isPrimitive() && !toClass.isPrimitive()) {
-                cls = primitiveToWrapper(cls);
-                if (cls == null) {
-                    return false;
-                }
-            }
-            if (toClass.isPrimitive() && !cls.isPrimitive()) {
-                cls = wrapperToPrimitive(cls);
-                if (cls == null) {
-                    return false;
-                }
-            }
-        }
-        if (cls.equals(toClass)) {
-            return true;
-        }
-        if (cls.isPrimitive()) {
-            if (!toClass.isPrimitive()) {
-                return false;
-            }
-            if (Integer.TYPE.equals(cls)) {
-                return Long.TYPE.equals(toClass) || Float.TYPE.equals(toClass) || Double.TYPE.equals(toClass);
-            }
-            if (Long.TYPE.equals(cls)) {
-                return Float.TYPE.equals(toClass) || Double.TYPE.equals(toClass);
-            }
-            if (Boolean.TYPE.equals(cls)) {
-                return false;
-            }
-            if (Double.TYPE.equals(cls)) {
-                return false;
-            }
-            if (Float.TYPE.equals(cls)) {
-                return Double.TYPE.equals(toClass);
-            }
-            if (Character.TYPE.equals(cls)  || Short.TYPE.equals(cls)) {
-                return Integer.TYPE.equals(toClass) || Long.TYPE.equals(toClass) || Float.TYPE.equals(toClass) || Double.TYPE.equals(toClass);
-            }
-            if (Byte.TYPE.equals(cls)) {
-                return Short.TYPE.equals(toClass) || Integer.TYPE.equals(toClass) || Long.TYPE.equals(toClass) || Float.TYPE.equals(toClass)
-                    || Double.TYPE.equals(toClass);
-            }
-            // should never get here
-            return false;
-        }
-        return toClass.isAssignableFrom(cls);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1440,7 +1140,7 @@ public class ClassUtils {
      * @return {@code true} if assignment possible.
      */
     public static boolean isAssignable(final Class<?>[] classArray, final Class<?>... toClassArray) {
-        return isAssignable(classArray, toClassArray, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1480,17 +1180,7 @@ public class ClassUtils {
      * @return {@code true} if assignment possible
      */
     public static boolean isAssignable(Class<?>[] classArray, Class<?>[] toClassArray, final boolean autoboxing) {
-        if (!ArrayUtils.isSameLength(classArray, toClassArray)) {
-            return false;
-        }
-        classArray = ArrayUtils.nullToEmpty(classArray);
-        toClassArray = ArrayUtils.nullToEmpty(toClassArray);
-        for (int i = 0; i < classArray.length; i++) {
-            if (!isAssignable(classArray[i], toClassArray[i], autoboxing)) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1500,7 +1190,7 @@ public class ClassUtils {
      * @return {@code true} if the class is an inner or static nested class, false if not or {@code null}.
      */
     public static boolean isInnerClass(final Class<?> cls) {
-        return cls != null && cls.getEnclosingClass() != null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1513,7 +1203,7 @@ public class ClassUtils {
      * @since 3.1
      */
     public static boolean isPrimitiveOrWrapper(final Class<?> type) {
-        return type != null && type.isPrimitive() || isPrimitiveWrapper(type);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1526,7 +1216,7 @@ public class ClassUtils {
      * @since 3.1
      */
     public static boolean isPrimitiveWrapper(final Class<?> type) {
-        return WRAPPER_PRIMITIVE_MAP.containsKey(type);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1537,7 +1227,7 @@ public class ClassUtils {
      * @since 3.13.0
      */
     public static boolean isPublic(final Class<?> cls) {
-        return Modifier.isPublic(cls.getModifiers());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1549,13 +1239,7 @@ public class ClassUtils {
      * @since 2.1
      */
     public static Class<?>[] primitivesToWrappers(final Class<?>... classes) {
-        if (classes == null) {
-            return null;
-        }
-        if (classes.length == 0) {
-            return classes;
-        }
-        return ArrayUtils.setAll(new Class[classes.length], i -> primitiveToWrapper(classes[i]));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1570,7 +1254,7 @@ public class ClassUtils {
      * @since 2.1
      */
     public static Class<?> primitiveToWrapper(final Class<?> cls) {
-        return cls != null && cls.isPrimitive() ? PRIMITIVE_WRAPPER_MAP.get(cls) : cls;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1586,13 +1270,7 @@ public class ClassUtils {
      * @since 2.4
      */
     public static Class<?>[] toClass(final Object... array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return ArrayUtils.EMPTY_CLASS_ARRAY;
-        }
-        return ArrayUtils.setAll(new Class[array.length], i -> array[i] == null ? null : array[i].getClass());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1630,7 +1308,8 @@ public class ClassUtils {
             if (arrIdx < 0) {
                 throw new IllegalArgumentException("Expected 'L' after '[' for an array style string.");
             }
-            final int cnLen = canonicalName.length() - (arrIdx + 2); // account for the ending ';'
+            // account for the ending ';'
+            final int cnLen = canonicalName.length() - (arrIdx + 2);
             if (cnLen > MAX_CLASS_NAME_LENGTH) {
                 throw new IllegalArgumentException(String.format("Class name greater than maxium length %,d", MAX_CLASS_NAME_LENGTH));
             }
@@ -1650,7 +1329,7 @@ public class ClassUtils {
             if (!tail.matches("(?:\\[\\])+")) {
                 throw new IllegalArgumentException("Malformed array name: " + canonicalName);
             }
-            final int dims =  (canonicalName.length() - arrIdx) / 2;
+            final int dims = (canonicalName.length() - arrIdx) / 2;
             if (dims > MAX_JVM_ARRAY_DIMENSION) {
                 throw new IllegalArgumentException("Array dimension greater than JVM specification maximum of 255.");
             }
@@ -1705,13 +1384,7 @@ public class ClassUtils {
      * @since 2.4
      */
     public static Class<?>[] wrappersToPrimitives(final Class<?>... classes) {
-        if (classes == null) {
-            return null;
-        }
-        if (classes.length == 0) {
-            return classes;
-        }
-        return ArrayUtils.setAll(new Class[classes.length], i -> wrapperToPrimitive(classes[i]));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1729,7 +1402,7 @@ public class ClassUtils {
      * @since 2.4
      */
     public static Class<?> wrapperToPrimitive(final Class<?> cls) {
-        return WRAPPER_PRIMITIVE_MAP.get(cls);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1746,5 +1419,4 @@ public class ClassUtils {
     public ClassUtils() {
         // empty
     }
-
 }

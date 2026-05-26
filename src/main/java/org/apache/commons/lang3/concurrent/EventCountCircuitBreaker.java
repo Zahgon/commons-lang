@@ -162,9 +162,8 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
          * @param now the current time
          * @return a flag whether the end of the current check interval is reached
          */
-        public boolean isCheckIntervalFinished(final EventCountCircuitBreaker breaker,
-                final CheckIntervalData currentData, final long now) {
-            return now - currentData.getCheckIntervalStart() > fetchCheckInterval(breaker);
+        public boolean isCheckIntervalFinished(final EventCountCircuitBreaker breaker, final CheckIntervalData currentData, final long now) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -177,8 +176,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
          * @param nextData the updated {@link CheckIntervalData} object
          * @return a flag whether a state transition should be performed
          */
-        public abstract boolean isStateTransition(EventCountCircuitBreaker breaker,
-                CheckIntervalData currentData, CheckIntervalData nextData);
+        public abstract boolean isStateTransition(EventCountCircuitBreaker breaker, CheckIntervalData currentData, CheckIntervalData nextData);
     }
 
     /**
@@ -188,10 +186,14 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      */
     private static final class CheckIntervalData {
 
-        /** The counter for events. */
+        /**
+         * The counter for events.
+         */
         private final int eventCount;
 
-        /** The start time of the current check interval. */
+        /**
+         * The start time of the current check interval.
+         */
         private final long checkIntervalStart;
 
         /**
@@ -211,7 +213,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
          * @return the check interval start time
          */
         public long getCheckIntervalStart() {
-            return checkIntervalStart;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -220,7 +222,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
          * @return the number of received events
          */
         public int getEventCount() {
-            return eventCount;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -231,8 +233,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
          * @return the updated instance
          */
         public CheckIntervalData increment(final int delta) {
-            return delta == 0 ? this : new CheckIntervalData(getEventCount() + delta,
-                    getCheckIntervalStart());
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -246,16 +247,15 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
          */
         @Override
         protected long fetchCheckInterval(final EventCountCircuitBreaker breaker) {
-            return breaker.getOpeningInterval();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public boolean isStateTransition(final EventCountCircuitBreaker breaker,
-                final CheckIntervalData currentData, final CheckIntervalData nextData) {
-            return nextData.getEventCount() > breaker.getOpeningThreshold();
+        public boolean isStateTransition(final EventCountCircuitBreaker breaker, final CheckIntervalData currentData, final CheckIntervalData nextData) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -269,22 +269,21 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
          */
         @Override
         protected long fetchCheckInterval(final EventCountCircuitBreaker breaker) {
-            return breaker.getClosingInterval();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
          * {@inheritDoc}
          */
         @Override
-        public boolean isStateTransition(final EventCountCircuitBreaker breaker,
-                final CheckIntervalData currentData, final CheckIntervalData nextData) {
-            return nextData.getCheckIntervalStart() != currentData
-                    .getCheckIntervalStart()
-                    && currentData.getEventCount() < breaker.getClosingThreshold();
+        public boolean isStateTransition(final EventCountCircuitBreaker breaker, final CheckIntervalData currentData, final CheckIntervalData nextData) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
-    /** A map for accessing the strategy objects for the different states. */
+    /**
+     * A map for accessing the strategy objects for the different states.
+     */
     private static final Map<State, AbstractStateStrategy> STRATEGY_MAP = createStrategyMap();
 
     /**
@@ -311,19 +310,29 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
         return STRATEGY_MAP.get(state);
     }
 
-    /** Stores information about the current check interval. */
+    /**
+     * Stores information about the current check interval.
+     */
     private final AtomicReference<CheckIntervalData> checkIntervalData;
 
-    /** The threshold for opening the circuit breaker. */
+    /**
+     * The threshold for opening the circuit breaker.
+     */
     private final int openingThreshold;
 
-    /** The time interval for opening the circuit breaker. */
+    /**
+     * The time interval for opening the circuit breaker.
+     */
     private final long openingInterval;
 
-    /** The threshold for closing the circuit breaker. */
+    /**
+     * The threshold for closing the circuit breaker.
+     */
     private final int closingThreshold;
 
-    /** The time interval for closing the circuit breaker. */
+    /**
+     * The time interval for closing the circuit breaker.
+     */
     private final long closingInterval;
 
     /**
@@ -353,10 +362,8 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * number of events received in the time span determined by the check interval goes
      * below this threshold, the circuit breaker is closed again
      */
-    public EventCountCircuitBreaker(final int openingThreshold, final long checkInterval, final TimeUnit checkUnit,
-                                    final int closingThreshold) {
-        this(openingThreshold, checkInterval, checkUnit, closingThreshold, checkInterval,
-                checkUnit);
+    public EventCountCircuitBreaker(final int openingThreshold, final long checkInterval, final TimeUnit checkUnit, final int closingThreshold) {
+        this(openingThreshold, checkInterval, checkUnit, closingThreshold, checkInterval, checkUnit);
     }
 
     /**
@@ -375,9 +382,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * @param closingInterval the interval for closing the circuit breaker
      * @param closingUnit the {@link TimeUnit} defining the closing interval
      */
-    public EventCountCircuitBreaker(final int openingThreshold, final long openingInterval,
-                                    final TimeUnit openingUnit, final int closingThreshold, final long closingInterval,
-                                    final TimeUnit closingUnit) {
+    public EventCountCircuitBreaker(final int openingThreshold, final long openingInterval, final TimeUnit openingUnit, final int closingThreshold, final long closingInterval, final TimeUnit closingUnit) {
         checkIntervalData = new AtomicReference<>(new CheckIntervalData(0, 0));
         this.openingThreshold = openingThreshold;
         this.openingInterval = openingUnit.toNanos(openingInterval);
@@ -406,7 +411,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      */
     @Override
     public boolean checkState() {
-        return performStateCheck(0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -420,8 +425,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      */
     @Override
     public void close() {
-        super.close();
-        checkIntervalData.set(new CheckIntervalData(0, nanoTime()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -430,7 +434,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * @return the opening check interval
      */
     public long getClosingInterval() {
-        return closingInterval;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -441,7 +445,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * @return the closing threshold
      */
     public int getClosingThreshold() {
-        return closingThreshold;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -450,7 +454,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * @return the opening check interval
      */
     public long getOpeningInterval() {
-        return openingInterval;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -461,7 +465,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * @return the opening threshold
      */
     public int getOpeningThreshold() {
-        return openingThreshold;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -473,7 +477,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * <strong>false</strong> otherwise
      */
     public boolean incrementAndCheckState() {
-        return incrementAndCheckState(1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -481,7 +485,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      */
     @Override
     public boolean incrementAndCheckState(final Integer increment) {
-        return performStateCheck(increment);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -491,7 +495,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * @return the current time in nanoseconds
      */
     long nanoTime() {
-        return System.nanoTime();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -505,8 +509,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * @param time the current time
      * @return the updated {@link CheckIntervalData} object
      */
-    private CheckIntervalData nextCheckIntervalData(final int increment,
-            final CheckIntervalData currentData, final State currentState, final long time) {
+    private CheckIntervalData nextCheckIntervalData(final int increment, final CheckIntervalData currentData, final State currentState, final long time) {
         final CheckIntervalData nextData;
         if (stateStrategy(currentState).isCheckIntervalFinished(this, currentData, time)) {
             nextData = new CheckIntervalData(increment, time);
@@ -527,8 +530,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      */
     @Override
     public void open() {
-        super.open();
-        checkIntervalData.set(new CheckIntervalData(0, nanoTime()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -542,14 +544,12 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
         CheckIntervalData currentData;
         CheckIntervalData nextData;
         State currentState;
-
         do {
             final long time = nanoTime();
             currentState = state.get();
             currentData = checkIntervalData.get();
             nextData = nextCheckIntervalData(increment, currentData, currentState, time);
         } while (!updateCheckIntervalData(currentData, nextData));
-
         // This might cause a race condition if other changes happen in between!
         // Refer to the header comment!
         if (stateStrategy(currentState).isStateTransition(this, currentData, nextData)) {
@@ -569,10 +569,7 @@ public class EventCountCircuitBreaker extends AbstractCircuitBreaker<Integer> {
      * @param nextData the replacing check data object
      * @return a flag whether the update was successful
      */
-    private boolean updateCheckIntervalData(final CheckIntervalData currentData,
-            final CheckIntervalData nextData) {
-        return currentData == nextData
-                || checkIntervalData.compareAndSet(currentData, nextData);
+    private boolean updateCheckIntervalData(final CheckIntervalData currentData, final CheckIntervalData nextData) {
+        return currentData == nextData || checkIntervalData.compareAndSet(currentData, nextData);
     }
-
 }

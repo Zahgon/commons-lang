@@ -42,7 +42,9 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      */
     private static final long serialVersionUID = 1587163916L;
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private double value;
 
     /**
@@ -88,7 +90,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 2.2
      */
     public void add(final double operand) {
-        this.value += operand;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -99,7 +101,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 2.2
      */
     public void add(final Number operand) {
-        this.value += operand.doubleValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -111,8 +113,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 3.5
      */
     public double addAndGet(final double operand) {
-        this.value += operand;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -125,8 +126,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 3.5
      */
     public double addAndGet(final Number operand) {
-        this.value += operand.doubleValue();
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -137,7 +137,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      */
     @Override
     public int compareTo(final MutableDouble other) {
-        return Double.compare(this.value, other.value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -146,7 +146,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 2.2
      */
     public void decrement() {
-        value--;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -157,8 +157,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 3.5
      */
     public double decrementAndGet() {
-        value--;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -168,7 +167,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      */
     @Override
     public double doubleValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -198,8 +197,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      */
     @Override
     public boolean equals(final Object obj) {
-        return obj instanceof MutableDouble
-            && Double.doubleToLongBits(((MutableDouble) obj).value) == Double.doubleToLongBits(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -209,7 +207,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      */
     @Override
     public float floatValue() {
-        return (float) value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -221,9 +219,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 3.5
      */
     public double getAndAdd(final double operand) {
-        final double last = value;
-        this.value += operand;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -236,9 +232,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 3.5
      */
     public double getAndAdd(final Number operand) {
-        final double last = value;
-        this.value += operand.doubleValue();
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -249,9 +243,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 3.5
      */
     public double getAndDecrement() {
-        final double last = value;
-        value--;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -262,9 +254,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 3.5
      */
     public double getAndIncrement() {
-        final double last = value;
-        value++;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -286,8 +276,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      */
     @Override
     public int hashCode() {
-        final long bits = Double.doubleToLongBits(value);
-        return (int) (bits ^ bits >>> 32);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -296,7 +285,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 2.2
      */
     public void increment() {
-        value++;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -307,8 +296,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 3.5
      */
     public double incrementAndGet() {
-        value++;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // shortValue and byteValue rely on Number implementation
@@ -319,7 +307,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      */
     @Override
     public int intValue() {
-        return (int) value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -328,7 +316,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @return true if infinite.
      */
     public boolean isInfinite() {
-        return Double.isInfinite(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -337,7 +325,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @return true if NaN.
      */
     public boolean isNaN() {
-        return Double.isNaN(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -347,7 +335,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      */
     @Override
     public long longValue() {
-        return (long) value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -356,7 +344,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @param value  the value to set.
      */
     public void setValue(final double value) {
-        this.value = value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -367,7 +355,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      */
     @Override
     public void setValue(final Number value) {
-        this.value = value.doubleValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -377,7 +365,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 2.2
      */
     public void subtract(final double operand) {
-        this.value -= operand;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -388,7 +376,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @since 2.2
      */
     public void subtract(final Number operand) {
-        this.value -= operand.doubleValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -397,7 +385,7 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      * @return a Double instance containing the value from this mutable, never null.
      */
     public Double toDouble() {
-        return Double.valueOf(doubleValue());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -407,7 +395,6 @@ public class MutableDouble extends Number implements Comparable<MutableDouble>, 
      */
     @Override
     public String toString() {
-        return String.valueOf(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

@@ -66,7 +66,9 @@ import java.util.concurrent.ExecutorService;
  */
 public class CallableBackgroundInitializer<T> extends BackgroundInitializer<T> {
 
-    /** The Callable to be executed. */
+    /**
+     * The Callable to be executed.
+     */
     private final Callable<T> callable;
 
     /**
@@ -110,8 +112,7 @@ public class CallableBackgroundInitializer<T> extends BackgroundInitializer<T> {
      */
     @Override
     protected Exception getTypedException(final Exception e) {
-        //This Exception object will be used for type comparison in AbstractConcurrentInitializer.initialize but not thrown
-        return new Exception(e);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -122,6 +123,6 @@ public class CallableBackgroundInitializer<T> extends BackgroundInitializer<T> {
      */
     @Override
     protected T initialize() throws Exception {
-        return callable.call();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

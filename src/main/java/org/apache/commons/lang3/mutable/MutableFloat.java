@@ -42,7 +42,9 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      */
     private static final long serialVersionUID = 5787169186L;
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private float value;
 
     /**
@@ -88,7 +90,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 2.2
      */
     public void add(final float operand) {
-        this.value += operand;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -99,7 +101,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 2.2
      */
     public void add(final Number operand) {
-        this.value += operand.floatValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -111,8 +113,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 3.5
      */
     public float addAndGet(final float operand) {
-        this.value += operand;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -125,8 +126,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 3.5
      */
     public float addAndGet(final Number operand) {
-        this.value += operand.floatValue();
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -137,7 +137,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      */
     @Override
     public int compareTo(final MutableFloat other) {
-        return Float.compare(this.value, other.value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -146,7 +146,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 2.2
      */
     public void decrement() {
-        value--;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -157,8 +157,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 3.5
      */
     public float decrementAndGet() {
-        value--;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -168,7 +167,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      */
     @Override
     public double doubleValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -202,8 +201,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      */
     @Override
     public boolean equals(final Object obj) {
-        return obj instanceof MutableFloat
-            && Float.floatToIntBits(((MutableFloat) obj).value) == Float.floatToIntBits(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -213,7 +211,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      */
     @Override
     public float floatValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -225,9 +223,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 3.5
      */
     public float getAndAdd(final float operand) {
-        final float last = value;
-        this.value += operand;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -240,9 +236,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 3.5
      */
     public float getAndAdd(final Number operand) {
-        final float last = value;
-        this.value += operand.floatValue();
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -253,9 +247,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 3.5
      */
     public float getAndDecrement() {
-        final float last = value;
-        value--;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -266,9 +258,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 3.5
      */
     public float getAndIncrement() {
-        final float last = value;
-        value++;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -290,7 +280,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      */
     @Override
     public int hashCode() {
-        return Float.floatToIntBits(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -299,7 +289,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 2.2
      */
     public void increment() {
-        value++;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -310,8 +300,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 3.5
      */
     public float incrementAndGet() {
-        value++;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // shortValue and byteValue rely on Number implementation
@@ -322,7 +311,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      */
     @Override
     public int intValue() {
-        return (int) value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -331,7 +320,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @return true if infinite
      */
     public boolean isInfinite() {
-        return Float.isInfinite(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -340,7 +329,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @return true if NaN.
      */
     public boolean isNaN() {
-        return Float.isNaN(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -350,7 +339,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      */
     @Override
     public long longValue() {
-        return (long) value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -359,7 +348,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @param value  the value to set.
      */
     public void setValue(final float value) {
-        this.value = value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -370,7 +359,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      */
     @Override
     public void setValue(final Number value) {
-        this.value = value.floatValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -380,7 +369,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 2.2
      */
     public void subtract(final float operand) {
-        this.value -= operand;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -391,7 +380,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @since 2.2
      */
     public void subtract(final Number operand) {
-        this.value -= operand.floatValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -400,7 +389,7 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      * @return a Float instance containing the value from this mutable, never null.
      */
     public Float toFloat() {
-        return Float.valueOf(floatValue());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -410,7 +399,6 @@ public class MutableFloat extends Number implements Comparable<MutableFloat>, Mu
      */
     @Override
     public String toString() {
-        return String.valueOf(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

@@ -18,7 +18,6 @@ package org.apache.commons.lang3.exception;
 
 import java.util.List;
 import java.util.Set;
-
 import org.apache.commons.lang3.tuple.Pair;
 
 /**
@@ -85,10 +84,14 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class ContextedRuntimeException extends RuntimeException implements ExceptionContext {
 
-    /** The serialization version. */
+    /**
+     * The serialization version.
+     */
     private static final long serialVersionUID = 20110706L;
 
-    /** The context where the data is stored. */
+    /**
+     * The context where the data is stored.
+     */
     private final ExceptionContext exceptionContext;
 
     /**
@@ -167,8 +170,7 @@ public class ContextedRuntimeException extends RuntimeException implements Excep
      */
     @Override
     public ContextedRuntimeException addContextValue(final String label, final Object value) {
-        exceptionContext.addContextValue(label, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -176,7 +178,7 @@ public class ContextedRuntimeException extends RuntimeException implements Excep
      */
     @Override
     public List<Pair<String, Object>> getContextEntries() {
-        return this.exceptionContext.getContextEntries();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -184,7 +186,7 @@ public class ContextedRuntimeException extends RuntimeException implements Excep
      */
     @Override
     public Set<String> getContextLabels() {
-        return exceptionContext.getContextLabels();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -192,7 +194,7 @@ public class ContextedRuntimeException extends RuntimeException implements Excep
      */
     @Override
     public List<Object> getContextValues(final String label) {
-        return this.exceptionContext.getContextValues(label);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -200,7 +202,7 @@ public class ContextedRuntimeException extends RuntimeException implements Excep
      */
     @Override
     public Object getFirstContextValue(final String label) {
-        return this.exceptionContext.getFirstContextValue(label);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -208,7 +210,7 @@ public class ContextedRuntimeException extends RuntimeException implements Excep
      */
     @Override
     public String getFormattedExceptionMessage(final String baseMessage) {
-        return exceptionContext.getFormattedExceptionMessage(baseMessage);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -219,7 +221,7 @@ public class ContextedRuntimeException extends RuntimeException implements Excep
      */
     @Override
     public String getMessage() {
-        return getFormattedExceptionMessage(super.getMessage());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -230,7 +232,7 @@ public class ContextedRuntimeException extends RuntimeException implements Excep
      * @since 3.0.1
      */
     public String getRawMessage() {
-        return super.getMessage();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -248,8 +250,6 @@ public class ContextedRuntimeException extends RuntimeException implements Excep
      */
     @Override
     public ContextedRuntimeException setContextValue(final String label, final Object value) {
-        exceptionContext.setContextValue(label, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

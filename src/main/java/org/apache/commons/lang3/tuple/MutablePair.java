@@ -40,7 +40,9 @@ public class MutablePair<L, R> extends Pair<L, R> {
      */
     public static final MutablePair<?, ?>[] EMPTY_ARRAY = {};
 
-    /** Serialization version */
+    /**
+     * Serialization version
+     */
     private static final long serialVersionUID = 4954918890077093841L;
 
     /**
@@ -53,7 +55,7 @@ public class MutablePair<L, R> extends Pair<L, R> {
      */
     @SuppressWarnings("unchecked")
     public static <L, R> MutablePair<L, R>[] emptyArray() {
-        return (MutablePair<L, R>[]) EMPTY_ARRAY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -66,7 +68,7 @@ public class MutablePair<L, R> extends Pair<L, R> {
      * @return a mutable pair formed from the two parameters, not null.
      */
     public static <L, R> MutablePair<L, R> of(final L left, final R right) {
-        return new MutablePair<>(left, right);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -78,16 +80,7 @@ public class MutablePair<L, R> extends Pair<L, R> {
      * @return a mutable pair formed from the map entry.
      */
     public static <L, R> MutablePair<L, R> of(final Map.Entry<L, R> pair) {
-        final L left;
-        final R right;
-        if (pair != null) {
-            left = pair.getKey();
-            right = pair.getValue();
-        } else {
-            left = null;
-            right = null;
-        }
-        return new MutablePair<>(left, right);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -102,7 +95,7 @@ public class MutablePair<L, R> extends Pair<L, R> {
      * @since 3.13.0
      */
     public static <L, R> MutablePair<L, R> ofNonNull(final L left, final R right) {
-        return of(Objects.requireNonNull(left, "left"), Objects.requireNonNull(right, "right"));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -116,13 +109,17 @@ public class MutablePair<L, R> extends Pair<L, R> {
      * @since 3.20
      */
     public static <L, R> MutablePair<L, R> ofNonNull(final Map.Entry<L, R> pair) {
-        return of(Objects.requireNonNull(pair, "pair"));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** Left object. */
+    /**
+     * Left object.
+     */
     public L left;
 
-    /** Right object. */
+    /**
+     * Right object.
+     */
     public R right;
 
     /**
@@ -147,7 +144,7 @@ public class MutablePair<L, R> extends Pair<L, R> {
      */
     @Override
     public L getLeft() {
-        return left;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -155,7 +152,7 @@ public class MutablePair<L, R> extends Pair<L, R> {
      */
     @Override
     public R getRight() {
-        return right;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -164,7 +161,7 @@ public class MutablePair<L, R> extends Pair<L, R> {
      * @param left  the new value of the left element, may be null.
      */
     public void setLeft(final L left) {
-        this.left = left;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -173,7 +170,7 @@ public class MutablePair<L, R> extends Pair<L, R> {
      * @param right  the new value of the right element, may be null.
      */
     public void setRight(final R right) {
-        this.right = right;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -185,9 +182,6 @@ public class MutablePair<L, R> extends Pair<L, R> {
      */
     @Override
     public R setValue(final R value) {
-        final R result = getRight();
-        setRight(value);
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

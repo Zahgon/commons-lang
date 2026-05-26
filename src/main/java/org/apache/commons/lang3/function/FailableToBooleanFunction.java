@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 /**
@@ -27,7 +26,9 @@ package org.apache.commons.lang3.function;
 @FunctionalInterface
 public interface FailableToBooleanFunction<T, E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableToBooleanFunction NOP = t -> false;
 
@@ -40,7 +41,7 @@ public interface FailableToBooleanFunction<T, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, E extends Throwable> FailableToBooleanFunction<T, E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

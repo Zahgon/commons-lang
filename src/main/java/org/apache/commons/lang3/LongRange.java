@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3;
 
 import java.util.stream.LongStream;
@@ -48,7 +47,7 @@ public final class LongRange extends NumberRange<Long> {
      * @return the range object, not null.
      */
     public static LongRange of(final long fromInclusive, final long toInclusive) {
-        return of(Long.valueOf(fromInclusive), Long.valueOf(toInclusive));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -68,7 +67,7 @@ public final class LongRange extends NumberRange<Long> {
      * @throws NullPointerException if either element is null.
      */
     public static LongRange of(final Long fromInclusive, final Long toInclusive) {
-        return new LongRange(fromInclusive, toInclusive);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -105,7 +104,7 @@ public final class LongRange extends NumberRange<Long> {
      * @since 3.19.0
      */
     public long fit(final long element) {
-        return super.fit(element).longValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -116,7 +115,6 @@ public final class LongRange extends NumberRange<Long> {
      * @since 3.18.0
      */
     public LongStream toLongStream() {
-        return LongStream.rangeClosed(getMinimum(), getMaximum());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

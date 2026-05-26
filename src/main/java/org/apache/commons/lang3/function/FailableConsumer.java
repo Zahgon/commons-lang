@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -35,7 +34,9 @@ import java.util.function.Function;
 @FunctionalInterface
 public interface FailableConsumer<T, E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableConsumer NOP = Function.identity()::apply;
 
@@ -50,9 +51,7 @@ public interface FailableConsumer<T, E extends Throwable> {
      * @since 3.21.0
      */
     static <T, E extends Throwable> void accept(final FailableConsumer<T, E> consumer, final T object) throws E {
-        if (consumer != null) {
-            consumer.accept(object);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -64,7 +63,7 @@ public interface FailableConsumer<T, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, E extends Throwable> FailableConsumer<T, E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -83,10 +82,6 @@ public interface FailableConsumer<T, E extends Throwable> {
      * @throws NullPointerException when {@code after} is null
      */
     default FailableConsumer<T, E> andThen(final FailableConsumer<? super T, E> after) {
-        Objects.requireNonNull(after);
-        return (final T t) -> {
-            accept(t);
-            after.accept(t);
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

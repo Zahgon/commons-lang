@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3;
 
 import java.util.ArrayList;
@@ -48,14 +47,18 @@ public class LocaleUtils {
      */
     private static final class SyncAvoid {
 
-        /** Private unmodifiable and sorted list of available locales. */
+        /**
+         * Private unmodifiable and sorted list of available locales.
+         */
         private static final List<Locale> AVAILABLE_LOCALE_ULIST;
 
-        /** Private unmodifiable set of available locales. */
+        /**
+         * Private unmodifiable set of available locales.
+         */
         private static final Set<Locale> AVAILABLE_LOCALE_USET;
+
         static {
-            AVAILABLE_LOCALE_ULIST = Collections
-                    .unmodifiableList(Arrays.asList(ArraySorter.sort(Locale.getAvailableLocales(), Comparator.comparing(Locale::toString))));
+            AVAILABLE_LOCALE_ULIST = Collections.unmodifiableList(Arrays.asList(ArraySorter.sort(Locale.getAvailableLocales(), Comparator.comparing(Locale::toString))));
             AVAILABLE_LOCALE_USET = Collections.unmodifiableSet(new LinkedHashSet<>(AVAILABLE_LOCALE_ULIST));
         }
     }
@@ -101,7 +104,7 @@ public class LocaleUtils {
      * @return the unmodifiable and sorted list of available locales.
      */
     public static List<Locale> availableLocaleList() {
-        return SyncAvoid.AVAILABLE_LOCALE_ULIST;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static List<Locale> availableLocaleList(final Predicate<Locale> predicate) {
@@ -119,7 +122,7 @@ public class LocaleUtils {
      * @return the unmodifiable set of available locales.
      */
     public static Set<Locale> availableLocaleSet() {
-        return SyncAvoid.AVAILABLE_LOCALE_USET;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -133,11 +136,7 @@ public class LocaleUtils {
      * @return an unmodifiable List of Locale objects, not null.
      */
     public static List<Locale> countriesByLanguage(final String languageCode) {
-        if (languageCode == null) {
-            return Collections.emptyList();
-        }
-        return cCountriesByLanguage.computeIfAbsent(languageCode, lc -> Collections
-                .unmodifiableList(availableLocaleList(locale -> languageCode.equals(locale.getLanguage()) && !hasCountry(locale) && hasVariant(locale))));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -187,7 +186,7 @@ public class LocaleUtils {
      * @return true if the locale is a known locale.
      */
     public static boolean isAvailableLocale(final Locale locale) {
-        return availableLocaleSet().contains(locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -223,7 +222,7 @@ public class LocaleUtils {
      * @since 3.14.0
      */
     public static boolean isLanguageUndetermined(final Locale locale) {
-        return locale == null || UNDETERMINED.equals(locale.toLanguageTag());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -247,11 +246,7 @@ public class LocaleUtils {
      * @return an unmodifiable List of Locale objects, not null.
      */
     public static List<Locale> languagesByCountry(final String countryCode) {
-        if (countryCode == null) {
-            return Collections.emptyList();
-        }
-        return cLanguagesByCountry.computeIfAbsent(countryCode,
-                k -> Collections.unmodifiableList(availableLocaleList(locale -> countryCode.equals(locale.getCountry()) && hasVariant(locale))));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -266,7 +261,7 @@ public class LocaleUtils {
      * @return the unmodifiable list of Locale objects, 0 being locale, not null.
      */
     public static List<Locale> localeLookupList(final Locale locale) {
-        return localeLookupList(locale, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -287,20 +282,7 @@ public class LocaleUtils {
      * @return the unmodifiable list of Locale objects, 0 being locale, not null.
      */
     public static List<Locale> localeLookupList(final Locale locale, final Locale defaultLocale) {
-        final List<Locale> list = new ArrayList<>(4);
-        if (locale != null) {
-            list.add(locale);
-            if (!hasVariant(locale)) {
-                list.add(new Locale(locale.getLanguage(), locale.getCountry()));
-            }
-            if (!hasCountry(locale)) {
-                list.add(new Locale(locale.getLanguage(), StringUtils.EMPTY));
-            }
-            if (!list.contains(defaultLocale)) {
-                list.add(defaultLocale);
-            }
-        }
-        return Collections.unmodifiableList(list);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -313,7 +295,7 @@ public class LocaleUtils {
      * @see Locale#Locale(String, String)
      */
     static Locale ofCountry(final String country) {
-        return new Locale(StringUtils.EMPTY, country);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -370,7 +352,7 @@ public class LocaleUtils {
      * @since 3.12.0
      */
     public static Locale toLocale(final Locale locale) {
-        return locale != null ? locale : Locale.getDefault();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -408,39 +390,7 @@ public class LocaleUtils {
      * @see <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Locale.html#special_cases_constructor">Locale special cases</a>
      */
     public static Locale toLocale(final String str) {
-        if (str == null) {
-            // TODO Should this return the default locale?
-            return null;
-        }
-        if (str.isEmpty()) { // LANG-941 - JDK 8 introduced an empty locale where all fields are blank
-            return new Locale(StringUtils.EMPTY, StringUtils.EMPTY);
-        }
-        final int len = str.length();
-        if (len < 2) {
-            throw new IllegalArgumentException("Invalid locale format: " + str);
-        }
-        final char ch0 = str.charAt(0);
-        if (ch0 == UNDERSCORE || ch0 == DASH) {
-            if (len < 3) {
-                throw new IllegalArgumentException("Invalid locale format: " + str);
-            }
-            final char ch1 = str.charAt(1);
-            final char ch2 = str.charAt(2);
-            if (!Character.isUpperCase(ch1) || !Character.isUpperCase(ch2)) {
-                throw new IllegalArgumentException("Invalid locale format: " + str);
-            }
-            if (len == 3) {
-                return new Locale(StringUtils.EMPTY, str.substring(1, 3));
-            }
-            if (len < 5) {
-                throw new IllegalArgumentException("Invalid locale format: " + str);
-            }
-            if (str.charAt(3) != ch0) {
-                throw new IllegalArgumentException("Invalid locale format: " + str);
-            }
-            return new Locale(StringUtils.EMPTY, str.substring(1, 3), str.substring(4));
-        }
-        return parseLocale(str);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

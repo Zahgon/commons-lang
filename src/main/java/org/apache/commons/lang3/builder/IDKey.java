@@ -14,11 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.builder;
 
 // adapted from org.apache.axis.utils.IDKey
-
 /**
  * Wrap an identity key (System.identityHashCode()) so that an object can only be equal() to itself.
  *
@@ -27,6 +25,7 @@ package org.apache.commons.lang3.builder;
 final class IDKey {
 
     private final Object value;
+
     private final int id;
 
     /**
@@ -51,15 +50,7 @@ final class IDKey {
      */
     @Override
     public boolean equals(final Object other) {
-        if (!(other instanceof IDKey)) {
-            return false;
-        }
-        final IDKey idKey = (IDKey) other;
-        if (id != idKey.id) {
-            return false;
-        }
-        // Note that identity equals is used.
-        return value == idKey.value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -69,6 +60,6 @@ final class IDKey {
      */
     @Override
     public int hashCode() {
-        return id;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -33,7 +33,7 @@ public class CharUtils {
 
     private static final String[] CHAR_STRING_ARRAY = ArrayUtils.setAll(new String[128], i -> String.valueOf((char) i));
 
-    private static final char[] HEX_DIGITS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+    private static final char[] HEX_DIGITS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
     /**
      * Linefeed character LF ({@code '\n'}, Unicode 000a).
@@ -71,7 +71,7 @@ public class CharUtils {
      * @since 3.4
      */
     public static int compare(final char x, final char y) {
-        return x - y;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -90,7 +90,7 @@ public class CharUtils {
      * @return true if less than 128
      */
     public static boolean isAscii(final char ch) {
-        return ch < 128;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -109,7 +109,7 @@ public class CharUtils {
      * @return true if between 65 and 90 or 97 and 122 inclusive
      */
     public static boolean isAsciiAlpha(final char ch) {
-        return isAsciiAlphaUpper(ch) || isAsciiAlphaLower(ch);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -128,7 +128,7 @@ public class CharUtils {
      * @return true if between 97 and 122 inclusive
      */
     public static boolean isAsciiAlphaLower(final char ch) {
-        return ch >= 'a' && ch <= 'z';
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -147,7 +147,7 @@ public class CharUtils {
      * @return true if between 48 and 57 or 65 and 90 or 97 and 122 inclusive
      */
     public static boolean isAsciiAlphanumeric(final char ch) {
-        return isAsciiAlpha(ch) || isAsciiNumeric(ch);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -166,7 +166,7 @@ public class CharUtils {
      * @return true if between 65 and 90 inclusive
      */
     public static boolean isAsciiAlphaUpper(final char ch) {
-        return ch >= 'A' && ch <= 'Z';
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -185,7 +185,7 @@ public class CharUtils {
      * @return true if less than 32 or equals 127
      */
     public static boolean isAsciiControl(final char ch) {
-        return ch < 32 || ch == 127;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -204,7 +204,7 @@ public class CharUtils {
      * @return true if between 48 and 57 inclusive
      */
     public static boolean isAsciiNumeric(final char ch) {
-        return ch >= '0' && ch <= '9';
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -223,7 +223,7 @@ public class CharUtils {
      * @return true if between 32 and 126 inclusive
      */
     public static boolean isAsciiPrintable(final char ch) {
-        return ch >= 32 && ch < 127;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -250,7 +250,7 @@ public class CharUtils {
      * @since 3.18.0
      */
     public static boolean isHex(final char ch) {
-        return isAsciiNumeric(ch) || ch >= 'a' && ch <= 'f' || ch >= 'A' && ch <= 'F';
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -261,7 +261,7 @@ public class CharUtils {
      * @since 3.18.0
      */
     public static boolean isOctal(final char ch) {
-        return ch >= '0' && ch <= '7';
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -278,7 +278,7 @@ public class CharUtils {
      * @throws NullPointerException if the Character is null
      */
     public static char toChar(final Character ch) {
-        return Objects.requireNonNull(ch, "ch").charValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -295,7 +295,7 @@ public class CharUtils {
      * @return the char value of the Character or the default if null
      */
     public static char toChar(final Character ch, final char defaultValue) {
-        return ch != null ? ch.charValue() : defaultValue;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -315,8 +315,7 @@ public class CharUtils {
      * @throws IllegalArgumentException if the String is empty
      */
     public static char toChar(final String str) {
-        Validate.notEmpty(str, "The String must not be empty");
-        return str.charAt(0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -335,7 +334,7 @@ public class CharUtils {
      * @return the char value of the first letter of the String or the default if null
      */
     public static char toChar(final String str, final char defaultValue) {
-        return StringUtils.isEmpty(str) ? defaultValue : str.charAt(0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -368,7 +367,7 @@ public class CharUtils {
      * @return the Character value of the first letter of the String
      */
     public static Character toCharacterObject(final String str) {
-        return StringUtils.isEmpty(str) ? null : Character.valueOf(str.charAt(0));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -387,10 +386,7 @@ public class CharUtils {
      * @throws IllegalArgumentException if the character is not ASCII numeric
      */
     public static int toIntValue(final char ch) {
-        if (!isAsciiNumeric(ch)) {
-            throw new IllegalArgumentException("The character " + ch + " is not in the range '0' - '9'");
-        }
-        return ch - 48;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -409,7 +405,7 @@ public class CharUtils {
      * @return the int value of the character
      */
     public static int toIntValue(final char ch, final int defaultValue) {
-        return isAsciiNumeric(ch) ? ch - 48 : defaultValue;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -430,7 +426,7 @@ public class CharUtils {
      * @throws IllegalArgumentException if the Character is not ASCII numeric
      */
     public static int toIntValue(final Character ch) {
-        return toIntValue(toChar(ch));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -450,7 +446,7 @@ public class CharUtils {
      * @return the int value of the character
      */
     public static int toIntValue(final Character ch, final int defaultValue) {
-        return ch != null ? toIntValue(ch.charValue(), defaultValue) : defaultValue;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -468,10 +464,7 @@ public class CharUtils {
      * @return a String containing the one specified character
      */
     public static String toString(final char ch) {
-        if (ch < CHAR_STRING_ARRAY.length) {
-            return CHAR_STRING_ARRAY[ch];
-        }
-        return String.valueOf(ch);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -492,7 +485,7 @@ public class CharUtils {
      * @return a String containing the one specified character
      */
     public static String toString(final Character ch) {
-        return ch != null ? toString(ch.charValue()) : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -509,11 +502,7 @@ public class CharUtils {
      * @return the escaped Unicode string
      */
     public static String unicodeEscaped(final char ch) {
-        return "\\u" +
-            HEX_DIGITS[ch >> 12 & 15] +
-            HEX_DIGITS[ch >> 8 & 15] +
-            HEX_DIGITS[ch >> 4 & 15] +
-            HEX_DIGITS[ch & 15];
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -533,7 +522,7 @@ public class CharUtils {
      * @return the escaped Unicode string, null if null input
      */
     public static String unicodeEscaped(final Character ch) {
-        return ch != null ? unicodeEscaped(ch.charValue()) : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

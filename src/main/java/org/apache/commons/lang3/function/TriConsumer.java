@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -60,11 +59,6 @@ public interface TriConsumer<T, U, V> {
      * @throws NullPointerException if {@code after} is null.
      */
     default TriConsumer<T, U, V> andThen(final TriConsumer<? super T, ? super U, ? super V> after) {
-        Objects.requireNonNull(after);
-        return (t, u, v) -> {
-            accept(t, u, v);
-            after.accept(t, u, v);
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

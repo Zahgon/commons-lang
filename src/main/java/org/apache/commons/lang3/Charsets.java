@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3;
 
 import java.nio.charset.Charset;
@@ -41,7 +40,7 @@ final class Charsets {
      * @return the given {@code charset} or the default Charset if {@code charset} is null.
      */
     static Charset toCharset(final Charset charset) {
-        return charset == null ? Charset.defaultCharset() : charset;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -53,7 +52,7 @@ final class Charsets {
      *                                     virtual machine
      */
     static Charset toCharset(final String charsetName) {
-        return charsetName == null ? Charset.defaultCharset() : Charset.forName(charsetName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -63,7 +62,6 @@ final class Charsets {
      * @return the given {@code charset} or the default Charset if {@code charset} is null.
      */
     static String toCharsetName(final String charsetName) {
-        return charsetName == null ? Charset.defaultCharset().name() : charsetName;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

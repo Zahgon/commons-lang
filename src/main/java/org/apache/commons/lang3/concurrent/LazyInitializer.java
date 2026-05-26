@@ -90,9 +90,8 @@ public class LazyInitializer<T> extends AbstractConcurrentInitializer<T, Concurr
         @SuppressWarnings("unchecked")
         @Override
         public I get() {
-            return (I) new LazyInitializer(getInitializer(), getCloser());
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -108,10 +107,12 @@ public class LazyInitializer<T> extends AbstractConcurrentInitializer<T, Concurr
      * @since 3.14.0
      */
     public static <T> Builder<LazyInitializer<T>, T> builder() {
-        return new Builder<>();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** Stores the managed object. */
+    /**
+     * Stores the managed object.
+     */
     @SuppressWarnings("unchecked")
     private volatile T object = (T) NO_INIT;
 
@@ -140,18 +141,7 @@ public class LazyInitializer<T> extends AbstractConcurrentInitializer<T, Concurr
      */
     @Override
     public T get() throws ConcurrentException {
-        // use a temporary variable to reduce the number of reads of the
-        // volatile field
-        T result = object;
-        if (result == NO_INIT) {
-            synchronized (this) {
-                result = object;
-                if (result == NO_INIT) {
-                    object = result = initialize();
-                }
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -159,7 +149,7 @@ public class LazyInitializer<T> extends AbstractConcurrentInitializer<T, Concurr
      */
     @Override
     protected ConcurrentException getTypedException(final Exception e) {
-        return new ConcurrentException(e);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -170,7 +160,6 @@ public class LazyInitializer<T> extends AbstractConcurrentInitializer<T, Concurr
      */
     @Override
     public boolean isInitialized() {
-        return object != NO_INIT;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

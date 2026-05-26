@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -30,11 +29,15 @@ import java.util.function.Predicate;
 @FunctionalInterface
 public interface FailablePredicate<T, E extends Throwable> {
 
-    /** FALSE singleton */
+    /**
+     * FALSE singleton
+     */
     @SuppressWarnings("rawtypes")
     FailablePredicate FALSE = t -> false;
 
-    /** TRUE singleton */
+    /**
+     * TRUE singleton
+     */
     @SuppressWarnings("rawtypes")
     FailablePredicate TRUE = t -> true;
 
@@ -47,7 +50,7 @@ public interface FailablePredicate<T, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, E extends Throwable> FailablePredicate<T, E> falsePredicate() {
-        return FALSE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -59,7 +62,7 @@ public interface FailablePredicate<T, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, E extends Throwable> FailablePredicate<T, E> truePredicate() {
-        return TRUE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -70,8 +73,7 @@ public interface FailablePredicate<T, E extends Throwable> {
      * @throws NullPointerException if other is null
      */
     default FailablePredicate<T, E> and(final FailablePredicate<? super T, E> other) {
-        Objects.requireNonNull(other);
-        return t -> test(t) && other.test(t);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -80,7 +82,7 @@ public interface FailablePredicate<T, E extends Throwable> {
      * @return a predicate that negates this predicate.
      */
     default FailablePredicate<T, E> negate() {
-        return t -> !test(t);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -91,8 +93,7 @@ public interface FailablePredicate<T, E extends Throwable> {
      * @throws NullPointerException if other is null
      */
     default FailablePredicate<T, E> or(final FailablePredicate<? super T, E> other) {
-        Objects.requireNonNull(other);
-        return t -> test(t) || other.test(t);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

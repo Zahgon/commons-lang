@@ -22,7 +22,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Supplier;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 
@@ -83,9 +82,13 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
     public static final class Builder<T> {
 
         private T left;
+
         private T right;
+
         private ToStringStyle style;
+
         private boolean testObjectsEquals = true;
+
         private String toStringFormat = TO_STRING_FORMAT;
 
         /**
@@ -101,7 +104,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
          * @return a new configured {@link DiffBuilder}.
          */
         public DiffBuilder<T> build() {
-            return new DiffBuilder<>(left, right, style, testObjectsEquals, toStringFormat);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -111,8 +114,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
          * @return {@code this} instance.
          */
         public Builder<T> setLeft(final T left) {
-            this.left = left;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -122,8 +124,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
          * @return {@code this} instance.
          */
         public Builder<T> setRight(final T right) {
-            this.right = right;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -133,8 +134,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
          * @return {@code this} instance.
          */
         public Builder<T> setStyle(final ToStringStyle style) {
-            this.style = style != null ? style : ToStringStyle.DEFAULT_STYLE;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -148,8 +148,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
          * @return {@code this} instance.
          */
         public Builder<T> setTestObjectsEquals(final boolean testObjectsEquals) {
-            this.testObjectsEquals = testObjectsEquals;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -159,15 +158,16 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
          * @return {@code this} instance.
          */
         public Builder<T> setToStringFormat(final String toStringFormat) {
-            this.toStringFormat = toStringFormat != null ? toStringFormat : TO_STRING_FORMAT;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
     private static final class SDiff<T> extends Diff<T> {
 
         private static final long serialVersionUID = 1L;
+
         private final SerializableSupplier<T> leftSupplier;
+
         private final SerializableSupplier<T> rightSupplier;
 
         private SDiff(final String fieldName, final SerializableSupplier<T> leftSupplier, final SerializableSupplier<T> rightSupplier, final Class<T> type) {
@@ -178,14 +178,13 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
 
         @Override
         public T getLeft() {
-            return leftSupplier.get();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public T getRight() {
-            return rightSupplier.get();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -207,14 +206,19 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @since 3.15.0
      */
     public static <T> Builder<T> builder() {
-        return new Builder<>();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private final List<Diff<?>> diffs;
+
     private final boolean equals;
+
     private final T left;
+
     private final T right;
+
     private final ToStringStyle style;
+
     private final String toStringFormat;
 
     /**
@@ -288,7 +292,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final boolean lhs, final boolean rhs) {
-        return equals || lhs == rhs ? this : add(fieldName, () -> Boolean.valueOf(lhs), () -> Boolean.valueOf(rhs), Boolean.class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -301,7 +305,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final boolean[] lhs, final boolean[] rhs) {
-        return equals || Arrays.equals(lhs, rhs) ? this : add(fieldName, () -> ArrayUtils.toObject(lhs), () -> ArrayUtils.toObject(rhs), Boolean[].class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -314,7 +318,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final byte lhs, final byte rhs) {
-        return equals || lhs == rhs ? this : add(fieldName, () -> Byte.valueOf(lhs), () -> Byte.valueOf(rhs), Byte.class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -327,7 +331,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final byte[] lhs, final byte[] rhs) {
-        return equals || Arrays.equals(lhs, rhs) ? this : add(fieldName, () -> ArrayUtils.toObject(lhs), () -> ArrayUtils.toObject(rhs), Byte[].class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -340,7 +344,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final char lhs, final char rhs) {
-        return equals || lhs == rhs ? this : add(fieldName, () -> Character.valueOf(lhs), () -> Character.valueOf(rhs), Character.class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -353,7 +357,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final char[] lhs, final char[] rhs) {
-        return equals || Arrays.equals(lhs, rhs) ? this : add(fieldName, () -> ArrayUtils.toObject(lhs), () -> ArrayUtils.toObject(rhs), Character[].class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -387,12 +391,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @since 3.5
      */
     public DiffBuilder<T> append(final String fieldName, final DiffResult<?> diffResult) {
-        Objects.requireNonNull(diffResult, "diffResult");
-        if (equals) {
-            return this;
-        }
-        diffResult.getDiffs().forEach(diff -> append(fieldName + "." + diff.getFieldName(), diff.getLeft(), diff.getRight()));
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -405,8 +404,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final double lhs, final double rhs) {
-        return equals || Double.doubleToLongBits(lhs) == Double.doubleToLongBits(rhs) ? this
-                : add(fieldName, () -> Double.valueOf(lhs), () -> Double.valueOf(rhs), Double.class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -419,7 +417,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final double[] lhs, final double[] rhs) {
-        return equals || Arrays.equals(lhs, rhs) ? this : add(fieldName, () -> ArrayUtils.toObject(lhs), () -> ArrayUtils.toObject(rhs), Double[].class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -432,8 +430,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final float lhs, final float rhs) {
-        return equals || Float.floatToIntBits(lhs) == Float.floatToIntBits(rhs) ? this
-                : add(fieldName, () -> Float.valueOf(lhs), () -> Float.valueOf(rhs), Float.class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -446,7 +443,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final float[] lhs, final float[] rhs) {
-        return equals || Arrays.equals(lhs, rhs) ? this : add(fieldName, () -> ArrayUtils.toObject(lhs), () -> ArrayUtils.toObject(rhs), Float[].class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -459,7 +456,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final int lhs, final int rhs) {
-        return equals || lhs == rhs ? this : add(fieldName, () -> Integer.valueOf(lhs), () -> Integer.valueOf(rhs), Integer.class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -472,7 +469,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final int[] lhs, final int[] rhs) {
-        return equals || Arrays.equals(lhs, rhs) ? this : add(fieldName, () -> ArrayUtils.toObject(lhs), () -> ArrayUtils.toObject(rhs), Integer[].class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -485,7 +482,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final long lhs, final long rhs) {
-        return equals || lhs == rhs ? this : add(fieldName, () -> Long.valueOf(lhs), () -> Long.valueOf(rhs), Long.class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -498,7 +495,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final long[] lhs, final long[] rhs) {
-        return equals || Arrays.equals(lhs, rhs) ? this : add(fieldName, () -> ArrayUtils.toObject(lhs), () -> ArrayUtils.toObject(rhs), Long[].class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -511,40 +508,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final Object lhs, final Object rhs) {
-        if (equals || lhs == rhs) {
-            return this;
-        }
-        // rhs cannot be null, as lhs != rhs
-        final Object test = lhs != null ? lhs : rhs;
-        if (ObjectUtils.isArray(test)) {
-            if (test instanceof boolean[]) {
-                return append(fieldName, (boolean[]) lhs, (boolean[]) rhs);
-            }
-            if (test instanceof byte[]) {
-                return append(fieldName, (byte[]) lhs, (byte[]) rhs);
-            }
-            if (test instanceof char[]) {
-                return append(fieldName, (char[]) lhs, (char[]) rhs);
-            }
-            if (test instanceof double[]) {
-                return append(fieldName, (double[]) lhs, (double[]) rhs);
-            }
-            if (test instanceof float[]) {
-                return append(fieldName, (float[]) lhs, (float[]) rhs);
-            }
-            if (test instanceof int[]) {
-                return append(fieldName, (int[]) lhs, (int[]) rhs);
-            }
-            if (test instanceof long[]) {
-                return append(fieldName, (long[]) lhs, (long[]) rhs);
-            }
-            if (test instanceof short[]) {
-                return append(fieldName, (short[]) lhs, (short[]) rhs);
-            }
-            return append(fieldName, (Object[]) lhs, (Object[]) rhs);
-        }
-        // Not array type
-        return Objects.equals(lhs, rhs) ? this : add(fieldName, () -> lhs, () -> rhs, Object.class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -557,7 +521,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final Object[] lhs, final Object[] rhs) {
-        return equals || Arrays.equals(lhs, rhs) ? this : add(fieldName, () -> lhs, () -> rhs, Object[].class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -570,7 +534,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final short lhs, final short rhs) {
-        return equals || lhs == rhs ? this : add(fieldName, () -> Short.valueOf(lhs), () -> Short.valueOf(rhs), Short.class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -583,7 +547,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @throws NullPointerException if field name is {@code null}.
      */
     public DiffBuilder<T> append(final String fieldName, final short[] lhs, final short[] rhs) {
-        return equals || Arrays.equals(lhs, rhs) ? this : add(fieldName, () -> ArrayUtils.toObject(lhs), () -> ArrayUtils.toObject(rhs), Short[].class);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -593,7 +557,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      */
     @Override
     public DiffResult<T> build() {
-        return new DiffResult<>(left, right, diffs, style, toStringFormat);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -602,7 +566,7 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @return the left object.
      */
     T getLeft() {
-        return left;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -611,7 +575,6 @@ public class DiffBuilder<T> implements Builder<DiffResult<T>> {
      * @return the right object.
      */
     T getRight() {
-        return right;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

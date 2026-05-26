@@ -74,8 +74,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet and(final BitSet set) {
-        bitSet.and(set);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -87,8 +86,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet and(final FluentBitSet set) {
-        bitSet.and(set.bitSet);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -98,8 +96,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet andNot(final BitSet set) {
-        bitSet.andNot(set);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -109,8 +106,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet andNot(final FluentBitSet set) {
-        this.bitSet.andNot(set.bitSet);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -119,7 +115,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return the wrapped bit set.
      */
     public BitSet bitSet() {
-        return bitSet;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -128,7 +124,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return the number of bits set to {@code true} in this {@link BitSet}.
      */
     public int cardinality() {
-        return bitSet.cardinality();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -137,8 +133,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet clear() {
-        bitSet.clear();
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -149,10 +144,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet clear(final int... bitIndexArray) {
-        for (final int e : bitIndexArray) {
-            this.bitSet.clear(e);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -163,8 +155,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet clear(final int bitIndex) {
-        bitSet.clear(bitIndex);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -178,8 +169,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet clear(final int fromIndex, final int toIndex) {
-        bitSet.clear(fromIndex, toIndex);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -191,19 +181,12 @@ public final class FluentBitSet implements Cloneable, Serializable {
      */
     @Override
     public Object clone() {
-        return new FluentBitSet((BitSet) bitSet.clone());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof FluentBitSet)) {
-            return false;
-        }
-        final FluentBitSet other = (FluentBitSet) obj;
-        return Objects.equals(bitSet, other.bitSet);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -214,8 +197,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet flip(final int bitIndex) {
-        bitSet.flip(bitIndex);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -229,8 +211,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet flip(final int fromIndex, final int toIndex) {
-        bitSet.flip(fromIndex, toIndex);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -242,7 +223,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @throws IndexOutOfBoundsException if the specified index is negative.
      */
     public boolean get(final int bitIndex) {
-        return bitSet.get(bitIndex);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -256,12 +237,12 @@ public final class FluentBitSet implements Cloneable, Serializable {
      *         {@code fromIndex} is larger than {@code toIndex}.
      */
     public FluentBitSet get(final int fromIndex, final int toIndex) {
-        return new FluentBitSet(bitSet.get(fromIndex, toIndex));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        return bitSet.hashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -272,7 +253,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return boolean indicating whether this {@link BitSet} intersects the specified {@link BitSet}.
      */
     public boolean intersects(final BitSet set) {
-        return bitSet.intersects(set);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -283,7 +264,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return boolean indicating whether this {@link BitSet} intersects the specified {@link BitSet}.
      */
     public boolean intersects(final FluentBitSet set) {
-        return bitSet.intersects(set.bitSet);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -292,7 +273,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return boolean indicating whether this {@link BitSet} is empty.
      */
     public boolean isEmpty() {
-        return bitSet.isEmpty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -302,7 +283,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return the logical size of this {@link BitSet}.
      */
     public int length() {
-        return bitSet.length();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -313,7 +294,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @throws IndexOutOfBoundsException if the specified index is negative.
      */
     public int nextClearBit(final int fromIndex) {
-        return bitSet.nextClearBit(fromIndex);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -338,7 +319,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @throws IndexOutOfBoundsException if the specified index is negative.
      */
     public int nextSetBit(final int fromIndex) {
-        return bitSet.nextSetBit(fromIndex);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -350,8 +331,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet or(final BitSet set) {
-        bitSet.or(set);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -363,10 +343,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet or(final FluentBitSet... set) {
-        for (final FluentBitSet e : set) {
-            this.bitSet.or(e.bitSet);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -378,8 +355,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet or(final FluentBitSet set) {
-        this.bitSet.or(set.bitSet);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -391,7 +367,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @throws IndexOutOfBoundsException if the specified index is less than {@code -1}.
      */
     public int previousClearBit(final int fromIndex) {
-        return bitSet.previousClearBit(fromIndex);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -413,7 +389,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @throws IndexOutOfBoundsException if the specified index is less than {@code -1}
      */
     public int previousSetBit(final int fromIndex) {
-        return bitSet.previousSetBit(fromIndex);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -424,10 +400,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet set(final int... bitIndexArray) {
-        for (final int e : bitIndexArray) {
-            bitSet.set(e);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -438,8 +411,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet set(final int bitIndex) {
-        bitSet.set(bitIndex);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -451,8 +423,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet set(final int bitIndex, final boolean value) {
-        bitSet.set(bitIndex, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -466,8 +437,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet set(final int fromIndex, final int toIndex) {
-        bitSet.set(fromIndex, toIndex);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -482,8 +452,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet set(final int fromIndex, final int toIndex, final boolean value) {
-        bitSet.set(fromIndex, toIndex, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -497,8 +466,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet setInclusive(final int fromIndex, final int toIndex) {
-        bitSet.set(fromIndex, toIndex + 1);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -508,7 +476,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return the number of bits currently in this bit set.
      */
     public int size() {
-        return bitSet.size();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -525,7 +493,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @since 1.8
      */
     public IntStream stream() {
-        return bitSet.stream();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -544,7 +512,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return a byte array containing a little-endian representation of all the bits in this bit set
      */
     public byte[] toByteArray() {
-        return bitSet.toByteArray();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -563,12 +531,12 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return a byte array containing a little-endian representation of all the bits in this bit set
      */
     public long[] toLongArray() {
-        return bitSet.toLongArray();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return bitSet.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -585,8 +553,7 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet xor(final BitSet set) {
-        bitSet.xor(set);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -603,8 +570,6 @@ public final class FluentBitSet implements Cloneable, Serializable {
      * @return {@code this} instance.
      */
     public FluentBitSet xor(final FluentBitSet set) {
-        bitSet.xor(set.bitSet);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

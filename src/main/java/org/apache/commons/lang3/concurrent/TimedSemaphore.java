@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.concurrent;
 
 import java.util.concurrent.ScheduledExecutorService;
@@ -22,7 +21,6 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
-
 import org.apache.commons.lang3.Validate;
 
 /**
@@ -120,8 +118,11 @@ public class TimedSemaphore {
     public static class Builder implements Supplier<TimedSemaphore> {
 
         private ScheduledExecutorService service;
+
         private long period;
+
         private TimeUnit timeUnit;
+
         private int limit;
 
         /**
@@ -133,7 +134,7 @@ public class TimedSemaphore {
 
         @Override
         public TimedSemaphore get() {
-            return new TimedSemaphore(this);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -143,8 +144,7 @@ public class TimedSemaphore {
          * @return {@code this} instance.
          */
         public Builder setLimit(final int limit) {
-            this.limit = limit;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -154,8 +154,7 @@ public class TimedSemaphore {
          * @return {@code this} instance.
          */
         public Builder setPeriod(final long period) {
-            this.period = period;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -165,8 +164,7 @@ public class TimedSemaphore {
          * @return {@code this} instance.
          */
         public Builder setService(final ScheduledExecutorService service) {
-            this.service = service;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -176,8 +174,7 @@ public class TimedSemaphore {
          * @return {@code this} instance.
          */
         public Builder setTimeUnit(final TimeUnit timeUnit) {
-            this.timeUnit = timeUnit;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -187,7 +184,9 @@ public class TimedSemaphore {
      */
     public static final int NO_LIMIT = 0;
 
-    /** Constant for the thread pool size for the executor. */
+    /**
+     * Constant for the thread pool size for the executor.
+     */
     private static final int THREAD_POOL_SIZE = 1;
 
     /**
@@ -197,43 +196,70 @@ public class TimedSemaphore {
      * @since 3.20.0
      */
     public static Builder builder() {
-        return new Builder();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** The executor service for managing the timer thread. */
+    /**
+     * The executor service for managing the timer thread.
+     */
     private final ScheduledExecutorService executorService;
 
-    /** The period for this timed semaphore. */
+    /**
+     * The period for this timed semaphore.
+     */
     private final long period;
 
-    /** The time unit for the period. */
+    /**
+     * The time unit for the period.
+     */
     private final TimeUnit unit;
 
-    /** A flag whether the executor service was created by this object. */
+    /**
+     * A flag whether the executor service was created by this object.
+     */
     private final boolean ownExecutor;
 
-    /** A future object representing the timer task. */
-    private ScheduledFuture<?> task; // @GuardedBy("this")
+    /**
+     * A future object representing the timer task.
+     */
+    // @GuardedBy("this")
+    private ScheduledFuture<?> task;
 
-    /** Stores the total number of invocations of the acquire() method. */
-    private long totalAcquireCount; // @GuardedBy("this")
+    /**
+     * Stores the total number of invocations of the acquire() method.
+     */
+    // @GuardedBy("this")
+    private long totalAcquireCount;
 
     /**
      * The counter for the periods. This counter is increased every time a period ends.
      */
-    private long periodCount; // @GuardedBy("this")
+    // @GuardedBy("this")
+    private long periodCount;
 
-    /** The limit. */
-    private int limit; // @GuardedBy("this")
+    /**
+     * The limit.
+     */
+    // @GuardedBy("this")
+    private int limit;
 
-    /** The current counter. */
-    private int acquireCount; // @GuardedBy("this")
+    /**
+     * The current counter.
+     */
+    // @GuardedBy("this")
+    private int acquireCount;
 
-    /** The number of invocations of acquire() in the last period. */
-    private int lastCallsPerPeriod; // @GuardedBy("this")
+    /**
+     * The number of invocations of acquire() in the last period.
+     */
+    // @GuardedBy("this")
+    private int lastCallsPerPeriod;
 
-    /** A flag whether shutdown() was called. */
-    private boolean shutdown; // @GuardedBy("this")
+    /**
+     * A flag whether shutdown() was called.
+     */
+    // @GuardedBy("this")
+    private boolean shutdown;
 
     private TimedSemaphore(final Builder builder) {
         Validate.inclusiveBetween(1, Long.MAX_VALUE, builder.period, "Time period must be greater than 0.");
@@ -291,17 +317,7 @@ public class TimedSemaphore {
      * @throws IllegalStateException if this semaphore is already shut down.
      */
     public synchronized void acquire() throws InterruptedException {
-        prepareAcquire();
-        boolean canPass;
-        do {
-            canPass = acquirePermit();
-            if (!canPass) {
-                wait();
-                if (shutdown) {
-                    throw new IllegalStateException("TimedSemaphore is shut down.");
-                }
-            }
-        } while (!canPass);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -323,11 +339,7 @@ public class TimedSemaphore {
      * the threads waiting for this barrier.
      */
     synchronized void endOfPeriod() {
-        lastCallsPerPeriod = acquireCount;
-        totalAcquireCount += acquireCount;
-        periodCount++;
-        acquireCount = 0;
-        notifyAll();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -336,7 +348,7 @@ public class TimedSemaphore {
      * @return the current number of {@link #acquire()} invocations.
      */
     public synchronized int getAcquireCount() {
-        return acquireCount;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -347,7 +359,7 @@ public class TimedSemaphore {
      * @return the current number of available {@link #acquire()} calls in the current period.
      */
     public synchronized int getAvailablePermits() {
-        return getLimit() - getAcquireCount();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -357,7 +369,7 @@ public class TimedSemaphore {
      * @return the average number of {@link #acquire()} invocations per time unit.
      */
     public synchronized double getAverageCallsPerPeriod() {
-        return periodCount == 0 ? 0 : (double) totalAcquireCount / (double) periodCount;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -366,7 +378,7 @@ public class TimedSemaphore {
      * @return the executor service.
      */
     protected ScheduledExecutorService getExecutorService() {
-        return executorService;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -377,7 +389,7 @@ public class TimedSemaphore {
      * @return the number of non-blocking invocations of the {@link #acquire()} method.
      */
     public synchronized int getLastAcquiresPerPeriod() {
-        return lastCallsPerPeriod;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -386,7 +398,7 @@ public class TimedSemaphore {
      * @return the limit.
      */
     public final synchronized int getLimit() {
-        return limit;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -396,7 +408,7 @@ public class TimedSemaphore {
      * @return the time period.
      */
     public long getPeriod() {
-        return period;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -405,7 +417,7 @@ public class TimedSemaphore {
      * @return the time unit.
      */
     public TimeUnit getUnit() {
-        return unit;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -415,7 +427,7 @@ public class TimedSemaphore {
      * @return a flag whether a shutdown has been performed.
      */
     public synchronized boolean isShutdown() {
-        return shutdown;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -439,7 +451,7 @@ public class TimedSemaphore {
      * @param limit the limit.
      */
     public final synchronized void setLimit(final int limit) {
-        this.limit = limit;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -447,18 +459,7 @@ public class TimedSemaphore {
      * first one do not have any effect.
      */
     public synchronized void shutdown() {
-        if (!shutdown) {
-            if (ownExecutor) {
-                // if the executor was created by this instance, it has
-                // to be shutdown
-                getExecutorService().shutdownNow();
-            }
-            if (task != null) {
-                task.cancel(false);
-            }
-            shutdown = true;
-            notifyAll();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -468,7 +469,7 @@ public class TimedSemaphore {
      * @return a future object representing the task scheduled.
      */
     protected ScheduledFuture<?> startTimer() {
-        return getExecutorService().scheduleAtFixedRate(this::endOfPeriod, getPeriod(), getPeriod(), getUnit());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -480,7 +481,6 @@ public class TimedSemaphore {
      * @since 3.5
      */
     public synchronized boolean tryAcquire() {
-        prepareAcquire();
-        return acquirePermit();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.time;
 
 import java.time.ZoneId;
@@ -29,6 +28,7 @@ import java.util.TimeZone;
 final class ImmutableTimeZone extends TimeZone {
 
     private static final long serialVersionUID = 1L;
+
     private final TimeZone timeZone;
 
     ImmutableTimeZone(final TimeZone timeZone) {
@@ -37,8 +37,7 @@ final class ImmutableTimeZone extends TimeZone {
 
     @Override
     public Object clone() {
-        // Immutable, so return this.
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -46,7 +45,7 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public String getDisplayName(final boolean daylight, final int style, final Locale locale) {
-        return timeZone.getDisplayName(daylight, style, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -54,7 +53,7 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public int getDSTSavings() {
-        return timeZone.getDSTSavings();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -62,7 +61,7 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public String getID() {
-        return timeZone.getID();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -70,7 +69,7 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public int getOffset(final int era, final int year, final int month, final int day, final int dayOfWeek, final int milliseconds) {
-        return timeZone.getOffset(era, year, month, day, dayOfWeek, milliseconds);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -78,7 +77,7 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public int getOffset(final long date) {
-        return timeZone.getOffset(date);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -86,7 +85,7 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public int getRawOffset() {
-        return timeZone.getRawOffset();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -94,7 +93,7 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public boolean hasSameRules(final TimeZone other) {
-        return timeZone.hasSameRules(other);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -102,7 +101,7 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public boolean inDaylightTime(final Date date) {
-        return timeZone.inDaylightTime(date);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -110,7 +109,7 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public boolean observesDaylightTime() {
-        return timeZone.observesDaylightTime();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -118,7 +117,7 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public void setID(final String ID) {
-        throw new UnsupportedOperationException("This class is immutable.");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -126,7 +125,7 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public void setRawOffset(final int offsetMillis) {
-        throw new UnsupportedOperationException("This class is immutable.");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -134,7 +133,7 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public String toString() {
-        return timeZone.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -142,15 +141,15 @@ final class ImmutableTimeZone extends TimeZone {
      */
     @Override
     public ZoneId toZoneId() {
-        return timeZone.toZoneId();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     TimeZone unwrap() {
-        return timeZone;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean useDaylightTime() {
-        return timeZone.useDaylightTime();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -34,9 +34,7 @@ public class FutureTasks {
      * @return a new FutureTask.
      */
     public static <V> FutureTask<V> run(final Callable<V> callable) {
-        final FutureTask<V> futureTask = new FutureTask<>(callable);
-        futureTask.run();
-        return futureTask;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private FutureTasks() {

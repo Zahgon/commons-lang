@@ -18,7 +18,6 @@ package org.apache.commons.lang3.builder;
 
 import java.lang.reflect.Type;
 import java.util.Objects;
-
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.reflect.TypeUtils;
 import org.apache.commons.lang3.tuple.Pair;
@@ -37,10 +36,14 @@ public abstract class Diff<T> extends Pair<T, T> {
 
     private static final long serialVersionUID = 1L;
 
-    /** The field type. */
+    /**
+     * The field type.
+     */
     private final Type type;
 
-    /** The field name. */
+    /**
+     * The field name.
+     */
     private final String fieldName;
 
     /**
@@ -65,7 +68,7 @@ public abstract class Diff<T> extends Pair<T, T> {
      * @return the field name.
      */
     public final String getFieldName() {
-        return fieldName;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -88,7 +91,7 @@ public abstract class Diff<T> extends Pair<T, T> {
      */
     @Override
     public final T setValue(final T value) {
-        throw new UnsupportedOperationException("Cannot alter Diff object.");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -103,6 +106,6 @@ public abstract class Diff<T> extends Pair<T, T> {
      */
     @Override
     public final String toString() {
-        return String.format("[%s: %s, %s]", fieldName, getLeft(), getRight());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

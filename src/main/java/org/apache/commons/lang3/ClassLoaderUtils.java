@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3;
 
 import java.net.URL;
@@ -38,7 +37,7 @@ public class ClassLoaderUtils {
      * @since 3.13.0
      */
     public static URL[] getSystemURLs() {
-        return getURLs(ClassLoader.getSystemClassLoader());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -48,7 +47,7 @@ public class ClassLoaderUtils {
      * @since 3.13.0
      */
     public static URL[] getThreadURLs() {
-        return getURLs(Thread.currentThread().getContextClassLoader());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static URL[] getURLs(final ClassLoader cl) {
@@ -62,10 +61,7 @@ public class ClassLoaderUtils {
      * @return the formatted string.
      */
     public static String toString(final ClassLoader classLoader) {
-        if (classLoader instanceof URLClassLoader) {
-            return toString((URLClassLoader) classLoader);
-        }
-        return Objects.toString(classLoader);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -75,7 +71,7 @@ public class ClassLoaderUtils {
      * @return the formatted string.
      */
     public static String toString(final URLClassLoader classLoader) {
-        return classLoader != null ? classLoader + Arrays.toString(classLoader.getURLs()) : "null";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

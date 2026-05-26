@@ -40,7 +40,9 @@ public class MutableTriple<L, M, R> extends Triple<L, M, R> {
      */
     public static final MutableTriple<?, ?, ?>[] EMPTY_ARRAY = {};
 
-    /** Serialization version */
+    /**
+     * Serialization version
+     */
     private static final long serialVersionUID = 1L;
 
     /**
@@ -54,7 +56,7 @@ public class MutableTriple<L, M, R> extends Triple<L, M, R> {
      */
     @SuppressWarnings("unchecked")
     public static <L, M, R> MutableTriple<L, M, R>[] emptyArray() {
-        return (MutableTriple<L, M, R>[]) EMPTY_ARRAY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -69,7 +71,7 @@ public class MutableTriple<L, M, R> extends Triple<L, M, R> {
      * @return a mutable triple formed from the three parameters, not null.
      */
     public static <L, M, R> MutableTriple<L, M, R> of(final L left, final M middle, final R right) {
-        return new MutableTriple<>(left, middle, right);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -86,16 +88,22 @@ public class MutableTriple<L, M, R> extends Triple<L, M, R> {
      * @since 3.13.0
      */
     public static <L, M, R> MutableTriple<L, M, R> ofNonNull(final L left, final M middle, final R right) {
-        return of(Objects.requireNonNull(left, "left"), Objects.requireNonNull(middle, "middle"), Objects.requireNonNull(right, "right"));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** Left object. */
+    /**
+     * Left object.
+     */
     public L left;
 
-    /** Middle object. */
+    /**
+     * Middle object.
+     */
     public M middle;
 
-    /** Right object. */
+    /**
+     * Right object.
+     */
     public R right;
 
     /**
@@ -122,7 +130,7 @@ public class MutableTriple<L, M, R> extends Triple<L, M, R> {
      */
     @Override
     public L getLeft() {
-        return left;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -130,7 +138,7 @@ public class MutableTriple<L, M, R> extends Triple<L, M, R> {
      */
     @Override
     public M getMiddle() {
-        return middle;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -138,7 +146,7 @@ public class MutableTriple<L, M, R> extends Triple<L, M, R> {
      */
     @Override
     public R getRight() {
-        return right;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -147,7 +155,7 @@ public class MutableTriple<L, M, R> extends Triple<L, M, R> {
      * @param left  the new value of the left element, may be null.
      */
     public void setLeft(final L left) {
-        this.left = left;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -156,7 +164,7 @@ public class MutableTriple<L, M, R> extends Triple<L, M, R> {
      * @param middle  the new value of the middle element, may be null.
      */
     public void setMiddle(final M middle) {
-        this.middle = middle;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -165,7 +173,6 @@ public class MutableTriple<L, M, R> extends Triple<L, M, R> {
      * @param right  the new value of the right element, may be null.
      */
     public void setRight(final R right) {
-        this.right = right;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }
-

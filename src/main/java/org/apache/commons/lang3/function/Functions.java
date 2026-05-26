@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -39,7 +38,7 @@ public final class Functions {
      * @since 3.15.0
      */
     public static <T, R> R apply(final Function<T, R> function, final T object) {
-        return function != null ? function.apply(object) : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -66,7 +65,7 @@ public final class Functions {
      * @since 3.19.0
      */
     public static <T, R> R applyNonNull(final T value, final Function<? super T, ? extends R> mapper) {
-        return value != null ? Objects.requireNonNull(mapper, "mapper").apply(value) : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -96,7 +95,7 @@ public final class Functions {
      * @since 3.19.0
      */
     public static <T, U, R> R applyNonNull(final T value1, final Function<? super T, ? extends U> mapper1, final Function<? super U, ? extends R> mapper2) {
-        return applyNonNull(applyNonNull(value1, mapper1), mapper2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -128,9 +127,8 @@ public final class Functions {
      * @see #applyNonNull(Object, Function, Function)
      * @since 3.19.0
      */
-    public static <T, U, V, R> R applyNonNull(final T value1, final Function<? super T, ? extends U> mapper1, final Function<? super U, ? extends V> mapper2,
-            final Function<? super V, ? extends R> mapper3) {
-        return applyNonNull(applyNonNull(applyNonNull(value1, mapper1), mapper2), mapper3);
+    public static <T, U, V, R> R applyNonNull(final T value1, final Function<? super T, ? extends U> mapper1, final Function<? super U, ? extends V> mapper2, final Function<? super V, ? extends R> mapper3) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -142,7 +140,7 @@ public final class Functions {
      * @return the argument
      */
     public static <T, R> Function<T, R> function(final Function<T, R> function) {
-        return function;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private Functions() {

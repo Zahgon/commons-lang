@@ -33,7 +33,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
-
 import org.apache.commons.lang3.AppendableJoiner;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ClassUtils;
@@ -52,6 +51,7 @@ public class TypeUtils {
      * GenericArrayType implementation class.
      */
     private static final class GenericArrayTypeImpl implements GenericArrayType {
+
         private final Type componentType;
 
         /**
@@ -68,7 +68,7 @@ public class TypeUtils {
          */
         @Override
         public boolean equals(final Object obj) {
-            return obj == this || obj instanceof GenericArrayType && TypeUtils.equals(this, (GenericArrayType) obj);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -76,7 +76,7 @@ public class TypeUtils {
          */
         @Override
         public Type getGenericComponentType() {
-            return componentType;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -84,9 +84,7 @@ public class TypeUtils {
          */
         @Override
         public int hashCode() {
-            int result = 67 << 4;
-            result |= componentType.hashCode();
-            return result;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -94,7 +92,7 @@ public class TypeUtils {
          */
         @Override
         public String toString() {
-            return TypeUtils.toString(this);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -102,8 +100,11 @@ public class TypeUtils {
      * ParameterizedType implementation class.
      */
     private static final class ParameterizedTypeImpl implements ParameterizedType {
+
         private final Class<?> raw;
+
         private final Type useOwner;
+
         private final Type[] typeArguments;
 
         /**
@@ -124,7 +125,7 @@ public class TypeUtils {
          */
         @Override
         public boolean equals(final Object obj) {
-            return obj == this || obj instanceof ParameterizedType && TypeUtils.equals(this, (ParameterizedType) obj);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -132,7 +133,7 @@ public class TypeUtils {
          */
         @Override
         public Type[] getActualTypeArguments() {
-            return typeArguments.clone();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -140,7 +141,7 @@ public class TypeUtils {
          */
         @Override
         public Type getOwnerType() {
-            return useOwner;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -148,7 +149,7 @@ public class TypeUtils {
          */
         @Override
         public Type getRawType() {
-            return raw;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -156,13 +157,7 @@ public class TypeUtils {
          */
         @Override
         public int hashCode() {
-            int result = 71 << 4;
-            result |= raw.hashCode();
-            result <<= 4;
-            result |= Objects.hashCode(useOwner);
-            result <<= 8;
-            result |= Arrays.hashCode(typeArguments);
-            return result;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -170,7 +165,7 @@ public class TypeUtils {
          */
         @Override
         public String toString() {
-            return TypeUtils.toString(this);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -180,6 +175,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static class WildcardTypeBuilder implements Builder<WildcardType> {
+
         private Type[] upperBounds;
 
         private Type[] lowerBounds;
@@ -195,7 +191,7 @@ public class TypeUtils {
          */
         @Override
         public WildcardType build() {
-            return new WildcardTypeImpl(upperBounds, lowerBounds);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -205,8 +201,7 @@ public class TypeUtils {
          * @return {@code this} instance.
          */
         public WildcardTypeBuilder withLowerBounds(final Type... bounds) {
-            this.lowerBounds = bounds;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -216,8 +211,7 @@ public class TypeUtils {
          * @return {@code this} instance.
          */
         public WildcardTypeBuilder withUpperBounds(final Type... bounds) {
-            this.upperBounds = bounds;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -225,7 +219,9 @@ public class TypeUtils {
      * WildcardType implementation class.
      */
     private static final class WildcardTypeImpl implements WildcardType {
+
         private final Type[] upperBounds;
+
         private final Type[] lowerBounds;
 
         /**
@@ -244,7 +240,7 @@ public class TypeUtils {
          */
         @Override
         public boolean equals(final Object obj) {
-            return obj == this || obj instanceof WildcardType && TypeUtils.equals(this, (WildcardType) obj);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -252,7 +248,7 @@ public class TypeUtils {
          */
         @Override
         public Type[] getLowerBounds() {
-            return lowerBounds.clone();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -260,7 +256,7 @@ public class TypeUtils {
          */
         @Override
         public Type[] getUpperBounds() {
-            return upperBounds.clone();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -268,11 +264,7 @@ public class TypeUtils {
          */
         @Override
         public int hashCode() {
-            int result = 73 << 8;
-            result |= Arrays.hashCode(upperBounds);
-            result <<= 8;
-            result |= Arrays.hashCode(lowerBounds);
-            return result;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -280,7 +272,7 @@ public class TypeUtils {
          */
         @Override
         public String toString() {
-            return TypeUtils.toString(this);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -288,34 +280,23 @@ public class TypeUtils {
      * Ampersand sign joiner.
      */
     // @formatter:off
-    private static final AppendableJoiner<Type> AMP_JOINER = AppendableJoiner.<Type>builder()
-            .setDelimiter(" & ")
-            .setElementAppender((a, e) -> a.append(toString(e)))
-            .get();
-    // @formatter:on
+    private static final AppendableJoiner<Type> AMP_JOINER = AppendableJoiner.<Type>builder().setDelimiter(" & ").setElementAppender((a, e) -> a.append(toString(e))).get();
 
+    // @formatter:on
     /**
      * Method classToString joiner.
      */
     // @formatter:off
-    private static final AppendableJoiner<TypeVariable<Class<?>>> CTJ_JOINER = AppendableJoiner.<TypeVariable<Class<?>>>builder()
-        .setDelimiter(", ")
-        .setElementAppender((a, e) -> a.append(anyToString(e)))
-        .get();
-    // @formatter:on
+    private static final AppendableJoiner<TypeVariable<Class<?>>> CTJ_JOINER = AppendableJoiner.<TypeVariable<Class<?>>>builder().setDelimiter(", ").setElementAppender((a, e) -> a.append(anyToString(e))).get();
 
+    // @formatter:on
     /**
      * Greater than and lesser than sign joiner.
      */
     // @formatter:off
-    private static final AppendableJoiner<Object> GT_JOINER = AppendableJoiner.builder()
-            .setPrefix("<")
-            .setSuffix(">")
-            .setDelimiter(", ")
-            .setElementAppender((a, e) -> a.append(anyToString(e)))
-            .get();
-    // @formatter:on
+    private static final AppendableJoiner<Object> GT_JOINER = AppendableJoiner.builder().setPrefix("<").setSuffix(">").setDelimiter(", ").setElementAppender((a, e) -> a.append(anyToString(e))).get();
 
+    // @formatter:on
     /**
      * A wildcard instance matching {@code ?}.
      *
@@ -371,28 +352,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static boolean containsTypeVariables(final Type type) {
-        if (type instanceof TypeVariable<?>) {
-            return true;
-        }
-        if (type instanceof Class<?>) {
-            return ((Class<?>) type).getTypeParameters().length > 0;
-        }
-        if (type instanceof ParameterizedType) {
-            for (final Type arg : ((ParameterizedType) type).getActualTypeArguments()) {
-                if (containsTypeVariables(arg)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-        if (type instanceof WildcardType) {
-            final WildcardType wild = (WildcardType) type;
-            return containsTypeVariables(getImplicitLowerBounds(wild)[0]) || containsTypeVariables(getImplicitUpperBounds(wild)[0]);
-        }
-        if (type instanceof GenericArrayType) {
-            return containsTypeVariables(((GenericArrayType) type).getGenericComponentType());
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static boolean containsVariableTypeSameParametrizedTypeBound(final TypeVariable<?> typeVariable, final ParameterizedType parameterizedType) {
@@ -421,30 +381,7 @@ public class TypeUtils {
      * @throws NullPointerException if either {@code cls} or {@code superParameterizedType} is {@code null}.
      */
     public static Map<TypeVariable<?>, Type> determineTypeArguments(final Class<?> cls, final ParameterizedType superParameterizedType) {
-        Objects.requireNonNull(cls, "cls");
-        Objects.requireNonNull(superParameterizedType, "superParameterizedType");
-        final Class<?> superClass = getRawType(superParameterizedType);
-        // compatibility check
-        if (!isAssignable(cls, superClass)) {
-            return null;
-        }
-        if (cls.equals(superClass)) {
-            return getTypeArguments(superParameterizedType, superClass, null);
-        }
-        // get the next class in the inheritance hierarchy
-        final Type midType = getClosestParentType(cls, superClass);
-        // can only be a class or a parameterized type
-        if (midType instanceof Class<?>) {
-            return determineTypeArguments((Class<?>) midType, superParameterizedType);
-        }
-        final ParameterizedType midParameterizedType = (ParameterizedType) midType;
-        final Class<?> midClass = getRawType(midParameterizedType);
-        // get the type variables of the mid class that map to the type
-        // arguments of the super class
-        final Map<TypeVariable<?>, Type> typeVarAssigns = determineTypeArguments(midClass, superParameterizedType);
-        // map the arguments of the mid type to the class type variables
-        mapTypeVariablesToArguments(cls, midParameterizedType, typeVarAssigns);
-        return typeVarAssigns;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -484,19 +421,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static boolean equals(final Type type1, final Type type2) {
-        if (Objects.equals(type1, type2)) {
-            return true;
-        }
-        if (type1 instanceof ParameterizedType) {
-            return equals((ParameterizedType) type1, type2);
-        }
-        if (type1 instanceof GenericArrayType) {
-            return equals((GenericArrayType) type1, type2);
-        }
-        if (type1 instanceof WildcardType) {
-            return equals((WildcardType) type1, type2);
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -528,8 +453,7 @@ public class TypeUtils {
     private static boolean equals(final WildcardType wildcardType, final Type type) {
         if (type instanceof WildcardType) {
             final WildcardType other = (WildcardType) type;
-            return equals(getImplicitLowerBounds(wildcardType), getImplicitLowerBounds(other))
-                    && equals(getImplicitUpperBounds(wildcardType), getImplicitUpperBounds(other));
+            return equals(getImplicitLowerBounds(wildcardType), getImplicitLowerBounds(other)) && equals(getImplicitUpperBounds(wildcardType), getImplicitUpperBounds(other));
         }
         return false;
     }
@@ -555,8 +479,7 @@ public class TypeUtils {
         final Type[] filteredArgumentTypes = Arrays.copyOf(parameterizedType.getActualTypeArguments(), parameterizedType.getActualTypeArguments().length);
         int[] indexesToRemove = {};
         for (int i = 0; i < filteredArgumentTypes.length; i++) {
-            if (filteredArgumentTypes[i] instanceof TypeVariable<?>
-                    && containsVariableTypeSameParametrizedTypeBound((TypeVariable<?>) filteredArgumentTypes[i], parameterizedType)) {
+            if (filteredArgumentTypes[i] instanceof TypeVariable<?> && containsVariableTypeSameParametrizedTypeBound((TypeVariable<?>) filteredArgumentTypes[i], parameterizedType)) {
                 indexesToRemove = ArrayUtils.add(indexesToRemove, i);
             }
         }
@@ -571,7 +494,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static GenericArrayType genericArrayType(final Type componentType) {
-        return new GenericArrayTypeImpl(Objects.requireNonNull(componentType, "componentType"));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -591,14 +514,7 @@ public class TypeUtils {
      * @return component type or null if type is not an array type.
      */
     public static Type getArrayComponentType(final Type type) {
-        if (type instanceof Class<?>) {
-            final Class<?> cls = (Class<?>) type;
-            return cls.isArray() ? cls.getComponentType() : null;
-        }
-        if (type instanceof GenericArrayType) {
-            return ((GenericArrayType) type).getGenericComponentType();
-        }
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -650,7 +566,7 @@ public class TypeUtils {
      * @throws NullPointerException if {@code typeVariable} is {@code null}.
      */
     public static Type[] getImplicitBounds(final TypeVariable<?> typeVariable) {
-        return normalizeUpperToObject(Objects.requireNonNull(typeVariable, "typeVariable").getBounds());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -662,9 +578,7 @@ public class TypeUtils {
      * @throws NullPointerException if {@code wildcardType} is {@code null}.
      */
     public static Type[] getImplicitLowerBounds(final WildcardType wildcardType) {
-        Objects.requireNonNull(wildcardType, "wildcardType");
-        final Type[] bounds = wildcardType.getLowerBounds();
-        return bounds.length == 0 ? new Type[] { null } : bounds;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -676,7 +590,7 @@ public class TypeUtils {
      * @throws NullPointerException if {@code wildcardType} is {@code null}.
      */
     public static Type[] getImplicitUpperBounds(final WildcardType wildcardType) {
-        return normalizeUpperToObject(Objects.requireNonNull(wildcardType, "wildcardType").getUpperBounds());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -709,52 +623,7 @@ public class TypeUtils {
      * @return the resolved {@link Class} object or {@code null} if the type could not be resolved.
      */
     public static Class<?> getRawType(final Type type, final Type assigningType) {
-        if (type instanceof Class<?>) {
-            // it is raw, no problem
-            return (Class<?>) type;
-        }
-        if (type instanceof ParameterizedType) {
-            // simple enough to get the raw type of a ParameterizedType
-            return getRawType((ParameterizedType) type);
-        }
-        if (type instanceof TypeVariable<?>) {
-            if (assigningType == null) {
-                return null;
-            }
-            // get the entity declaring this type variable
-            final Object genericDeclaration = ((TypeVariable<?>) type).getGenericDeclaration();
-            // can't get the raw type of a method- or constructor-declared type
-            // variable
-            if (!(genericDeclaration instanceof Class<?>)) {
-                return null;
-            }
-            // get the type arguments for the declaring class/interface based
-            // on the enclosing type
-            final Map<TypeVariable<?>, Type> typeVarAssigns = getTypeArguments(assigningType, (Class<?>) genericDeclaration);
-            // enclosingType has to be a subclass (or subinterface) of the
-            // declaring type
-            if (typeVarAssigns == null) {
-                return null;
-            }
-            // get the argument assigned to this type variable
-            final Type typeArgument = typeVarAssigns.get(type);
-            if (typeArgument == null) {
-                return null;
-            }
-            // get the argument for this type variable
-            return getRawType(typeArgument, assigningType);
-        }
-        if (type instanceof GenericArrayType) {
-            // get raw component type
-            final Class<?> rawComponentType = getRawType(((GenericArrayType) type).getGenericComponentType(), assigningType);
-            // create array type from raw component type and return its class
-            return rawComponentType != null ? Array.newInstance(rawComponentType, 0).getClass() : null;
-        }
-        // (hand-waving) this is not the method you're looking for
-        if (type instanceof WildcardType) {
-            return null;
-        }
-        throw new IllegalArgumentException("unknown type: " + type);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -799,7 +668,7 @@ public class TypeUtils {
      * @return a {@link Map} of the type arguments to their respective type variables.
      */
     public static Map<TypeVariable<?>, Type> getTypeArguments(final ParameterizedType type) {
-        return getTypeArguments(type, getRawType(type), null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -810,8 +679,7 @@ public class TypeUtils {
      * @param subtypeVarAssigns a map with type variables.
      * @return the {@link Map} with type arguments.
      */
-    private static Map<TypeVariable<?>, Type> getTypeArguments(final ParameterizedType parameterizedType, final Class<?> toClass,
-            final Map<TypeVariable<?>, Type> subtypeVarAssigns) {
+    private static Map<TypeVariable<?>, Type> getTypeArguments(final ParameterizedType parameterizedType, final Class<?> toClass, final Map<TypeVariable<?>, Type> subtypeVarAssigns) {
         final Class<?> cls = getRawType(parameterizedType);
         // make sure they're assignable
         if (!isAssignable(cls, toClass)) {
@@ -882,7 +750,7 @@ public class TypeUtils {
      *         inclusive.
      */
     public static Map<TypeVariable<?>, Type> getTypeArguments(final Type type, final Class<?> toClass) {
-        return getTypeArguments(type, toClass, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -901,8 +769,7 @@ public class TypeUtils {
             return getTypeArguments((ParameterizedType) type, toClass, subtypeVarAssigns);
         }
         if (type instanceof GenericArrayType) {
-            return getTypeArguments(((GenericArrayType) type).getGenericComponentType(), toClass.isArray() ? toClass.getComponentType() : toClass,
-                    subtypeVarAssigns);
+            return getTypeArguments(((GenericArrayType) type).getGenericComponentType(), toClass.isArray() ? toClass.getComponentType() : toClass, subtypeVarAssigns);
         }
         // since wildcard types are not assignable to classes, should this just
         // return null?
@@ -934,7 +801,7 @@ public class TypeUtils {
      * @return {@code true} if {@code type} is an array class or a {@link GenericArrayType}.
      */
     public static boolean isArrayType(final Type type) {
-        return type instanceof GenericArrayType || type instanceof Class<?> && ((Class<?>) type).isArray();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -980,8 +847,7 @@ public class TypeUtils {
         // the only classes to which a generic array type can be assigned
         // are class Object and array classes
         if (type instanceof GenericArrayType) {
-            return toClass.equals(Object.class)
-                    || toClass.isArray() && isAssignable(((GenericArrayType) type).getGenericComponentType(), toClass.getComponentType());
+            return toClass.equals(Object.class) || toClass.isArray() && isAssignable(((GenericArrayType) type).getGenericComponentType(), toClass.getComponentType());
         }
         // wildcard types are not assignable to a class (though one would think
         // "? super Object" would be assignable to Object)
@@ -1113,8 +979,7 @@ public class TypeUtils {
             // parameters must either be absent from the subject type, within
             // the bounds of the wildcard type, or be an exact match to the
             // parameters of the target type.
-            if (fromTypeArg != null && toTypeArg != null && !toTypeArg.equals(fromTypeArg)
-                    && !(toTypeArg instanceof WildcardType && isAssignable(fromTypeArg, toTypeArg, typeVarAssigns))) {
+            if (fromTypeArg != null && toTypeArg != null && !toTypeArg.equals(fromTypeArg) && !(toTypeArg instanceof WildcardType && isAssignable(fromTypeArg, toTypeArg, typeVarAssigns))) {
                 return false;
             }
         }
@@ -1130,7 +995,7 @@ public class TypeUtils {
      * @return {@code true} if {@code type} is assignable to {@code toType}.
      */
     public static boolean isAssignable(final Type type, final Type toType) {
-        return isAssignable(type, toType, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1296,10 +1161,7 @@ public class TypeUtils {
      * @return {@code true} if {@code value} is an instance of {@code type}.
      */
     public static boolean isInstance(final Object value, final Type type) {
-        if (type == null) {
-            return false;
-        }
-        return value == null ? !(type instanceof Class<?>) || !((Class<?>) type).isPrimitive() : isAssignable(value.getClass(), type, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1310,8 +1172,7 @@ public class TypeUtils {
      * @param parameterizedType the parameterized type.
      * @param typeVarAssigns    the map to be filled.
      */
-    private static <T> void mapTypeVariablesToArguments(final Class<T> cls, final ParameterizedType parameterizedType,
-            final Map<TypeVariable<?>, Type> typeVarAssigns) {
+    private static <T> void mapTypeVariablesToArguments(final Class<T> cls, final ParameterizedType parameterizedType, final Map<TypeVariable<?>, Type> typeVarAssigns) {
         // capture the type variables from the owner type that have assignments
         final Type ownerType = parameterizedType.getOwnerType();
         if (ownerType instanceof ParameterizedType) {
@@ -1332,10 +1193,9 @@ public class TypeUtils {
             final TypeVariable<?> typeVar = typeVars[i];
             final Type typeArg = typeArgs[i];
             // argument of parameterizedType is a type variable of cls
-            if (typeVarList.contains(typeArg)
-                    // type variable of parameterizedType has an assignment in
-                    // the super type.
-                    && typeVarAssigns.containsKey(typeVar)) {
+            if (typeVarList.contains(typeArg) && // type variable of parameterizedType has an assignment in
+            // the super type.
+            typeVarAssigns.containsKey(typeVar)) {
                 // map the assignment to the cls's type variable
                 typeVarAssigns.put((TypeVariable<?>) typeArg, typeVarAssigns.get(typeVar));
             }
@@ -1367,25 +1227,7 @@ public class TypeUtils {
      * @throws NullPointerException if {@code bounds} is {@code null}.
      */
     public static Type[] normalizeUpperBounds(final Type[] bounds) {
-        Objects.requireNonNull(bounds, "bounds");
-        // don't bother if there's only one (or none) type
-        if (bounds.length < 2) {
-            return bounds;
-        }
-        final Set<Type> types = new HashSet<>(bounds.length);
-        for (final Type type1 : bounds) {
-            boolean subtypeFound = false;
-            for (final Type type2 : bounds) {
-                if (type1 != type2 && isAssignable(type2, type1, null)) {
-                    subtypeFound = true;
-                    break;
-                }
-            }
-            if (!subtypeFound) {
-                types.add(type1);
-            }
-        }
-        return types.toArray(ArrayUtils.EMPTY_TYPE_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1409,9 +1251,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static final ParameterizedType parameterize(final Class<?> rawClass, final Map<TypeVariable<?>, Type> typeVariableMap) {
-        Objects.requireNonNull(rawClass, "rawClass");
-        Objects.requireNonNull(typeVariableMap, "typeVariableMap");
-        return parameterizeWithOwner(null, rawClass, extractTypeArgumentsFrom(typeVariableMap, rawClass.getTypeParameters()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1424,7 +1264,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static final ParameterizedType parameterize(final Class<?> rawClass, final Type... typeArguments) {
-        return parameterizeWithOwner(null, rawClass, typeArguments);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1467,9 +1307,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static final ParameterizedType parameterizeWithOwner(final Type owner, final Class<?> rawClass, final Map<TypeVariable<?>, Type> typeVariableMap) {
-        Objects.requireNonNull(rawClass, "rawClass");
-        Objects.requireNonNull(typeVariableMap, "typeVariableMap");
-        return parameterizeWithOwner(owner, rawClass, extractTypeArgumentsFrom(typeVariableMap, rawClass.getTypeParameters()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1483,21 +1321,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static final ParameterizedType parameterizeWithOwner(final Type owner, final Class<?> rawClass, final Type... typeArguments) {
-        Objects.requireNonNull(rawClass, "rawClass");
-        final Type useOwner;
-        if (rawClass.getEnclosingClass() == null) {
-            Validate.isTrue(owner == null, "no owner allowed for top-level %s", rawClass);
-            useOwner = null;
-        } else if (owner == null) {
-            useOwner = rawClass.getEnclosingClass();
-        } else {
-            Validate.isTrue(isAssignable(owner, rawClass.getEnclosingClass()), "%s is invalid owner type for parameterized %s", owner, rawClass);
-            useOwner = owner;
-        }
-        Validate.noNullElements(typeArguments, "null type argument at index %s");
-        Validate.isTrue(rawClass.getTypeParameters().length == typeArguments.length, "invalid number of type parameters specified: expected %d, got %d",
-                rawClass.getTypeParameters().length, typeArguments.length);
-        return new ParameterizedTypeImpl(rawClass, useOwner, typeArguments);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1528,25 +1352,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static String toLongString(final TypeVariable<?> typeVariable) {
-        Objects.requireNonNull(typeVariable, "typeVariable");
-        final StringBuilder buf = new StringBuilder();
-        final GenericDeclaration d = typeVariable.getGenericDeclaration();
-        if (d instanceof Class<?>) {
-            Class<?> c = (Class<?>) d;
-            while (true) {
-                if (c.getEnclosingClass() == null) {
-                    buf.insert(0, c.getName());
-                    break;
-                }
-                buf.insert(0, c.getSimpleName()).insert(0, '.');
-                c = c.getEnclosingClass();
-            }
-        } else if (d instanceof Type) { // not possible as of now
-            buf.append(toString((Type) d));
-        } else {
-            buf.append(d);
-        }
-        return buf.append(':').append(typeVariableToString(typeVariable)).toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1558,23 +1364,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static String toString(final Type type) {
-        Objects.requireNonNull(type, "type");
-        if (type instanceof Class<?>) {
-            return classToString((Class<?>) type);
-        }
-        if (type instanceof ParameterizedType) {
-            return parameterizedTypeToString((ParameterizedType) type);
-        }
-        if (type instanceof WildcardType) {
-            return wildcardTypeToString((WildcardType) type);
-        }
-        if (type instanceof TypeVariable<?>) {
-            return typeVariableToString((TypeVariable<?>) type);
-        }
-        if (type instanceof GenericArrayType) {
-            return genericArrayTypeToString((GenericArrayType) type);
-        }
-        throw new IllegalArgumentException(ObjectUtils.identityToString(type));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1587,19 +1377,7 @@ public class TypeUtils {
      * @throws NullPointerException if {@code typeVariableMap} is {@code null}.
      */
     public static boolean typesSatisfyVariables(final Map<TypeVariable<?>, Type> typeVariableMap) {
-        Objects.requireNonNull(typeVariableMap, "typeVariableMap");
-        // all types must be assignable to all the bounds of their mapped
-        // type variable.
-        for (final Map.Entry<TypeVariable<?>, Type> entry : typeVariableMap.entrySet()) {
-            final TypeVariable<?> typeVar = entry.getKey();
-            final Type type = entry.getValue();
-            for (final Type bound : getImplicitBounds(typeVar)) {
-                if (!isAssignable(type, substituteTypeVariables(bound, typeVariableMap), typeVariableMap)) {
-                    return false;
-                }
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1681,10 +1459,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static Type unrollVariables(Map<TypeVariable<?>, Type> typeArguments, final Type type) {
-        if (typeArguments == null) {
-            typeArguments = Collections.emptyMap();
-        }
-        return unrollVariables(typeArguments, type, new HashSet<>());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static Type unrollVariables(final Map<TypeVariable<?>, Type> typeArguments, final Type type, final Set<TypeVariable<?>> visited) {
@@ -1716,8 +1491,7 @@ public class TypeUtils {
             }
             if (type instanceof WildcardType) {
                 final WildcardType wild = (WildcardType) type;
-                return wildcardType().withUpperBounds(unrollBounds(typeArguments, wild.getUpperBounds()))
-                        .withLowerBounds(unrollBounds(typeArguments, wild.getLowerBounds())).build();
+                return wildcardType().withUpperBounds(unrollBounds(typeArguments, wild.getUpperBounds())).withLowerBounds(unrollBounds(typeArguments, wild.getLowerBounds())).build();
             }
         }
         return type;
@@ -1730,7 +1504,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static WildcardTypeBuilder wildcardType() {
-        return new WildcardTypeBuilder();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1760,7 +1534,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static <T> Typed<T> wrap(final Class<T> type) {
-        return wrap((Type) type);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1772,7 +1546,7 @@ public class TypeUtils {
      * @since 3.2
      */
     public static <T> Typed<T> wrap(final Type type) {
-        return () -> type;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1788,5 +1562,4 @@ public class TypeUtils {
     public TypeUtils() {
         // empty
     }
-
 }

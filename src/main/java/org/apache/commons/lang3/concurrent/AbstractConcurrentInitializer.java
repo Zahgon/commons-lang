@@ -14,11 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.concurrent;
 
 import java.util.Objects;
-
 import org.apache.commons.lang3.builder.AbstractSupplier;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.commons.lang3.function.FailableConsumer;
@@ -41,8 +39,7 @@ public abstract class AbstractConcurrentInitializer<T, E extends Exception> impl
      * @param <B> The type of builder.
      * @param <E> The exception type thrown by {@link #initialize()}.
      */
-    public abstract static class AbstractBuilder<I extends AbstractConcurrentInitializer<T, E>, T, B extends AbstractBuilder<I, T, B, E>, E extends Exception>
-            extends AbstractSupplier<I, B, E> {
+    public abstract static class AbstractBuilder<I extends AbstractConcurrentInitializer<T, E>, T, B extends AbstractBuilder<I, T, B, E>, E extends Exception> extends AbstractSupplier<I, B, E> {
 
         /**
          * Closer consumer called by {@link #close()}.
@@ -67,7 +64,7 @@ public abstract class AbstractConcurrentInitializer<T, E extends Exception> impl
          * @return the closer consumer called by {@link #close()}.
          */
         public FailableConsumer<T, ? extends Exception> getCloser() {
-            return closer;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -76,7 +73,7 @@ public abstract class AbstractConcurrentInitializer<T, E extends Exception> impl
          * @return the initializer supplier called by {@link #initialize()}.
          */
         public FailableSupplier<T, ? extends Exception> getInitializer() {
-            return initializer;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -86,8 +83,7 @@ public abstract class AbstractConcurrentInitializer<T, E extends Exception> impl
          * @return {@code this} instance.
          */
         public B setCloser(final FailableConsumer<T, ? extends Exception> closer) {
-            this.closer = closer != null ? closer : FailableConsumer.nop();
-            return asThis();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -97,10 +93,8 @@ public abstract class AbstractConcurrentInitializer<T, E extends Exception> impl
          * @return {@code this} instance.
          */
         public B setInitializer(final FailableSupplier<T, ? extends Exception> initializer) {
-            this.initializer = initializer != null ? initializer : FailableSupplier.nul();
-            return asThis();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -138,20 +132,7 @@ public abstract class AbstractConcurrentInitializer<T, E extends Exception> impl
      * @since 3.14.0
      */
     public void close() throws ConcurrentException {
-        if (isInitialized()) {
-            try {
-                closer.accept(get());
-            } catch (final Exception e) {
-                // This intentionally does not duplicate the logic in initialize
-                // or care about the generic type E.
-                //
-                // initialize may run inside a Future and it does not make sense
-                // to wrap an exception stored inside a Future. However close()
-                // always runs on the current thread so it always wraps in a
-                // ConcurrentException
-                throw new ConcurrentException(ExceptionUtils.throwUnchecked(e));
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -175,21 +156,7 @@ public abstract class AbstractConcurrentInitializer<T, E extends Exception> impl
      */
     @SuppressWarnings("unchecked")
     protected T initialize() throws E {
-        try {
-            return initializer.get();
-        } catch (final Exception e) {
-            // Do this first so we don't pass a RuntimeException or Error into an exception constructor
-            ExceptionUtils.throwUnchecked(e);
-            // Depending on the subclass of AbstractConcurrentInitializer E can be Exception or ConcurrentException
-            // if E is Exception the if statement below will always be true, and the new Exception object created
-            // in getTypedException will never be thrown. If E is ConcurrentException and the if statement is false
-            // we throw the ConcurrentException returned from getTypedException, which wraps the original exception.
-            final E typedException = getTypedException(e);
-            if (typedException.getClass().isAssignableFrom(e.getClass())) {
-                throw (E) e;
-            }
-            throw typedException;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -200,5 +167,4 @@ public abstract class AbstractConcurrentInitializer<T, E extends Exception> impl
      * @return true if all initialization is complete, otherwise false.
      */
     protected abstract boolean isInitialized();
-
 }

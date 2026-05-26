@@ -17,7 +17,6 @@
 package org.apache.commons.lang3.concurrent;
 
 import java.util.concurrent.atomic.AtomicReference;
-
 import org.apache.commons.lang3.function.FailableConsumer;
 import org.apache.commons.lang3.function.FailableSupplier;
 
@@ -86,9 +85,8 @@ public class AtomicInitializer<T> extends AbstractConcurrentInitializer<T, Concu
         @SuppressWarnings("unchecked")
         @Override
         public I get() {
-            return (I) new AtomicInitializer(getInitializer(), getCloser());
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     private static final Object NO_INIT = new Object();
@@ -101,10 +99,12 @@ public class AtomicInitializer<T> extends AbstractConcurrentInitializer<T, Concu
      * @since 3.14.0
      */
     public static <T> Builder<AtomicInitializer<T>, T> builder() {
-        return new Builder<>();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** Holds the reference to the managed object. */
+    /**
+     * Holds the reference to the managed object.
+     */
     private final AtomicReference<T> reference = new AtomicReference<>(getNoInit());
 
     /**
@@ -133,18 +133,12 @@ public class AtomicInitializer<T> extends AbstractConcurrentInitializer<T, Concu
      */
     @Override
     public T get() throws ConcurrentException {
-        T result = reference.get();
-        if (result == getNoInit()) {
-            result = initialize();
-            if (!reference.compareAndSet(getNoInit(), result)) {
-                // another thread has initialized the reference
-                result = reference.get();
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** Gets the internal no-init object cast for this instance. */
+    /**
+     * Gets the internal no-init object cast for this instance.
+     */
     @SuppressWarnings("unchecked")
     private T getNoInit() {
         return (T) NO_INIT;
@@ -155,7 +149,7 @@ public class AtomicInitializer<T> extends AbstractConcurrentInitializer<T, Concu
      */
     @Override
     protected ConcurrentException getTypedException(final Exception e) {
-        return new ConcurrentException(e);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -166,6 +160,6 @@ public class AtomicInitializer<T> extends AbstractConcurrentInitializer<T, Concu
      */
     @Override
     public boolean isInitialized() {
-        return reference.get() != NO_INIT;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

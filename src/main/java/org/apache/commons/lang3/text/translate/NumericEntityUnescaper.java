@@ -21,7 +21,6 @@ import java.io.Writer;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumSet;
-
 import org.apache.commons.lang3.CharUtils;
 
 /**
@@ -51,12 +50,10 @@ public class NumericEntityUnescaper extends CharSequenceTranslator {
          * Require a semicolon.
          */
         semiColonRequired,
-
         /**
          * Do not require a semicolon.
          */
         semiColonOptional,
-
         /**
          * Throw an exception if a semicolon is missing.
          */
@@ -97,7 +94,7 @@ public class NumericEntityUnescaper extends CharSequenceTranslator {
      * @return whether the option is set.
      */
     public boolean isSet(final OPTION option) {
-        return options != null && options.contains(option);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -105,56 +102,6 @@ public class NumericEntityUnescaper extends CharSequenceTranslator {
      */
     @Override
     public int translate(final CharSequence input, final int index, final Writer out) throws IOException {
-        final int seqEnd = input.length();
-        // Uses -2 to ensure there is something after the &#
-        if (input.charAt(index) == '&' && index < seqEnd - 2 && input.charAt(index + 1) == '#') {
-            int start = index + 2;
-            boolean isHex = false;
-            final char firstChar = input.charAt(start);
-            if (firstChar == 'x' || firstChar == 'X') {
-                start++;
-                isHex = true;
-                // Check there's more than just an x after the &#
-                if (start == seqEnd) {
-                    return 0;
-                }
-            }
-            int end = start;
-            // Note that this supports character codes without a ; on the end
-            while (end < seqEnd && CharUtils.isHex(input.charAt(end))) {
-                end++;
-            }
-            final boolean semiNext = end != seqEnd && input.charAt(end) == ';';
-            if (!semiNext) {
-                if (isSet(OPTION.semiColonRequired)) {
-                    return 0;
-                }
-                if (isSet(OPTION.errorIfNoSemiColon)) {
-                    throw new IllegalArgumentException("Semi-colon required at end of numeric entity");
-                }
-            }
-            final int entityValue;
-            try {
-                if (isHex) {
-                    entityValue = Integer.parseInt(input.subSequence(start, end).toString(), 16);
-                } else {
-                    entityValue = Integer.parseInt(input.subSequence(start, end).toString(), 10);
-                }
-            } catch (final NumberFormatException nfe) {
-                return 0;
-            }
-            if (entityValue < Character.MIN_CODE_POINT || entityValue > Character.MAX_CODE_POINT) {
-                return 0;
-            }
-            if (entityValue > 0xFFFF) {
-                final char[] chars = Character.toChars(entityValue);
-                out.write(chars[0]);
-                out.write(chars[1]);
-            } else {
-                out.write(entityValue);
-            }
-            return 2 + end - start + (isHex ? 1 : 0) + (semiNext ? 1 : 0);
-        }
-        return 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

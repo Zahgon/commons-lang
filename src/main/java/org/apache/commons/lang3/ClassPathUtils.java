@@ -39,7 +39,7 @@ public class ClassPathUtils {
      * @since 3.13.0
      */
     public static String packageToPath(final String path) {
-        return Objects.requireNonNull(path, "path").replace('.', '/');
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -51,7 +51,7 @@ public class ClassPathUtils {
      * @since 3.13.0
      */
     public static String pathToPackage(final String path) {
-        return Objects.requireNonNull(path, "path").replace('/', '.');
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -71,9 +71,7 @@ public class ClassPathUtils {
      * @throws NullPointerException if either {@code context} or {@code resourceName} is null.
      */
     public static String toFullyQualifiedName(final Class<?> context, final String resourceName) {
-        Objects.requireNonNull(context, "context");
-        Objects.requireNonNull(resourceName, "resourceName");
-        return toFullyQualifiedName(context.getPackage(), resourceName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -93,9 +91,7 @@ public class ClassPathUtils {
      * @throws NullPointerException if either {@code context} or {@code resourceName} is null.
      */
     public static String toFullyQualifiedName(final Package context, final String resourceName) {
-        Objects.requireNonNull(context, "context");
-        Objects.requireNonNull(resourceName, "resourceName");
-        return context.getName() + "." + resourceName;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -115,9 +111,7 @@ public class ClassPathUtils {
      * @throws NullPointerException if either {@code context} or {@code resourceName} is null.
      */
     public static String toFullyQualifiedPath(final Class<?> context, final String resourceName) {
-        Objects.requireNonNull(context, "context");
-        Objects.requireNonNull(resourceName, "resourceName");
-        return toFullyQualifiedPath(context.getPackage(), resourceName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -137,9 +131,7 @@ public class ClassPathUtils {
      * @throws NullPointerException if either {@code context} or {@code resourceName} is null.
      */
     public static String toFullyQualifiedPath(final Package context, final String resourceName) {
-        Objects.requireNonNull(context, "context");
-        Objects.requireNonNull(resourceName, "resourceName");
-        return packageToPath(context.getName()) + "/" + resourceName;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -156,5 +148,4 @@ public class ClassPathUtils {
     public ClassPathUtils() {
         // empty
     }
-
 }

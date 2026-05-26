@@ -44,7 +44,9 @@ public class NotImplementedException extends UnsupportedOperationException {
 
     private static final long serialVersionUID = 20131021L;
 
-    /** A resource for more information regarding the lack of implementation. */
+    /**
+     * A resource for more information regarding the lack of implementation.
+     */
     private final String code;
 
     /**
@@ -132,6 +134,6 @@ public class NotImplementedException extends UnsupportedOperationException {
      * @return a code indicating a resource for more information regarding the lack of implementation
      */
     public String getCode() {
-        return this.code;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

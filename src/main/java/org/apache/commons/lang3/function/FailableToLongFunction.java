@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.function.ToLongFunction;
@@ -29,7 +28,9 @@ import java.util.function.ToLongFunction;
 @FunctionalInterface
 public interface FailableToLongFunction<T, E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableToLongFunction NOP = t -> 0L;
 
@@ -42,7 +43,7 @@ public interface FailableToLongFunction<T, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, E extends Throwable> FailableToLongFunction<T, E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

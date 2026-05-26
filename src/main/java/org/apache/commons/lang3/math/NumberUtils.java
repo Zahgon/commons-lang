@@ -22,7 +22,6 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.Objects;
 import java.util.function.Consumer;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 
@@ -33,61 +32,99 @@ import org.apache.commons.lang3.Validate;
  */
 public class NumberUtils {
 
-    /** Reusable Long constant for zero. */
+    /**
+     * Reusable Long constant for zero.
+     */
     public static final Long LONG_ZERO = Long.valueOf(0L);
 
-    /** Reusable Long constant for one. */
+    /**
+     * Reusable Long constant for one.
+     */
     public static final Long LONG_ONE = Long.valueOf(1L);
 
-    /** Reusable Long constant for minus one. */
+    /**
+     * Reusable Long constant for minus one.
+     */
     public static final Long LONG_MINUS_ONE = Long.valueOf(-1L);
 
-    /** Reusable Integer constant for zero. */
+    /**
+     * Reusable Integer constant for zero.
+     */
     public static final Integer INTEGER_ZERO = Integer.valueOf(0);
 
-    /** Reusable Integer constant for one. */
+    /**
+     * Reusable Integer constant for one.
+     */
     public static final Integer INTEGER_ONE = Integer.valueOf(1);
 
-    /** Reusable Integer constant for two */
+    /**
+     * Reusable Integer constant for two
+     */
     public static final Integer INTEGER_TWO = Integer.valueOf(2);
 
-    /** Reusable Integer constant for minus one. */
+    /**
+     * Reusable Integer constant for minus one.
+     */
     public static final Integer INTEGER_MINUS_ONE = Integer.valueOf(-1);
 
-    /** Reusable Short constant for zero. */
+    /**
+     * Reusable Short constant for zero.
+     */
     public static final Short SHORT_ZERO = Short.valueOf((short) 0);
 
-    /** Reusable Short constant for one. */
+    /**
+     * Reusable Short constant for one.
+     */
     public static final Short SHORT_ONE = Short.valueOf((short) 1);
 
-    /** Reusable Short constant for minus one. */
+    /**
+     * Reusable Short constant for minus one.
+     */
     public static final Short SHORT_MINUS_ONE = Short.valueOf((short) -1);
 
-    /** Reusable Byte constant for zero. */
+    /**
+     * Reusable Byte constant for zero.
+     */
     public static final Byte BYTE_ZERO = Byte.valueOf((byte) 0);
 
-    /** Reusable Byte constant for one. */
+    /**
+     * Reusable Byte constant for one.
+     */
     public static final Byte BYTE_ONE = Byte.valueOf((byte) 1);
 
-    /** Reusable Byte constant for minus one. */
+    /**
+     * Reusable Byte constant for minus one.
+     */
     public static final Byte BYTE_MINUS_ONE = Byte.valueOf((byte) -1);
 
-    /** Reusable Double constant for zero. */
+    /**
+     * Reusable Double constant for zero.
+     */
     public static final Double DOUBLE_ZERO = Double.valueOf(0.0d);
 
-    /** Reusable Double constant for one. */
+    /**
+     * Reusable Double constant for one.
+     */
     public static final Double DOUBLE_ONE = Double.valueOf(1.0d);
 
-    /** Reusable Double constant for minus one. */
+    /**
+     * Reusable Double constant for minus one.
+     */
     public static final Double DOUBLE_MINUS_ONE = Double.valueOf(-1.0d);
 
-    /** Reusable Float constant for zero. */
+    /**
+     * Reusable Float constant for zero.
+     */
     public static final Float FLOAT_ZERO = Float.valueOf(0.0f);
 
-    /** Reusable Float constant for one. */
+    /**
+     * Reusable Float constant for one.
+     */
     public static final Float FLOAT_ONE = Float.valueOf(1.0f);
 
-    /** Reusable Float constant for minus one. */
+    /**
+     * Reusable Float constant for minus one.
+     */
     public static final Float FLOAT_MINUS_ONE = Float.valueOf(-1.0f);
 
     /**
@@ -181,14 +218,7 @@ public class NumberUtils {
      * @throws NumberFormatException if the value cannot be converted.
      */
     public static BigDecimal createBigDecimal(final String str) {
-        if (str == null) {
-            return null;
-        }
-        // handle JDK1.3.1 bug where "" throws IndexOutOfBoundsException
-        if (StringUtils.isBlank(str)) {
-            throw new NumberFormatException("A blank string is not a valid number");
-        }
-        return new BigDecimal(str);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -206,34 +236,7 @@ public class NumberUtils {
      * @since 3.2
      */
     public static BigInteger createBigInteger(final String str) {
-        if (str == null) {
-            return null;
-        }
-        if (str.isEmpty()) {
-            throw new NumberFormatException("An empty string is not a valid number");
-        }
-        int pos = 0; // offset within string
-        int radix = 10;
-        boolean negate = false; // need to negate later?
-        final char char0 = str.charAt(0);
-        if (char0 == '-') {
-            negate = true;
-            pos = 1;
-        } else if (char0 == '+') {
-            pos = 1;
-        }
-        if (str.startsWith("0x", pos) || str.startsWith("0X", pos)) { // hex
-            radix = 16;
-            pos += 2;
-        } else if (str.startsWith("#", pos)) { // alternative hex (allowed by Long/Integer)
-            radix = 16;
-            pos++;
-        } else if (str.startsWith("0", pos) && str.length() > pos + 1) { // octal; so long as there are additional digits
-            radix = 8;
-            pos++;
-        } // default is to treat as decimal
-        final BigInteger value = new BigInteger(str.substring(pos), radix);
-        return negate ? value.negate() : value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -248,10 +251,7 @@ public class NumberUtils {
      * @throws NumberFormatException if the value cannot be converted.
      */
     public static Double createDouble(final String str) {
-        if (str == null) {
-            return null;
-        }
-        return Double.valueOf(str);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -266,10 +266,7 @@ public class NumberUtils {
      * @throws NumberFormatException if the value cannot be converted.
      */
     public static Float createFloat(final String str) {
-        if (str == null) {
-            return null;
-        }
-        return Float.valueOf(str);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -286,11 +283,7 @@ public class NumberUtils {
      * @throws NumberFormatException if the value cannot be converted.
      */
     public static Integer createInteger(final String str) {
-        if (str == null) {
-            return null;
-        }
-        // decode() handles 0xAABD and 0777 (hex and octal) as well.
-        return Integer.decode(str);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -308,10 +301,7 @@ public class NumberUtils {
      * @since 3.1
      */
     public static Long createLong(final String str) {
-        if (str == null) {
-            return null;
-        }
-        return Long.decode(str);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -348,173 +338,7 @@ public class NumberUtils {
      * @throws NumberFormatException if the value cannot be converted.
      */
     public static Number createNumber(final String str) {
-        if (str == null) {
-            return null;
-        }
-        if (StringUtils.isBlank(str)) {
-            throw new NumberFormatException("A blank string is not a valid number");
-        }
-        // Need to deal with all possible hex prefixes here
-        final String[] hexPrefixes = { "0x", "0X", "#" };
-        final int length = str.length();
-        final int offset = isSign(str.charAt(0)) ? 1 : 0;
-        int pfxLen = 0;
-        for (final String pfx : hexPrefixes) {
-            if (str.startsWith(pfx, offset)) {
-                pfxLen += pfx.length() + offset;
-                break;
-            }
-        }
-        final char lastChar = str.charAt(length - 1);
-        if (pfxLen > 0) { // we have a hex number
-            char firstSigDigit = 0; // strip leading zeroes
-            for (int i = pfxLen; i < length; i++) {
-                firstSigDigit = str.charAt(i);
-                if (firstSigDigit != '0') {
-                    break;
-                }
-                pfxLen++;
-            }
-            final boolean isLongCh = lastChar == 'l' || lastChar == 'L';
-            int hexDigits = length - pfxLen;
-            if (isLongCh) {
-                hexDigits--;
-            }
-            if (hexDigits > 16 || hexDigits == 16 && firstSigDigit > '7') { // too many for Long
-                return createBigInteger(str);
-            }
-            if (isLongCh) {
-                return createLong(str.substring(0, str.length() - 1));
-            }
-            if (hexDigits > 8 || hexDigits == 8 && firstSigDigit > '7') { // too many for an int
-                return createLong(str);
-            }
-            return createInteger(str);
-        }
-        final String mant;
-        final String dec;
-        final String exp;
-        final int decPos = str.indexOf('.');
-        final int expPos = str.indexOf('e') + str.indexOf('E') + 1; // assumes both not present
-        // if both e and E are present, this is caught by the checks on expPos (which prevent IOOBE)
-        // and the parsing which will detect if e or E appear in a number due to using the wrong offset
-        // Detect if the return type has been requested
-        final boolean requestType = !Character.isDigit(lastChar) && lastChar != '.';
-        if (decPos > -1) { // there is a decimal point
-            if (expPos > -1) { // there is an exponent
-                if (expPos <= decPos || expPos > length) { // prevents double exponent causing IOOBE
-                    throw new NumberFormatException(str + " is not a valid number.");
-                }
-                dec = str.substring(decPos + 1, expPos);
-            } else {
-                // No exponent, but there may be a type character to remove
-                dec = str.substring(decPos + 1, requestType ? length - 1 : length);
-            }
-            mant = getMantissa(str, decPos);
-        } else {
-            if (expPos > -1) {
-                if (expPos > length) { // prevents double exponent causing IOOBE
-                    throw new NumberFormatException(str + " is not a valid number.");
-                }
-                mant = getMantissa(str, expPos);
-            } else {
-                // No decimal, no exponent, but there may be a type character to remove
-                mant = getMantissa(str, requestType ? length - 1 : length);
-            }
-            dec = null;
-        }
-        if (requestType) {
-            if (expPos > -1 && expPos < length - 1) {
-                exp = str.substring(expPos + 1, length - 1);
-            } else {
-                exp = null;
-            }
-            // Requesting a specific type.
-            final String numeric = str.substring(0, length - 1);
-            switch (lastChar) {
-            case 'l':
-            case 'L':
-                if (dec == null && exp == null && (!numeric.isEmpty() && numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {
-                    try {
-                        return createLong(numeric);
-                    } catch (final NumberFormatException ignored) {
-                        // Too big for a long
-                    }
-                    return createBigInteger(numeric);
-                }
-                throw new NumberFormatException(str + " is not a valid number.");
-            case 'f':
-            case 'F':
-                try {
-                    final Float f = createFloat(str);
-                    if (!(f.isInfinite() || f.floatValue() == 0.0F && !isZero(mant, dec))) {
-                        // If it's too big for a float or the float value = 0 and the string
-                        // has non-zeros in it, then float does not have the precision we want
-                        return f;
-                    }
-                } catch (final NumberFormatException ignored) {
-                    // ignore the bad number
-                }
-                // falls-through
-            case 'd':
-            case 'D':
-                try {
-                    final Double d = createDouble(str);
-                    if (!(d.isInfinite() || d.doubleValue() == 0.0D && !isZero(mant, dec))) {
-                        return d;
-                    }
-                } catch (final NumberFormatException ignored) {
-                    // ignore the bad number
-                }
-                try {
-                    return createBigDecimal(numeric);
-                } catch (final NumberFormatException ignored) {
-                    // ignore the bad number
-                }
-                // falls-through
-            default:
-                throw new NumberFormatException(str + " is not a valid number.");
-            }
-        }
-        // User doesn't have a preference on the return type, so let's start
-        // small and go from there...
-        if (expPos > -1 && expPos < length - 1) {
-            exp = str.substring(expPos + 1);
-        } else {
-            exp = null;
-        }
-        if (dec == null && exp == null) { // no decimal point and no exponent
-            // Must be an Integer, Long, Biginteger
-            try {
-                return createInteger(str);
-            } catch (final NumberFormatException ignored) {
-                // ignore the bad number
-            }
-            try {
-                return createLong(str);
-            } catch (final NumberFormatException ignored) {
-                // ignore the bad number
-            }
-            return createBigInteger(str);
-        }
-        // Must be a Float, Double, BigDecimal
-        try {
-            final Float f = createFloat(str);
-            final Double d = createDouble(str);
-            if (!f.isInfinite() && !(f.floatValue() == 0.0F && !isZero(mant, dec)) && f.toString().equals(d.toString())) {
-                return f;
-            }
-            if (!d.isInfinite() && !(d.doubleValue() == 0.0D && !isZero(mant, dec))) {
-                final BigDecimal b = createBigDecimal(str);
-                if (b.compareTo(BigDecimal.valueOf(d.doubleValue())) == 0) {
-                    return d;
-                }
-                return b;
-            }
-        } catch (final NumberFormatException ignored) {
-            // ignore the bad number
-        }
-        return createBigDecimal(str);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -579,15 +403,7 @@ public class NumberUtils {
      * @since 3.5
      */
     public static boolean isCreatable(final String str) {
-        if (StringUtils.isEmpty(str)) {
-            return false;
-        }
-        try {
-            createNumber(str);
-            return true;
-        } catch (final RuntimeException e) {
-            return false;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -601,7 +417,7 @@ public class NumberUtils {
      * @return {@code true} if str contains only Unicode numeric
      */
     public static boolean isDigits(final String str) {
-        return StringUtils.isNumeric(str);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -659,7 +475,7 @@ public class NumberUtils {
      * @since 3.4
      */
     public static boolean isParsable(final String str) {
-        return accept(Double::parseDouble, str) || accept(Long::parseLong, str);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static boolean isSign(final char ch) {
@@ -710,16 +526,7 @@ public class NumberUtils {
      * @since 3.4 Changed signature from max(byte[]) to max(byte...).
      */
     public static byte max(final byte... array) {
-        // Validates input
-        validateArray(array);
-        // Finds and returns max
-        byte max = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] > max) {
-                max = array[i];
-            }
-        }
-        return max;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -731,13 +538,7 @@ public class NumberUtils {
      * @return the largest of the values.
      */
     public static byte max(byte a, final byte b, final byte c) {
-        if (b > a) {
-            a = b;
-        }
-        if (c > a) {
-            a = c;
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -751,19 +552,7 @@ public class NumberUtils {
      * @since 3.4 Changed signature from max(double[]) to max(double...)
      */
     public static double max(final double... array) {
-        // Validates input
-        validateArray(array);
-        // Finds and returns max
-        double max = array[0];
-        for (int j = 1; j < array.length; j++) {
-            if (Double.isNaN(array[j])) {
-                return Double.NaN;
-            }
-            if (array[j] > max) {
-                max = array[j];
-            }
-        }
-        return max;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -780,7 +569,7 @@ public class NumberUtils {
      * @see IEEE754rUtils#max(double, double, double) for a version of this method that handles NaN differently.
      */
     public static double max(final double a, final double b, final double c) {
-        return Math.max(Math.max(a, b), c);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -794,20 +583,9 @@ public class NumberUtils {
      * @since 3.4 Changed signature from max(float[]) to max(float...).
      */
     public static float max(final float... array) {
-        // Validates input
-        validateArray(array);
-        // Finds and returns max
-        float max = array[0];
-        for (int j = 1; j < array.length; j++) {
-            if (Float.isNaN(array[j])) {
-                return Float.NaN;
-            }
-            if (array[j] > max) {
-                max = array[j];
-            }
-        }
-        return max;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
+
     // must handle Long, Float, Integer, Float, Short,
     // BigDecimal, BigInteger and Byte
     // useful methods:
@@ -842,7 +620,6 @@ public class NumberUtils {
     // Possible inputs:
     // 45 45.5 45E7 4.5E7 Hex Oct Binary xxxF xxxD xxxf xxxd
     // plus minus everything. Prolly more. A lot are not separable.
-
     /**
      * Gets the maximum of three {@code float} values.
      *
@@ -857,7 +634,7 @@ public class NumberUtils {
      * @see IEEE754rUtils#max(float, float, float) for a version of this method that handles NaN differently.
      */
     public static float max(final float a, final float b, final float c) {
-        return Math.max(Math.max(a, b), c);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -870,16 +647,7 @@ public class NumberUtils {
      * @since 3.4 Changed signature from max(int[]) to max(int...).
      */
     public static int max(final int... array) {
-        // Validates input
-        validateArray(array);
-        // Finds and returns max
-        int max = array[0];
-        for (int j = 1; j < array.length; j++) {
-            if (array[j] > max) {
-                max = array[j];
-            }
-        }
-        return max;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -891,13 +659,7 @@ public class NumberUtils {
      * @return the largest of the values.
      */
     public static int max(int a, final int b, final int c) {
-        if (b > a) {
-            a = b;
-        }
-        if (c > a) {
-            a = c;
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -910,16 +672,7 @@ public class NumberUtils {
      * @since 3.4 Changed signature from max(long[]) to max(long...).
      */
     public static long max(final long... array) {
-        // Validates input
-        validateArray(array);
-        // Finds and returns max
-        long max = array[0];
-        for (int j = 1; j < array.length; j++) {
-            if (array[j] > max) {
-                max = array[j];
-            }
-        }
-        return max;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // 3 param max
@@ -932,13 +685,7 @@ public class NumberUtils {
      * @return the largest of the values.
      */
     public static long max(long a, final long b, final long c) {
-        if (b > a) {
-            a = b;
-        }
-        if (c > a) {
-            a = c;
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -951,16 +698,7 @@ public class NumberUtils {
      * @since 3.4 Changed signature from max(short[]) to max(short...).
      */
     public static short max(final short... array) {
-        // Validates input
-        validateArray(array);
-        // Finds and returns max
-        short max = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] > max) {
-                max = array[i];
-            }
-        }
-        return max;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -972,13 +710,7 @@ public class NumberUtils {
      * @return the largest of the values.
      */
     public static short max(short a, final short b, final short c) {
-        if (b > a) {
-            a = b;
-        }
-        if (c > a) {
-            a = c;
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -991,16 +723,7 @@ public class NumberUtils {
      * @since 3.4 Changed signature from min(byte[]) to min(byte...).
      */
     public static byte min(final byte... array) {
-        // Validates input
-        validateArray(array);
-        // Finds and returns min
-        byte min = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] < min) {
-                min = array[i];
-            }
-        }
-        return min;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1012,13 +735,7 @@ public class NumberUtils {
      * @return the smallest of the values.
      */
     public static byte min(byte a, final byte b, final byte c) {
-        if (b < a) {
-            a = b;
-        }
-        if (c < a) {
-            a = c;
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1032,19 +749,7 @@ public class NumberUtils {
      * @since 3.4 Changed signature from min(double[]) to min(double...).
      */
     public static double min(final double... array) {
-        // Validates input
-        validateArray(array);
-        // Finds and returns min
-        double min = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (Double.isNaN(array[i])) {
-                return Double.NaN;
-            }
-            if (array[i] < min) {
-                min = array[i];
-            }
-        }
-        return min;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1061,7 +766,7 @@ public class NumberUtils {
      * @see IEEE754rUtils#min(double, double, double) for a version of this method that handles NaN differently.
      */
     public static double min(final double a, final double b, final double c) {
-        return Math.min(Math.min(a, b), c);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1075,19 +780,7 @@ public class NumberUtils {
      * @since 3.4 Changed signature from min(float[]) to min(float...).
      */
     public static float min(final float... array) {
-        // Validates input
-        validateArray(array);
-        // Finds and returns min
-        float min = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (Float.isNaN(array[i])) {
-                return Float.NaN;
-            }
-            if (array[i] < min) {
-                min = array[i];
-            }
-        }
-        return min;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1104,7 +797,7 @@ public class NumberUtils {
      * @see IEEE754rUtils#min(float, float, float) for a version of this method that handles NaN differently.
      */
     public static float min(final float a, final float b, final float c) {
-        return Math.min(Math.min(a, b), c);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1117,16 +810,7 @@ public class NumberUtils {
      * @since 3.4 Changed signature from min(int[]) to min(int...).
      */
     public static int min(final int... array) {
-        // Validates input
-        validateArray(array);
-        // Finds and returns min
-        int min = array[0];
-        for (int j = 1; j < array.length; j++) {
-            if (array[j] < min) {
-                min = array[j];
-            }
-        }
-        return min;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1138,13 +822,7 @@ public class NumberUtils {
      * @return the smallest of the values.
      */
     public static int min(int a, final int b, final int c) {
-        if (b < a) {
-            a = b;
-        }
-        if (c < a) {
-            a = c;
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1157,16 +835,7 @@ public class NumberUtils {
      * @since 3.4 Changed signature from min(long[]) to min(long...).
      */
     public static long min(final long... array) {
-        // Validates input
-        validateArray(array);
-        // Finds and returns min
-        long min = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] < min) {
-                min = array[i];
-            }
-        }
-        return min;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // 3 param min
@@ -1179,13 +848,7 @@ public class NumberUtils {
      * @return the smallest of the values.
      */
     public static long min(long a, final long b, final long c) {
-        if (b < a) {
-            a = b;
-        }
-        if (c < a) {
-            a = c;
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1198,16 +861,7 @@ public class NumberUtils {
      * @since 3.4 Changed signature from min(short[]) to min(short...).
      */
     public static short min(final short... array) {
-        // Validates input
-        validateArray(array);
-        // Finds and returns min
-        short min = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] < min) {
-                min = array[i];
-            }
-        }
-        return min;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1219,13 +873,7 @@ public class NumberUtils {
      * @return the smallest of the values.
      */
     public static short min(short a, final short b, final short c) {
-        if (b < a) {
-            a = b;
-        }
-        if (c < a) {
-            a = c;
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1246,7 +894,7 @@ public class NumberUtils {
      * @since 2.5
      */
     public static byte toByte(final String str) {
-        return toByte(str, (byte) 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1268,11 +916,7 @@ public class NumberUtils {
      * @since 2.5
      */
     public static byte toByte(final String str, final byte defaultValue) {
-        try {
-            return Byte.parseByte(str);
-        } catch (final RuntimeException e) {
-            return defaultValue;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1292,7 +936,7 @@ public class NumberUtils {
      * @since 3.8
      */
     public static double toDouble(final BigDecimal value) {
-        return toDouble(value, 0.0d);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1313,7 +957,7 @@ public class NumberUtils {
      * @since 3.8
      */
     public static double toDouble(final BigDecimal value, final double defaultValue) {
-        return value == null ? defaultValue : value.doubleValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1334,7 +978,7 @@ public class NumberUtils {
      * @since 2.1
      */
     public static double toDouble(final String str) {
-        return toDouble(str, 0.0d);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1356,11 +1000,7 @@ public class NumberUtils {
      * @since 2.1
      */
     public static double toDouble(final String str, final double defaultValue) {
-        try {
-            return Double.parseDouble(str);
-        } catch (final RuntimeException e) {
-            return defaultValue;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1381,7 +1021,7 @@ public class NumberUtils {
      * @since 2.1
      */
     public static float toFloat(final String str) {
-        return toFloat(str, 0.0f);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1403,11 +1043,7 @@ public class NumberUtils {
      * @since 2.1
      */
     public static float toFloat(final String str, final float defaultValue) {
-        try {
-            return Float.parseFloat(str);
-        } catch (final RuntimeException e) {
-            return defaultValue;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1428,7 +1064,7 @@ public class NumberUtils {
      * @since 2.1
      */
     public static int toInt(final String str) {
-        return toInt(str, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1450,11 +1086,7 @@ public class NumberUtils {
      * @since 2.1
      */
     public static int toInt(final String str, final int defaultValue) {
-        try {
-            return Integer.parseInt(str);
-        } catch (final RuntimeException e) {
-            return defaultValue;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1475,7 +1107,7 @@ public class NumberUtils {
      * @since 2.1
      */
     public static long toLong(final String str) {
-        return toLong(str, 0L);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1497,11 +1129,7 @@ public class NumberUtils {
      * @since 2.1
      */
     public static long toLong(final String str, final long defaultValue) {
-        try {
-            return Long.parseLong(str);
-        } catch (final RuntimeException e) {
-            return defaultValue;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1517,7 +1145,7 @@ public class NumberUtils {
      * @since 3.8
      */
     public static BigDecimal toScaledBigDecimal(final BigDecimal value) {
-        return toScaledBigDecimal(value, INTEGER_TWO, RoundingMode.HALF_EVEN);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1531,10 +1159,7 @@ public class NumberUtils {
      * @since 3.8
      */
     public static BigDecimal toScaledBigDecimal(final BigDecimal value, final int scale, final RoundingMode roundingMode) {
-        if (value == null) {
-            return BigDecimal.ZERO;
-        }
-        return value.setScale(scale, roundingMode == null ? RoundingMode.HALF_EVEN : roundingMode);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1550,7 +1175,7 @@ public class NumberUtils {
      * @since 3.8
      */
     public static BigDecimal toScaledBigDecimal(final Double value) {
-        return toScaledBigDecimal(value, INTEGER_TWO, RoundingMode.HALF_EVEN);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1564,10 +1189,7 @@ public class NumberUtils {
      * @since 3.8
      */
     public static BigDecimal toScaledBigDecimal(final Double value, final int scale, final RoundingMode roundingMode) {
-        if (value == null) {
-            return BigDecimal.ZERO;
-        }
-        return toScaledBigDecimal(BigDecimal.valueOf(value), scale, roundingMode);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1583,7 +1205,7 @@ public class NumberUtils {
      * @since 3.8
      */
     public static BigDecimal toScaledBigDecimal(final Float value) {
-        return toScaledBigDecimal(value, INTEGER_TWO, RoundingMode.HALF_EVEN);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1597,10 +1219,7 @@ public class NumberUtils {
      * @since 3.8
      */
     public static BigDecimal toScaledBigDecimal(final Float value, final int scale, final RoundingMode roundingMode) {
-        if (value == null) {
-            return BigDecimal.ZERO;
-        }
-        return toScaledBigDecimal(BigDecimal.valueOf(value), scale, roundingMode);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1616,7 +1235,7 @@ public class NumberUtils {
      * @since 3.8
      */
     public static BigDecimal toScaledBigDecimal(final String value) {
-        return toScaledBigDecimal(value, INTEGER_TWO, RoundingMode.HALF_EVEN);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1630,10 +1249,7 @@ public class NumberUtils {
      * @since 3.8
      */
     public static BigDecimal toScaledBigDecimal(final String value, final int scale, final RoundingMode roundingMode) {
-        if (value == null) {
-            return BigDecimal.ZERO;
-        }
-        return toScaledBigDecimal(createBigDecimal(value), scale, roundingMode);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1654,7 +1270,7 @@ public class NumberUtils {
      * @since 2.5
      */
     public static short toShort(final String str) {
-        return toShort(str, (short) 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1676,11 +1292,7 @@ public class NumberUtils {
      * @since 2.5
      */
     public static short toShort(final String str, final short defaultValue) {
-        try {
-            return Short.parseShort(str);
-        } catch (final RuntimeException e) {
-            return defaultValue;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.builder;
 
 import java.io.Serializable;
@@ -24,7 +23,6 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
-
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -66,7 +64,8 @@ import org.apache.commons.lang3.Strings;
  *
  * @since 1.0
  */
-@SuppressWarnings("deprecation") // StringEscapeUtils
+// StringEscapeUtils
+@SuppressWarnings("deprecation")
 public abstract class ToStringStyle implements Serializable {
 
     /**
@@ -118,6 +117,7 @@ public abstract class ToStringStyle implements Serializable {
     private static final class JsonToStringStyle extends ToStringStyle {
 
         private static final long serialVersionUID = 1L;
+
         private static final String FIELD_NAME_QUOTE = "\"";
 
         /**
@@ -145,137 +145,77 @@ public abstract class ToStringStyle implements Serializable {
 
         @Override
         public void append(final StringBuffer buffer, final String fieldName, final boolean[] array, final Boolean fullDetail) {
-            checkAppendInput(fieldName, fullDetail);
-            super.append(buffer, fieldName, array, fullDetail);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void append(final StringBuffer buffer, final String fieldName, final byte[] array, final Boolean fullDetail) {
-            checkAppendInput(fieldName, fullDetail);
-            super.append(buffer, fieldName, array, fullDetail);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void append(final StringBuffer buffer, final String fieldName, final char[] array, final Boolean fullDetail) {
-            checkAppendInput(fieldName, fullDetail);
-            super.append(buffer, fieldName, array, fullDetail);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void append(final StringBuffer buffer, final String fieldName, final double[] array, final Boolean fullDetail) {
-            checkAppendInput(fieldName, fullDetail);
-            super.append(buffer, fieldName, array, fullDetail);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void append(final StringBuffer buffer, final String fieldName, final float[] array, final Boolean fullDetail) {
-            checkAppendInput(fieldName, fullDetail);
-            super.append(buffer, fieldName, array, fullDetail);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void append(final StringBuffer buffer, final String fieldName, final int[] array, final Boolean fullDetail) {
-            checkAppendInput(fieldName, fullDetail);
-            super.append(buffer, fieldName, array, fullDetail);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void append(final StringBuffer buffer, final String fieldName, final long[] array, final Boolean fullDetail) {
-            checkAppendInput(fieldName, fullDetail);
-            super.append(buffer, fieldName, array, fullDetail);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void append(final StringBuffer buffer, final String fieldName, final Object value, final Boolean fullDetail) {
-            checkAppendInput(fieldName, fullDetail);
-            super.append(buffer, fieldName, value, fullDetail);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void append(final StringBuffer buffer, final String fieldName, final Object[] array, final Boolean fullDetail) {
-            checkAppendInput(fieldName, fullDetail);
-            super.append(buffer, fieldName, array, fullDetail);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void append(final StringBuffer buffer, final String fieldName, final short[] array, final Boolean fullDetail) {
-            checkAppendInput(fieldName, fullDetail);
-            super.append(buffer, fieldName, array, fullDetail);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         protected void appendDetail(final StringBuffer buffer, final String fieldName, final char value) {
-            appendValueAsString(buffer, String.valueOf(value));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         protected void appendDetail(final StringBuffer buffer, final String fieldName, final Collection<?> coll) {
-            if (coll != null && !coll.isEmpty()) {
-                buffer.append(getArrayStart());
-                int i = 0;
-                for (final Object item : coll) {
-                    appendDetail(buffer, fieldName, i++, item);
-                }
-                buffer.append(getArrayEnd());
-                return;
-            }
-            buffer.append(coll);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         protected void appendDetail(final StringBuffer buffer, final String fieldName, final Map<?, ?> map) {
-            if (map != null && !map.isEmpty()) {
-                buffer.append(getContentStart());
-                boolean firstItem = true;
-                for (final Entry<?, ?> entry : map.entrySet()) {
-                    final String keyStr = Objects.toString(entry.getKey(), null);
-                    if (keyStr != null) {
-                        if (firstItem) {
-                            firstItem = false;
-                        } else {
-                            appendFieldEnd(buffer, keyStr);
-                        }
-                        appendFieldStart(buffer, keyStr);
-                        final Object value = entry.getValue();
-                        if (value == null) {
-                            appendNullText(buffer, keyStr);
-                        } else {
-                            appendInternal(buffer, keyStr, value, true);
-                        }
-                    }
-                }
-                buffer.append(getContentEnd());
-                return;
-            }
-            buffer.append(map);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         protected void appendDetail(final StringBuffer buffer, final String fieldName, final Object value) {
-            if (value == null) {
-                appendNullText(buffer, fieldName);
-                return;
-            }
-            if (value instanceof String || value instanceof Character) {
-                appendValueAsString(buffer, value.toString());
-                return;
-            }
-            if (value instanceof Number || value instanceof Boolean) {
-                buffer.append(value);
-                return;
-            }
-            final String valueAsString = value.toString();
-            if (isJsonObject(valueAsString) || isJsonArray(valueAsString)) {
-                buffer.append(value);
-                return;
-            }
-            appendDetail(buffer, fieldName, valueAsString);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         protected void appendFieldStart(final StringBuffer buffer, final String fieldName) {
-            checkFieldName(fieldName);
-            super.appendFieldStart(buffer, FIELD_NAME_QUOTE + StringEscapeUtils.escapeJson(fieldName) + FIELD_NAME_QUOTE);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -581,6 +521,7 @@ public abstract class ToStringStyle implements Serializable {
      * registered and looked up without triggering infinite recursion through equals/hashCode.
      */
     private static final ThreadLocal<IdentityHashMap<Object, Object>> REGISTRY = ThreadLocal.withInitial(IdentityHashMap::new);
+
     /*
      * Note that objects of this class are generally shared between threads, so an instance variable would not be suitable here.
      *
@@ -588,14 +529,13 @@ public abstract class ToStringStyle implements Serializable {
      *
      * See LANG-792
      */
-
     /**
      * Gets the registry of objects being traversed by the {@code reflectionToString} methods in the current thread.
      *
      * @return Set the registry of objects being traversed.
      */
     public static Map<Object, Object> getRegistry() {
-        return REGISTRY.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -605,7 +545,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return boolean {@code true} if the registry contains the given object.
      */
     static boolean isRegistered(final Object value) {
-        return getRegistry().containsKey(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -614,9 +554,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value The object to register.
      */
     static void register(final Object value) {
-        if (value != null) {
-            getRegistry().put(value, null);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -629,13 +567,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value The object to unregister.
      */
     static void unregister(final Object value) {
-        if (value != null) {
-            final Map<Object, Object> m = getRegistry();
-            m.remove(value);
-            if (m.isEmpty()) {
-                REGISTRY.remove();
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -752,9 +684,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     public void append(final StringBuffer buffer, final String fieldName, final boolean value) {
-        appendFieldStart(buffer, fieldName);
-        appendDetail(buffer, fieldName, value);
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -766,15 +696,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fullDetail {@code true} for detail, {@code false} for summary info, {@code null} for style decides.
      */
     public void append(final StringBuffer buffer, final String fieldName, final boolean[] array, final Boolean fullDetail) {
-        appendFieldStart(buffer, fieldName);
-        if (array == null) {
-            appendNullText(buffer, fieldName);
-        } else if (isFullDetail(fullDetail)) {
-            appendDetail(buffer, fieldName, array);
-        } else {
-            appendSummary(buffer, fieldName, array);
-        }
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -785,9 +707,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     public void append(final StringBuffer buffer, final String fieldName, final byte value) {
-        appendFieldStart(buffer, fieldName);
-        appendDetail(buffer, fieldName, value);
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -799,15 +719,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fullDetail {@code true} for detail, {@code false} for summary info, {@code null} for style decides.
      */
     public void append(final StringBuffer buffer, final String fieldName, final byte[] array, final Boolean fullDetail) {
-        appendFieldStart(buffer, fieldName);
-        if (array == null) {
-            appendNullText(buffer, fieldName);
-        } else if (isFullDetail(fullDetail)) {
-            appendDetail(buffer, fieldName, array);
-        } else {
-            appendSummary(buffer, fieldName, array);
-        }
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -818,9 +730,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     public void append(final StringBuffer buffer, final String fieldName, final char value) {
-        appendFieldStart(buffer, fieldName);
-        appendDetail(buffer, fieldName, value);
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -832,15 +742,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fullDetail {@code true} for detail, {@code false} for summary info, {@code null} for style decides.
      */
     public void append(final StringBuffer buffer, final String fieldName, final char[] array, final Boolean fullDetail) {
-        appendFieldStart(buffer, fieldName);
-        if (array == null) {
-            appendNullText(buffer, fieldName);
-        } else if (isFullDetail(fullDetail)) {
-            appendDetail(buffer, fieldName, array);
-        } else {
-            appendSummary(buffer, fieldName, array);
-        }
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -851,9 +753,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     public void append(final StringBuffer buffer, final String fieldName, final double value) {
-        appendFieldStart(buffer, fieldName);
-        appendDetail(buffer, fieldName, value);
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -865,15 +765,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fullDetail {@code true} for detail, {@code false} for summary info, {@code null} for style decides.
      */
     public void append(final StringBuffer buffer, final String fieldName, final double[] array, final Boolean fullDetail) {
-        appendFieldStart(buffer, fieldName);
-        if (array == null) {
-            appendNullText(buffer, fieldName);
-        } else if (isFullDetail(fullDetail)) {
-            appendDetail(buffer, fieldName, array);
-        } else {
-            appendSummary(buffer, fieldName, array);
-        }
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -884,9 +776,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     public void append(final StringBuffer buffer, final String fieldName, final float value) {
-        appendFieldStart(buffer, fieldName);
-        appendDetail(buffer, fieldName, value);
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -898,15 +788,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fullDetail {@code true} for detail, {@code false} for summary info, {@code null} for style decides.
      */
     public void append(final StringBuffer buffer, final String fieldName, final float[] array, final Boolean fullDetail) {
-        appendFieldStart(buffer, fieldName);
-        if (array == null) {
-            appendNullText(buffer, fieldName);
-        } else if (isFullDetail(fullDetail)) {
-            appendDetail(buffer, fieldName, array);
-        } else {
-            appendSummary(buffer, fieldName, array);
-        }
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -917,9 +799,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     public void append(final StringBuffer buffer, final String fieldName, final int value) {
-        appendFieldStart(buffer, fieldName);
-        appendDetail(buffer, fieldName, value);
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -931,15 +811,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fullDetail {@code true} for detail, {@code false} for summary info, {@code null} for style decides.
      */
     public void append(final StringBuffer buffer, final String fieldName, final int[] array, final Boolean fullDetail) {
-        appendFieldStart(buffer, fieldName);
-        if (array == null) {
-            appendNullText(buffer, fieldName);
-        } else if (isFullDetail(fullDetail)) {
-            appendDetail(buffer, fieldName, array);
-        } else {
-            appendSummary(buffer, fieldName, array);
-        }
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -950,9 +822,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     public void append(final StringBuffer buffer, final String fieldName, final long value) {
-        appendFieldStart(buffer, fieldName);
-        appendDetail(buffer, fieldName, value);
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -964,15 +834,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fullDetail {@code true} for detail, {@code false} for summary info, {@code null} for style decides.
      */
     public void append(final StringBuffer buffer, final String fieldName, final long[] array, final Boolean fullDetail) {
-        appendFieldStart(buffer, fieldName);
-        if (array == null) {
-            appendNullText(buffer, fieldName);
-        } else if (isFullDetail(fullDetail)) {
-            appendDetail(buffer, fieldName, array);
-        } else {
-            appendSummary(buffer, fieldName, array);
-        }
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -984,13 +846,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fullDetail {@code true} for detail, {@code false} for summary info, {@code null} for style decides.
      */
     public void append(final StringBuffer buffer, final String fieldName, final Object value, final Boolean fullDetail) {
-        appendFieldStart(buffer, fieldName);
-        if (value == null) {
-            appendNullText(buffer, fieldName);
-        } else {
-            appendInternal(buffer, fieldName, value, isFullDetail(fullDetail));
-        }
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1002,15 +858,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fullDetail {@code true} for detail, {@code false} for summary info, {@code null} for style decides.
      */
     public void append(final StringBuffer buffer, final String fieldName, final Object[] array, final Boolean fullDetail) {
-        appendFieldStart(buffer, fieldName);
-        if (array == null) {
-            appendNullText(buffer, fieldName);
-        } else if (isFullDetail(fullDetail)) {
-            appendDetail(buffer, fieldName, array);
-        } else {
-            appendSummary(buffer, fieldName, array);
-        }
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1021,9 +869,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     public void append(final StringBuffer buffer, final String fieldName, final short value) {
-        appendFieldStart(buffer, fieldName);
-        appendDetail(buffer, fieldName, value);
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1035,15 +881,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fullDetail {@code true} for detail, {@code false} for summary info, {@code null} for style decides.
      */
     public void append(final StringBuffer buffer, final String fieldName, final short[] array, final Boolean fullDetail) {
-        appendFieldStart(buffer, fieldName);
-        if (array == null) {
-            appendNullText(buffer, fieldName);
-        } else if (isFullDetail(fullDetail)) {
-            appendDetail(buffer, fieldName, array);
-        } else {
-            appendSummary(buffer, fieldName, array);
-        }
-        appendFieldEnd(buffer, fieldName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1053,14 +891,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param object the {@link Object} whose name to output.
      */
     protected void appendClassName(final StringBuffer buffer, final Object object) {
-        if (isUseClassName() && object != null) {
-            register(object);
-            if (isUseShortClassName()) {
-                buffer.append(getShortClassName(object.getClass()));
-            } else {
-                buffer.append(object.getClass().getName());
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1069,7 +900,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param buffer the {@link StringBuffer} to populate.
      */
     protected void appendContentEnd(final StringBuffer buffer) {
-        buffer.append(getContentEnd());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1078,7 +909,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param buffer the {@link StringBuffer} to populate.
      */
     protected void appendContentStart(final StringBuffer buffer) {
-        buffer.append(getContentStart());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1091,7 +922,7 @@ public abstract class ToStringStyle implements Serializable {
      * @since 2.2
      */
     protected void appendCyclicObject(final StringBuffer buffer, final String fieldName, final Object value) {
-        ObjectUtils.identityToString(buffer, value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1102,7 +933,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final boolean value) {
-        buffer.append(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1113,14 +944,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final boolean[] array) {
-        buffer.append(getArrayStart());
-        for (int i = 0; i < array.length; i++) {
-            if (i > 0) {
-                buffer.append(getArraySeparator());
-            }
-            appendDetail(buffer, fieldName, array[i]);
-        }
-        buffer.append(getArrayEnd());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1131,7 +955,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final byte value) {
-        buffer.append(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1142,14 +966,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final byte[] array) {
-        buffer.append(getArrayStart());
-        for (int i = 0; i < array.length; i++) {
-            if (i > 0) {
-                buffer.append(getArraySeparator());
-            }
-            appendDetail(buffer, fieldName, array[i]);
-        }
-        buffer.append(getArrayEnd());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1160,7 +977,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final char value) {
-        buffer.append(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1171,14 +988,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final char[] array) {
-        buffer.append(getArrayStart());
-        for (int i = 0; i < array.length; i++) {
-            if (i > 0) {
-                buffer.append(getArraySeparator());
-            }
-            appendDetail(buffer, fieldName, array[i]);
-        }
-        buffer.append(getArrayEnd());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1189,20 +999,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param coll      the {@link Collection} to add to the {@code toString}, not {@code null}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final Collection<?> coll) {
-        buffer.append('['); // backward compatibility
-        boolean first = true;
-        for (final Object item : coll) {
-            if (!first) {
-                buffer.append(", "); // backward compatibility
-            }
-            first = false;
-            if (item == null) {
-                appendNullText(buffer, fieldName);
-            } else {
-                appendInternal(buffer, fieldName, item, true);
-            }
-        }
-        buffer.append(']'); // backward compatibility
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1213,7 +1010,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final double value) {
-        buffer.append(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1224,14 +1021,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final double[] array) {
-        buffer.append(getArrayStart());
-        for (int i = 0; i < array.length; i++) {
-            if (i > 0) {
-                buffer.append(getArraySeparator());
-            }
-            appendDetail(buffer, fieldName, array[i]);
-        }
-        buffer.append(getArrayEnd());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1242,7 +1032,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final float value) {
-        buffer.append(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1253,14 +1043,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final float[] array) {
-        buffer.append(getArrayStart());
-        for (int i = 0; i < array.length; i++) {
-            if (i > 0) {
-                buffer.append(getArraySeparator());
-            }
-            appendDetail(buffer, fieldName, array[i]);
-        }
-        buffer.append(getArrayEnd());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1271,7 +1054,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final int value) {
-        buffer.append(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1284,14 +1067,7 @@ public abstract class ToStringStyle implements Serializable {
      * @since 3.11
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final int i, final Object item) {
-        if (i > 0) {
-            buffer.append(getArraySeparator());
-        }
-        if (item == null) {
-            appendNullText(buffer, fieldName);
-        } else {
-            appendInternal(buffer, fieldName, item, isArrayContentDetail());
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1302,14 +1078,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final int[] array) {
-        buffer.append(getArrayStart());
-        for (int i = 0; i < array.length; i++) {
-            if (i > 0) {
-                buffer.append(getArraySeparator());
-            }
-            appendDetail(buffer, fieldName, array[i]);
-        }
-        buffer.append(getArrayEnd());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1320,7 +1089,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final long value) {
-        buffer.append(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1331,14 +1100,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final long[] array) {
-        buffer.append(getArrayStart());
-        for (int i = 0; i < array.length; i++) {
-            if (i > 0) {
-                buffer.append(getArraySeparator());
-            }
-            appendDetail(buffer, fieldName, array[i]);
-        }
-        buffer.append(getArrayEnd());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1349,23 +1111,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param map       the {@link Map} to add to the {@code toString}, not {@code null}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final Map<?, ?> map) {
-        buffer.append('{'); // backward compatibility
-        boolean first = true;
-        for (final Map.Entry<?, ?> item : map.entrySet()) {
-            if (!first) {
-                buffer.append(getArraySeparator());
-                buffer.append(' '); // backward compatibility
-            }
-            first = false;
-            if (item == null) {
-                appendNullText(buffer, fieldName);
-            } else {
-                appendInternal(buffer, fieldName, item.getKey(), true);
-                buffer.append(getFieldNameValueSeparator());
-                appendInternal(buffer, fieldName, item.getValue(), true);
-            }
-        }
-        buffer.append('}'); // backward compatibility
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1376,7 +1122,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}, not {@code null}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final Object value) {
-        buffer.append(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1387,11 +1133,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final Object[] array) {
-        buffer.append(getArrayStart());
-        for (int i = 0; i < array.length; i++) {
-            appendDetail(buffer, fieldName, i, array[i]);
-        }
-        buffer.append(getArrayEnd());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1402,7 +1144,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final short value) {
-        buffer.append(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1413,14 +1155,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final short[] array) {
-        buffer.append(getArrayStart());
-        for (int i = 0; i < array.length; i++) {
-            if (i > 0) {
-                buffer.append(getArraySeparator());
-            }
-            appendDetail(buffer, fieldName, array[i]);
-        }
-        buffer.append(getArrayEnd());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1430,11 +1165,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param object the {@link Object} to build a {@code toString} for.
      */
     public void appendEnd(final StringBuffer buffer, final Object object) {
-        if (!isFieldSeparatorAtEnd()) {
-            removeLastFieldSeparator(buffer);
-        }
-        appendContentEnd(buffer);
-        unregister(object);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1444,7 +1175,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fieldName the field name, typically not used as already appended.
      */
     protected void appendFieldEnd(final StringBuffer buffer, final String fieldName) {
-        appendFieldSeparator(buffer);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1453,7 +1184,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param buffer the {@link StringBuffer} to populate.
      */
     protected void appendFieldSeparator(final StringBuffer buffer) {
-        buffer.append(getFieldSeparator());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1463,10 +1194,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fieldName the field name.
      */
     protected void appendFieldStart(final StringBuffer buffer, final String fieldName) {
-        if (isUseFieldNames() && fieldName != null) {
-            buffer.append(fieldName);
-            buffer.append(getFieldNameValueSeparator());
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1476,11 +1204,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param object the {@link Object} whose id to output.
      */
     protected void appendIdentityHashCode(final StringBuffer buffer, final Object object) {
-        if (isUseIdentityHashCode() && object != null) {
-            register(object);
-            buffer.append('@');
-            buffer.append(ObjectUtils.identityHashCodeHex(object));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1505,86 +1229,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param detail    output detail or not.
      */
     protected void appendInternal(final StringBuffer buffer, final String fieldName, final Object value, final boolean detail) {
-        if (isRegistered(value) && !(value instanceof Number || value instanceof Boolean || value instanceof Character)) {
-            appendCyclicObject(buffer, fieldName, value);
-            return;
-        }
-        register(value);
-        try {
-            if (value instanceof Collection<?>) {
-                if (detail) {
-                    appendDetail(buffer, fieldName, (Collection<?>) value);
-                } else {
-                    appendSummarySize(buffer, fieldName, ((Collection<?>) value).size());
-                }
-            } else if (value instanceof Map<?, ?>) {
-                if (detail) {
-                    appendDetail(buffer, fieldName, (Map<?, ?>) value);
-                } else {
-                    appendSummarySize(buffer, fieldName, ((Map<?, ?>) value).size());
-                }
-            } else if (value instanceof long[]) {
-                if (detail) {
-                    appendDetail(buffer, fieldName, (long[]) value);
-                } else {
-                    appendSummary(buffer, fieldName, (long[]) value);
-                }
-            } else if (value instanceof int[]) {
-                if (detail) {
-                    appendDetail(buffer, fieldName, (int[]) value);
-                } else {
-                    appendSummary(buffer, fieldName, (int[]) value);
-                }
-            } else if (value instanceof short[]) {
-                if (detail) {
-                    appendDetail(buffer, fieldName, (short[]) value);
-                } else {
-                    appendSummary(buffer, fieldName, (short[]) value);
-                }
-            } else if (value instanceof byte[]) {
-                if (detail) {
-                    appendDetail(buffer, fieldName, (byte[]) value);
-                } else {
-                    appendSummary(buffer, fieldName, (byte[]) value);
-                }
-            } else if (value instanceof char[]) {
-                if (detail) {
-                    appendDetail(buffer, fieldName, (char[]) value);
-                } else {
-                    appendSummary(buffer, fieldName, (char[]) value);
-                }
-            } else if (value instanceof double[]) {
-                if (detail) {
-                    appendDetail(buffer, fieldName, (double[]) value);
-                } else {
-                    appendSummary(buffer, fieldName, (double[]) value);
-                }
-            } else if (value instanceof float[]) {
-                if (detail) {
-                    appendDetail(buffer, fieldName, (float[]) value);
-                } else {
-                    appendSummary(buffer, fieldName, (float[]) value);
-                }
-            } else if (value instanceof boolean[]) {
-                if (detail) {
-                    appendDetail(buffer, fieldName, (boolean[]) value);
-                } else {
-                    appendSummary(buffer, fieldName, (boolean[]) value);
-                }
-            } else if (ObjectUtils.isArray(value)) {
-                if (detail) {
-                    appendDetail(buffer, fieldName, (Object[]) value);
-                } else {
-                    appendSummary(buffer, fieldName, (Object[]) value);
-                }
-            } else if (detail) {
-                appendDetail(buffer, fieldName, value);
-            } else {
-                appendSummary(buffer, fieldName, value);
-            }
-        } finally {
-            unregister(value);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1598,7 +1243,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fieldName the field name, typically not used as already appended.
      */
     protected void appendNullText(final StringBuffer buffer, final String fieldName) {
-        buffer.append(getNullText());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1608,14 +1253,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param object the {@link Object} to build a {@code toString} for.
      */
     public void appendStart(final StringBuffer buffer, final Object object) {
-        if (object != null) {
-            appendClassName(buffer, object);
-            appendIdentityHashCode(buffer, object);
-            appendContentStart(buffer);
-            if (isFieldSeparatorAtStart()) {
-                appendFieldSeparator(buffer);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1626,7 +1264,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendSummary(final StringBuffer buffer, final String fieldName, final boolean[] array) {
-        appendSummarySize(buffer, fieldName, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1637,7 +1275,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendSummary(final StringBuffer buffer, final String fieldName, final byte[] array) {
-        appendSummarySize(buffer, fieldName, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1648,7 +1286,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendSummary(final StringBuffer buffer, final String fieldName, final char[] array) {
-        appendSummarySize(buffer, fieldName, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1659,7 +1297,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}
      */
     protected void appendSummary(final StringBuffer buffer, final String fieldName, final double[] array) {
-        appendSummarySize(buffer, fieldName, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1670,7 +1308,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendSummary(final StringBuffer buffer, final String fieldName, final float[] array) {
-        appendSummarySize(buffer, fieldName, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1681,7 +1319,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendSummary(final StringBuffer buffer, final String fieldName, final int[] array) {
-        appendSummarySize(buffer, fieldName, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1692,7 +1330,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendSummary(final StringBuffer buffer, final String fieldName, final long[] array) {
-        appendSummarySize(buffer, fieldName, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1703,9 +1341,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param value     the value to add to the {@code toString}, not {@code null}.
      */
     protected void appendSummary(final StringBuffer buffer, final String fieldName, final Object value) {
-        buffer.append(getSummaryObjectStartText());
-        buffer.append(getShortClassName(value.getClass()));
-        buffer.append(getSummaryObjectEndText());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1716,7 +1352,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendSummary(final StringBuffer buffer, final String fieldName, final Object[] array) {
-        appendSummarySize(buffer, fieldName, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1727,7 +1363,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param array     the array to add to the {@code toString}, not {@code null}.
      */
     protected void appendSummary(final StringBuffer buffer, final String fieldName, final short[] array) {
-        appendSummarySize(buffer, fieldName, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1750,9 +1386,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param size      the size to append.
      */
     protected void appendSummarySize(final StringBuffer buffer, final String fieldName, final int size) {
-        buffer.append(getSizeStartText());
-        buffer.append(size);
-        buffer.append(getSizeEndText());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1770,7 +1404,7 @@ public abstract class ToStringStyle implements Serializable {
      * @since 2.0
      */
     public void appendSuper(final StringBuffer buffer, final String superToString) {
-        appendToString(buffer, superToString);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1788,17 +1422,7 @@ public abstract class ToStringStyle implements Serializable {
      * @since 2.0
      */
     public void appendToString(final StringBuffer buffer, final String toString) {
-        if (toString != null) {
-            final int pos1 = toString.indexOf(getContentStart()) + getContentStart().length();
-            final int pos2 = toString.lastIndexOf(getContentEnd());
-            if (pos1 != pos2 && pos1 >= 0 && pos2 >= 0) {
-                if (isFieldSeparatorAtStart()) {
-                    removeLastFieldSeparator(buffer);
-                }
-                buffer.append(toString, pos1, pos2);
-                appendFieldSeparator(buffer);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1807,7 +1431,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current array end text.
      */
     protected String getArrayEnd() {
-        return arrayEnd;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1816,7 +1440,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current array separator text.
      */
     protected String getArraySeparator() {
-        return arraySeparator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1825,7 +1449,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current array start text.
      */
     protected String getArrayStart() {
-        return arrayStart;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1834,7 +1458,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current content end text.
      */
     protected String getContentEnd() {
-        return contentEnd;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1843,7 +1467,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current content start text.
      */
     protected String getContentStart() {
-        return contentStart;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1852,7 +1476,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current field name value separator text.
      */
     protected String getFieldNameValueSeparator() {
-        return fieldNameValueSeparator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1861,7 +1485,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current field separator text.
      */
     protected String getFieldSeparator() {
-        return fieldSeparator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1870,7 +1494,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current text to output when null found.
      */
     protected String getNullText() {
-        return nullText;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1884,7 +1508,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the short name.
      */
     protected String getShortClassName(final Class<?> cls) {
-        return ClassUtils.getShortClassName(cls);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1897,7 +1521,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current end of size text.
      */
     protected String getSizeEndText() {
-        return sizeEndText;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1910,7 +1534,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current start of size text.
      */
     protected String getSizeStartText() {
-        return sizeStartText;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1923,7 +1547,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current end of summary text.
      */
     protected String getSummaryObjectEndText() {
-        return summaryObjectEndText;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1936,7 +1560,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current start of summary text.
      */
     protected String getSummaryObjectStartText() {
-        return summaryObjectStartText;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1945,7 +1569,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current array content detail setting.
      */
     protected boolean isArrayContentDetail() {
-        return arrayContentDetail;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1954,7 +1578,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current defaultFullDetail flag.
      */
     protected boolean isDefaultFullDetail() {
-        return defaultFullDetail;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1964,7 +1588,7 @@ public abstract class ToStringStyle implements Serializable {
      * @since 2.0
      */
     protected boolean isFieldSeparatorAtEnd() {
-        return fieldSeparatorAtEnd;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1974,7 +1598,7 @@ public abstract class ToStringStyle implements Serializable {
      * @since 2.0
      */
     protected boolean isFieldSeparatorAtStart() {
-        return fieldSeparatorAtStart;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1990,10 +1614,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return whether full detail is to be shown.
      */
     protected boolean isFullDetail(final Boolean fullDetailRequest) {
-        if (fullDetailRequest == null) {
-            return isDefaultFullDetail();
-        }
-        return fullDetailRequest.booleanValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // Setters and getters for the customizable parts of the style
@@ -2005,7 +1626,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current useClassName flag.
      */
     protected boolean isUseClassName() {
-        return useClassName;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2014,7 +1635,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current useFieldNames flag.
      */
     protected boolean isUseFieldNames() {
-        return useFieldNames;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2023,7 +1644,7 @@ public abstract class ToStringStyle implements Serializable {
      * @return the current useIdentityHashCode flag.
      */
     protected boolean isUseIdentityHashCode() {
-        return useIdentityHashCode;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2033,7 +1654,7 @@ public abstract class ToStringStyle implements Serializable {
      * @since 2.0
      */
     protected boolean isUseShortClassName() {
-        return useShortClassName;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2045,12 +1666,7 @@ public abstract class ToStringStyle implements Serializable {
      * @since 2.0
      */
     protected void reflectionAppendArrayDetail(final StringBuffer buffer, final String fieldName, final Object array) {
-        buffer.append(getArrayStart());
-        final int length = Array.getLength(array);
-        for (int i = 0; i < length; i++) {
-            appendDetail(buffer, fieldName, i, Array.get(array, i));
-        }
-        buffer.append(getArrayEnd());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2060,9 +1676,7 @@ public abstract class ToStringStyle implements Serializable {
      * @since 2.0
      */
     protected void removeLastFieldSeparator(final StringBuffer buffer) {
-        if (Strings.CS.endsWith(buffer, getFieldSeparator())) {
-            buffer.setLength(buffer.length() - getFieldSeparator().length());
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2071,7 +1685,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param arrayContentDetail the new arrayContentDetail flag.
      */
     protected void setArrayContentDetail(final boolean arrayContentDetail) {
-        this.arrayContentDetail = arrayContentDetail;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2084,7 +1698,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param arrayEnd the new array end text.
      */
     protected void setArrayEnd(final String arrayEnd) {
-        this.arrayEnd = ObjectUtils.toString(arrayEnd);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2097,7 +1711,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param arraySeparator the new array separator text.
      */
     protected void setArraySeparator(final String arraySeparator) {
-        this.arraySeparator = ObjectUtils.toString(arraySeparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2110,7 +1724,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param arrayStart the new array start text.
      */
     protected void setArrayStart(final String arrayStart) {
-        this.arrayStart = ObjectUtils.toString(arrayStart);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2123,7 +1737,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param contentEnd the new content end text.
      */
     protected void setContentEnd(final String contentEnd) {
-        this.contentEnd = ObjectUtils.toString(contentEnd);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2136,7 +1750,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param contentStart the new content start text.
      */
     protected void setContentStart(final String contentStart) {
-        this.contentStart = ObjectUtils.toString(contentStart);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2145,7 +1759,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param defaultFullDetail the new defaultFullDetail flag.
      */
     protected void setDefaultFullDetail(final boolean defaultFullDetail) {
-        this.defaultFullDetail = defaultFullDetail;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2158,7 +1772,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fieldNameValueSeparator the new field name value separator text.
      */
     protected void setFieldNameValueSeparator(final String fieldNameValueSeparator) {
-        this.fieldNameValueSeparator = ObjectUtils.toString(fieldNameValueSeparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2171,7 +1785,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param fieldSeparator the new field separator text.
      */
     protected void setFieldSeparator(final String fieldSeparator) {
-        this.fieldSeparator = ObjectUtils.toString(fieldSeparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2181,7 +1795,7 @@ public abstract class ToStringStyle implements Serializable {
      * @since 2.0
      */
     protected void setFieldSeparatorAtEnd(final boolean fieldSeparatorAtEnd) {
-        this.fieldSeparatorAtEnd = fieldSeparatorAtEnd;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2191,7 +1805,7 @@ public abstract class ToStringStyle implements Serializable {
      * @since 2.0
      */
     protected void setFieldSeparatorAtStart(final boolean fieldSeparatorAtStart) {
-        this.fieldSeparatorAtStart = fieldSeparatorAtStart;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2204,7 +1818,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param nullText the new text to output when null found.
      */
     protected void setNullText(final String nullText) {
-        this.nullText = ObjectUtils.toString(nullText);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2221,7 +1835,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param sizeEndText the new end of size text.
      */
     protected void setSizeEndText(final String sizeEndText) {
-        this.sizeEndText = ObjectUtils.toString(sizeEndText);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2238,7 +1852,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param sizeStartText the new start of size text.
      */
     protected void setSizeStartText(final String sizeStartText) {
-        this.sizeStartText = ObjectUtils.toString(sizeStartText);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2255,7 +1869,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param summaryObjectEndText the new end of summary text.
      */
     protected void setSummaryObjectEndText(final String summaryObjectEndText) {
-        this.summaryObjectEndText = ObjectUtils.toString(summaryObjectEndText);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2272,7 +1886,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param summaryObjectStartText the new start of summary text.
      */
     protected void setSummaryObjectStartText(final String summaryObjectStartText) {
-        this.summaryObjectStartText = ObjectUtils.toString(summaryObjectStartText);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2281,7 +1895,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param useClassName the new useClassName flag.
      */
     protected void setUseClassName(final boolean useClassName) {
-        this.useClassName = useClassName;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2290,7 +1904,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param useFieldNames the new useFieldNames flag.
      */
     protected void setUseFieldNames(final boolean useFieldNames) {
-        this.useFieldNames = useFieldNames;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2299,7 +1913,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param useIdentityHashCode the new useIdentityHashCode flag.
      */
     protected void setUseIdentityHashCode(final boolean useIdentityHashCode) {
-        this.useIdentityHashCode = useIdentityHashCode;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2309,6 +1923,6 @@ public abstract class ToStringStyle implements Serializable {
      * @since 2.0
      */
     protected void setUseShortClassName(final boolean useShortClassName) {
-        this.useShortClassName = useShortClassName;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

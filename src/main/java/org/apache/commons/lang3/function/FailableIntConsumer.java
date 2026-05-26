@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -29,9 +28,13 @@ import java.util.function.IntConsumer;
 @FunctionalInterface
 public interface FailableIntConsumer<E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
-    FailableIntConsumer NOP = t -> { /* NOP */ };
+    FailableIntConsumer NOP = t -> {
+        /* NOP */
+    };
 
     /**
      * Gets the NOP singleton.
@@ -41,7 +44,7 @@ public interface FailableIntConsumer<E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <E extends Throwable> FailableIntConsumer<E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -60,11 +63,6 @@ public interface FailableIntConsumer<E extends Throwable> {
      * @throws NullPointerException if {@code after} is null
      */
     default FailableIntConsumer<E> andThen(final FailableIntConsumer<E> after) {
-        Objects.requireNonNull(after);
-        return (final int t) -> {
-            accept(t);
-            after.accept(t);
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.time;
 
 import java.util.TimeZone;
@@ -38,7 +37,7 @@ public class FastTimeZone {
      * @return A TimeZone with a raw offset of zero.
      */
     public static TimeZone getGmtTimeZone() {
-        return GREENWICH;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -57,19 +56,7 @@ public class FastTimeZone {
      *         {@code null} if the pattern fails the regex.
      */
     public static TimeZone getGmtTimeZone(final String pattern) {
-        if ("Z".equals(pattern) || "UTC".equals(pattern)) {
-            return GREENWICH;
-        }
-        final Matcher m = GMT_PATTERN.matcher(pattern);
-        if (m.matches()) {
-            final int hours = parseInt(m.group(2));
-            final int minutes = parseInt(m.group(4));
-            if (hours == 0 && minutes == 0) {
-                return GREENWICH;
-            }
-            return new GmtTimeZone(parseSign(m.group(1)), hours, minutes);
-        }
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -80,8 +67,7 @@ public class FastTimeZone {
      * @return A time zone.
      */
     public static TimeZone getTimeZone(final String id) {
-        final TimeZone tz = getGmtTimeZone(id);
-        return tz != null ? tz : TimeZones.getTimeZone(id);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static int parseInt(final String s) {
@@ -95,5 +81,4 @@ public class FastTimeZone {
     // do not instantiate
     private FastTimeZone() {
     }
-
 }

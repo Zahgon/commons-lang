@@ -40,7 +40,9 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      */
     private static final long serialVersionUID = -1585823265L;
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private byte value;
 
     /**
@@ -86,7 +88,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 2.2
      */
     public void add(final byte operand) {
-        this.value += operand;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -97,7 +99,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 2.2
      */
     public void add(final Number operand) {
-        this.value += operand.byteValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -109,8 +111,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 3.5
      */
     public byte addAndGet(final byte operand) {
-        this.value += operand;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -123,8 +124,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 3.5
      */
     public byte addAndGet(final Number operand) {
-        this.value += operand.byteValue();
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // shortValue relies on Number implementation
@@ -135,7 +135,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      */
     @Override
     public byte byteValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -146,7 +146,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      */
     @Override
     public int compareTo(final MutableByte other) {
-        return Byte.compare(this.value, other.value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -155,7 +155,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 2.2
      */
     public void decrement() {
-        value--;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -166,8 +166,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 3.5
      */
     public byte decrementAndGet() {
-        value--;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -177,7 +176,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      */
     @Override
     public double doubleValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -190,10 +189,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj instanceof MutableByte) {
-            return value == ((MutableByte) obj).byteValue();
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -203,7 +199,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      */
     @Override
     public float floatValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -215,9 +211,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 3.5
      */
     public byte getAndAdd(final byte operand) {
-        final byte last = value;
-        this.value += operand;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -230,9 +224,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 3.5
      */
     public byte getAndAdd(final Number operand) {
-        final byte last = value;
-        this.value += operand.byteValue();
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -243,9 +235,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 3.5
      */
     public byte getAndDecrement() {
-        final byte last = value;
-        value--;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -256,9 +246,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 3.5
      */
     public byte getAndIncrement() {
-        final byte last = value;
-        value++;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -280,7 +268,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      */
     @Override
     public int hashCode() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -289,7 +277,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 2.2
      */
     public void increment() {
-        value++;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -300,8 +288,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 3.5
      */
     public byte incrementAndGet() {
-        value++;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -311,7 +298,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      */
     @Override
     public int intValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -321,7 +308,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      */
     @Override
     public long longValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -330,7 +317,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @param value  the value to set.
      */
     public void setValue(final byte value) {
-        this.value = value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -341,7 +328,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      */
     @Override
     public void setValue(final Number value) {
-        this.value = value.byteValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -351,7 +338,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 2.2
      */
     public void subtract(final byte operand) {
-        this.value -= operand;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -362,7 +349,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @since 2.2
      */
     public void subtract(final Number operand) {
-        this.value -= operand.byteValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -371,7 +358,7 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      * @return a Byte instance containing the value from this mutable.
      */
     public Byte toByte() {
-        return Byte.valueOf(byteValue());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -381,7 +368,6 @@ public class MutableByte extends Number implements Comparable<MutableByte>, Muta
      */
     @Override
     public String toString() {
-        return String.valueOf(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

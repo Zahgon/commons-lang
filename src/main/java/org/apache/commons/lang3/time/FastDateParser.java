@@ -43,7 +43,6 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
-
 import org.apache.commons.lang3.CharUtils;
 import org.apache.commons.lang3.LocaleUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -92,7 +91,9 @@ public class FastDateParser implements DateParser, Serializable {
     private static final class CaseInsensitiveTextStrategy extends PatternStrategy {
 
         private final int field;
+
         private final Locale locale;
+
         private final Map<String, Integer> lKeyValues;
 
         /**
@@ -105,7 +106,6 @@ public class FastDateParser implements DateParser, Serializable {
         CaseInsensitiveTextStrategy(final int field, final Calendar definingCalendar, final Locale locale) {
             this.field = field;
             this.locale = LocaleUtils.toLocale(locale);
-
             final StringBuilder regex = new StringBuilder();
             regex.append("((?iu)");
             lKeyValues = appendDisplayNames(definingCalendar, locale, field, regex);
@@ -119,16 +119,7 @@ public class FastDateParser implements DateParser, Serializable {
          */
         @Override
         void setCalendar(final FastDateParser parser, final Calendar calendar, final String value) {
-            final String lowerCase = value.toLowerCase(locale);
-            Integer iVal = lKeyValues.get(lowerCase);
-            if (iVal == null) {
-                // match missing the optional trailing period
-                iVal = lKeyValues.get(lowerCase + '.');
-            }
-            // LANG-1669: Mimic fix done in OpenJDK 17 to resolve issue with parsing newly supported day periods added in OpenJDK 16
-            if (Calendar.AM_PM != this.field || iVal <= 1) {
-                calendar.set(field, iVal.intValue());
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -138,7 +129,7 @@ public class FastDateParser implements DateParser, Serializable {
          */
         @Override
         public String toString() {
-            return "CaseInsensitiveTextStrategy [field=" + field + ", locale=" + locale + ", lKeyValues=" + lKeyValues + ", pattern=" + pattern + "]";
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -163,24 +154,12 @@ public class FastDateParser implements DateParser, Serializable {
          */
         @Override
         boolean isNumber() {
-            return false;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         boolean parse(final FastDateParser parser, final Calendar calendar, final String source, final ParsePosition pos, final int maxWidth) {
-            for (int idx = 0; idx < formatField.length(); ++idx) {
-                final int sIdx = idx + pos.getIndex();
-                if (sIdx == source.length()) {
-                    pos.setErrorIndex(sIdx);
-                    return false;
-                }
-                if (formatField.charAt(idx) != source.charAt(sIdx)) {
-                    pos.setErrorIndex(sIdx);
-                    return false;
-                }
-            }
-            pos.setIndex(formatField.length() + pos.getIndex());
-            return true;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -190,13 +169,13 @@ public class FastDateParser implements DateParser, Serializable {
          */
         @Override
         public String toString() {
-            return "CopyQuotedStrategy [formatField=" + formatField + "]";
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
     private static final class ISO8601TimeZoneStrategy extends PatternStrategy {
-        // Z, +hh, -hh, +hhmm, -hhmm, +hh:mm or -hh:mm
 
+        // Z, +hh, -hh, +hhmm, -hhmm, +hh:mm or -hh:mm
         private static final Strategy ISO_8601_1_STRATEGY = new ISO8601TimeZoneStrategy("(Z|(?:[+-]\\d{2}))");
 
         private static final Strategy ISO_8601_2_STRATEGY = new ISO8601TimeZoneStrategy("(Z|(?:[+-]\\d{2}\\d{2}))");
@@ -211,16 +190,7 @@ public class FastDateParser implements DateParser, Serializable {
          *         will be thrown.
          */
         static Strategy getStrategy(final int tokenLen) {
-            switch (tokenLen) {
-            case 1:
-                return ISO_8601_1_STRATEGY;
-            case 2:
-                return ISO_8601_2_STRATEGY;
-            case 3:
-                return ISO_8601_3_STRATEGY;
-            default:
-                throw new IllegalArgumentException("invalid number of X");
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -237,7 +207,7 @@ public class FastDateParser implements DateParser, Serializable {
          */
         @Override
         void setCalendar(final FastDateParser parser, final Calendar calendar, final String value) {
-            calendar.setTimeZone(FastTimeZone.getGmtTimeZone(value));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -262,7 +232,7 @@ public class FastDateParser implements DateParser, Serializable {
          */
         @Override
         boolean isNumber() {
-            return true;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -273,47 +243,12 @@ public class FastDateParser implements DateParser, Serializable {
          * @return The modified value
          */
         int modify(final FastDateParser parser, final int iValue) {
-            return iValue;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         boolean parse(final FastDateParser parser, final Calendar calendar, final String source, final ParsePosition pos, final int maxWidth) {
-            int idx = pos.getIndex();
-            int last = source.length();
-
-            if (maxWidth == 0) {
-                // if no maxWidth, strip leading white space
-                for (; idx < last; ++idx) {
-                    final char c = source.charAt(idx);
-                    if (!Character.isWhitespace(c)) {
-                        break;
-                    }
-                }
-                pos.setIndex(idx);
-            } else {
-                final int end = idx + maxWidth;
-                if (last > end) {
-                    last = end;
-                }
-            }
-
-            for (; idx < last; ++idx) {
-                final char c = source.charAt(idx);
-                if (!Character.isDigit(c)) {
-                    break;
-                }
-            }
-
-            if (pos.getIndex() == idx) {
-                pos.setErrorIndex(idx);
-                return false;
-            }
-
-            final int value = Integer.parseInt(source.substring(pos.getIndex(), idx));
-            pos.setIndex(idx);
-
-            calendar.set(field, modify(parser, value));
-            return true;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -323,7 +258,7 @@ public class FastDateParser implements DateParser, Serializable {
          */
         @Override
         public String toString() {
-            return getClass().getSimpleName() + " [field=" + field + "]";
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -335,11 +270,11 @@ public class FastDateParser implements DateParser, Serializable {
         Pattern pattern;
 
         void createPattern(final String regex) {
-            this.pattern = Pattern.compile(regex);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         void createPattern(final StringBuilder regex) {
-            createPattern(regex.toString());
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -349,19 +284,12 @@ public class FastDateParser implements DateParser, Serializable {
          */
         @Override
         boolean isNumber() {
-            return false;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         boolean parse(final FastDateParser parser, final Calendar calendar, final String source, final ParsePosition pos, final int maxWidth) {
-            final Matcher matcher = pattern.matcher(source.substring(pos.getIndex()));
-            if (!matcher.lookingAt()) {
-                pos.setErrorIndex(pos.getIndex());
-                return false;
-            }
-            pos.setIndex(pos.getIndex() + matcher.end(1));
-            setCalendar(parser, calendar, matcher.group(1));
-            return true;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         abstract void setCalendar(FastDateParser parser, Calendar calendar, String value);
@@ -373,9 +301,8 @@ public class FastDateParser implements DateParser, Serializable {
          */
         @Override
         public String toString() {
-            return getClass().getSimpleName() + " [pattern=" + pattern + "]";
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -389,7 +316,7 @@ public class FastDateParser implements DateParser, Serializable {
          * @return true, if field is a number
          */
         boolean isNumber() {
-            return false;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         abstract boolean parse(FastDateParser parser, Calendar calendar, String source, ParsePosition pos, int maxWidth);
@@ -401,6 +328,7 @@ public class FastDateParser implements DateParser, Serializable {
     private static final class StrategyAndWidth {
 
         final Strategy strategy;
+
         final int width;
 
         StrategyAndWidth(final Strategy strategy, final int width) {
@@ -409,17 +337,12 @@ public class FastDateParser implements DateParser, Serializable {
         }
 
         int getMaxWidth(final ListIterator<StrategyAndWidth> lt) {
-            if (!strategy.isNumber() || !lt.hasNext()) {
-                return 0;
-            }
-            final Strategy nextStrategy = lt.next().strategy;
-            lt.previous();
-            return nextStrategy.isNumber() ? width : 0;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public String toString() {
-            return "StrategyAndWidth [strategy=" + strategy + ", width=" + width + "]";
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -427,7 +350,9 @@ public class FastDateParser implements DateParser, Serializable {
      * Parse format into Strategies
      */
     private final class StrategyParser {
+
         private final Calendar definingCalendar;
+
         private int currentIdx;
 
         StrategyParser(final Calendar definingCalendar) {
@@ -435,14 +360,7 @@ public class FastDateParser implements DateParser, Serializable {
         }
 
         StrategyAndWidth getNextStrategy() {
-            if (currentIdx >= pattern.length()) {
-                return null;
-            }
-            final char c = pattern.charAt(currentIdx);
-            if (CharUtils.isAsciiAlpha(c)) {
-                return letterPattern(c);
-            }
-            return literal();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         private StrategyAndWidth letterPattern(final char c) {
@@ -458,7 +376,6 @@ public class FastDateParser implements DateParser, Serializable {
 
         private StrategyAndWidth literal() {
             boolean activeQuote = false;
-
             final StringBuilder sb = new StringBuilder();
             while (currentIdx < pattern.length()) {
                 final char c = pattern.charAt(currentIdx);
@@ -486,7 +403,9 @@ public class FastDateParser implements DateParser, Serializable {
     static class TimeZoneStrategy extends PatternStrategy {
 
         private static final class TzInfo {
+
             final TimeZone zone;
+
             final int dstOffset;
 
             TzInfo(final TimeZone tz, final boolean useDst) {
@@ -496,7 +415,7 @@ public class FastDateParser implements DateParser, Serializable {
 
             @Override
             public String toString() {
-                return "TzInfo [zone=" + zone + ", dstOffset=" + dstOffset + "]";
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
         }
 
@@ -522,7 +441,7 @@ public class FastDateParser implements DateParser, Serializable {
          * @return Whether to skip the given time zone ID.
          */
         static boolean skipTimeZone(final String tzId) {
-            return tzId.equalsIgnoreCase(TimeZones.GMT_ID);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         private final Locale locale;
@@ -540,12 +459,9 @@ public class FastDateParser implements DateParser, Serializable {
          */
         TimeZoneStrategy(final Locale locale) {
             this.locale = LocaleUtils.toLocale(locale);
-
             final StringBuilder sb = new StringBuilder();
             sb.append("((?iu)" + RFC_822_TIME_ZONE + "|" + GMT_OPTION);
-
             final Set<String> sorted = new TreeSet<>(LONGER_FIRST_LOWERCASE);
-
             // Order is undefined.
             // TODO Use of getZoneStrings() is discouraged per its Javadoc.
             final String[][] zones = DateFormatSymbols.getInstance(locale).getZoneStrings();
@@ -561,16 +477,18 @@ public class FastDateParser implements DateParser, Serializable {
                 final TzInfo standard = new TzInfo(tz, false);
                 TzInfo tzInfo = standard;
                 for (int i = 1; i < zoneNames.length; ++i) {
-                    switch (i) {
-                    case 3: // offset 3 is long daylight savings (or summertime) name
+                    switch(i) {
+                        case // offset 3 is long daylight savings (or summertime) name
+                        3:
                             // offset 4 is the short summertime name
-                        tzInfo = new TzInfo(tz, true);
-                        break;
-                    case 5: // offset 5 starts additional names, probably standard time
-                        tzInfo = standard;
-                        break;
-                    default:
-                        break;
+                            tzInfo = new TzInfo(tz, true);
+                            break;
+                        case // offset 5 starts additional names, probably standard time
+                        5:
+                            tzInfo = standard;
+                            break;
+                        default:
+                            break;
                     }
                     final String zoneName = zoneNames[i];
                     // ignore the data associated with duplicates supplied in the additional names
@@ -602,24 +520,7 @@ public class FastDateParser implements DateParser, Serializable {
          */
         @Override
         void setCalendar(final FastDateParser parser, final Calendar calendar, final String timeZone) {
-            final TimeZone tz = FastTimeZone.getGmtTimeZone(timeZone);
-            if (tz != null) {
-                calendar.setTimeZone(tz);
-            } else {
-                TzInfo tzInfo = tzNames.get(timeZone);
-                if (tzInfo == null) {
-                    // match missing the optional trailing period
-                    tzInfo = tzNames.get(timeZone + '.');
-                    if (tzInfo == null) {
-                        // show chars in case this is multiple byte character issue
-                        final char[] charArray = timeZone.toCharArray();
-                        throw new IllegalStateException(String.format("Can't find time zone '%s' (%d %s) in %s", timeZone, charArray.length,
-                                Arrays.toString(charArray), new TreeSet<>(tzNames.keySet())));
-                    }
-                }
-                calendar.set(Calendar.DST_OFFSET, tzInfo.dstOffset);
-                calendar.set(Calendar.ZONE_OFFSET, tzInfo.zone.getRawOffset());
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -629,9 +530,8 @@ public class FastDateParser implements DateParser, Serializable {
          */
         @Override
         public String toString() {
-            return "TimeZoneStrategy [locale=" + locale + ", tzNames=" + tzNames + ", pattern=" + pattern + "]";
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -650,8 +550,8 @@ public class FastDateParser implements DateParser, Serializable {
     private static final Comparator<String> LONGER_FIRST_LOWERCASE = Comparator.reverseOrder();
 
     // helper classes to parse the format string
-
-    @SuppressWarnings("unchecked") // OK because we are creating an array with no entries
+    // OK because we are creating an array with no entries
+    @SuppressWarnings("unchecked")
     private static final ConcurrentMap<Locale, Strategy>[] CACHES = new ConcurrentMap[Calendar.FIELD_COUNT];
 
     private static final Strategy ABBREVIATED_YEAR_STRATEGY = new NumberStrategy(Calendar.YEAR) {
@@ -661,14 +561,15 @@ public class FastDateParser implements DateParser, Serializable {
          */
         @Override
         int modify(final FastDateParser parser, final int iValue) {
-            return iValue < 100 ? parser.adjustYear(iValue) : iValue;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     };
 
     private static final Strategy NUMBER_MONTH_STRATEGY = new NumberStrategy(Calendar.MONTH) {
+
         @Override
         int modify(final FastDateParser parser, final int iValue) {
-            return iValue - 1;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     };
 
@@ -683,9 +584,10 @@ public class FastDateParser implements DateParser, Serializable {
     private static final Strategy DAY_OF_MONTH_STRATEGY = new NumberStrategy(Calendar.DAY_OF_MONTH);
 
     private static final Strategy DAY_OF_WEEK_STRATEGY = new NumberStrategy(Calendar.DAY_OF_WEEK) {
+
         @Override
         int modify(final FastDateParser parser, final int iValue) {
-            return iValue == 7 ? Calendar.SUNDAY : iValue + 1;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     };
 
@@ -694,16 +596,18 @@ public class FastDateParser implements DateParser, Serializable {
     private static final Strategy HOUR_OF_DAY_STRATEGY = new NumberStrategy(Calendar.HOUR_OF_DAY);
 
     private static final Strategy HOUR24_OF_DAY_STRATEGY = new NumberStrategy(Calendar.HOUR_OF_DAY) {
+
         @Override
         int modify(final FastDateParser parser, final int iValue) {
-            return iValue == 24 ? 0 : iValue;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     };
 
     private static final Strategy HOUR12_STRATEGY = new NumberStrategy(Calendar.HOUR) {
+
         @Override
         int modify(final FastDateParser parser, final int iValue) {
-            return iValue == 12 ? 0 : iValue;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     };
 
@@ -744,7 +648,7 @@ public class FastDateParser implements DateParser, Serializable {
      * Clears the cache.
      */
     static void clear() {
-        Stream.of(CACHES).filter(Objects::nonNull).forEach(ConcurrentMap::clear);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -765,23 +669,23 @@ public class FastDateParser implements DateParser, Serializable {
     private static StringBuilder simpleQuote(final StringBuilder sb, final String value) {
         for (int i = 0; i < value.length(); ++i) {
             final char c = value.charAt(i);
-            switch (c) {
-            case '\\':
-            case '^':
-            case '$':
-            case '.':
-            case '|':
-            case '?':
-            case '*':
-            case '+':
-            case '(':
-            case ')':
-            case '[':
-            case '{':
-                sb.append('\\');
+            switch(c) {
+                case '\\':
+                case '^':
+                case '$':
+                case '.':
+                case '|':
+                case '?':
+                case '*':
+                case '+':
+                case '(':
+                case ')':
+                case '[':
+                case '{':
+                    sb.append('\\');
                 // falls-through
-            default:
-                sb.append(c);
+                default:
+                    sb.append(c);
             }
         }
         if (sb.charAt(sb.length() - 1) == '.') {
@@ -791,13 +695,19 @@ public class FastDateParser implements DateParser, Serializable {
         return sb;
     }
 
-    /** Input pattern. */
+    /**
+     * Input pattern.
+     */
     private final String pattern;
 
-    /** Input TimeZone. */
+    /**
+     * Input TimeZone.
+     */
     private final TimeZone timeZone;
 
-    /** Input Locale. */
+    /**
+     * Input Locale.
+     */
     private final Locale locale;
 
     /**
@@ -810,7 +720,9 @@ public class FastDateParser implements DateParser, Serializable {
      */
     private final int startYear;
 
-    /** Initialized from Calendar. */
+    /**
+     * Initialized from Calendar.
+     */
     private transient List<StrategyAndWidth> patterns;
 
     /**
@@ -876,11 +788,7 @@ public class FastDateParser implements DateParser, Serializable {
      */
     @Override
     public boolean equals(final Object obj) {
-        if (!(obj instanceof FastDateParser)) {
-            return false;
-        }
-        final FastDateParser other = (FastDateParser) obj;
-        return pattern.equals(other.pattern) && timeZone.equals(other.timeZone) && locale.equals(other.locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /*
@@ -890,7 +798,7 @@ public class FastDateParser implements DateParser, Serializable {
      */
     @Override
     public Locale getLocale() {
-        return locale;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -901,8 +809,7 @@ public class FastDateParser implements DateParser, Serializable {
      * @return a TextStrategy for the field and Locale
      */
     private Strategy getLocaleSpecificStrategy(final int field, final Calendar definingCalendar) {
-        return getCache(field).computeIfAbsent(locale,
-                k -> field == Calendar.ZONE_OFFSET ? new TimeZoneStrategy(locale) : new CaseInsensitiveTextStrategy(field, definingCalendar, locale));
+        return getCache(field).computeIfAbsent(locale, k -> field == Calendar.ZONE_OFFSET ? new TimeZoneStrategy(locale) : new CaseInsensitiveTextStrategy(field, definingCalendar, locale));
     }
 
     /*
@@ -912,7 +819,7 @@ public class FastDateParser implements DateParser, Serializable {
      */
     @Override
     public String getPattern() {
-        return pattern;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -924,56 +831,60 @@ public class FastDateParser implements DateParser, Serializable {
      * @return The Strategy that will handle parsing for the field
      */
     private Strategy getStrategy(final char f, final int width, final Calendar definingCalendar) {
-        switch (f) {
-        case 'D':
-            return DAY_OF_YEAR_STRATEGY;
-        case 'E':
-            return getLocaleSpecificStrategy(Calendar.DAY_OF_WEEK, definingCalendar);
-        case 'F':
-            return DAY_OF_WEEK_IN_MONTH_STRATEGY;
-        case 'G':
-            return getLocaleSpecificStrategy(Calendar.ERA, definingCalendar);
-        case 'H': // Hour in day (0-23)
-            return HOUR_OF_DAY_STRATEGY;
-        case 'K': // Hour in am/pm (0-11)
-            return HOUR_STRATEGY;
-        case 'M':
-        case 'L':
-            return width >= 3 ? getLocaleSpecificStrategy(Calendar.MONTH, definingCalendar) : NUMBER_MONTH_STRATEGY;
-        case 'S':
-            return MILLISECOND_STRATEGY;
-        case 'W':
-            return WEEK_OF_MONTH_STRATEGY;
-        case 'a':
-            return getLocaleSpecificStrategy(Calendar.AM_PM, definingCalendar);
-        case 'd':
-            return DAY_OF_MONTH_STRATEGY;
-        case 'h': // Hour in am/pm (1-12), i.e. midday/midnight is 12, not 0
-            return HOUR12_STRATEGY;
-        case 'k': // Hour in day (1-24), i.e. midnight is 24, not 0
-            return HOUR24_OF_DAY_STRATEGY;
-        case 'm':
-            return MINUTE_STRATEGY;
-        case 's':
-            return SECOND_STRATEGY;
-        case 'u':
-            return DAY_OF_WEEK_STRATEGY;
-        case 'w':
-            return WEEK_OF_YEAR_STRATEGY;
-        case 'y':
-        case 'Y':
-            return width > 2 ? LITERAL_YEAR_STRATEGY : ABBREVIATED_YEAR_STRATEGY;
-        case 'X':
-            return ISO8601TimeZoneStrategy.getStrategy(width);
-        case 'Z':
-            if (width == 2) {
-                return ISO8601TimeZoneStrategy.ISO_8601_3_STRATEGY;
-            }
+        switch(f) {
+            case 'D':
+                return DAY_OF_YEAR_STRATEGY;
+            case 'E':
+                return getLocaleSpecificStrategy(Calendar.DAY_OF_WEEK, definingCalendar);
+            case 'F':
+                return DAY_OF_WEEK_IN_MONTH_STRATEGY;
+            case 'G':
+                return getLocaleSpecificStrategy(Calendar.ERA, definingCalendar);
+            case // Hour in day (0-23)
+            'H':
+                return HOUR_OF_DAY_STRATEGY;
+            case // Hour in am/pm (0-11)
+            'K':
+                return HOUR_STRATEGY;
+            case 'M':
+            case 'L':
+                return width >= 3 ? getLocaleSpecificStrategy(Calendar.MONTH, definingCalendar) : NUMBER_MONTH_STRATEGY;
+            case 'S':
+                return MILLISECOND_STRATEGY;
+            case 'W':
+                return WEEK_OF_MONTH_STRATEGY;
+            case 'a':
+                return getLocaleSpecificStrategy(Calendar.AM_PM, definingCalendar);
+            case 'd':
+                return DAY_OF_MONTH_STRATEGY;
+            case // Hour in am/pm (1-12), i.e. midday/midnight is 12, not 0
+            'h':
+                return HOUR12_STRATEGY;
+            case // Hour in day (1-24), i.e. midnight is 24, not 0
+            'k':
+                return HOUR24_OF_DAY_STRATEGY;
+            case 'm':
+                return MINUTE_STRATEGY;
+            case 's':
+                return SECOND_STRATEGY;
+            case 'u':
+                return DAY_OF_WEEK_STRATEGY;
+            case 'w':
+                return WEEK_OF_YEAR_STRATEGY;
+            case 'y':
+            case 'Y':
+                return width > 2 ? LITERAL_YEAR_STRATEGY : ABBREVIATED_YEAR_STRATEGY;
+            case 'X':
+                return ISO8601TimeZoneStrategy.getStrategy(width);
+            case 'Z':
+                if (width == 2) {
+                    return ISO8601TimeZoneStrategy.ISO_8601_3_STRATEGY;
+                }
             // falls-through
-        case 'z':
-            return getLocaleSpecificStrategy(Calendar.ZONE_OFFSET, definingCalendar);
-        default:
-            throw new IllegalArgumentException("Format '" + f + "' not supported");
+            case 'z':
+                return getLocaleSpecificStrategy(Calendar.ZONE_OFFSET, definingCalendar);
+            default:
+                throw new IllegalArgumentException("Format '" + f + "' not supported");
         }
     }
 
@@ -984,7 +895,7 @@ public class FastDateParser implements DateParser, Serializable {
      */
     @Override
     public TimeZone getTimeZone() {
-        return timeZone;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -994,7 +905,7 @@ public class FastDateParser implements DateParser, Serializable {
      */
     @Override
     public int hashCode() {
-        return pattern.hashCode() + 13 * (timeZone.hashCode() + 13 * locale.hashCode());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1004,9 +915,8 @@ public class FastDateParser implements DateParser, Serializable {
      */
     private void init(final Calendar definingCalendar) {
         patterns = new ArrayList<>();
-
         final StrategyParser strategyParser = new StrategyParser(definingCalendar);
-        for (;;) {
+        for (; ; ) {
             final StrategyAndWidth field = strategyParser.getNextStrategy();
             if (field == null) {
                 break;
@@ -1022,18 +932,7 @@ public class FastDateParser implements DateParser, Serializable {
      */
     @Override
     public Date parse(final String source) throws ParseException {
-        final ParsePosition pp = new ParsePosition(0);
-        final Date date = parse(source, pp);
-        if (date == null) {
-            // Add a note regarding supported date range
-            final int errorIndex = pp.getErrorIndex();
-            final String msg = String.format("Unparseable date: '%s', parse position = %s", source, pp);
-            if (locale.equals(JAPANESE_IMPERIAL)) {
-                throw new ParseException(String.format("; the %s locale does not support dates before 1868-01-01.", locale, msg), errorIndex);
-            }
-            throw new ParseException(msg, errorIndex);
-        }
-        return date;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1048,10 +947,7 @@ public class FastDateParser implements DateParser, Serializable {
      */
     @Override
     public Date parse(final String source, final ParsePosition pos) {
-        // timing tests indicate getting new instance is 19% faster than cloning
-        final Calendar cal = Calendar.getInstance(timeZone, locale);
-        cal.clear();
-        return parse(source, pos, cal) ? cal.getTime() : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1067,15 +963,7 @@ public class FastDateParser implements DateParser, Serializable {
      */
     @Override
     public boolean parse(final String source, final ParsePosition pos, final Calendar calendar) {
-        final ListIterator<StrategyAndWidth> lt = patterns.listIterator();
-        while (lt.hasNext()) {
-            final StrategyAndWidth strategyAndWidth = lt.next();
-            final int maxWidth = strategyAndWidth.getMaxWidth(lt);
-            if (!strategyAndWidth.strategy.parse(this, calendar, source, pos, maxWidth)) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /*
@@ -1085,7 +973,7 @@ public class FastDateParser implements DateParser, Serializable {
      */
     @Override
     public Object parseObject(final String source) throws ParseException {
-        return parse(source);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /*
@@ -1095,7 +983,7 @@ public class FastDateParser implements DateParser, Serializable {
      */
     @Override
     public Object parseObject(final String source, final ParsePosition pos) {
-        return parse(source, pos);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1118,7 +1006,7 @@ public class FastDateParser implements DateParser, Serializable {
      */
     @Override
     public String toString() {
-        return "FastDateParser[" + pattern + ", " + locale + ", " + timeZone.getID() + "]";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1128,7 +1016,6 @@ public class FastDateParser implements DateParser, Serializable {
      * @since 3.12.0
      */
     public String toStringAll() {
-        return "FastDateParser [pattern=" + pattern + ", timeZone=" + timeZone + ", locale=" + locale + ", century=" + century + ", startYear=" + startYear
-                + ", patterns=" + StringUtils.join(patterns, ", " + System.lineSeparator() + "\t") + "]";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

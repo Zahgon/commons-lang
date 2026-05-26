@@ -23,7 +23,6 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.builder.AbstractReflection.AbstractBuilder;
@@ -81,7 +80,7 @@ import org.apache.commons.lang3.tuple.Pair;
  * </p>
  * <p>A typical implementation of {@code compareTo(Object)} using
  * {@code reflectionCompare} looks like:</p>
-
+ *
  * <pre>
  * public int compareTo(Object o) {
  *   return CompareToBuilder.reflectionCompare(this, o);
@@ -116,9 +115,8 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
 
         @Override
         public CompareToBuilder get() {
-            return new CompareToBuilder(this);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -132,7 +130,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return a new Builder.
      */
     public static Builder builder() {
-        return new Builder();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -142,7 +140,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return Set the registry of objects being traversed
      */
     static Set<Pair<IDKey, IDKey>> getRegistry() {
-        return REGISTRY.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -158,7 +156,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return boolean {@code true} if the registry contains the given object.
      */
     static boolean isRegistered(final Object lhs, final Object rhs) {
-        return isRegistered(lhs, rhs, getRegistry());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -173,23 +171,12 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @param excludeFields  fields to exclude
      * @param forceAccessible Whether to set fields' accessible flags
      */
-    private static void reflectionAppend(
-        final Object lhs,
-        final Object rhs,
-        final Class<?> clazz,
-        final CompareToBuilder builder,
-        final boolean useTransients,
-        final String[] excludeFields,
-        final boolean forceAccessible) {
-
+    private static void reflectionAppend(final Object lhs, final Object rhs, final Class<?> clazz, final CompareToBuilder builder, final boolean useTransients, final String[] excludeFields, final boolean forceAccessible) {
         final Field[] fields = clazz.getDeclaredFields();
         for (int i = 0; i < fields.length && builder.comparison == 0; i++) {
             final Field field = fields[i];
             final String name = field.getName();
-            if (!ArrayUtils.contains(excludeFields, name)
-                && !name.contains("$")
-                && (useTransients || !Modifier.isTransient(field.getModifiers()))
-                && !Modifier.isStatic(field.getModifiers())) {
+            if (!ArrayUtils.contains(excludeFields, name) && !name.contains("$") && (useTransients || !Modifier.isTransient(field.getModifiers())) && !Modifier.isStatic(field.getModifiers())) {
                 if (setAccessible(forceAccessible, field)) {
                     // IllegalAccessException can't happen. Would get a Security exception instead.
                     // Throw a runtime exception in case the impossible happens.
@@ -226,7 +213,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      *  with {@code lhs}
      */
     public static int reflectionCompare(final Object lhs, final Object rhs) {
-        return reflectionCompare(lhs, rhs, false, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -258,7 +245,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      *  with {@code lhs}
      */
     public static int reflectionCompare(final Object lhs, final Object rhs, final boolean compareTransients) {
-        return reflectionCompare(lhs, rhs, compareTransients, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -293,28 +280,8 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      *  with {@code lhs}
      * @since 2.2 (2.0 as {@code reflectionCompare(Object, Object, boolean, Class)})
      */
-    public static int reflectionCompare(
-        final Object lhs,
-        final Object rhs,
-        final boolean compareTransients,
-        final Class<?> reflectUpToClass,
-        final String... excludeFields) {
-        if (lhs == rhs) {
-            return 0;
-        }
-        Objects.requireNonNull(lhs, "lhs");
-        Objects.requireNonNull(rhs, "rhs");
-        Class<?> lhsClazz = lhs.getClass();
-        if (!lhsClazz.isInstance(rhs)) {
-            throw new ClassCastException();
-        }
-        final CompareToBuilder compareToBuilder = new CompareToBuilder();
-        reflectionAppend(lhs, rhs, lhsClazz, compareToBuilder, compareTransients, excludeFields, AbstractReflection.getForceAccessible());
-        while (lhsClazz.getSuperclass() != null && lhsClazz != reflectUpToClass) {
-            lhsClazz = lhsClazz.getSuperclass();
-            reflectionAppend(lhs, rhs, lhsClazz, compareToBuilder, compareTransients, excludeFields, AbstractReflection.getForceAccessible());
-        }
-        return compareToBuilder.toComparison();
+    public static int reflectionCompare(final Object lhs, final Object rhs, final boolean compareTransients, final Class<?> reflectUpToClass, final String... excludeFields) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -347,7 +314,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @since 2.2
      */
     public static int reflectionCompare(final Object lhs, final Object rhs, final Collection<String> excludeFields) {
-        return reflectionCompare(lhs, rhs, ReflectionToStringBuilder.toNoNullStringArray(excludeFields));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -380,7 +347,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @since 2.2
      */
     public static int reflectionCompare(final Object lhs, final Object rhs, final String... excludeFields) {
-        return reflectionCompare(lhs, rhs, false, null, excludeFields);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -436,20 +403,9 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @param lhs  left-hand side value
      * @param rhs  right-hand side value
      * @return {@code this} instance.
-      */
+     */
     public CompareToBuilder append(final boolean lhs, final boolean rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs) {
-            comparison = 1;
-        } else {
-            comparison = -1;
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -468,28 +424,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final boolean[] lhs, final boolean[] rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null) {
-            comparison = -1;
-            return this;
-        }
-        if (rhs == null) {
-            comparison = 1;
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            comparison = lhs.length < rhs.length ? -1 : 1;
-            return this;
-        }
-        for (int i = 0; i < lhs.length && comparison == 0; i++) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -501,11 +436,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final byte lhs, final byte rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        comparison = Byte.compare(lhs, rhs);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -524,28 +455,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final byte[] lhs, final byte[] rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null) {
-            comparison = -1;
-            return this;
-        }
-        if (rhs == null) {
-            comparison = 1;
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            comparison = lhs.length < rhs.length ? -1 : 1;
-            return this;
-        }
-        for (int i = 0; i < lhs.length && comparison == 0; i++) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -557,11 +467,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final char lhs, final char rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        comparison = Character.compare(lhs, rhs);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -580,28 +486,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final char[] lhs, final char[] rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null) {
-            comparison = -1;
-            return this;
-        }
-        if (rhs == null) {
-            comparison = 1;
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            comparison = lhs.length < rhs.length ? -1 : 1;
-            return this;
-        }
-        for (int i = 0; i < lhs.length && comparison == 0; i++) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -618,11 +503,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final double lhs, final double rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        comparison = Double.compare(lhs, rhs);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -641,28 +522,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final double[] lhs, final double[] rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null) {
-            comparison = -1;
-            return this;
-        }
-        if (rhs == null) {
-            comparison = 1;
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            comparison = lhs.length < rhs.length ? -1 : 1;
-            return this;
-        }
-        for (int i = 0; i < lhs.length && comparison == 0; i++) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -679,11 +539,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final float lhs, final float rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        comparison = Float.compare(lhs, rhs);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -702,28 +558,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final float[] lhs, final float[] rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null) {
-            comparison = -1;
-            return this;
-        }
-        if (rhs == null) {
-            comparison = 1;
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            comparison = lhs.length < rhs.length ? -1 : 1;
-            return this;
-        }
-        for (int i = 0; i < lhs.length && comparison == 0; i++) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -735,11 +570,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final int lhs, final int rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        comparison = Integer.compare(lhs, rhs);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -758,28 +589,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final int[] lhs, final int[] rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null) {
-            comparison = -1;
-            return this;
-        }
-        if (rhs == null) {
-            comparison = 1;
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            comparison = lhs.length < rhs.length ? -1 : 1;
-            return this;
-        }
-        for (int i = 0; i < lhs.length && comparison == 0; i++) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -791,11 +601,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final long lhs, final long rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        comparison = Long.compare(lhs, rhs);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -814,28 +620,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final long[] lhs, final long[] rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null) {
-            comparison = -1;
-            return this;
-        }
-        if (rhs == null) {
-            comparison = 1;
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            comparison = lhs.length < rhs.length ? -1 : 1;
-            return this;
-        }
-        for (int i = 0; i < lhs.length && comparison == 0; i++) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -858,7 +643,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      *  with {@code lhs}
      */
     public CompareToBuilder append(final Object lhs, final Object rhs) {
-        return append(lhs, rhs, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -887,42 +672,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @since 2.0
      */
     public CompareToBuilder append(final Object lhs, final Object rhs, final Comparator<?> comparator) {
-        if (comparison != 0) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null) {
-            comparison = -1;
-            return this;
-        }
-        if (rhs == null) {
-            comparison = 1;
-            return this;
-        }
-        if (isRegistered(lhs, rhs)) {
-            return this;
-        }
-        try {
-            register(lhs, rhs);
-            if (ObjectUtils.isArray(lhs)) {
-                // factor out array case in order to keep method small enough to be inlined
-                appendArray(lhs, rhs, comparator);
-            } else // the simple case, not an array, just test the element
-            if (comparator == null) {
-                @SuppressWarnings("unchecked") // assume this can be done; if not throw CCE as per Javadoc
-                final Comparable<Object> comparable = (Comparable<Object>) lhs;
-                comparison = comparable.compareTo(rhs);
-            } else {
-                @SuppressWarnings("unchecked") // assume this can be done; if not throw CCE as per Javadoc
-                final Comparator<Object> comparator2 = (Comparator<Object>) comparator;
-                comparison = comparator2.compare(lhs, rhs);
-            }
-            return this;
-        } finally {
-            unregister(lhs, rhs);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -946,7 +696,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      *  with {@code lhs}
      */
     public CompareToBuilder append(final Object[] lhs, final Object[] rhs) {
-        return append(lhs, rhs, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -973,28 +723,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @since 2.0
      */
     public CompareToBuilder append(final Object[] lhs, final Object[] rhs, final Comparator<?> comparator) {
-        if (comparison != 0) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null) {
-            comparison = -1;
-            return this;
-        }
-        if (rhs == null) {
-            comparison = 1;
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            comparison = lhs.length < rhs.length ? -1 : 1;
-            return this;
-        }
-        for (int i = 0; i < lhs.length && comparison == 0; i++) {
-            append(lhs[i], rhs[i], comparator);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1006,11 +735,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final short lhs, final short rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        comparison = Short.compare(lhs, rhs);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1029,28 +754,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @return {@code this} instance.
      */
     public CompareToBuilder append(final short[] lhs, final short[] rhs) {
-        if (comparison != 0) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null) {
-            comparison = -1;
-            return this;
-        }
-        if (rhs == null) {
-            comparison = 1;
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            comparison = lhs.length < rhs.length ? -1 : 1;
-            return this;
-        }
-        for (int i = 0; i < lhs.length && comparison == 0; i++) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void appendArray(final Object lhs, final Object rhs, final Comparator<?> comparator) {
@@ -1089,11 +793,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @since 2.0
      */
     public CompareToBuilder appendSuper(final int superCompareTo) {
-        if (comparison != 0) {
-            return this;
-        }
-        comparison = superCompareTo;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1108,7 +808,7 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      */
     @Override
     public Integer build() {
-        return Integer.valueOf(toComparison());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1121,7 +821,6 @@ public class CompareToBuilder extends AbstractReflection implements Builder<Inte
      * @see #build()
      */
     public int toComparison() {
-        return comparison;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }
-

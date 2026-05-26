@@ -30,7 +30,6 @@ import java.util.Set;
 import java.util.function.Supplier;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-
 import org.apache.commons.lang3.function.Suppliers;
 import org.apache.commons.lang3.stream.LangCollectors;
 import org.apache.commons.lang3.stream.Streams;
@@ -140,7 +139,6 @@ public class StringUtils {
     // Append:
     // String.concat about twice as fast as StringBuffer.append
     // (not sure who tested this)
-
     /**
      * This is a 3 character version of an ellipsis. There is a Unicode character for a HORIZONTAL ELLIPSIS, U+2026 '…', this isn't it.
      */
@@ -203,7 +201,8 @@ public class StringUtils {
     /**
      * Pattern used in {@link #stripAccents(String)}.
      */
-    private static final Pattern STRIP_ACCENTS_PATTERN = Pattern.compile("\\p{InCombiningDiacriticalMarks}+"); //$NON-NLS-1$
+    //$NON-NLS-1$
+    private static final Pattern STRIP_ACCENTS_PATTERN = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 
     /**
      * Abbreviates a String using ellipses. This will convert "Now is the time for all good men" into "Now is the time for..."
@@ -235,7 +234,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String abbreviate(final String str, final int maxWidth) {
-        return abbreviate(str, ELLIPSIS3, 0, maxWidth);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -273,7 +272,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String abbreviate(final String str, final int offset, final int maxWidth) {
-        return abbreviate(str, ELLIPSIS3, offset, maxWidth);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -311,7 +310,7 @@ public class StringUtils {
      * @since 3.6
      */
     public static String abbreviate(final String str, final String abbrevMarker, final int maxWidth) {
-        return abbreviate(str, abbrevMarker, 0, maxWidth);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -352,33 +351,7 @@ public class StringUtils {
      * @since 3.6
      */
     public static String abbreviate(final String str, String abbrevMarker, final int offset, final int maxWidth) {
-        if (isEmpty(str)) {
-            return str;
-        }
-        if (abbrevMarker == null) {
-            abbrevMarker = EMPTY;
-        }
-        final int abbrevMarkerLength = abbrevMarker.length();
-        final int minAbbrevWidth = abbrevMarkerLength + 1;
-        final int minAbbrevWidthOffset = abbrevMarkerLength + abbrevMarkerLength + 1;
-
-        if (maxWidth < minAbbrevWidth) {
-            throw new IllegalArgumentException(String.format("Minimum abbreviation width is %d", minAbbrevWidth));
-        }
-        final int strLen = str.length();
-        if (strLen <= maxWidth) {
-            return str;
-        }
-        if (strLen - offset <= maxWidth - abbrevMarkerLength) {
-            return abbrevMarker + str.substring(strLen - (maxWidth - abbrevMarkerLength));
-        }
-        if (offset <= abbrevMarkerLength + 1) {
-            return str.substring(0, maxWidth - abbrevMarkerLength) + abbrevMarker;
-        }
-        if (maxWidth < minAbbrevWidthOffset) {
-            throw new IllegalArgumentException(String.format("Minimum abbreviation width with offset is %d", minAbbrevWidthOffset));
-        }
-        return abbrevMarker + abbreviate(str.substring(offset), abbrevMarker, maxWidth - abbrevMarkerLength);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -413,13 +386,7 @@ public class StringUtils {
      * @since 2.5
      */
     public static String abbreviateMiddle(final String str, final String middle, final int length) {
-        if (isAnyEmpty(str, middle) || length >= str.length() || length < middle.length() + 2) {
-            return str;
-        }
-        final int targetString = length - middle.length();
-        final int startOffset = targetString / 2 + targetString % 2;
-        final int endOffset = str.length() - targetString / 2;
-        return str.substring(0, startOffset) + middle + str.substring(endOffset);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -534,18 +501,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String capitalize(final String str) {
-        if (isEmpty(str)) {
-            return str;
-        }
-        final int firstCodepoint = str.codePointAt(0);
-        final int newCodePoint = Character.toTitleCase(firstCodepoint);
-        if (firstCodepoint == newCodePoint) {
-            // already capitalized
-            return str;
-        }
-        final int[] newCodePoints = str.codePoints().toArray();
-        newCodePoints[0] = newCodePoint; // copy the first code point
-        return new String(newCodePoints, 0, newCodePoints.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -574,7 +530,7 @@ public class StringUtils {
      * @return centered String, {@code null} if null String input.
      */
     public static String center(final String str, final int size) {
-        return center(str, size, ' ');
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -601,16 +557,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String center(String str, final int size, final char padChar) {
-        if (str == null || size <= 0) {
-            return str;
-        }
-        final int strLen = str.length();
-        final int pads = size - strLen;
-        if (pads <= 0) {
-            return str;
-        }
-        str = leftPad(str, strLen + pads / 2, padChar);
-        return rightPad(str, size, padChar);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -639,19 +586,7 @@ public class StringUtils {
      * @throws IllegalArgumentException if padStr is {@code null} or empty.
      */
     public static String center(String str, final int size, String padStr) {
-        if (str == null || size <= 0) {
-            return str;
-        }
-        if (isEmpty(padStr)) {
-            padStr = SPACE;
-        }
-        final int strLen = str.length();
-        final int pads = size - strLen;
-        if (pads <= 0) {
-            return str;
-        }
-        str = leftPad(str, strLen + pads / 2, padStr);
-        return rightPad(str, size, padStr);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static void checkFromToIndex(final int startIndex, final int endIndex, final int length) {
@@ -689,26 +624,7 @@ public class StringUtils {
      * @return String without newline, {@code null} if null String input.
      */
     public static String chomp(final String str) {
-        if (isEmpty(str)) {
-            return str;
-        }
-        if (str.length() == 1) {
-            final char ch = str.charAt(0);
-            if (ch == CharUtils.CR || ch == CharUtils.LF) {
-                return EMPTY;
-            }
-            return str;
-        }
-        int lastIdx = str.length() - 1;
-        final char last = str.charAt(lastIdx);
-        if (last == CharUtils.LF) {
-            if (str.charAt(lastIdx - 1) == CharUtils.CR) {
-                lastIdx--;
-            }
-        } else if (last != CharUtils.CR) {
-            lastIdx++;
-        }
-        return str.substring(0, lastIdx);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -767,20 +683,7 @@ public class StringUtils {
      * @return String without last character, {@code null} if null String input.
      */
     public static String chop(final String str) {
-        if (str == null) {
-            return null;
-        }
-        final int strLen = str.length();
-        if (strLen < 2) {
-            return EMPTY;
-        }
-        final int lastIdx = strLen - 1;
-        final String ret = str.substring(0, lastIdx);
-        final char last = str.charAt(lastIdx);
-        if (last == CharUtils.LF && ret.charAt(lastIdx - 1) == CharUtils.CR) {
-            return ret.substring(0, lastIdx - 1);
-        }
-        return ret;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -868,16 +771,7 @@ public class StringUtils {
      * @since 3.5
      */
     public static int compare(final String str1, final String str2, final boolean nullIsLess) {
-        if (str1 == str2) { // NOSONARLINT this intentionally uses == to allow for both null
-            return 0;
-        }
-        if (str1 == null) {
-            return nullIsLess ? -1 : 1;
-        }
-        if (str2 == null) {
-            return nullIsLess ? 1 : -1;
-        }
-        return str1.compareTo(str2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -969,16 +863,7 @@ public class StringUtils {
      * @since 3.5
      */
     public static int compareIgnoreCase(final String str1, final String str2, final boolean nullIsLess) {
-        if (str1 == str2) { // NOSONARLINT this intentionally uses == to allow for both null
-            return 0;
-        }
-        if (str1 == null) {
-            return nullIsLess ? -1 : 1;
-        }
-        if (str2 == null) {
-            return nullIsLess ? 1 : -1;
-        }
-        return str1.compareToIgnoreCase(str2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1030,10 +915,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from contains(String, int) to contains(CharSequence, int)
      */
     public static boolean contains(final CharSequence seq, final int searchChar) {
-        if (isEmpty(seq)) {
-            return false;
-        }
-        return CharSequenceUtils.indexOf(seq, searchChar, 0) >= 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1061,24 +943,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from containsAny(String, char[]) to containsAny(CharSequence, char...)
      */
     public static boolean containsAny(final CharSequence cs, final char... searchChars) {
-        if (isEmpty(cs) || ArrayUtils.isEmpty(searchChars)) {
-            return false;
-        }
-        final int csLength = cs.length();
-        final int searchLength = searchChars.length;
-        final int csLast = csLength - 1;
-        final int searchLast = searchLength - 1;
-        for (int i = 0; i < csLength; i++) {
-            final char ch = cs.charAt(i);
-            for (int j = 0; j < searchLength; j++) {
-                if (searchChars[j] == ch) {
-                    if (!Character.isHighSurrogate(ch) || j == searchLast || i < csLast && searchChars[j + 1] == cs.charAt(i + 1)) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1108,10 +973,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from containsAny(String, String) to containsAny(CharSequence, CharSequence)
      */
     public static boolean containsAny(final CharSequence cs, final CharSequence searchChars) {
-        if (searchChars == null) {
-            return false;
-        }
-        return containsAny(cs, CharSequenceUtils.toCharArray(searchChars));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1231,24 +1093,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from containsNone(String, char[]) to containsNone(CharSequence, char...)
      */
     public static boolean containsNone(final CharSequence cs, final char... searchChars) {
-        if (cs == null || searchChars == null) {
-            return true;
-        }
-        final int csLen = cs.length();
-        final int csLast = csLen - 1;
-        final int searchLen = searchChars.length;
-        final int searchLast = searchLen - 1;
-        for (int i = 0; i < csLen; i++) {
-            final char ch = cs.charAt(i);
-            for (int j = 0; j < searchLen; j++) {
-                if (searchChars[j] == ch) {
-                    if (!Character.isHighSurrogate(ch) || j == searchLast || i < csLast && searchChars[j + 1] == cs.charAt(i + 1)) {
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1276,10 +1121,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from containsNone(String, String) to containsNone(CharSequence, String)
      */
     public static boolean containsNone(final CharSequence cs, final String invalidChars) {
-        if (invalidChars == null) {
-            return true;
-        }
-        return containsNone(cs, invalidChars.toCharArray());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1306,17 +1148,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from containsOnly(String, char[]) to containsOnly(CharSequence, char...)
      */
     public static boolean containsOnly(final CharSequence cs, final char... valid) {
-        // All these pre-checks are to maintain API with an older version
-        if (valid == null || cs == null) {
-            return false;
-        }
-        if (cs.length() == 0) {
-            return true;
-        }
-        if (valid.length == 0) {
-            return false;
-        }
-        return indexOfAnyBut(cs, valid) == INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1344,10 +1176,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from containsOnly(String, String) to containsOnly(CharSequence, String)
      */
     public static boolean containsOnly(final CharSequence cs, final String validChars) {
-        if (cs == null || validChars == null) {
-            return false;
-        }
-        return containsOnly(cs, validChars.toCharArray());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1371,81 +1200,72 @@ public class StringUtils {
      * @since 3.0
      */
     public static boolean containsWhitespace(final CharSequence seq) {
-        if (isEmpty(seq)) {
-            return false;
-        }
-        final int strLen = seq.length();
-        for (int i = 0; i < strLen; i++) {
-            if (Character.isWhitespace(seq.charAt(i))) {
-                return true;
-            }
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static void convertRemainingAccentCharacters(final StringBuilder decomposed) {
         for (int i = 0; i < decomposed.length(); i++) {
             final char charAt = decomposed.charAt(i);
-            switch (charAt) {
-            case '\u0141':
-                decomposed.setCharAt(i, 'L');
-                break;
-            case '\u0142':
-                decomposed.setCharAt(i, 'l');
-                break;
-            // D with stroke
-            case '\u0110':
-                // LATIN CAPITAL LETTER D WITH STROKE
-                decomposed.setCharAt(i, 'D');
-                break;
-            case '\u0111':
-                // LATIN SMALL LETTER D WITH STROKE
-                decomposed.setCharAt(i, 'd');
-                break;
-            // I with bar
-            case '\u0197':
-                decomposed.setCharAt(i, 'I');
-                break;
-            case '\u0268':
-                decomposed.setCharAt(i, 'i');
-                break;
-            case '\u1D7B':
-                decomposed.setCharAt(i, 'I');
-                break;
-            case '\u1DA4':
-                decomposed.setCharAt(i, 'i');
-                break;
-            case '\u1DA7':
-                decomposed.setCharAt(i, 'I');
-                break;
-            // U with bar
-            case '\u0244':
-                // LATIN CAPITAL LETTER U BAR
-                decomposed.setCharAt(i, 'U');
-                break;
-            case '\u0289':
-                // LATIN SMALL LETTER U BAR
-                decomposed.setCharAt(i, 'u');
-                break;
-            case '\u1D7E':
-                // LATIN SMALL CAPITAL LETTER U WITH STROKE
-                decomposed.setCharAt(i, 'U');
-                break;
-            case '\u1DB6':
-                // MODIFIER LETTER SMALL U BAR
-                decomposed.setCharAt(i, 'u');
-                break;
-            // T with stroke
-            case '\u0166':
-                // LATIN CAPITAL LETTER T WITH STROKE
-                decomposed.setCharAt(i, 'T');
-                break;
-            case '\u0167':
-                // LATIN SMALL LETTER T WITH STROKE
-                decomposed.setCharAt(i, 't');
-                break;
-            default:
-                break;
+            switch(charAt) {
+                case '\u0141':
+                    decomposed.setCharAt(i, 'L');
+                    break;
+                case '\u0142':
+                    decomposed.setCharAt(i, 'l');
+                    break;
+                // D with stroke
+                case '\u0110':
+                    // LATIN CAPITAL LETTER D WITH STROKE
+                    decomposed.setCharAt(i, 'D');
+                    break;
+                case '\u0111':
+                    // LATIN SMALL LETTER D WITH STROKE
+                    decomposed.setCharAt(i, 'd');
+                    break;
+                // I with bar
+                case '\u0197':
+                    decomposed.setCharAt(i, 'I');
+                    break;
+                case '\u0268':
+                    decomposed.setCharAt(i, 'i');
+                    break;
+                case '\u1D7B':
+                    decomposed.setCharAt(i, 'I');
+                    break;
+                case '\u1DA4':
+                    decomposed.setCharAt(i, 'i');
+                    break;
+                case '\u1DA7':
+                    decomposed.setCharAt(i, 'I');
+                    break;
+                // U with bar
+                case '\u0244':
+                    // LATIN CAPITAL LETTER U BAR
+                    decomposed.setCharAt(i, 'U');
+                    break;
+                case '\u0289':
+                    // LATIN SMALL LETTER U BAR
+                    decomposed.setCharAt(i, 'u');
+                    break;
+                case '\u1D7E':
+                    // LATIN SMALL CAPITAL LETTER U WITH STROKE
+                    decomposed.setCharAt(i, 'U');
+                    break;
+                case '\u1DB6':
+                    // MODIFIER LETTER SMALL U BAR
+                    decomposed.setCharAt(i, 'u');
+                    break;
+                // T with stroke
+                case '\u0166':
+                    // LATIN CAPITAL LETTER T WITH STROKE
+                    decomposed.setCharAt(i, 'T');
+                    break;
+                case '\u0167':
+                    // LATIN SMALL LETTER T WITH STROKE
+                    decomposed.setCharAt(i, 't');
+                    break;
+                default:
+                    break;
             }
         }
     }
@@ -1472,17 +1292,7 @@ public class StringUtils {
      * @since 3.4
      */
     public static int countMatches(final CharSequence str, final char ch) {
-        if (isEmpty(str)) {
-            return 0;
-        }
-        int count = 0;
-        // We could also call str.toCharArray() for faster lookups but that would generate more garbage.
-        for (int i = 0; i < str.length(); i++) {
-            if (ch == str.charAt(i)) {
-                count++;
-            }
-        }
-        return count;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1509,16 +1319,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from countMatches(String, String) to countMatches(CharSequence, CharSequence)
      */
     public static int countMatches(final CharSequence str, final CharSequence sub) {
-        if (isEmpty(str) || isEmpty(sub)) {
-            return 0;
-        }
-        int count = 0;
-        int idx = 0;
-        while ((idx = CharSequenceUtils.indexOf(str, sub, idx)) != INDEX_NOT_FOUND) {
-            count++;
-            idx += sub.length();
-        }
-        return count;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1546,7 +1347,7 @@ public class StringUtils {
      * @see #isBlank(CharSequence)
      */
     public static <T extends CharSequence> T defaultIfBlank(final T str, final T defaultStr) {
-        return isBlank(str) ? defaultStr : str;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1567,7 +1368,7 @@ public class StringUtils {
      * @see StringUtils#defaultString(String, String)
      */
     public static <T extends CharSequence> T defaultIfEmpty(final T str, final T defaultStr) {
-        return isEmpty(str) ? defaultStr : str;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1585,7 +1386,7 @@ public class StringUtils {
      * @see String#valueOf(Object)
      */
     public static String defaultString(final String str) {
-        return Objects.toString(str, EMPTY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1632,24 +1433,7 @@ public class StringUtils {
      * @return the String without whitespaces, {@code null} if null String input.
      */
     public static String deleteWhitespace(final String str) {
-        if (isEmpty(str)) {
-            return str;
-        }
-        final int sz = str.length();
-        final char[] chs = new char[sz];
-        int count = 0;
-        for (int i = 0; i < sz; i++) {
-            if (!Character.isWhitespace(str.charAt(i))) {
-                chs[count++] = str.charAt(i);
-            }
-        }
-        if (count == sz) {
-            return str;
-        }
-        if (count == 0) {
-            return EMPTY;
-        }
-        return new String(chs, 0, count);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1679,17 +1463,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String difference(final String str1, final String str2) {
-        if (str1 == null) {
-            return str2;
-        }
-        if (str2 == null) {
-            return str1;
-        }
-        final int at = indexOfDifference(str1, str2);
-        if (at == INDEX_NOT_FOUND) {
-            return EMPTY;
-        }
-        return str2.substring(at);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1911,14 +1685,7 @@ public class StringUtils {
      */
     @SafeVarargs
     public static <T extends CharSequence> T firstNonBlank(final T... values) {
-        if (values != null) {
-            for (final T val : values) {
-                if (isNotBlank(val)) {
-                    return val;
-                }
-            }
-        }
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1946,14 +1713,7 @@ public class StringUtils {
      */
     @SafeVarargs
     public static <T extends CharSequence> T firstNonEmpty(final T... values) {
-        if (values != null) {
-            for (final T val : values) {
-                if (isNotEmpty(val)) {
-                    return val;
-                }
-            }
-        }
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1966,7 +1726,7 @@ public class StringUtils {
      * @since 3.10
      */
     public static byte[] getBytes(final String string, final Charset charset) {
-        return string == null ? ArrayUtils.EMPTY_BYTE_ARRAY : string.getBytes(Charsets.toCharset(charset));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1980,7 +1740,7 @@ public class StringUtils {
      * @since 3.10
      */
     public static byte[] getBytes(final String string, final String charset) throws UnsupportedEncodingException {
-        return string == null ? ArrayUtils.EMPTY_BYTE_ARRAY : string.getBytes(Charsets.toCharsetName(charset));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2016,23 +1776,7 @@ public class StringUtils {
      * @since 2.4
      */
     public static String getCommonPrefix(final String... strs) {
-        if (ArrayUtils.isEmpty(strs)) {
-            return EMPTY;
-        }
-        final int smallestIndexOfDiff = indexOfDifference(strs);
-        if (smallestIndexOfDiff == INDEX_NOT_FOUND) {
-            // all strings were identical
-            if (strs[0] == null) {
-                return EMPTY;
-            }
-            return strs[0];
-        }
-        if (smallestIndexOfDiff == 0) {
-            // there were no common initial characters
-            return EMPTY;
-        }
-        // we found a common initial character sequence
-        return strs[0].substring(0, smallestIndexOfDiff);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2057,20 +1801,7 @@ public class StringUtils {
      * @since 3.6
      */
     public static String getDigits(final String str) {
-        if (isEmpty(str)) {
-            return str;
-        }
-        final int len = str.length();
-        final char[] buffer = new char[len];
-        int count = 0;
-
-        for (int i = 0; i < len; i++) {
-            final char tempChar = str.charAt(i);
-            if (Character.isDigit(tempChar)) {
-                buffer[count++] = tempChar;
-            }
-        }
-        return new String(buffer, 0, count);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2178,7 +1909,7 @@ public class StringUtils {
      * @since 3.10
      */
     public static <T extends CharSequence> T getIfBlank(final T str, final Supplier<T> defaultSupplier) {
-        return isBlank(str) ? Suppliers.get(defaultSupplier) : str;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2207,7 +1938,7 @@ public class StringUtils {
      * @since 3.10
      */
     public static <T extends CharSequence> T getIfEmpty(final T str, final Supplier<T> defaultSupplier) {
-        return isEmpty(str) ? Suppliers.get(defaultSupplier) : str;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2252,11 +1983,9 @@ public class StringUtils {
     @Deprecated
     public static double getJaroWinklerDistance(final CharSequence first, final CharSequence second) {
         final double DEFAULT_SCALING_FACTOR = 0.1;
-
         if (first == null || second == null) {
             throw new IllegalArgumentException("Strings must not be null");
         }
-
         final int[] mtp = matches(first, second);
         final double m = mtp[0];
         if (m == 0) {
@@ -2309,17 +2038,14 @@ public class StringUtils {
         if (s == null || t == null) {
             throw new IllegalArgumentException("Strings must not be null");
         }
-
         int n = s.length();
         int m = t.length();
-
         if (n == 0) {
             return m;
         }
         if (m == 0) {
             return n;
         }
-
         if (n > m) {
             // swap the input strings to consume less memory
             final CharSequence tmp = s;
@@ -2328,26 +2054,24 @@ public class StringUtils {
             n = m;
             m = t.length();
         }
-
         final int[] p = new int[n + 1];
         // indexes into strings s and t
-        int i; // iterates through s
-        int j; // iterates through t
+        // iterates through s
+        int i;
+        // iterates through t
+        int j;
         int upperleft;
         int upper;
-
-        char jOfT; // jth character of t
+        // jth character of t
+        char jOfT;
         int cost;
-
         for (i = 0; i <= n; i++) {
             p[i] = i;
         }
-
         for (j = 1; j <= m; j++) {
             upperleft = p[0];
             jOfT = t.charAt(j - 1);
             p[0] = j;
-
             for (i = 1; i <= n; i++) {
                 upper = p[i];
                 cost = s.charAt(i - 1) == jOfT ? 0 : 1;
@@ -2356,7 +2080,6 @@ public class StringUtils {
                 upperleft = upper;
             }
         }
-
         return p[n];
     }
 
@@ -2404,7 +2127,6 @@ public class StringUtils {
         if (threshold < 0) {
             throw new IllegalArgumentException("Threshold must not be negative");
         }
-
         /*
         This implementation only computes the distance if it's less than or equal to the
         threshold value, returning -1 if it's greater.  The advantage is performance: unbounded
@@ -2448,10 +2170,10 @@ public class StringUtils {
 
         See Algorithms on Strings, Trees and Sequences by Dan Gusfield for some discussion.
          */
-
-        int n = s.length(); // length of s
-        int m = t.length(); // length of t
-
+        // length of s
+        int n = s.length();
+        // length of t
+        int m = t.length();
         // if one string is empty, the edit distance is necessarily the length of the other
         if (n == 0) {
             return m <= threshold ? m : -1;
@@ -2463,7 +2185,6 @@ public class StringUtils {
             // no need to calculate the distance if the length difference is greater than the threshold
             return -1;
         }
-
         if (n > m) {
             // swap the two strings to consume less memory
             final CharSequence tmp = s;
@@ -2472,11 +2193,12 @@ public class StringUtils {
             n = m;
             m = t.length();
         }
-
-        int[] p = new int[n + 1]; // 'previous' cost array, horizontally
-        int[] d = new int[n + 1]; // cost array, horizontally
-        int[] tmp; // placeholder to assist in swapping p and d
-
+        // 'previous' cost array, horizontally
+        int[] p = new int[n + 1];
+        // cost array, horizontally
+        int[] d = new int[n + 1];
+        // placeholder to assist in swapping p and d
+        int[] tmp;
         // fill in starting table values
         final int boundary = Math.min(n, threshold) + 1;
         for (int i = 0; i < boundary; i++) {
@@ -2486,26 +2208,22 @@ public class StringUtils {
         // stripe will be ignored in following loop iterations
         Arrays.fill(p, boundary, p.length, Integer.MAX_VALUE);
         Arrays.fill(d, Integer.MAX_VALUE);
-
         // iterates through t
         for (int j = 1; j <= m; j++) {
-            final char jOfT = t.charAt(j - 1); // jth character of t
+            // jth character of t
+            final char jOfT = t.charAt(j - 1);
             d[0] = j;
-
             // compute stripe indices, constrain to array size
             final int min = Math.max(1, j - threshold);
             final int max = j > Integer.MAX_VALUE - threshold ? n : Math.min(n, j + threshold);
-
             // the stripe may lead off of the table if s and t are of different sizes
             if (min > max) {
                 return -1;
             }
-
             // ignore entry left of leftmost
             if (min > 1) {
                 d[min - 1] = Integer.MAX_VALUE;
             }
-
             // iterates through [min, max] in s
             for (int i = min; i <= max; i++) {
                 if (s.charAt(i - 1) == jOfT) {
@@ -2516,13 +2234,11 @@ public class StringUtils {
                     d[i] = 1 + Math.min(Math.min(d[i - 1], p[i]), p[i - 1]);
                 }
             }
-
             // copy current distance counts to 'previous row' distance counts
             tmp = p;
             p = d;
             d = tmp;
         }
-
         // if p[n] is greater than the threshold, there's no guarantee on it being the correct
         // distance
         if (p[n] <= threshold) {
@@ -2638,10 +2354,7 @@ public class StringUtils {
      * @since 3.6 Updated {@link CharSequenceUtils} call to behave more like {@link String}
      */
     public static int indexOf(final CharSequence seq, final int searchChar) {
-        if (isEmpty(seq)) {
-            return INDEX_NOT_FOUND;
-        }
-        return CharSequenceUtils.indexOf(seq, searchChar, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2695,10 +2408,7 @@ public class StringUtils {
      * @since 3.6 Updated {@link CharSequenceUtils} call to behave more like {@link String}
      */
     public static int indexOf(final CharSequence seq, final int searchChar, final int startPos) {
-        if (isEmpty(seq)) {
-            return INDEX_NOT_FOUND;
-        }
-        return CharSequenceUtils.indexOf(seq, searchChar, startPos);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2725,7 +2435,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from indexOfAny(String, char[]) to indexOfAny(CharSequence, char...)
      */
     public static int indexOfAny(final CharSequence cs, final char... searchChars) {
-        return indexOfAny(cs, 0, searchChars);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2756,25 +2466,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from indexOfAny(String, String[]) to indexOfAny(CharSequence, CharSequence...)
      */
     public static int indexOfAny(final CharSequence str, final CharSequence... searchStrs) {
-        if (str == null || searchStrs == null) {
-            return INDEX_NOT_FOUND;
-        }
-        // String's can't have a MAX_VALUEth index.
-        int ret = Integer.MAX_VALUE;
-        int tmp;
-        for (final CharSequence search : searchStrs) {
-            if (search == null) {
-                continue;
-            }
-            tmp = CharSequenceUtils.indexOf(str, search, 0);
-            if (tmp == INDEX_NOT_FOUND) {
-                continue;
-            }
-            if (tmp < ret) {
-                ret = tmp;
-            }
-        }
-        return ret == Integer.MAX_VALUE ? INDEX_NOT_FOUND : ret;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2804,25 +2496,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from indexOfAny(String, char[]) to indexOfAny(CharSequence, char...)
      */
     public static int indexOfAny(final CharSequence cs, final int csStart, final char... searchChars) {
-        if (isEmpty(cs) || ArrayUtils.isEmpty(searchChars)) {
-            return INDEX_NOT_FOUND;
-        }
-        final int csLen = cs.length();
-        final int csLast = csLen - 1;
-        final int searchLen = searchChars.length;
-        final int searchLast = searchLen - 1;
-        for (int i = Math.max(csStart, 0); i < csLen; i++) {
-            final char ch = cs.charAt(i);
-            for (int j = 0; j < searchLen; j++) {
-                if (searchChars[j] == ch) {
-                    // ch is a supplementary character
-                    if (i >= csLast || j >= searchLast || !Character.isHighSurrogate(ch) || searchChars[j + 1] == cs.charAt(i + 1)) {
-                        return i;
-                    }
-                }
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2849,10 +2523,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from indexOfAny(String, String) to indexOfAny(CharSequence, String)
      */
     public static int indexOfAny(final CharSequence cs, final String searchChars) {
-        if (isEmpty(cs) || isEmpty(searchChars)) {
-            return INDEX_NOT_FOUND;
-        }
-        return indexOfAny(cs, searchChars.toCharArray());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2880,10 +2551,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from indexOfAnyBut(String, char[]) to indexOfAnyBut(CharSequence, char...)
      */
     public static int indexOfAnyBut(final CharSequence cs, final char... searchChars) {
-        if (isEmpty(cs) || ArrayUtils.isEmpty(searchChars)) {
-            return INDEX_NOT_FOUND;
-        }
-        return indexOfAnyBut(cs, CharBuffer.wrap(searchChars));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2911,20 +2579,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from indexOfAnyBut(String, String) to indexOfAnyBut(CharSequence, CharSequence)
      */
     public static int indexOfAnyBut(final CharSequence seq, final CharSequence searchChars) {
-        if (isEmpty(seq) || isEmpty(searchChars)) {
-            return INDEX_NOT_FOUND;
-        }
-        final Set<Integer> searchSetCodePoints = searchChars.codePoints()
-                .boxed().collect(Collectors.toSet());
-        // advance character index from one interpreted codepoint to the next
-        for (int curSeqCharIdx = 0; curSeqCharIdx < seq.length();) {
-            final int curSeqCodePoint = Character.codePointAt(seq, curSeqCharIdx);
-            if (!searchSetCodePoints.contains(curSeqCodePoint)) {
-                return curSeqCharIdx;
-            }
-            curSeqCharIdx += Character.charCount(curSeqCodePoint); // skip indices to paired low-surrogates
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2960,56 +2615,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from indexOfDifference(String...) to indexOfDifference(CharSequence...)
      */
     public static int indexOfDifference(final CharSequence... css) {
-        if (ArrayUtils.getLength(css) <= 1) {
-            return INDEX_NOT_FOUND;
-        }
-        boolean anyStringNull = false;
-        boolean allStringsNull = true;
-        final int arrayLen = css.length;
-        int shortestStrLen = Integer.MAX_VALUE;
-        int longestStrLen = 0;
-        // find the min and max string lengths; this avoids checking to make
-        // sure we are not exceeding the length of the string each time through
-        // the bottom loop.
-        for (final CharSequence cs : css) {
-            if (cs == null) {
-                anyStringNull = true;
-                shortestStrLen = 0;
-            } else {
-                allStringsNull = false;
-                shortestStrLen = Math.min(cs.length(), shortestStrLen);
-                longestStrLen = Math.max(cs.length(), longestStrLen);
-            }
-        }
-        // handle lists containing all nulls or all empty strings
-        if (allStringsNull || longestStrLen == 0 && !anyStringNull) {
-            return INDEX_NOT_FOUND;
-        }
-        // handle lists containing some nulls or some empty strings
-        if (shortestStrLen == 0) {
-            return 0;
-        }
-        // find the position with the first difference across all strings
-        int firstDiff = -1;
-        for (int stringPos = 0; stringPos < shortestStrLen; stringPos++) {
-            final char comparisonChar = css[0].charAt(stringPos);
-            for (int arrayPos = 1; arrayPos < arrayLen; arrayPos++) {
-                if (css[arrayPos].charAt(stringPos) != comparisonChar) {
-                    firstDiff = stringPos;
-                    break;
-                }
-            }
-            if (firstDiff != -1) {
-                break;
-            }
-        }
-        if (firstDiff == -1 && shortestStrLen != longestStrLen) {
-            // we compared all of the characters up to the length of the
-            // shortest string and didn't find a match, but the string lengths
-            // vary, so return the length of the shortest string.
-            return shortestStrLen;
-        }
-        return firstDiff;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3037,22 +2643,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from indexOfDifference(String, String) to indexOfDifference(CharSequence, CharSequence)
      */
     public static int indexOfDifference(final CharSequence cs1, final CharSequence cs2) {
-        if (cs1 == cs2) {
-            return INDEX_NOT_FOUND;
-        }
-        if (cs1 == null || cs2 == null) {
-            return 0;
-        }
-        int i;
-        for (i = 0; i < cs1.length() && i < cs2.length(); ++i) {
-            if (cs1.charAt(i) != cs2.charAt(i)) {
-                break;
-            }
-        }
-        if (i < cs2.length() || i < cs1.length()) {
-            return i;
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3144,15 +2735,7 @@ public class StringUtils {
      * @since 3.6
      */
     public static boolean isAllBlank(final CharSequence... css) {
-        if (ArrayUtils.isEmpty(css)) {
-            return true;
-        }
-        for (final CharSequence cs : css) {
-            if (isNotBlank(cs)) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3175,15 +2758,7 @@ public class StringUtils {
      * @since 3.6
      */
     public static boolean isAllEmpty(final CharSequence... css) {
-        if (ArrayUtils.isEmpty(css)) {
-            return true;
-        }
-        for (final CharSequence cs : css) {
-            if (isNotEmpty(cs)) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3210,16 +2785,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from isAllLowerCase(String) to isAllLowerCase(CharSequence)
      */
     public static boolean isAllLowerCase(final CharSequence cs) {
-        if (isEmpty(cs)) {
-            return false;
-        }
-        final int sz = cs.length();
-        for (int i = 0; i < sz; i++) {
-            if (!Character.isLowerCase(cs.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3245,16 +2811,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from isAllUpperCase(String) to isAllUpperCase(CharSequence)
      */
     public static boolean isAllUpperCase(final CharSequence cs) {
-        if (isEmpty(cs)) {
-            return false;
-        }
-        final int sz = cs.length();
-        for (int i = 0; i < sz; i++) {
-            if (!Character.isUpperCase(cs.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3279,16 +2836,7 @@ public class StringUtils {
      * @since 3.0 Changed "" to return false and not true
      */
     public static boolean isAlpha(final CharSequence cs) {
-        if (isEmpty(cs)) {
-            return false;
-        }
-        final int sz = cs.length();
-        for (int i = 0; i < sz; i++) {
-            if (!Character.isLetter(cs.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3314,16 +2862,7 @@ public class StringUtils {
      * @since 3.0 Changed "" to return false and not true
      */
     public static boolean isAlphanumeric(final CharSequence cs) {
-        if (isEmpty(cs)) {
-            return false;
-        }
-        final int sz = cs.length();
-        for (int i = 0; i < sz; i++) {
-            if (!Character.isLetterOrDigit(cs.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3348,17 +2887,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from isAlphanumericSpace(String) to isAlphanumericSpace(CharSequence)
      */
     public static boolean isAlphanumericSpace(final CharSequence cs) {
-        if (cs == null) {
-            return false;
-        }
-        final int sz = cs.length();
-        for (int i = 0; i < sz; i++) {
-            final char nowChar = cs.charAt(i);
-            if (nowChar != ' ' && !Character.isLetterOrDigit(nowChar)) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3383,17 +2912,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from isAlphaSpace(String) to isAlphaSpace(CharSequence)
      */
     public static boolean isAlphaSpace(final CharSequence cs) {
-        if (cs == null) {
-            return false;
-        }
-        final int sz = cs.length();
-        for (int i = 0; i < sz; i++) {
-            final char nowChar = cs.charAt(i);
-            if (nowChar != ' ' && !Character.isLetter(nowChar)) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3423,15 +2942,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static boolean isAnyBlank(final CharSequence... css) {
-        if (ArrayUtils.isEmpty(css)) {
-            return false;
-        }
-        for (final CharSequence cs : css) {
-            if (isBlank(cs)) {
-                return true;
-            }
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3455,15 +2966,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static boolean isAnyEmpty(final CharSequence... css) {
-        if (ArrayUtils.isEmpty(css)) {
-            return false;
-        }
-        for (final CharSequence cs : css) {
-            if (isEmpty(cs)) {
-                return true;
-            }
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3493,16 +2996,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from isAsciiPrintable(String) to isAsciiPrintable(CharSequence)
      */
     public static boolean isAsciiPrintable(final CharSequence cs) {
-        if (cs == null) {
-            return false;
-        }
-        final int sz = cs.length();
-        for (int i = 0; i < sz; i++) {
-            if (!CharUtils.isAsciiPrintable(cs.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3522,13 +3016,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from isBlank(String) to isBlank(CharSequence)
      */
     public static boolean isBlank(final CharSequence cs) {
-        final int strLen = length(cs);
-        for (int i = 0; i < strLen; i++) {
-            if (!Character.isWhitespace(cs.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3551,7 +3039,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from isEmpty(String) to isEmpty(CharSequence)
      */
     public static boolean isEmpty(final CharSequence cs) {
-        return cs == null || cs.length() == 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3579,24 +3067,7 @@ public class StringUtils {
      * @since 3.5
      */
     public static boolean isMixedCase(final CharSequence cs) {
-        if (isEmpty(cs) || cs.length() == 1) {
-            return false;
-        }
-        boolean containsUppercase = false;
-        boolean containsLowercase = false;
-        final int sz = cs.length();
-        for (int i = 0; i < sz; i++) {
-            final char nowChar = cs.charAt(i);
-            if (Character.isUpperCase(nowChar)) {
-                containsUppercase = true;
-            } else if (Character.isLowerCase(nowChar)) {
-                containsLowercase = true;
-            }
-            if (containsUppercase && containsLowercase) {
-                return true;
-            }
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3625,7 +3096,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static boolean isNoneBlank(final CharSequence... css) {
-        return !isAnyBlank(css);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3649,7 +3120,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static boolean isNoneEmpty(final CharSequence... css) {
-        return !isAnyEmpty(css);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3674,7 +3145,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from isNotBlank(String) to isNotBlank(CharSequence)
      */
     public static boolean isNotBlank(final CharSequence cs) {
-        return !isBlank(cs);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3693,7 +3164,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from isNotEmpty(String) to isNotEmpty(CharSequence)
      */
     public static boolean isNotEmpty(final CharSequence cs) {
-        return !isEmpty(cs);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3728,16 +3199,7 @@ public class StringUtils {
      * @since 3.0 Changed "" to return false and not true
      */
     public static boolean isNumeric(final CharSequence cs) {
-        if (isEmpty(cs)) {
-            return false;
-        }
-        final int sz = cs.length();
-        for (int i = 0; i < sz; i++) {
-            if (!Character.isDigit(cs.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3765,17 +3227,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from isNumericSpace(String) to isNumericSpace(CharSequence)
      */
     public static boolean isNumericSpace(final CharSequence cs) {
-        if (cs == null) {
-            return false;
-        }
-        final int sz = cs.length();
-        for (int i = 0; i < sz; i++) {
-            final char nowChar = cs.charAt(i);
-            if (nowChar != ' ' && !Character.isDigit(nowChar)) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3804,16 +3256,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from isWhitespace(String) to isWhitespace(CharSequence)
      */
     public static boolean isWhitespace(final CharSequence cs) {
-        if (cs == null) {
-            return false;
-        }
-        final int sz = cs.length();
-        for (int i = 0; i < sz; i++) {
-            if (!Character.isWhitespace(cs.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3836,10 +3279,7 @@ public class StringUtils {
      * @since 3.12.0
      */
     public static String join(final boolean[] array, final char delimiter) {
-        if (array == null) {
-            return null;
-        }
-        return join(array, delimiter, 0, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3871,22 +3311,7 @@ public class StringUtils {
      * @since 3.12.0
      */
     public static String join(final boolean[] array, final char delimiter, final int startIndex, final int endIndex) {
-        // See StringUtilsJoinBenchmark
-        if (array == null) {
-            return null;
-        }
-        checkFromToIndex(startIndex, endIndex, array.length);
-        final int count = endIndex - startIndex;
-        if (count <= 0) {
-            return EMPTY;
-        }
-        final byte maxElementChars = 5; // "false"
-        final StringBuilder stringBuilder = capacity(count, maxElementChars);
-        stringBuilder.append(array[startIndex]);
-        for (int i = startIndex + 1; i < endIndex; i++) {
-            stringBuilder.append(delimiter).append(array[i]);
-        }
-        return stringBuilder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3913,10 +3338,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final byte[] array, final char delimiter) {
-        if (array == null) {
-            return null;
-        }
-        return join(array, delimiter, 0, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3949,22 +3371,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final byte[] array, final char delimiter, final int startIndex, final int endIndex) {
-        // See StringUtilsJoinBenchmark
-        if (array == null) {
-            return null;
-        }
-        checkFromToIndex(startIndex, endIndex, array.length);
-        final int count = endIndex - startIndex;
-        if (count <= 0) {
-            return EMPTY;
-        }
-        final byte maxElementChars = 4; // "-128"
-        final StringBuilder stringBuilder = capacity(count, maxElementChars);
-        stringBuilder.append(array[startIndex]);
-        for (int i = startIndex + 1; i < endIndex; i++) {
-            stringBuilder.append(delimiter).append(array[i]);
-        }
-        return stringBuilder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3991,10 +3398,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final char[] array, final char delimiter) {
-        if (array == null) {
-            return null;
-        }
-        return join(array, delimiter, 0, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4027,22 +3431,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final char[] array, final char delimiter, final int startIndex, final int endIndex) {
-        // See StringUtilsJoinBenchmark
-        if (array == null) {
-            return null;
-        }
-        checkFromToIndex(startIndex, endIndex, array.length);
-        final int count = endIndex - startIndex;
-        if (count <= 0) {
-            return EMPTY;
-        }
-        final byte maxElementChars = 1;
-        final StringBuilder stringBuilder = capacity(count, maxElementChars);
-        stringBuilder.append(array[startIndex]);
-        for (int i = startIndex + 1; i < endIndex; i++) {
-            stringBuilder.append(delimiter).append(array[i]);
-        }
-        return stringBuilder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4069,10 +3458,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final double[] array, final char delimiter) {
-        if (array == null) {
-            return null;
-        }
-        return join(array, delimiter, 0, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4105,22 +3491,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final double[] array, final char delimiter, final int startIndex, final int endIndex) {
-        // See StringUtilsJoinBenchmark
-        if (array == null) {
-            return null;
-        }
-        checkFromToIndex(startIndex, endIndex, array.length);
-        final int count = endIndex - startIndex;
-        if (count <= 0) {
-            return EMPTY;
-        }
-        final byte maxElementChars = 22; // "1.7976931348623157E308"
-        final StringBuilder stringBuilder = capacity(count, maxElementChars);
-        stringBuilder.append(array[startIndex]);
-        for (int i = startIndex + 1; i < endIndex; i++) {
-            stringBuilder.append(delimiter).append(array[i]);
-        }
-        return stringBuilder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4147,10 +3518,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final float[] array, final char delimiter) {
-        if (array == null) {
-            return null;
-        }
-        return join(array, delimiter, 0, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4183,22 +3551,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final float[] array, final char delimiter, final int startIndex, final int endIndex) {
-        // See StringUtilsJoinBenchmark
-        if (array == null) {
-            return null;
-        }
-        checkFromToIndex(startIndex, endIndex, array.length);
-        final int count = endIndex - startIndex;
-        if (count <= 0) {
-            return EMPTY;
-        }
-        final byte maxElementChars = 12; // "3.4028235E38"
-        final StringBuilder stringBuilder = capacity(count, maxElementChars);
-        stringBuilder.append(array[startIndex]);
-        for (int i = startIndex + 1; i < endIndex; i++) {
-            stringBuilder.append(delimiter).append(array[i]);
-        }
-        return stringBuilder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4225,10 +3578,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final int[] array, final char separator) {
-        if (array == null) {
-            return null;
-        }
-        return join(array, separator, 0, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4261,22 +3611,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final int[] array, final char delimiter, final int startIndex, final int endIndex) {
-        // See StringUtilsJoinBenchmark
-        if (array == null) {
-            return null;
-        }
-        checkFromToIndex(startIndex, endIndex, array.length);
-        final int count = endIndex - startIndex;
-        if (count <= 0) {
-            return EMPTY;
-        }
-        final byte maxElementChars = 11; // "-2147483648"
-        final StringBuilder stringBuilder = capacity(count, maxElementChars);
-        stringBuilder.append(array[startIndex]);
-        for (int i = startIndex + 1; i < endIndex; i++) {
-            stringBuilder.append(delimiter).append(array[i]);
-        }
-        return stringBuilder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4296,7 +3631,7 @@ public class StringUtils {
      * @since 2.3
      */
     public static String join(final Iterable<?> iterable, final char separator) {
-        return iterable != null ? join(iterable.iterator(), separator) : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4316,7 +3651,7 @@ public class StringUtils {
      * @since 2.3
      */
     public static String join(final Iterable<?> iterable, final String separator) {
-        return iterable != null ? join(iterable.iterator(), separator) : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4336,14 +3671,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String join(final Iterator<?> iterator, final char separator) {
-        // handle null, zero and one elements before building a buffer
-        if (iterator == null) {
-            return null;
-        }
-        if (!iterator.hasNext()) {
-            return EMPTY;
-        }
-        return Streams.of(iterator).collect(LangCollectors.joining(ObjectUtils.toString(String.valueOf(separator)), EMPTY, EMPTY, ObjectUtils::toString));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4362,14 +3690,7 @@ public class StringUtils {
      * @return the joined String, {@code null} if null iterator input.
      */
     public static String join(final Iterator<?> iterator, final String separator) {
-        // handle null, zero and one elements before building a buffer
-        if (iterator == null) {
-            return null;
-        }
-        if (!iterator.hasNext()) {
-            return EMPTY;
-        }
-        return Streams.of(iterator).collect(LangCollectors.joining(ObjectUtils.toString(separator), EMPTY, EMPTY, ObjectUtils::toString));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4396,15 +3717,7 @@ public class StringUtils {
      * @since 3.8
      */
     public static String join(final List<?> list, final char separator, final int startIndex, final int endIndex) {
-        if (list == null) {
-            return null;
-        }
-        final int noOfItems = endIndex - startIndex;
-        if (noOfItems <= 0) {
-            return EMPTY;
-        }
-        final List<?> subList = list.subList(startIndex, endIndex);
-        return join(subList.iterator(), separator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4431,15 +3744,7 @@ public class StringUtils {
      * @since 3.8
      */
     public static String join(final List<?> list, final String separator, final int startIndex, final int endIndex) {
-        if (list == null) {
-            return null;
-        }
-        final int noOfItems = endIndex - startIndex;
-        if (noOfItems <= 0) {
-            return EMPTY;
-        }
-        final List<?> subList = list.subList(startIndex, endIndex);
-        return join(subList.iterator(), separator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4466,10 +3771,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final long[] array, final char separator) {
-        if (array == null) {
-            return null;
-        }
-        return join(array, separator, 0, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4502,22 +3804,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final long[] array, final char delimiter, final int startIndex, final int endIndex) {
-        // See StringUtilsJoinBenchmark
-        if (array == null) {
-            return null;
-        }
-        checkFromToIndex(startIndex, endIndex, array.length);
-        final int count = endIndex - startIndex;
-        if (count <= 0) {
-            return EMPTY;
-        }
-        final byte maxElementChars = 20; // "-9223372036854775808"
-        final StringBuilder stringBuilder = capacity(count, maxElementChars);
-        stringBuilder.append(array[startIndex]);
-        for (int i = startIndex + 1; i < endIndex; i++) {
-            stringBuilder.append(delimiter).append(array[i]);
-        }
-        return stringBuilder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4542,10 +3829,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String join(final Object[] array, final char delimiter) {
-        if (array == null) {
-            return null;
-        }
-        return join(array, delimiter, 0, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4572,7 +3856,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String join(final Object[] array, final char delimiter, final int startIndex, final int endIndex) {
-        return join(array, String.valueOf(delimiter), startIndex, endIndex);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4598,7 +3882,7 @@ public class StringUtils {
      * @return the joined String, {@code null} if null array input.
      */
     public static String join(final Object[] array, final String delimiter) {
-        return array != null ? join(array, ObjectUtils.toString(delimiter), 0, array.length) : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4635,8 +3919,7 @@ public class StringUtils {
      *                                        {@code endIndex > array.length()}
      */
     public static String join(final Object[] array, final String delimiter, final int startIndex, final int endIndex) {
-        return array != null ? Streams.of(array).skip(startIndex).limit(Math.max(0, endIndex - startIndex))
-                .collect(LangCollectors.joining(delimiter, EMPTY, EMPTY, ObjectUtils::toString)) : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4663,10 +3946,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final short[] array, final char delimiter) {
-        if (array == null) {
-            return null;
-        }
-        return join(array, delimiter, 0, array.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4699,22 +3979,7 @@ public class StringUtils {
      * @since 3.2
      */
     public static String join(final short[] array, final char delimiter, final int startIndex, final int endIndex) {
-        // See StringUtilsJoinBenchmark
-        if (array == null) {
-            return null;
-        }
-        checkFromToIndex(startIndex, endIndex, array.length);
-        final int count = endIndex - startIndex;
-        if (count <= 0) {
-            return EMPTY;
-        }
-        final byte maxElementChars = 6; // "-32768"
-        final StringBuilder stringBuilder = capacity(count, maxElementChars);
-        stringBuilder.append(array[startIndex]);
-        for (int i = startIndex + 1; i < endIndex; i++) {
-            stringBuilder.append(delimiter).append(array[i]);
-        }
-        return stringBuilder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4740,7 +4005,7 @@ public class StringUtils {
      */
     @SafeVarargs
     public static <T> String join(final T... elements) {
-        return join(elements, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4764,10 +4029,7 @@ public class StringUtils {
      * @since 3.5
      */
     public static String joinWith(final String delimiter, final Object... array) {
-        if (array == null) {
-            throw new IllegalArgumentException("Object varargs must not be null");
-        }
-        return join(array, delimiter);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4872,10 +4134,7 @@ public class StringUtils {
      * @since 3.6 Updated {@link CharSequenceUtils} call to behave more like {@link String}
      */
     public static int lastIndexOf(final CharSequence seq, final int searchChar) {
-        if (isEmpty(seq)) {
-            return INDEX_NOT_FOUND;
-        }
-        return CharSequenceUtils.lastIndexOf(seq, searchChar, seq.length());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4923,10 +4182,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from lastIndexOf(String, int, int) to lastIndexOf(CharSequence, int, int)
      */
     public static int lastIndexOf(final CharSequence seq, final int searchChar, final int startPos) {
-        if (isEmpty(seq)) {
-            return INDEX_NOT_FOUND;
-        }
-        return CharSequenceUtils.lastIndexOf(seq, searchChar, startPos);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4956,21 +4212,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from lastIndexOfAny(String, String[]) to lastIndexOfAny(CharSequence, CharSequence)
      */
     public static int lastIndexOfAny(final CharSequence str, final CharSequence... searchStrs) {
-        if (str == null || searchStrs == null) {
-            return INDEX_NOT_FOUND;
-        }
-        int ret = INDEX_NOT_FOUND;
-        int tmp;
-        for (final CharSequence search : searchStrs) {
-            if (search == null) {
-                continue;
-            }
-            tmp = CharSequenceUtils.lastIndexOf(str, search, str.length());
-            if (tmp > ret) {
-                ret = tmp;
-            }
-        }
-        return ret;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5072,7 +4314,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from lastOrdinalIndexOf(String, String, int) to lastOrdinalIndexOf(CharSequence, CharSequence, int)
      */
     public static int lastOrdinalIndexOf(final CharSequence str, final CharSequence searchStr, final int ordinal) {
-        return ordinalIndexOf(str, searchStr, ordinal, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5097,16 +4339,7 @@ public class StringUtils {
      * @return the leftmost characters, {@code null} if null String input.
      */
     public static String left(final String str, final int len) {
-        if (str == null) {
-            return null;
-        }
-        if (len < 0) {
-            return EMPTY;
-        }
-        if (str.length() <= len) {
-            return str;
-        }
-        return str.substring(0, len);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5130,7 +4363,7 @@ public class StringUtils {
      * @return left padded String or original String if no padding is necessary, {@code null} if null String input.
      */
     public static String leftPad(final String str, final int size) {
-        return leftPad(str, size, ' ');
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5156,17 +4389,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String leftPad(final String str, final int size, final char padChar) {
-        if (str == null) {
-            return null;
-        }
-        final int pads = size - str.length();
-        if (pads <= 0) {
-            return str; // returns original String when possible
-        }
-        if (pads > PAD_LIMIT) {
-            return leftPad(str, size, String.valueOf(padChar));
-        }
-        return repeat(padChar, pads).concat(str);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5194,33 +4417,7 @@ public class StringUtils {
      * @return left padded String or original String if no padding is necessary, {@code null} if null String input.
      */
     public static String leftPad(final String str, final int size, String padStr) {
-        if (str == null) {
-            return null;
-        }
-        if (isEmpty(padStr)) {
-            padStr = SPACE;
-        }
-        final int padLen = padStr.length();
-        final int strLen = str.length();
-        final int pads = size - strLen;
-        if (pads <= 0) {
-            return str; // returns original String when possible
-        }
-        if (padLen == 1 && pads <= PAD_LIMIT) {
-            return leftPad(str, size, padStr.charAt(0));
-        }
-        if (pads == padLen) {
-            return padStr.concat(str);
-        }
-        if (pads < padLen) {
-            return padStr.substring(0, pads).concat(str);
-        }
-        final char[] padding = new char[pads];
-        final char[] padChars = padStr.toCharArray();
-        for (int i = 0; i < pads; i++) {
-            padding[i] = padChars[i % padLen];
-        }
-        return new String(padding).concat(str);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5232,7 +4429,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from length(String) to length(CharSequence)
      */
     public static int length(final CharSequence cs) {
-        return cs == null ? 0 : cs.length();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5258,10 +4455,7 @@ public class StringUtils {
      * @return the lower cased String, {@code null} if null String input.
      */
     public static String lowerCase(final String str) {
-        if (str == null) {
-            return null;
-        }
-        return str.toLowerCase();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5283,10 +4477,7 @@ public class StringUtils {
      * @since 2.5
      */
     public static String lowerCase(final String str, final Locale locale) {
-        if (str == null) {
-            return null;
-        }
-        return str.toLowerCase(LocaleUtils.toLocale(locale));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static int[] matches(final CharSequence first, final CharSequence second) {
@@ -5369,19 +4560,7 @@ public class StringUtils {
      * @return the middle characters, {@code null} if null String input.
      */
     public static String mid(final String str, int pos, final int len) {
-        if (str == null) {
-            return null;
-        }
-        if (len < 0 || pos > str.length()) {
-            return EMPTY;
-        }
-        if (pos < 0) {
-            pos = 0;
-        }
-        if (str.length() <= pos + len) {
-            return str.substring(pos);
-        }
-        return str.substring(pos, pos + len);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5421,34 +4600,7 @@ public class StringUtils {
      * @since 3.0
      */
     public static String normalizeSpace(final String str) {
-        // LANG-1020: Improved performance significantly by normalizing manually instead of using regex
-        // See https://github.com/librucha/commons-lang-normalizespaces-benchmark for performance test
-        if (isEmpty(str)) {
-            return str;
-        }
-        final int size = str.length();
-        final char[] newChars = new char[size];
-        int count = 0;
-        int whitespacesCount = 0;
-        boolean startWhitespaces = true;
-        for (int i = 0; i < size; i++) {
-            final char actualChar = str.charAt(i);
-            final boolean isWhitespace = Character.isWhitespace(actualChar);
-            if (isWhitespace) {
-                if (whitespacesCount == 0 && !startWhitespaces) {
-                    newChars[count++] = SPACE.charAt(0);
-                }
-                whitespacesCount++;
-            } else {
-                startWhitespaces = false;
-                newChars[count++] = actualChar == 160 ? 32 : actualChar;
-                whitespacesCount = 0;
-            }
-        }
-        if (startWhitespaces) {
-            return EMPTY;
-        }
-        return new String(newChars, 0, count - (whitespacesCount > 0 ? 1 : 0)).trim();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5507,7 +4659,7 @@ public class StringUtils {
      * @since 3.0 Changed signature from ordinalIndexOf(String, String, int) to ordinalIndexOf(CharSequence, CharSequence, int)
      */
     public static int ordinalIndexOf(final CharSequence str, final CharSequence searchStr, final int ordinal) {
-        return ordinalIndexOf(str, searchStr, ordinal, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5540,9 +4692,11 @@ public class StringUtils {
         int index = lastIndex ? str.length() : INDEX_NOT_FOUND;
         do {
             if (lastIndex) {
-                index = CharSequenceUtils.lastIndexOf(str, searchStr, index - 1); // step backwards through string
+                // step backwards through string
+                index = CharSequenceUtils.lastIndexOf(str, searchStr, index - 1);
             } else {
-                index = CharSequenceUtils.indexOf(str, searchStr, index + 1); // step forwards through string
+                // step forwards through string
+                index = CharSequenceUtils.indexOf(str, searchStr, index + 1);
             }
             if (index < 0) {
                 return index;
@@ -5582,31 +4736,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String overlay(final String str, String overlay, int start, int end) {
-        if (str == null) {
-            return null;
-        }
-        if (overlay == null) {
-            overlay = EMPTY;
-        }
-        final int len = str.length();
-        if (start < 0) {
-            start = 0;
-        }
-        if (start > len) {
-            start = len;
-        }
-        if (end < 0) {
-            end = 0;
-        }
-        if (end > len) {
-            end = len;
-        }
-        if (start > end) {
-            final int temp = start;
-            start = end;
-            end = temp;
-        }
-        return str.substring(0, start) + overlay + str.substring(end);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5711,17 +4841,7 @@ public class StringUtils {
      * @since 2.1
      */
     public static String remove(final String str, final char remove) {
-        if (isEmpty(str) || str.indexOf(remove) == INDEX_NOT_FOUND) {
-            return str;
-        }
-        final char[] chars = str.toCharArray();
-        int pos = 0;
-        for (int i = 0; i < chars.length; i++) {
-            if (chars[i] != remove) {
-                chars[pos++] = chars[i];
-            }
-        }
-        return new String(chars, 0, pos);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5994,10 +5114,7 @@ public class StringUtils {
      * @since 3.13.0
      */
     public static String removeStart(final String str, final char remove) {
-        if (isEmpty(str)) {
-            return str;
-        }
-        return str.charAt(0) == remove ? str.substring(1) : str;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6080,10 +5197,7 @@ public class StringUtils {
      * @see #repeat(String, int)
      */
     public static String repeat(final char repeat, final int count) {
-        if (count <= 0) {
-            return EMPTY;
-        }
-        return new String(ArrayFill.fill(new char[count], repeat));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6103,45 +5217,7 @@ public class StringUtils {
      * @return a new String consisting of the original String repeated, {@code null} if null String input.
      */
     public static String repeat(final String repeat, final int count) {
-        // Performance tuned for 2.0 (JDK1.4)
-        if (repeat == null) {
-            return null;
-        }
-        if (count <= 0) {
-            return EMPTY;
-        }
-        final int inputLength = repeat.length();
-        if (count == 1 || inputLength == 0) {
-            return repeat;
-        }
-        if (inputLength == 1 && count <= PAD_LIMIT) {
-            return repeat(repeat.charAt(0), count);
-        }
-        final int outputLength;
-        try {
-            outputLength = Math.multiplyExact(inputLength, count);
-        } catch (final Exception e) {
-            throw new IllegalArgumentException("The requested result is too large for a String.");
-        }
-        switch (inputLength) {
-        case 1:
-            return repeat(repeat.charAt(0), count);
-        case 2:
-            final char ch0 = repeat.charAt(0);
-            final char ch1 = repeat.charAt(1);
-            final char[] output2 = new char[outputLength];
-            for (int i = count * 2 - 2; i >= 0; i--, i--) {
-                output2[i] = ch0;
-                output2[i + 1] = ch1;
-            }
-            return new String(output2);
-        default:
-            final StringBuilder buf = new StringBuilder(outputLength);
-            for (int i = 0; i < count; i++) {
-                buf.append(repeat);
-            }
-            return buf.toString();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6163,12 +5239,7 @@ public class StringUtils {
      * @since 2.5
      */
     public static String repeat(final String repeat, final String separator, final int count) {
-        if (repeat == null || separator == null) {
-            return repeat(repeat, count);
-        }
-        // given that repeat(String, int) is quite optimized, better to rely on it than try and splice this into it
-        final String result = repeat(repeat + separator, count);
-        return Strings.CS.removeEnd(result, separator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6307,10 +5378,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String replaceChars(final String str, final char searchChar, final char replaceChar) {
-        if (str == null) {
-            return null;
-        }
-        return str.replace(searchChar, replaceChar);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6352,30 +5420,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String replaceChars(final String str, final String searchChars, String replaceChars) {
-        if (isEmpty(str) || isEmpty(searchChars)) {
-            return str;
-        }
-        replaceChars = ObjectUtils.toString(replaceChars);
-        boolean modified = false;
-        final int replaceCharsLength = replaceChars.length();
-        final int strLength = str.length();
-        final StringBuilder buf = new StringBuilder(strLength);
-        for (int i = 0; i < strLength; i++) {
-            final char ch = str.charAt(i);
-            final int index = searchChars.indexOf(ch);
-            if (index >= 0) {
-                modified = true;
-                if (index < replaceCharsLength) {
-                    buf.append(replaceChars.charAt(index));
-                }
-            } else {
-                buf.append(ch);
-            }
-        }
-        if (modified) {
-            return buf.toString();
-        }
-        return str;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6408,7 +5453,7 @@ public class StringUtils {
      * @since 2.4
      */
     public static String replaceEach(final String text, final String[] searchList, final String[] replacementList) {
-        return replaceEach(text, searchList, replacementList, false, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6445,40 +5490,28 @@ public class StringUtils {
      * @throws IllegalArgumentException if the lengths of the arrays are not the same (null is ok, and/or size 0).
      * @since 2.4
      */
-    private static String replaceEach(
-            final String text, final String[] searchList, final String[] replacementList, final boolean repeat, final int timeToLive) {
-
+    private static String replaceEach(final String text, final String[] searchList, final String[] replacementList, final boolean repeat, final int timeToLive) {
         // Performance note: This creates very few new objects (one major goal)
         // let me know if there are performance requests, we can create a harness to measure
         if (isEmpty(text) || ArrayUtils.isEmpty(searchList) || ArrayUtils.isEmpty(replacementList)) {
             return text;
         }
-
         // if recursing, this shouldn't be less than 0
         if (timeToLive < 0) {
-            throw new IllegalStateException("Aborting to protect against StackOverflowError - " +
-                "output of one loop is the input of another");
+            throw new IllegalStateException("Aborting to protect against StackOverflowError - " + "output of one loop is the input of another");
         }
-
         final int searchLength = searchList.length;
         final int replacementLength = replacementList.length;
-
         // make sure lengths are ok, these need to be equal
         if (searchLength != replacementLength) {
-            throw new IllegalArgumentException("Search and Replace array lengths don't match: "
-                + searchLength
-                + " vs "
-                + replacementLength);
+            throw new IllegalArgumentException("Search and Replace array lengths don't match: " + searchLength + " vs " + replacementLength);
         }
-
         // keep track of which still have matches
         final boolean[] noMoreMatchesForReplIndex = new boolean[searchLength];
-
         // index on index that the match was found
         int textIndex = -1;
         int replaceIndex = -1;
         int tempIndex;
-
         // index of replace array that will replace the search string found
         // NOTE: logic duplicated below START
         for (int i = 0; i < searchLength; i++) {
@@ -6486,7 +5519,6 @@ public class StringUtils {
                 continue;
             }
             tempIndex = text.indexOf(searchList[i]);
-
             // see if we need to keep searching for this
             if (tempIndex == -1) {
                 noMoreMatchesForReplIndex[i] = true;
@@ -6496,17 +5528,13 @@ public class StringUtils {
             }
         }
         // NOTE: logic mostly below END
-
         // no search strings found, we are done
         if (textIndex == -1) {
             return text;
         }
-
         int start = 0;
-
         // get a good guess on the size of the result buffer so it doesn't have to double if it goes over a bit
         int increase = 0;
-
         // count the replacement text elements that are larger than their corresponding text being replaced
         for (int i = 0; i < searchList.length; i++) {
             if (searchList[i] == null || replacementList[i] == null) {
@@ -6514,23 +5542,19 @@ public class StringUtils {
             }
             final int greater = replacementList[i].length() - searchList[i].length();
             if (greater > 0) {
-                increase += 3 * greater; // assume 3 matches
+                // assume 3 matches
+                increase += 3 * greater;
             }
         }
         // have upper-bound at 20% increase, then let Java take over
         increase = Math.min(increase, text.length() / 5);
-
         final StringBuilder buf = new StringBuilder(text.length() + increase);
-
         while (textIndex != -1) {
-
             for (int i = start; i < textIndex; i++) {
                 buf.append(text.charAt(i));
             }
             buf.append(replacementList[replaceIndex]);
-
             start = textIndex + searchList[replaceIndex].length();
-
             textIndex = -1;
             replaceIndex = -1;
             // find the next earliest match
@@ -6540,7 +5564,6 @@ public class StringUtils {
                     continue;
                 }
                 tempIndex = text.indexOf(searchList[i], start);
-
                 // see if we need to keep searching for this
                 if (tempIndex == -1) {
                     noMoreMatchesForReplIndex[i] = true;
@@ -6550,7 +5573,6 @@ public class StringUtils {
                 }
             }
             // NOTE: logic duplicated above END
-
         }
         final int textLength = text.length();
         for (int i = start; i < textLength; i++) {
@@ -6560,7 +5582,6 @@ public class StringUtils {
         if (!repeat) {
             return result;
         }
-
         return replaceEach(result, searchList, replacementList, repeat, timeToLive - 1);
     }
 
@@ -6595,8 +5616,7 @@ public class StringUtils {
      * @since 2.4
      */
     public static String replaceEachRepeatedly(final String text, final String[] searchList, final String[] replacementList) {
-        final int timeToLive = Math.max(ArrayUtils.getLength(searchList), DEFAULT_TTL);
-        return replaceEach(text, searchList, replacementList, true, timeToLive);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6838,10 +5858,7 @@ public class StringUtils {
      * @return the reversed String, {@code null} if null String input.
      */
     public static String reverse(final String str) {
-        if (str == null) {
-            return null;
-        }
-        return new StringBuilder(str).reverse().toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6864,9 +5881,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String reverseDelimited(final String str, final char separatorChar) {
-        final String[] strs = split(str, separatorChar);
-        ArrayUtils.reverse(strs);
-        return join(strs, separatorChar);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6891,16 +5906,7 @@ public class StringUtils {
      * @return the rightmost characters, {@code null} if null String input.
      */
     public static String right(final String str, final int len) {
-        if (str == null) {
-            return null;
-        }
-        if (len < 0) {
-            return EMPTY;
-        }
-        if (str.length() <= len) {
-            return str;
-        }
-        return str.substring(str.length() - len);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6924,7 +5930,7 @@ public class StringUtils {
      * @return right padded String or original String if no padding is necessary, {@code null} if null String input.
      */
     public static String rightPad(final String str, final int size) {
-        return rightPad(str, size, ' ');
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6950,17 +5956,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String rightPad(final String str, final int size, final char padChar) {
-        if (str == null) {
-            return null;
-        }
-        final int pads = size - str.length();
-        if (pads <= 0) {
-            return str; // returns original String when possible
-        }
-        if (pads > PAD_LIMIT) {
-            return rightPad(str, size, String.valueOf(padChar));
-        }
-        return str.concat(repeat(padChar, pads));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6988,33 +5984,7 @@ public class StringUtils {
      * @return right padded String or original String if no padding is necessary, {@code null} if null String input.
      */
     public static String rightPad(final String str, final int size, String padStr) {
-        if (str == null) {
-            return null;
-        }
-        if (isEmpty(padStr)) {
-            padStr = SPACE;
-        }
-        final int padLen = padStr.length();
-        final int strLen = str.length();
-        final int pads = size - strLen;
-        if (pads <= 0) {
-            return str; // returns original String when possible
-        }
-        if (padLen == 1 && pads <= PAD_LIMIT) {
-            return rightPad(str, size, padStr.charAt(0));
-        }
-        if (pads == padLen) {
-            return str.concat(padStr);
-        }
-        if (pads < padLen) {
-            return str.concat(padStr.substring(0, pads));
-        }
-        final char[] padding = new char[pads];
-        final char[] padChars = padStr.toCharArray();
-        for (int i = 0; i < pads; i++) {
-            padding[i] = padChars[i % padLen];
-        }
-        return str.concat(new String(padding));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7042,18 +6012,7 @@ public class StringUtils {
      * @since 3.5
      */
     public static String rotate(final String str, final int shift) {
-        if (str == null) {
-            return null;
-        }
-        final int strLen = str.length();
-        if (shift == 0 || strLen == 0 || shift % strLen == 0) {
-            return str;
-        }
-        final StringBuilder builder = new StringBuilder(strLen);
-        final int offset = -(shift % strLen);
-        builder.append(substring(str, offset));
-        builder.append(substring(str, 0, offset));
-        return builder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7080,7 +6039,7 @@ public class StringUtils {
      * @return an array of parsed Strings, {@code null} if null String input.
      */
     public static String[] split(final String str) {
-        return split(str, null, -1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7110,7 +6069,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String[] split(final String str, final char separatorChar) {
-        return splitWorker(str, separatorChar, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7139,7 +6098,7 @@ public class StringUtils {
      * @return an array of parsed Strings, {@code null} if null String input.
      */
     public static String[] split(final String str, final String separatorChars) {
-        return splitWorker(str, separatorChars, -1, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7173,7 +6132,7 @@ public class StringUtils {
      * @return an array of parsed Strings, {@code null} if null String input.
      */
     public static String[] split(final String str, final String separatorChars, final int max) {
-        return splitWorker(str, separatorChars, max, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7197,7 +6156,7 @@ public class StringUtils {
      * @since 2.4
      */
     public static String[] splitByCharacterType(final String str) {
-        return splitByCharacterType(str, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7265,7 +6224,7 @@ public class StringUtils {
      * @since 2.4
      */
     public static String[] splitByCharacterTypeCamelCase(final String str) {
-        return splitByCharacterType(str, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7293,7 +6252,7 @@ public class StringUtils {
      * @return an array of parsed Strings, {@code null} if null String was input.
      */
     public static String[] splitByWholeSeparator(final String str, final String separator) {
-        return splitByWholeSeparatorWorker(str, separator, -1, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7323,7 +6282,7 @@ public class StringUtils {
      * @return an array of parsed Strings, {@code null} if null String was input.
      */
     public static String[] splitByWholeSeparator(final String str, final String separator, final int max) {
-        return splitByWholeSeparatorWorker(str, separator, max, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7353,7 +6312,7 @@ public class StringUtils {
      * @since 2.4
      */
     public static String[] splitByWholeSeparatorPreserveAllTokens(final String str, final String separator) {
-        return splitByWholeSeparatorWorker(str, separator, -1, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7385,7 +6344,7 @@ public class StringUtils {
      * @since 2.4
      */
     public static String[] splitByWholeSeparatorPreserveAllTokens(final String str, final String separator, final int max) {
-        return splitByWholeSeparatorWorker(str, separator, max, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7481,7 +6440,7 @@ public class StringUtils {
      * @since 2.1
      */
     public static String[] splitPreserveAllTokens(final String str) {
-        return splitWorker(str, null, -1, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7518,7 +6477,7 @@ public class StringUtils {
      * @since 2.1
      */
     public static String[] splitPreserveAllTokens(final String str, final char separatorChar) {
-        return splitWorker(str, separatorChar, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7555,7 +6514,7 @@ public class StringUtils {
      * @since 2.1
      */
     public static String[] splitPreserveAllTokens(final String str, final String separatorChars) {
-        return splitWorker(str, separatorChars, -1, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7595,7 +6554,7 @@ public class StringUtils {
      * @since 2.1
      */
     public static String[] splitPreserveAllTokens(final String str, final String separatorChars, final int max) {
-        return splitWorker(str, separatorChars, max, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7846,7 +6805,7 @@ public class StringUtils {
      * @return the stripped String, {@code null} if null String input.
      */
     public static String strip(final String str) {
-        return strip(str, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7877,8 +6836,7 @@ public class StringUtils {
      * @return the stripped String, {@code null} if null String input.
      */
     public static String strip(String str, final String stripChars) {
-        str = stripStart(str, stripChars);
-        return stripEnd(str, stripChars);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7913,12 +6871,7 @@ public class StringUtils {
     // See also Lucene's ASCIIFoldingFilter (Lucene 2.9) that replaces accented characters by their unaccented equivalent (and uncommitted bug fix:
     // https://issues.apache.org/jira/browse/LUCENE-1343?focusedCommentId=12858907&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#action_12858907).
     public static String stripAccents(final String input) {
-        if (isEmpty(input)) {
-            return input;
-        }
-        final StringBuilder decomposed = new StringBuilder(Normalizer.normalize(input, Normalizer.Form.NFKD));
-        convertRemainingAccentCharacters(decomposed);
-        return STRIP_ACCENTS_PATTERN.matcher(decomposed).replaceAll(EMPTY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7940,7 +6893,7 @@ public class StringUtils {
      * @return the stripped Strings, {@code null} if null array input.
      */
     public static String[] stripAll(final String... strs) {
-        return stripAll(strs, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7968,11 +6921,7 @@ public class StringUtils {
      * @return the stripped Strings, {@code null} if null array input.
      */
     public static String[] stripAll(final String[] strs, final String stripChars) {
-        final int strsLen = ArrayUtils.getLength(strs);
-        if (strsLen == 0) {
-            return strs;
-        }
-        return ArrayUtils.setAll(new String[strsLen], i -> strip(strs[i], stripChars));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8003,22 +6952,7 @@ public class StringUtils {
      * @return the stripped String, {@code null} if null String input.
      */
     public static String stripEnd(final String str, final String stripChars) {
-        int end = length(str);
-        if (end == 0) {
-            return str;
-        }
-        if (stripChars == null) {
-            while (end != 0 && Character.isWhitespace(str.charAt(end - 1))) {
-                end--;
-            }
-        } else if (stripChars.isEmpty()) {
-            return str;
-        } else {
-            while (end != 0 && stripChars.indexOf(str.charAt(end - 1)) != INDEX_NOT_FOUND) {
-                end--;
-            }
-        }
-        return str.substring(0, end);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8048,23 +6982,7 @@ public class StringUtils {
      * @return the stripped String, {@code null} if null String input.
      */
     public static String stripStart(final String str, final String stripChars) {
-        final int strLen = length(str);
-        if (strLen == 0) {
-            return str;
-        }
-        int start = 0;
-        if (stripChars == null) {
-            while (start != strLen && Character.isWhitespace(str.charAt(start))) {
-                start++;
-            }
-        } else if (stripChars.isEmpty()) {
-            return str;
-        } else {
-            while (start != strLen && stripChars.indexOf(str.charAt(start)) != INDEX_NOT_FOUND) {
-                start++;
-            }
-        }
-        return str.substring(start);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8090,7 +7008,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String stripToEmpty(final String str) {
-        return str == null ? EMPTY : strip(str, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8116,11 +7034,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String stripToNull(String str) {
-        if (str == null) {
-            return null;
-        }
-        str = strip(str, null);
-        return str.isEmpty() ? null : str; // NOSONARLINT str cannot be null here
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8149,20 +7063,7 @@ public class StringUtils {
      * @return substring from start position, {@code null} if null String input.
      */
     public static String substring(final String str, int start) {
-        if (str == null) {
-            return null;
-        }
-        // handle negatives, which means last n characters
-        if (start < 0) {
-            start = str.length() + start; // remember start is negative
-        }
-        if (start < 0) {
-            start = 0;
-        }
-        if (start > str.length()) {
-            return EMPTY;
-        }
-        return str.substring(start);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8200,31 +7101,7 @@ public class StringUtils {
      * @return substring from start position to end position, {@code null} if null String input.
      */
     public static String substring(final String str, int start, int end) {
-        if (str == null) {
-            return null;
-        }
-        // handle negatives
-        if (end < 0) {
-            end = str.length() + end; // remember end is negative
-        }
-        if (start < 0) {
-            start = str.length() + start; // remember start is negative
-        }
-        // check length next
-        if (end > str.length()) {
-            end = str.length();
-        }
-        // if start is greater than end, return ""
-        if (start > end) {
-            return EMPTY;
-        }
-        if (start < 0) {
-            start = 0;
-        }
-        if (end < 0) {
-            end = 0;
-        }
-        return str.substring(start, end);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8254,14 +7131,7 @@ public class StringUtils {
      * @since 3.11
      */
     public static String substringAfter(final String str, final int find) {
-        if (isEmpty(str)) {
-            return str;
-        }
-        final int pos = str.indexOf(find);
-        if (pos == INDEX_NOT_FOUND) {
-            return EMPTY;
-        }
-        return str.substring(pos + 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8293,17 +7163,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String substringAfter(final String str, final String find) {
-        if (isEmpty(str)) {
-            return str;
-        }
-        if (find == null) {
-            return EMPTY;
-        }
-        final int pos = str.indexOf(find);
-        if (pos == INDEX_NOT_FOUND) {
-            return EMPTY;
-        }
-        return str.substring(pos + find.length());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8334,14 +7194,7 @@ public class StringUtils {
      * @since 3.11
      */
     public static String substringAfterLast(final String str, final int find) {
-        if (isEmpty(str)) {
-            return str;
-        }
-        final int pos = str.lastIndexOf(find);
-        if (pos == INDEX_NOT_FOUND || pos == str.length() - 1) {
-            return EMPTY;
-        }
-        return str.substring(pos + 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8374,17 +7227,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String substringAfterLast(final String str, final String find) {
-        if (isEmpty(str)) {
-            return str;
-        }
-        if (isEmpty(find)) {
-            return EMPTY;
-        }
-        final int pos = str.lastIndexOf(find);
-        if (pos == INDEX_NOT_FOUND || pos == str.length() - find.length()) {
-            return EMPTY;
-        }
-        return str.substring(pos + find.length());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8413,14 +7256,7 @@ public class StringUtils {
      * @since 3.12.0
      */
     public static String substringBefore(final String str, final int find) {
-        if (isEmpty(str)) {
-            return str;
-        }
-        final int pos = str.indexOf(find);
-        if (pos == INDEX_NOT_FOUND) {
-            return str;
-        }
-        return str.substring(0, pos);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8452,17 +7288,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String substringBefore(final String str, final String find) {
-        if (isEmpty(str) || find == null) {
-            return str;
-        }
-        if (find.isEmpty()) {
-            return EMPTY;
-        }
-        final int pos = str.indexOf(find);
-        if (pos == INDEX_NOT_FOUND) {
-            return str;
-        }
-        return str.substring(0, pos);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8494,14 +7320,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String substringBeforeLast(final String str, final String find) {
-        if (isEmpty(str) || isEmpty(find)) {
-            return str;
-        }
-        final int pos = str.lastIndexOf(find);
-        if (pos == INDEX_NOT_FOUND) {
-            return str;
-        }
-        return str.substring(0, pos);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8526,7 +7345,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String substringBetween(final String str, final String tag) {
-        return substringBetween(str, tag, tag);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8557,17 +7376,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String substringBetween(final String str, final String open, final String close) {
-        if (!ObjectUtils.allNotNull(str, open, close)) {
-            return null;
-        }
-        final int start = str.indexOf(open);
-        if (start != INDEX_NOT_FOUND) {
-            final int end = str.indexOf(close, start + open.length());
-            if (end != INDEX_NOT_FOUND) {
-                return str.substring(start + open.length(), end);
-            }
-        }
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8593,34 +7402,7 @@ public class StringUtils {
      * @since 2.3
      */
     public static String[] substringsBetween(final String str, final String open, final String close) {
-        if (str == null || isEmpty(open) || isEmpty(close)) {
-            return null;
-        }
-        final int strLen = str.length();
-        if (strLen == 0) {
-            return ArrayUtils.EMPTY_STRING_ARRAY;
-        }
-        final int closeLen = close.length();
-        final int openLen = open.length();
-        final List<String> list = new ArrayList<>();
-        int pos = 0;
-        while (pos < strLen - closeLen) {
-            int start = str.indexOf(open, pos);
-            if (start < 0) {
-                break;
-            }
-            start += openLen;
-            final int end = str.indexOf(close, start);
-            if (end < 0) {
-                break;
-            }
-            list.add(str.substring(start, end));
-            pos = end + closeLen;
-        }
-        if (list.isEmpty()) {
-            return null;
-        }
-        return list.toArray(ArrayUtils.EMPTY_STRING_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8651,26 +7433,7 @@ public class StringUtils {
      * @return the changed String, {@code null} if null String input.
      */
     public static String swapCase(final String str) {
-        if (isEmpty(str)) {
-            return str;
-        }
-        final int strLen = str.length();
-        final int[] newCodePoints = new int[strLen]; // cannot be longer than the char array
-        int outOffset = 0;
-        for (int i = 0; i < strLen;) {
-            final int oldCodepoint = str.codePointAt(i);
-            final int newCodePoint;
-            if (Character.isUpperCase(oldCodepoint) || Character.isTitleCase(oldCodepoint)) {
-                newCodePoint = Character.toLowerCase(oldCodepoint);
-            } else if (Character.isLowerCase(oldCodepoint)) {
-                newCodePoint = Character.toUpperCase(oldCodepoint);
-            } else {
-                newCodePoint = oldCodepoint;
-            }
-            newCodePoints[outOffset++] = newCodePoint;
-            i += Character.charCount(newCodePoint);
-        }
-        return new String(newCodePoints, 0, outOffset);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8691,13 +7454,7 @@ public class StringUtils {
      * @since 3.6
      */
     public static int[] toCodePoints(final CharSequence cs) {
-        if (cs == null) {
-            return null;
-        }
-        if (cs.length() == 0) {
-            return ArrayUtils.EMPTY_INT_ARRAY;
-        }
-        return cs.toString().codePoints().toArray();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8711,7 +7468,7 @@ public class StringUtils {
      * @since 3.3 No longer throws {@link UnsupportedEncodingException}.
      */
     public static String toEncodedString(final byte[] bytes, final Charset charset) {
-        return new String(bytes, Charsets.toCharset(charset));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8722,7 +7479,7 @@ public class StringUtils {
      * @since 3.10
      */
     public static String toRootLowerCase(final String source) {
-        return source == null ? null : source.toLowerCase(Locale.ROOT);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8733,7 +7490,7 @@ public class StringUtils {
      * @since 3.10
      */
     public static String toRootUpperCase(final String source) {
-        return source == null ? null : source.toUpperCase(Locale.ROOT);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8774,7 +7531,7 @@ public class StringUtils {
      * @return the trimmed string, {@code null} if null String input.
      */
     public static String trim(final String str) {
-        return str == null ? null : str.trim();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8798,7 +7555,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String trimToEmpty(final String str) {
-        return str == null ? EMPTY : str.trim();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8822,8 +7579,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String trimToNull(final String str) {
-        final String ts = trim(str);
-        return isEmpty(ts) ? null : ts;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8857,7 +7613,7 @@ public class StringUtils {
      * @since 3.5
      */
     public static String truncate(final String str, final int maxWidth) {
-        return truncate(str, 0, maxWidth);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8919,19 +7675,7 @@ public class StringUtils {
      * @since 3.5
      */
     public static String truncate(final String str, final int offset, final int maxWidth) {
-        if (offset < 0) {
-            throw new IllegalArgumentException("offset cannot be negative");
-        }
-        if (maxWidth < 0) {
-            throw new IllegalArgumentException("maxWidth cannot be negative");
-        }
-        if (str == null) {
-            return null;
-        }
-        final int len = str.length();
-        final int start = Math.min(offset, len);
-        final int end = offset > len - maxWidth ? len : offset + maxWidth;
-        return str.substring(start, Math.min(end, len));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8956,19 +7700,7 @@ public class StringUtils {
      * @since 2.0
      */
     public static String uncapitalize(final String str) {
-        final int strLen = length(str);
-        if (strLen == 0) {
-            return str;
-        }
-        final int firstCodePoint = str.codePointAt(0);
-        final int newCodePoint = Character.toLowerCase(firstCodePoint);
-        if (firstCodePoint == newCodePoint) {
-            // already uncapitalized
-            return str;
-        }
-        final int[] newCodePoints = str.codePoints().toArray();
-        newCodePoints[0] = newCodePoint; // copy the first code point
-        return new String(newCodePoints, 0, newCodePoints.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8993,15 +7725,7 @@ public class StringUtils {
      * @since 3.6
      */
     public static String unwrap(final String str, final char wrapChar) {
-        if (isEmpty(str) || wrapChar == CharUtils.NUL || str.length() == 1) {
-            return str;
-        }
-        if (str.charAt(0) == wrapChar && str.charAt(str.length() - 1) == wrapChar) {
-            final int startIndex = 0;
-            final int endIndex = str.length() - 1;
-            return str.substring(startIndex + 1, endIndex);
-        }
-        return str;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9027,13 +7751,7 @@ public class StringUtils {
      * @since 3.6
      */
     public static String unwrap(final String str, final String wrapToken) {
-        if (isEmpty(str) || isEmpty(wrapToken) || str.length() < 2 * wrapToken.length()) {
-            return str;
-        }
-        if (Strings.CS.startsWith(str, wrapToken) && Strings.CS.endsWith(str, wrapToken)) {
-            return str.substring(wrapToken.length(), str.lastIndexOf(wrapToken));
-        }
-        return str;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9059,10 +7777,7 @@ public class StringUtils {
      * @return the upper-cased String, {@code null} if null String input.
      */
     public static String upperCase(final String str) {
-        if (str == null) {
-            return null;
-        }
-        return str.toUpperCase();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9084,10 +7799,7 @@ public class StringUtils {
      * @since 2.5
      */
     public static String upperCase(final String str, final Locale locale) {
-        if (str == null) {
-            return null;
-        }
-        return str.toUpperCase(LocaleUtils.toLocale(locale));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9099,7 +7811,7 @@ public class StringUtils {
      * @since 3.9
      */
     public static String valueOf(final char[] value) {
-        return value == null ? null : String.valueOf(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9120,10 +7832,7 @@ public class StringUtils {
      * @since 3.4
      */
     public static String wrap(final String str, final char wrapWith) {
-        if (isEmpty(str) || wrapWith == CharUtils.NUL) {
-            return str;
-        }
-        return wrapWith + str + wrapWith;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9152,10 +7861,7 @@ public class StringUtils {
      * @since 3.4
      */
     public static String wrap(final String str, final String wrapWith) {
-        if (isEmpty(str) || isEmpty(wrapWith)) {
-            return str;
-        }
-        return wrapWith.concat(str).concat(wrapWith);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9184,23 +7890,7 @@ public class StringUtils {
      * @since 3.5
      */
     public static String wrapIfMissing(final String str, final char wrapWith) {
-        if (isEmpty(str) || wrapWith == CharUtils.NUL) {
-            return str;
-        }
-        final boolean wrapStart = str.charAt(0) != wrapWith;
-        final boolean wrapEnd = str.charAt(str.length() - 1) != wrapWith;
-        if (!wrapStart && !wrapEnd) {
-            return str;
-        }
-        final StringBuilder builder = new StringBuilder(str.length() + 2);
-        if (wrapStart) {
-            builder.append(wrapWith);
-        }
-        builder.append(str);
-        if (wrapEnd) {
-            builder.append(wrapWith);
-        }
-        return builder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9233,23 +7923,7 @@ public class StringUtils {
      * @since 3.5
      */
     public static String wrapIfMissing(final String str, final String wrapWith) {
-        if (isEmpty(str) || isEmpty(wrapWith)) {
-            return str;
-        }
-        final boolean wrapStart = !str.startsWith(wrapWith);
-        final boolean wrapEnd = !str.endsWith(wrapWith);
-        if (!wrapStart && !wrapEnd) {
-            return str;
-        }
-        final StringBuilder builder = new StringBuilder(str.length() + wrapWith.length() + wrapWith.length());
-        if (wrapStart) {
-            builder.append(wrapWith);
-        }
-        builder.append(str);
-        if (wrapEnd) {
-            builder.append(wrapWith);
-        }
-        return builder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9265,5 +7939,4 @@ public class StringUtils {
     public StringUtils() {
         // empty
     }
-
 }

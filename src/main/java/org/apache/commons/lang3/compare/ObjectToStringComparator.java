@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.compare;
 
 import java.io.Serializable;
@@ -53,27 +52,6 @@ public final class ObjectToStringComparator implements Comparator<Object>, Seria
 
     @Override
     public int compare(final Object o1, final Object o2) {
-        if (o1 == o2) {
-            return 0;
-        }
-        if (o1 == null) {
-            return 1;
-        }
-        if (o2 == null) {
-            return -1;
-        }
-        final String string1 = o1.toString();
-        final String string2 = o2.toString();
-        // No guarantee that toString() returns a non-null value, despite what Spotbugs thinks.
-        if (string1 == string2) {
-            return 0;
-        }
-        if (string1 == null) {
-            return 1;
-        }
-        if (string2 == null) {
-            return -1;
-        }
-        return string1.compareTo(string2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

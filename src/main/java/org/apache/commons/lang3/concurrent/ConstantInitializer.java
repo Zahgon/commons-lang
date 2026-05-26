@@ -38,10 +38,14 @@ import java.util.Objects;
  */
 public class ConstantInitializer<T> implements ConcurrentInitializer<T> {
 
-    /** Constant for the format of the string representation. */
+    /**
+     * Constant for the format of the string representation.
+     */
     private static final String FMT_TO_STRING = "ConstantInitializer@%d [ object = %s ]";
 
-    /** Stores the managed object. */
+    /**
+     * Stores the managed object.
+     */
     private final T object;
 
     /**
@@ -68,15 +72,7 @@ public class ConstantInitializer<T> implements ConcurrentInitializer<T> {
      */
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof ConstantInitializer<?>)) {
-            return false;
-        }
-
-        final ConstantInitializer<?> c = (ConstantInitializer<?>) obj;
-        return Objects.equals(getObject(), c.getObject());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -88,7 +84,7 @@ public class ConstantInitializer<T> implements ConcurrentInitializer<T> {
      */
     @Override
     public T get() throws ConcurrentException {
-        return getObject();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -99,7 +95,7 @@ public class ConstantInitializer<T> implements ConcurrentInitializer<T> {
      * @return the object managed by this initializer
      */
     public final T getObject() {
-        return object;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -110,7 +106,7 @@ public class ConstantInitializer<T> implements ConcurrentInitializer<T> {
      */
     @Override
     public int hashCode() {
-        return Objects.hashCode(object);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -121,7 +117,7 @@ public class ConstantInitializer<T> implements ConcurrentInitializer<T> {
      * @since 3.14.0
      */
     public boolean isInitialized() {
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -133,6 +129,6 @@ public class ConstantInitializer<T> implements ConcurrentInitializer<T> {
      */
     @Override
     public String toString() {
-        return String.format(FMT_TO_STRING, Integer.valueOf(System.identityHashCode(this)), getObject());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

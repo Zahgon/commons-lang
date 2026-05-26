@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.io.IOException;
@@ -32,7 +31,6 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
-
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.commons.lang3.stream.Streams;
 import org.apache.commons.lang3.stream.Streams.FailableStream;
@@ -82,9 +80,8 @@ public class Failable {
      * @param <U> the type of the second argument the consumer accepts
      * @param <E> the type of checked exception the consumer may throw
      */
-    public static <T, U, E extends Throwable> void accept(final FailableBiConsumer<T, U, E> consumer, final T object1,
-        final U object2) {
-        run(consumer, () -> consumer.accept(object1, object2));
+    public static <T, U, E extends Throwable> void accept(final FailableBiConsumer<T, U, E> consumer, final T object1, final U object2) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -96,7 +93,7 @@ public class Failable {
      * @param <E> the type of checked exception the consumer may throw
      */
     public static <T, E extends Throwable> void accept(final FailableConsumer<T, E> consumer, final T object) {
-        run(consumer, () -> consumer.accept(object));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -107,7 +104,7 @@ public class Failable {
      * @param <E> the type of checked exception the consumer may throw
      */
     public static <E extends Throwable> void accept(final FailableDoubleConsumer<E> consumer, final double value) {
-        run(consumer, () -> consumer.accept(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -118,7 +115,7 @@ public class Failable {
      * @param <E> the type of checked exception the consumer may throw
      */
     public static <E extends Throwable> void accept(final FailableIntConsumer<E> consumer, final int value) {
-        run(consumer, () -> consumer.accept(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -129,7 +126,7 @@ public class Failable {
      * @param <E> the type of checked exception the consumer may throw
      */
     public static <E extends Throwable> void accept(final FailableLongConsumer<E> consumer, final long value) {
-        run(consumer, () -> consumer.accept(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -144,9 +141,8 @@ public class Failable {
      * @param <E> the type of checked exception the function may throw
      * @return the value returned from the function
      */
-    public static <T, U, R, E extends Throwable> R apply(final FailableBiFunction<T, U, R, E> function, final T input1,
-        final U input2) {
-        return get(() -> function.apply(input1, input2));
+    public static <T, U, R, E extends Throwable> R apply(final FailableBiFunction<T, U, R, E> function, final T input1, final U input2) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -160,7 +156,7 @@ public class Failable {
      * @return the value returned from the function
      */
     public static <T, R, E extends Throwable> R apply(final FailableFunction<T, R, E> function, final T input) {
-        return get(() -> function.apply(input));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -172,9 +168,8 @@ public class Failable {
      * @param <E> the type of checked exception the function may throw
      * @return the value returned from the function
      */
-    public static <E extends Throwable> double applyAsDouble(final FailableDoubleBinaryOperator<E> function,
-        final double left, final double right) {
-        return getAsDouble(() -> function.applyAsDouble(left, right));
+    public static <E extends Throwable> double applyAsDouble(final FailableDoubleBinaryOperator<E> function, final double left, final double right) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -203,7 +198,7 @@ public class Failable {
      * @since 3.19.0
      */
     public static <T, R, E extends Throwable> R applyNonNull(final T value, final FailableFunction<? super T, ? extends R, E> mapper) throws E {
-        return value != null ? Objects.requireNonNull(mapper, "mapper").apply(value) : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -236,9 +231,8 @@ public class Failable {
      * @see #applyNonNull(Object, FailableFunction, FailableFunction, FailableFunction)
      * @since 3.19.0
      */
-    public static <T, U, R, E1 extends Throwable, E2 extends Throwable> R applyNonNull(final T value1,
-            final FailableFunction<? super T, ? extends U, E1> mapper1, final FailableFunction<? super U, ? extends R, E2> mapper2) throws E1, E2 {
-        return applyNonNull(applyNonNull(value1, mapper1), mapper2);
+    public static <T, U, R, E1 extends Throwable, E2 extends Throwable> R applyNonNull(final T value1, final FailableFunction<? super T, ? extends U, E1> mapper1, final FailableFunction<? super U, ? extends R, E2> mapper2) throws E1, E2 {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -276,10 +270,8 @@ public class Failable {
      * @see #applyNonNull(Object, FailableFunction, FailableFunction)
      * @since 3.19.0
      */
-    public static <T, U, V, R, E1 extends Throwable, E2 extends Throwable, E3 extends Throwable> R applyNonNull(final T value1,
-            final FailableFunction<? super T, ? extends U, E1> mapper1, final FailableFunction<? super U, ? extends V, E2> mapper2,
-            final FailableFunction<? super V, ? extends R, E3> mapper3) throws E1, E2, E3 {
-        return applyNonNull(applyNonNull(applyNonNull(value1, mapper1), mapper2), mapper3);
+    public static <T, U, V, R, E1 extends Throwable, E2 extends Throwable, E3 extends Throwable> R applyNonNull(final T value1, final FailableFunction<? super T, ? extends U, E1> mapper1, final FailableFunction<? super U, ? extends V, E2> mapper2, final FailableFunction<? super V, ? extends R, E3> mapper3) throws E1, E2, E3 {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -291,7 +283,7 @@ public class Failable {
      * @return a standard {@link BiConsumer}
      */
     public static <T, U> BiConsumer<T, U> asBiConsumer(final FailableBiConsumer<T, U, ?> consumer) {
-        return (input1, input2) -> accept(consumer, input1, input2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -304,7 +296,7 @@ public class Failable {
      * @return a standard {@link BiFunction}
      */
     public static <T, U, R> BiFunction<T, U, R> asBiFunction(final FailableBiFunction<T, U, R, ?> function) {
-        return (input1, input2) -> apply(function, input1, input2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -316,7 +308,7 @@ public class Failable {
      * @return a standard {@link BiPredicate}
      */
     public static <T, U> BiPredicate<T, U> asBiPredicate(final FailableBiPredicate<T, U, ?> predicate) {
-        return (input1, input2) -> test(predicate, input1, input2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -327,7 +319,7 @@ public class Failable {
      * @return a standard {@link Callable}
      */
     public static <V> Callable<V> asCallable(final FailableCallable<V, ?> callable) {
-        return () -> call(callable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -338,7 +330,7 @@ public class Failable {
      * @return a standard {@link Consumer}
      */
     public static <T> Consumer<T> asConsumer(final FailableConsumer<T, ?> consumer) {
-        return input -> accept(consumer, input);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -350,7 +342,7 @@ public class Failable {
      * @return a standard {@link Function}
      */
     public static <T, R> Function<T, R> asFunction(final FailableFunction<T, R, ?> function) {
-        return input -> apply(function, input);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -361,7 +353,7 @@ public class Failable {
      * @return a standard {@link Predicate}
      */
     public static <T> Predicate<T> asPredicate(final FailablePredicate<T, ?> predicate) {
-        return input -> test(predicate, input);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -371,7 +363,7 @@ public class Failable {
      * @return a standard {@link Runnable}
      */
     public static Runnable asRunnable(final FailableRunnable<?> runnable) {
-        return () -> run(runnable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -382,7 +374,7 @@ public class Failable {
      * @return a standard {@link Supplier}
      */
     public static <T> Supplier<T> asSupplier(final FailableSupplier<T, ?> supplier) {
-        return () -> get(supplier);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -394,7 +386,7 @@ public class Failable {
      * @return the value returned from the callable
      */
     public static <V, E extends Throwable> V call(final FailableCallable<V, E> callable) {
-        return get(callable::call);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -406,11 +398,7 @@ public class Failable {
      * @return The object, which has been created by the supplier
      */
     public static <T, E extends Throwable> T get(final FailableSupplier<T, E> supplier) {
-        try {
-            return supplier.get();
-        } catch (final Throwable t) {
-            throw rethrow(t);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -421,11 +409,7 @@ public class Failable {
      * @return The boolean, which has been created by the supplier
      */
     public static <E extends Throwable> boolean getAsBoolean(final FailableBooleanSupplier<E> supplier) {
-        try {
-            return supplier.getAsBoolean();
-        } catch (final Throwable t) {
-            throw rethrow(t);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -436,11 +420,7 @@ public class Failable {
      * @return The double, which has been created by the supplier
      */
     public static <E extends Throwable> double getAsDouble(final FailableDoubleSupplier<E> supplier) {
-        try {
-            return supplier.getAsDouble();
-        } catch (final Throwable t) {
-            throw rethrow(t);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -451,11 +431,7 @@ public class Failable {
      * @return The int, which has been created by the supplier
      */
     public static <E extends Throwable> int getAsInt(final FailableIntSupplier<E> supplier) {
-        try {
-            return supplier.getAsInt();
-        } catch (final Throwable t) {
-            throw rethrow(t);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -466,11 +442,7 @@ public class Failable {
      * @return The long, which has been created by the supplier
      */
     public static <E extends Throwable> long getAsLong(final FailableLongSupplier<E> supplier) {
-        try {
-            return supplier.getAsLong();
-        } catch (final Throwable t) {
-            throw rethrow(t);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -481,11 +453,7 @@ public class Failable {
      * @return The short, which has been created by the supplier
      */
     public static <E extends Throwable> short getAsShort(final FailableShortSupplier<E> supplier) {
-        try {
-            return supplier.getAsShort();
-        } catch (final Throwable t) {
-            throw rethrow(t);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -514,12 +482,7 @@ public class Failable {
      * @return Never returns anything, this method never terminates normally.
      */
     public static RuntimeException rethrow(final Throwable throwable) {
-        Objects.requireNonNull(throwable, "throwable");
-        ExceptionUtils.throwUnchecked(throwable);
-        if (throwable instanceof IOException) {
-            throw new UncheckedIOException((IOException) throwable);
-        }
-        throw new UndeclaredThrowableException(throwable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -529,13 +492,7 @@ public class Failable {
      * @param <E> the type of checked exception the runnable may throw.
      */
     public static <E extends Throwable> void run(final FailableRunnable<E> runnable) {
-        if (runnable != null) {
-            try {
-                runnable.run();
-            } catch (final Throwable t) {
-                throw rethrow(t);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static <E extends Throwable> void run(final Object test, final FailableRunnable<E> runnable) {
@@ -561,7 +518,7 @@ public class Failable {
      * @return The created {@link FailableStream}.
      */
     public static <E> FailableStream<E> stream(final Collection<E> collection) {
-        return new FailableStream<>(collection.stream());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -575,7 +532,7 @@ public class Failable {
      * @return The created {@link FailableStream}.
      */
     public static <T> FailableStream<T> stream(final Stream<T> stream) {
-        return new FailableStream<>(stream);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -589,9 +546,8 @@ public class Failable {
      * @param <E> the type of checked exception the predicate may throw
      * @return the boolean value returned by the predicate
      */
-    public static <T, U, E extends Throwable> boolean test(final FailableBiPredicate<T, U, E> predicate,
-        final T object1, final U object2) {
-        return getAsBoolean(() -> predicate.test(object1, object2));
+    public static <T, U, E extends Throwable> boolean test(final FailableBiPredicate<T, U, E> predicate, final T object1, final U object2) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -604,7 +560,7 @@ public class Failable {
      * @return the boolean value returned by the predicate
      */
     public static <T, E extends Throwable> boolean test(final FailablePredicate<T, E> predicate, final T object) {
-        return getAsBoolean(() -> predicate.test(object));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -627,40 +583,8 @@ public class Failable {
      * @see #tryWithResources(FailableRunnable, FailableRunnable...)
      */
     @SafeVarargs
-    public static void tryWithResources(final FailableRunnable<? extends Throwable> action,
-        final FailableConsumer<Throwable, ? extends Throwable> errorHandler,
-        final FailableRunnable<? extends Throwable>... resources) {
-        final FailableConsumer<Throwable, ? extends Throwable> actualErrorHandler;
-        if (errorHandler == null) {
-            actualErrorHandler = Failable::rethrow;
-        } else {
-            actualErrorHandler = errorHandler;
-        }
-        Streams.of(resources).forEach(r -> Objects.requireNonNull(r, "runnable"));
-        Throwable th = null;
-        try {
-            action.run();
-        } catch (final Throwable t) {
-            th = t;
-        }
-        if (resources != null) {
-            for (final FailableRunnable<?> runnable : resources) {
-                try {
-                    runnable.run();
-                } catch (final Throwable t) {
-                    if (th == null) {
-                        th = t;
-                    }
-                }
-            }
-        }
-        if (th != null) {
-            try {
-                actualErrorHandler.accept(th);
-            } catch (final Throwable t) {
-                throw rethrow(t);
-            }
-        }
+    public static void tryWithResources(final FailableRunnable<? extends Throwable> action, final FailableConsumer<Throwable, ? extends Throwable> errorHandler, final FailableRunnable<? extends Throwable>... resources) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -682,11 +606,10 @@ public class Failable {
      */
     @SafeVarargs
     public static void tryWithResources(final FailableRunnable<? extends Throwable> action, final FailableRunnable<? extends Throwable>... resources) {
-        tryWithResources(action, null, resources);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private Failable() {
         // empty
     }
-
 }

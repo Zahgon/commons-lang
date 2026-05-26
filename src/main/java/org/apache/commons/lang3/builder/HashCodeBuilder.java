@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.builder;
 
 import java.lang.reflect.Field;
@@ -24,7 +23,6 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
 import org.apache.commons.lang3.ArraySorter;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
@@ -126,9 +124,8 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
 
         @Override
         public HashCodeBuilder get() {
-            return new HashCodeBuilder(this);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
 
         /**
          * Sets an odd number used as the initial value.
@@ -137,8 +134,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
          * @return {@code this} instance.
          */
         public Builder setInitialOddNumber(final int initialOddNumber) {
-            this.initialOddNumber = initialOddNumber;
-            return asThis();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -148,10 +144,8 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
          * @return {@code this} instance.
          */
         public Builder setMultiplierOddNumber(final int multiplierOddNumber) {
-            this.multiplierOddNumber = multiplierOddNumber;
-            return asThis();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -175,7 +169,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return a new Builder.
      */
     public static Builder builder() {
-        return new Builder();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /*
@@ -194,14 +188,13 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * We now use the IDKey helper class (adapted from org.apache.axis.utils.IDKey)
      * to disambiguate the duplicate ids.
      */
-
     /**
      * Gets the registry of objects being traversed by the reflection methods in the current thread.
      *
      * @return Set the registry of objects being traversed
      */
     static Set<IDKey> getRegistry() {
-        return REGISTRY.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -213,8 +206,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return boolean {@code true} if the registry contains the given object.
      */
     static boolean isRegistered(final Object value) {
-        final Set<IDKey> registry = getRegistry();
-        return registry != null && registry.contains(new IDKey(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -232,8 +224,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      *            Collection of String field names to exclude from use in calculation of hash code
      * @param forceAccessible Whether to set fields' accessible flags
      */
-    private static void reflectionAppend(final Object object, final Class<?> clazz, final HashCodeBuilder builder, final boolean useTransients,
-            final String[] excludeFields, final boolean forceAccessible) {
+    private static void reflectionAppend(final Object object, final Class<?> clazz, final HashCodeBuilder builder, final boolean useTransients, final String[] excludeFields, final boolean forceAccessible) {
         if (isRegistered(object)) {
             return;
         }
@@ -242,11 +233,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
             // The elements in the returned array are not sorted and are not in any particular order.
             final Field[] fields = ArraySorter.sort(clazz.getDeclaredFields(), Comparator.comparing(Field::getName));
             for (final Field field : fields) {
-                if (!ArrayUtils.contains(excludeFields, field.getName())
-                    && !field.getName().contains("$")
-                    && (useTransients || !Modifier.isTransient(field.getModifiers()))
-                    && !Modifier.isStatic(field.getModifiers())
-                    && !field.isAnnotationPresent(HashCodeExclude.class)) {
+                if (!ArrayUtils.contains(excludeFields, field.getName()) && !field.getName().contains("$") && (useTransients || !Modifier.isTransient(field.getModifiers())) && !Modifier.isStatic(field.getModifiers()) && !field.isAnnotationPresent(HashCodeExclude.class)) {
                     if (setAccessible(forceAccessible, field)) {
                         builder.append(Reflection.getUnchecked(field, object));
                     }
@@ -295,7 +282,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @see HashCodeExclude
      */
     public static int reflectionHashCode(final int initialNonZeroOddNumber, final int multiplierNonZeroOddNumber, final Object object) {
-        return reflectionHashCode(initialNonZeroOddNumber, multiplierNonZeroOddNumber, object, false, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -337,9 +324,8 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      *             if the number is zero or even
      * @see HashCodeExclude
      */
-    public static int reflectionHashCode(final int initialNonZeroOddNumber, final int multiplierNonZeroOddNumber, final Object object,
-            final boolean testTransients) {
-        return reflectionHashCode(initialNonZeroOddNumber, multiplierNonZeroOddNumber, object, testTransients, null);
+    public static int reflectionHashCode(final int initialNonZeroOddNumber, final int multiplierNonZeroOddNumber, final Object object, final boolean testTransients) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -389,17 +375,8 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @see HashCodeExclude
      * @since 2.0
      */
-    public static <T> int reflectionHashCode(final int initialNonZeroOddNumber, final int multiplierNonZeroOddNumber, final T object,
-            final boolean testTransients, final Class<? super T> reflectUpToClass, final String... excludeFields) {
-        Objects.requireNonNull(object, "object");
-        final HashCodeBuilder builder = new HashCodeBuilder(initialNonZeroOddNumber, multiplierNonZeroOddNumber);
-        Class<?> clazz = object.getClass();
-        reflectionAppend(object, clazz, builder, testTransients, excludeFields, true);
-        while (clazz.getSuperclass() != null && clazz != reflectUpToClass) {
-            clazz = clazz.getSuperclass();
-            reflectionAppend(object, clazz, builder, testTransients, excludeFields, true);
-        }
-        return builder.toHashCode();
+    public static <T> int reflectionHashCode(final int initialNonZeroOddNumber, final int multiplierNonZeroOddNumber, final T object, final boolean testTransients, final Class<? super T> reflectUpToClass, final String... excludeFields) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -435,8 +412,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @see HashCodeExclude
      */
     public static int reflectionHashCode(final Object object, final boolean testTransients) {
-        return reflectionHashCode(DEFAULT_INITIAL_VALUE, DEFAULT_MULTIPLIER_VALUE, object,
-                testTransients, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -472,7 +448,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @see HashCodeExclude
      */
     public static int reflectionHashCode(final Object object, final Collection<String> excludeFields) {
-        return reflectionHashCode(object, ReflectionToStringBuilder.toNoNullStringArray(excludeFields));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -508,8 +484,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @see HashCodeExclude
      */
     public static int reflectionHashCode(final Object object, final String... excludeFields) {
-        return reflectionHashCode(DEFAULT_INITIAL_VALUE, DEFAULT_MULTIPLIER_VALUE, object, false,
-                null, excludeFields);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -563,7 +538,8 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
         Validate.isTrue(builder.initialOddNumber % 2 != 0, "HashCodeBuilder requires an odd initial value");
         Validate.isTrue(builder.multiplierOddNumber % 2 != 0, "HashCodeBuilder requires an odd multiplier");
         constant = builder.multiplierOddNumber;
-        total = builder.initialOddNumber;    }
+        total = builder.initialOddNumber;
+    }
 
     /**
      * Two randomly chosen, odd numbers must be passed in. Ideally these should be different for each class,
@@ -605,8 +581,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final boolean value) {
-        total = total * constant + (value ? 0 : 1);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -617,14 +592,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final boolean[] array) {
-        if (array == null) {
-            total = total * constant;
-        } else {
-            for (final boolean element : array) {
-                append(element);
-            }
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -635,8 +603,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final byte value) {
-        total = total * constant + value;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -647,14 +614,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final byte[] array) {
-        if (array == null) {
-            total = total * constant;
-        } else {
-            for (final byte element : array) {
-                append(element);
-            }
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -665,8 +625,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final char value) {
-        total = total * constant + value;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -677,14 +636,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final char[] array) {
-        if (array == null) {
-            total = total * constant;
-        } else {
-            for (final char element : array) {
-                append(element);
-            }
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -695,7 +647,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final double value) {
-        return append(Double.doubleToLongBits(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -706,14 +658,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final double[] array) {
-        if (array == null) {
-            total = total * constant;
-        } else {
-            for (final double element : array) {
-                append(element);
-            }
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -724,8 +669,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final float value) {
-        total = total * constant + Float.floatToIntBits(value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -736,14 +680,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final float[] array) {
-        if (array == null) {
-            total = total * constant;
-        } else {
-            for (final float element : array) {
-                append(element);
-            }
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -754,8 +691,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final int value) {
-        total = total * constant + value;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -766,14 +702,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final int[] array) {
-        if (array == null) {
-            total = total * constant;
-        } else {
-            for (final int element : array) {
-                append(element);
-            }
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -788,8 +717,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
     //       some stage. There are backwards compat issues, so
     //       that will have to wait for the time being. See LANG-342.
     public HashCodeBuilder append(final long value) {
-        total = total * constant + (int) (value ^ value >> 32);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -800,14 +728,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final long[] array) {
-        if (array == null) {
-            total = total * constant;
-        } else {
-            for (final long element : array) {
-                append(element);
-            }
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -818,27 +739,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final Object object) {
-        if (object == null) {
-            total = total * constant;
-        } else if (isRegistered(object)) {
-            // Cycle detected: skip to avoid infinite recursion (mirrors reflectionAppend).
-            total = total * constant;
-        } else if (ObjectUtils.isArray(object)) {
-            try {
-                register(object);
-                appendArray(object);
-            } finally {
-                unregister(object);
-            }
-        } else {
-            try {
-                register(object);
-                total = total * constant + object.hashCode();
-            } finally {
-                unregister(object);
-            }
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -849,14 +750,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final Object[] array) {
-        if (array == null) {
-            total = total * constant;
-        } else {
-            for (final Object element : array) {
-                append(element);
-            }
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -867,8 +761,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final short value) {
-        total = total * constant + value;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -879,14 +772,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code this} instance.
      */
     public HashCodeBuilder append(final short[] array) {
-        if (array == null) {
-            total = total * constant;
-        } else {
-            for (final short element : array) {
-                append(element);
-            }
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -929,8 +815,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @since 2.0
      */
     public HashCodeBuilder appendSuper(final int superHashCode) {
-        total = total * constant + superHashCode;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -941,7 +826,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      */
     @Override
     public Integer build() {
-        return Integer.valueOf(toHashCode());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -951,14 +836,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      */
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof HashCodeBuilder)) {
-            return false;
-        }
-        final HashCodeBuilder other = (HashCodeBuilder) obj;
-        return total == other.total;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -970,7 +848,7 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      */
     @Override
     public int hashCode() {
-        return toHashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -979,7 +857,6 @@ public class HashCodeBuilder extends AbstractReflection implements Builder<Integ
      * @return {@code hashCode} based on the fields appended
      */
     public int toHashCode() {
-        return total;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

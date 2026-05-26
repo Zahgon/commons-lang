@@ -88,18 +88,20 @@ public class RandomStringUtils {
 
     private static final RandomStringUtils SECURE_STRONG = new RandomStringUtils(RandomUtils::secureStrong);
 
-    private static final char[] ALPHANUMERICAL_CHARS = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
-            'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
-            'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1',
-            '2', '3', '4', '5', '6', '7', '8', '9' };
+    private static final char[] ALPHANUMERICAL_CHARS = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
     private static final int ASCII_0 = '0';
+
     private static final int ASCII_9 = '9';
+
     private static final int ASCII_A = 'A';
+
     private static final int ASCII_z = 'z';
 
     private static final int CACHE_PADDING_BITS = 3;
+
     private static final int BITS_TO_BYTES_DIVISOR = 5;
+
     private static final int BASE_CACHE_SIZE_PADDING = 10;
 
     /**
@@ -116,7 +118,7 @@ public class RandomStringUtils {
      * @since 3.16.0
      */
     public static RandomStringUtils insecure() {
-        return INSECURE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -190,8 +192,7 @@ public class RandomStringUtils {
      * @deprecated Use {@link #next(int, int, int, boolean, boolean)} from {@link #secure()}, {@link #secureStrong()}, or {@link #insecure()}.
      */
     @Deprecated
-    public static String random(final int count, final int start, final int end, final boolean letters,
-            final boolean numbers) {
+    public static String random(final int count, final int start, final int end, final boolean letters, final boolean numbers) {
         return secure().next(count, start, end, letters, numbers);
     }
 
@@ -216,8 +217,7 @@ public class RandomStringUtils {
      * @deprecated Use {@link #next(int, int, int, boolean, boolean, char...)} from {@link #secure()}, {@link #secureStrong()}, or {@link #insecure()}.
      */
     @Deprecated
-    public static String random(final int count, final int start, final int end, final boolean letters,
-            final boolean numbers, final char... chars) {
+    public static String random(final int count, final int start, final int end, final boolean letters, final boolean numbers, final char... chars) {
         return secure().next(count, start, end, letters, numbers, chars);
     }
 
@@ -252,195 +252,8 @@ public class RandomStringUtils {
      * @throws IllegalArgumentException       if {@code count} &lt; 0 or the provided chars array is empty.
      * @since 2.0
      */
-    public static String random(int count, int start, int end, final boolean letters, final boolean digits,
-            final char[] chars, final Random random) {
-        if (count == 0) {
-            return StringUtils.EMPTY;
-        }
-        if (count < 0) {
-            throw new IllegalArgumentException(String.format("Requested random string length %,d is less than 0.", end));
-        }
-        if (chars != null && chars.length == 0) {
-            throw new IllegalArgumentException("The chars array must not be empty");
-        }
-        if (start == 0 && end == 0) {
-            if (chars != null) {
-                end = chars.length;
-            } else if (!letters && !digits) {
-                end = Character.MAX_CODE_POINT;
-            } else {
-                end = 'z' + 1;
-                start = ' ';
-            }
-        } else if (end <= start) {
-            throw new IllegalArgumentException(String.format("Parameter end (%,d) must be greater than start (%,d)", end, start));
-        } else if (start < 0 || end < 0) {
-            throw new IllegalArgumentException("Character positions MUST be >= 0");
-        }
-        if (end > Character.MAX_CODE_POINT) {
-            // Technically, it should be `Character.MAX_CODE_POINT+1` as `end` is excluded
-            // But the character `Character.MAX_CODE_POINT` is private use, so it would anyway be excluded
-            end = Character.MAX_CODE_POINT;
-        }
-        // Optimizations and tests when chars == null and using ASCII characters (end <= 0x7f)
-        if (chars == null && end <= 0x7f) {
-            // Optimize generation of full alphanumerical characters
-            // Normally, we would need to pick a 7-bit integer, since gap = 'z' - '0' + 1 = 75 > 64
-            // In turn, this would make us reject the sampling with probability 1 - 62 / 2^7 > 1 / 2
-            // Instead we can pick directly from the right set of 62 characters, which requires
-            // picking a 6-bit integer and only rejecting with probability 2 / 64 = 1 / 32
-            if (letters && digits && start <= ASCII_0 && end >= ASCII_z + 1) {
-                return random(count, 0, 0, false, false, ALPHANUMERICAL_CHARS, random);
-            }
-            if (digits && end <= ASCII_0 || letters && end <= ASCII_A) {
-                throw new IllegalArgumentException(
-                        String.format("Parameter end (%,d) must be greater than (%,d) for generating digits or greater than (%,d) for generating letters.", end,
-                                ASCII_0, ASCII_A));
-            }
-            // Optimize start and end when filtering by letters and/or numbers:
-            // The range provided may be too large since we filter anyway afterward.
-            // Note the use of Math.min/max (as opposed to setting start to '0' for example),
-            // since it is possible the range start/end excludes some of the letters/numbers,
-            // e.g., it is possible that start already is '1' when numbers = true, and start
-            // needs to stay equal to '1' in that case.
-            // Note that because of the above test, we will always have start < end
-            // even after this optimization.
-            if (letters && digits) {
-                start = Math.max(ASCII_0, start);
-                end = Math.min(ASCII_z + 1, end);
-            } else if (digits) {
-                // just numbers, no letters
-                start = Math.max(ASCII_0, start);
-                end = Math.min(ASCII_9 + 1, end);
-            } else if (letters) {
-                // just letters, no numbers
-                start = Math.max(ASCII_A, start);
-                end = Math.min(ASCII_z + 1, end);
-            }
-        }
-        if (chars == null) {
-            // start/end are code points: validate using Character.isLetter/isDigit on the
-            // code-point range rather than on the loop index.
-            if (letters && !digits) {
-                boolean ok = false;
-                for (int i = start; i < end; i++) {
-                    if (Character.isLetter(i)) {
-                        ok = true;
-                        break;
-                    }
-                }
-                if (!ok) {
-                    throw new IllegalArgumentException(String.format("No letters exist between start %,d and end %,d.", start, end));
-                }
-            }
-            if (!letters && digits) {
-                boolean ok = false;
-                for (int i = start; i < end; i++) {
-                    if (Character.isDigit(i)) {
-                        ok = true;
-                        break;
-                    }
-                }
-                if (!ok) {
-                    throw new IllegalArgumentException(String.format("No digits exist between start %,d and end %,d.", start, end));
-                }
-            }
-        } else if (letters || digits) {
-            // chars != null. start/end are indices into chars[]; validate the actual
-            // chars contain at least one element matching some requested letter/digit
-            // category to avoid an infinite generation loop when the array lacks every
-            // requested category.
-            boolean hasMatch = false;
-            for (int i = start; i < end; i++) {
-                final char c = chars[i];
-                if (letters && Character.isLetter(c) || digits && Character.isDigit(c)) {
-                    hasMatch = true;
-                    break;
-                }
-            }
-            if (!hasMatch) {
-                throw new IllegalArgumentException(String.format("No %s%s%s exist in chars[%,d..%,d).", letters ? "letters" : "",
-                        letters && digits ? " or " : "", digits ? "digits" : "", start, end));
-            }
-        }
-        final StringBuilder builder = new StringBuilder(count);
-        final int gap = end - start;
-        final int gapBits = Integer.SIZE - Integer.numberOfLeadingZeros(gap);
-        // The size of the cache we use is an heuristic:
-        // about twice the number of bytes required if no rejection
-        // Ideally the cache size depends on multiple factor, including the cost of generating x bytes
-        // of randomness as well as the probability of rejection. It is however not easy to know
-        // those values programmatically for the general case.
-        // Calculate cache size:
-        // 1. Multiply count by bits needed per character (gapBits)
-        // 2. Add padding bits (3) to handle partial bytes
-        // 3. Divide by 5 to convert to bytes (normally this would be by 8, dividing by 5 allows for about 60% extra space)
-        // 4. Add base padding (10) to handle small counts efficiently
-        // 5. Ensure we don't exceed Integer.MAX_VALUE / 5 + 10 to provide a good balance between overflow prevention and
-        // making the cache extremely large
-        final long desiredCacheSize = ((long) count * gapBits + CACHE_PADDING_BITS) / BITS_TO_BYTES_DIVISOR + BASE_CACHE_SIZE_PADDING;
-        final int cacheSize = (int) Math.min(desiredCacheSize, Integer.MAX_VALUE / BITS_TO_BYTES_DIVISOR + BASE_CACHE_SIZE_PADDING);
-        final CachedRandomBits arb = new CachedRandomBits(cacheSize, random);
-        // Bound rejection retries so a range that rejects every sample
-        // (for example, entirely UNASSIGNED/PRIVATE_USE/SURROGATE) raises an
-        // IllegalArgumentException instead of looping indefinitely. Cap is
-        // (end - start) * 10 with a small floor so tiny gaps still get a
-        // reasonable budget. The counter resets on every accepted code point.
-        final int maxRejections = Math.max(64, gap * 10);
-        int rejections = 0;
-        while (count-- != 0) {
-            // Generate a random value between start (included) and end (excluded)
-            final int randomValue = arb.nextBits(gapBits) + start;
-            // Rejection sampling if value too large
-            if (randomValue >= end) {
-                count++;
-                if (++rejections > maxRejections) {
-                    throw new IllegalArgumentException(
-                            String.format("No acceptable code points found in range [%,d, %,d) within %,d attempts.", start, end, maxRejections));
-                }
-                continue;
-            }
-            final int codePoint;
-            if (chars == null) {
-                codePoint = randomValue;
-                switch (Character.getType(codePoint)) {
-                case Character.UNASSIGNED:
-                case Character.PRIVATE_USE:
-                case Character.SURROGATE:
-                    count++;
-                    if (++rejections > maxRejections) {
-                        throw new IllegalArgumentException(
-                                String.format("No acceptable code points found in range [%,d, %,d) within %,d attempts.", start, end, maxRejections));
-                    }
-                    continue;
-                }
-            } else {
-                codePoint = chars[randomValue];
-            }
-            final int numberOfChars = Character.charCount(codePoint);
-            if (count == 0 && numberOfChars > 1) {
-                count++;
-                if (++rejections > maxRejections) {
-                    throw new IllegalArgumentException(
-                            String.format("No acceptable code points found in range [%,d, %,d) within %,d attempts.", start, end, maxRejections));
-                }
-                continue;
-            }
-            if (letters && Character.isLetter(codePoint) || digits && Character.isDigit(codePoint) || !letters && !digits) {
-                builder.appendCodePoint(codePoint);
-                if (numberOfChars == 2) {
-                    count--;
-                }
-                rejections = 0;
-            } else {
-                count++;
-                if (++rejections > maxRejections) {
-                    throw new IllegalArgumentException(
-                            String.format("No acceptable code points found in range [%,d, %,d) within %,d attempts.", start, end, maxRejections));
-                }
-            }
-        }
-        return builder.toString();
+    public static String random(int count, int start, int end, final boolean letters, final boolean digits, final char[] chars, final Random random) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -690,7 +503,7 @@ public class RandomStringUtils {
      * @since 3.16.0
      */
     public static RandomStringUtils secure() {
-        return SECURE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -705,7 +518,7 @@ public class RandomStringUtils {
      * @since 3.17.0
      */
     public static RandomStringUtils secureStrong() {
-        return SECURE_STRONG;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private final Supplier<RandomUtils> random;
@@ -742,7 +555,7 @@ public class RandomStringUtils {
      * @since 3.16.0
      */
     public String next(final int count) {
-        return next(count, false, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -760,7 +573,7 @@ public class RandomStringUtils {
      * @since 3.16.0
      */
     public String next(final int count, final boolean letters, final boolean numbers) {
-        return next(count, 0, 0, letters, numbers);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -777,10 +590,7 @@ public class RandomStringUtils {
      * @since 3.16.0
      */
     public String next(final int count, final char... chars) {
-        if (chars == null) {
-            return random(count, 0, 0, false, false, null, random());
-        }
-        return random(count, 0, chars.length, false, false, chars, random());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -800,7 +610,7 @@ public class RandomStringUtils {
      * @since 3.16.0
      */
     public String next(final int count, final int start, final int end, final boolean letters, final boolean numbers) {
-        return random(count, start, end, letters, numbers, null, random());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -822,9 +632,8 @@ public class RandomStringUtils {
      * @throws ArrayIndexOutOfBoundsException if there are not {@code (end - start) + 1} characters in the set array.
      * @throws IllegalArgumentException       if {@code count} &lt; 0.
      */
-    public String next(final int count, final int start, final int end, final boolean letters, final boolean numbers,
-            final char... chars) {
-        return random(count, start, end, letters, numbers, chars, random());
+    public String next(final int count, final int start, final int end, final boolean letters, final boolean numbers, final char... chars) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -842,10 +651,7 @@ public class RandomStringUtils {
      * @since 3.16.0
      */
     public String next(final int count, final String chars) {
-        if (chars == null) {
-            return random(count, 0, 0, false, false, null, random());
-        }
-        return next(count, chars.toCharArray());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -860,7 +666,7 @@ public class RandomStringUtils {
      * @throws IllegalArgumentException if {@code count} &lt; 0.
      */
     public String nextAlphabetic(final int count) {
-        return next(count, true, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -876,7 +682,7 @@ public class RandomStringUtils {
      * @since 3.5
      */
     public String nextAlphabetic(final int minLengthInclusive, final int maxLengthExclusive) {
-        return nextAlphabetic(randomUtils().randomInt(minLengthInclusive, maxLengthExclusive));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -891,7 +697,7 @@ public class RandomStringUtils {
      * @throws IllegalArgumentException if {@code count} &lt; 0.
      */
     public String nextAlphanumeric(final int count) {
-        return next(count, true, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -907,7 +713,7 @@ public class RandomStringUtils {
      * @since 3.5
      */
     public String nextAlphanumeric(final int minLengthInclusive, final int maxLengthExclusive) {
-        return nextAlphanumeric(randomUtils().randomInt(minLengthInclusive, maxLengthExclusive));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -923,7 +729,7 @@ public class RandomStringUtils {
      * @throws IllegalArgumentException if {@code count} &lt; 0.
      */
     public String nextAscii(final int count) {
-        return next(count, 32, 127, false, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -940,7 +746,7 @@ public class RandomStringUtils {
      * @since 3.5
      */
     public String nextAscii(final int minLengthInclusive, final int maxLengthExclusive) {
-        return nextAscii(randomUtils().randomInt(minLengthInclusive, maxLengthExclusive));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -957,7 +763,7 @@ public class RandomStringUtils {
      * @since 3.5
      */
     public String nextGraph(final int count) {
-        return next(count, 33, 126, false, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -973,7 +779,7 @@ public class RandomStringUtils {
      * @since 3.5
      */
     public String nextGraph(final int minLengthInclusive, final int maxLengthExclusive) {
-        return nextGraph(randomUtils().randomInt(minLengthInclusive, maxLengthExclusive));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -988,7 +794,7 @@ public class RandomStringUtils {
      * @throws IllegalArgumentException if {@code count} &lt; 0.
      */
     public String nextNumeric(final int count) {
-        return next(count, false, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1004,7 +810,7 @@ public class RandomStringUtils {
      * @since 3.5
      */
     public String nextNumeric(final int minLengthInclusive, final int maxLengthExclusive) {
-        return nextNumeric(randomUtils().randomInt(minLengthInclusive, maxLengthExclusive));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1022,7 +828,7 @@ public class RandomStringUtils {
      * @since 3.16.0
      */
     public String nextPrint(final int count) {
-        return next(count, 32, 126, false, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1038,7 +844,7 @@ public class RandomStringUtils {
      * @since 3.16.0
      */
     public String nextPrint(final int minLengthInclusive, final int maxLengthExclusive) {
-        return nextPrint(randomUtils().randomInt(minLengthInclusive, maxLengthExclusive));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1061,7 +867,6 @@ public class RandomStringUtils {
 
     @Override
     public String toString() {
-        return "RandomStringUtils [random=" + random() + "]";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

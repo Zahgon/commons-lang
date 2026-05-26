@@ -21,7 +21,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-
 import org.apache.commons.lang3.ClassUtils;
 
 /**
@@ -29,8 +28,8 @@ import org.apache.commons.lang3.ClassUtils;
  * extracted and refactored from {@link MethodUtils} when it was imported from Commons BeanUtils.
  */
 final class MemberUtils {
-    // TODO extract an interface to implement compareParameterSets(...)?
 
+    // TODO extract an interface to implement compareParameterSets(...)?
     /**
      * A class providing a subset of the API of java.lang.reflect.Executable in Java 1.8,
      * providing a common representation for function signatures for Constructors and Methods.
@@ -46,6 +45,7 @@ final class MemberUtils {
         }
 
         private final Class<?>[] parameterTypes;
+
         private final boolean isVarArgs;
 
         private Executable(final Constructor<?> constructor) {
@@ -59,11 +59,11 @@ final class MemberUtils {
         }
 
         public Class<?>[] getParameterTypes() {
-            return parameterTypes;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         public boolean isVarArgs() {
-            return isVarArgs;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -72,16 +72,15 @@ final class MemberUtils {
     /**
      * Array of primitive number types ordered by "promotability" from narrow to wide.
      */
-    private static final Class<?>[] WIDENING_PRIMITIVE_TYPES = {
-            // @formatter:off
-            Byte.TYPE,      // byte
-            Short.TYPE,     // short
-            Character.TYPE, // char
-            Integer.TYPE,   // int
-            Long.TYPE,      // long
-            Float.TYPE,     // float
-            Double.TYPE     // double
-            // @formatter:on
+    private static final Class<?>[] WIDENING_PRIMITIVE_TYPES = { // @formatter:off
+    // byte
+    Byte.TYPE, // short
+    Short.TYPE, // char
+    Character.TYPE, // int
+    Integer.TYPE, // long
+    Long.TYPE, // float
+    Float.TYPE, // double
+    Double.TYPE // @formatter:on
     };
 
     /**
@@ -94,7 +93,7 @@ final class MemberUtils {
      * @return int consistent with {@code compare} semantics.
      */
     static int compareConstructorFit(final Constructor<?> left, final Constructor<?> right, final Class<?>[] actual) {
-      return compareParameterTypes(Executable.of(left), Executable.of(right), actual);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -107,7 +106,7 @@ final class MemberUtils {
      * @return int consistent with {@code compare} semantics.
      */
     static int compareMethodFit(final Method left, final Method right, final Class<?>[] actual) {
-      return compareParameterTypes(Executable.of(left), Executable.of(right), actual);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -212,8 +211,7 @@ final class MemberUtils {
             // When isVarArgs is true, srcArgs and dstArgs may differ in length.
             // There are two special cases to consider:
             final boolean noVarArgsPassed = srcArgs.length < destArgs.length;
-            final boolean explicitArrayForVarargs = srcArgs.length == destArgs.length && srcArgs[srcArgs.length - 1] != null
-                    && srcArgs[srcArgs.length - 1].isArray();
+            final boolean explicitArrayForVarargs = srcArgs.length == destArgs.length && srcArgs[srcArgs.length - 1] != null && srcArgs[srcArgs.length - 1].isArray();
             final float varArgsCost = 0.001f;
             final Class<?> destClass = destArgs[destArgs.length - 1].getComponentType();
             if (noVarArgsPassed) {
@@ -240,11 +238,11 @@ final class MemberUtils {
      * @return {@code true} if {@code m} is accessible.
      */
     static boolean isAccessible(final Member member) {
-        return isPublic(member) && !member.isSynthetic();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     static boolean isMatchingConstructor(final Constructor<?> method, final Class<?>[] parameterTypes) {
-        return isMatchingExecutable(Executable.of(method), parameterTypes);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static boolean isMatchingExecutable(final Executable method, final Class<?>[] parameterTypes) {
@@ -271,7 +269,7 @@ final class MemberUtils {
     }
 
     static boolean isMatchingMethod(final Method method, final Class<?>[] parameterTypes) {
-      return isMatchingExecutable(Executable.of(method), parameterTypes);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -281,7 +279,7 @@ final class MemberUtils {
      * @return {@code true} unless {@code package}/{@code protected}/{@code private} modifier detected
      */
     static boolean isPackage(final int modifiers) {
-        return (modifiers & ACCESS_TEST) == 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -291,7 +289,7 @@ final class MemberUtils {
      * @return {@code true} if {@code m} is public.
      */
     static boolean isPublic(final Member member) {
-        return member != null && Modifier.isPublic(member.getModifiers());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -301,7 +299,7 @@ final class MemberUtils {
      * @return {@code true} if {@code m} is static.
      */
     static boolean isStatic(final Member member) {
-        return member != null && Modifier.isStatic(member.getModifiers());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -320,19 +318,6 @@ final class MemberUtils {
      * @return a boolean indicating whether the accessibility of the object was set to true.
      */
     static <T extends AccessibleObject> T setAccessibleWorkaround(final T obj) {
-        if (AccessibleObjects.isAccessible(obj)) {
-            return obj;
-        }
-        final Member m = (Member) obj;
-        if (isPublic(m) && isPackage(m.getDeclaringClass().getModifiers())) {
-            try {
-                obj.setAccessible(true);
-                return obj;
-            } catch (final SecurityException ignored) {
-                // Ignore in favor of subsequent IllegalAccessException
-            }
-        }
-        return obj;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

@@ -14,13 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.reflect;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ClassUtils;
 
@@ -63,12 +61,7 @@ public class ConstructorUtils {
      * @see #getAccessibleConstructor(java.lang.reflect.Constructor)
      */
     public static <T> Constructor<T> getAccessibleConstructor(final Class<T> cls, final Class<?>... parameterTypes) {
-        Objects.requireNonNull(cls, "cls");
-        try {
-            return getAccessibleConstructor(cls.getConstructor(parameterTypes));
-        } catch (final NoSuchMethodException e) {
-            return null;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -87,8 +80,7 @@ public class ConstructorUtils {
      *                              for a class and invocation of {@link SecurityManager#checkPackageAccess(String)} denies access to the package of the class.
      */
     public static <T> Constructor<T> getAccessibleConstructor(final Constructor<T> ctor) {
-        Objects.requireNonNull(ctor, "ctor");
-        return MemberUtils.isAccessible(ctor) && isAccessible(ctor.getDeclaringClass()) ? ctor : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -113,37 +105,7 @@ public class ConstructorUtils {
      * @see SecurityManager#checkPackageAccess(String)
      */
     public static <T> Constructor<T> getMatchingAccessibleConstructor(final Class<T> cls, final Class<?>... parameterTypes) {
-        Objects.requireNonNull(cls, "cls");
-        // see if we can find the constructor directly
-        // most of the time this works and it's much faster
-        try {
-            return MemberUtils.setAccessibleWorkaround(cls.getConstructor(parameterTypes));
-        } catch (final NoSuchMethodException ignored) {
-            // ignore
-        }
-        Constructor<T> result = null;
-        /*
-         * (1) Class.getConstructors() is documented to return Constructor<T> so as long as the array is not subsequently modified, everything's fine.
-         */
-        final Constructor<?>[] ctors = cls.getConstructors();
-        // return best match:
-        for (Constructor<?> ctor : ctors) {
-            // compare parameters
-            if (MemberUtils.isMatchingConstructor(ctor, parameterTypes)) {
-                // get accessible version of constructor
-                ctor = getAccessibleConstructor(ctor);
-                if (ctor != null) {
-                    MemberUtils.setAccessibleWorkaround(ctor);
-                    if (result == null || MemberUtils.compareConstructorFit(ctor, result, parameterTypes) < 0) {
-                        // temporary variable for annotation, see comment above (1)
-                        @SuppressWarnings("unchecked")
-                        final Constructor<T> constructor = (Constructor<T>) ctor;
-                        result = constructor;
-                    }
-                }
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -176,10 +138,8 @@ public class ConstructorUtils {
      *                                     package of the class.
      * @see #invokeConstructor(Class, Object[], Class[])
      */
-    public static <T> T invokeConstructor(final Class<T> cls, final Object... args)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        final Object[] actuals = ArrayUtils.nullToEmpty(args);
-        return invokeConstructor(cls, actuals, ClassUtils.toClass(actuals));
+    public static <T> T invokeConstructor(final Class<T> cls, final Object... args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -214,14 +174,8 @@ public class ConstructorUtils {
      * @see Constructor#newInstance(Object...)
      * @see Constructor#newInstance
      */
-    public static <T> T invokeConstructor(final Class<T> cls, final Object[] args, final Class<?>[] parameterTypes)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        final Object[] actuals = ArrayUtils.nullToEmpty(args);
-        final Constructor<T> ctor = getMatchingAccessibleConstructor(cls, ArrayUtils.nullToEmpty(parameterTypes));
-        if (ctor == null) {
-            throw new NoSuchMethodException("No such accessible constructor on object: " + cls.getName());
-        }
-        return ctor.newInstance(MethodUtils.toVarArgs(ctor, actuals));
+    public static <T> T invokeConstructor(final Class<T> cls, final Object[] args, final Class<?>[] parameterTypes) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -255,10 +209,8 @@ public class ConstructorUtils {
      * @see Constructor#newInstance(Object...)
      * @see #invokeExactConstructor(Class, Object[], Class[])
      */
-    public static <T> T invokeExactConstructor(final Class<T> cls, final Object... args)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        final Object[] actuals = ArrayUtils.nullToEmpty(args);
-        return invokeExactConstructor(cls, actuals, ClassUtils.toClass(actuals));
+    public static <T> T invokeExactConstructor(final Class<T> cls, final Object... args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -292,13 +244,8 @@ public class ConstructorUtils {
      *                                     package of the class.
      * @see Constructor#newInstance(Object...)
      */
-    public static <T> T invokeExactConstructor(final Class<T> cls, final Object[] args, final Class<?>[] parameterTypes)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        final Constructor<T> ctor = getAccessibleConstructor(cls, ArrayUtils.nullToEmpty(parameterTypes));
-        if (ctor == null) {
-            throw new NoSuchMethodException("No such accessible constructor on object: " + cls.getName());
-        }
-        return ctor.newInstance(ArrayUtils.nullToEmpty(args));
+    public static <T> T invokeExactConstructor(final Class<T> cls, final Object[] args, final Class<?>[] parameterTypes) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -28,7 +27,9 @@ import java.util.function.LongUnaryOperator;
  */
 public interface FailableLongUnaryOperator<E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableLongUnaryOperator NOP = t -> 0L;
 
@@ -39,7 +40,7 @@ public interface FailableLongUnaryOperator<E extends Throwable> {
      * @return a unary operator that always returns its input argument
      */
     static <E extends Throwable> FailableLongUnaryOperator<E> identity() {
-        return t -> t;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -50,7 +51,7 @@ public interface FailableLongUnaryOperator<E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <E extends Throwable> FailableLongUnaryOperator<E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -62,8 +63,7 @@ public interface FailableLongUnaryOperator<E extends Throwable> {
      * @see #compose(FailableLongUnaryOperator)
      */
     default FailableLongUnaryOperator<E> andThen(final FailableLongUnaryOperator<E> after) {
-        Objects.requireNonNull(after);
-        return (final long t) -> after.applyAsLong(applyAsLong(t));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -84,7 +84,6 @@ public interface FailableLongUnaryOperator<E extends Throwable> {
      * @see #andThen(FailableLongUnaryOperator)
      */
     default FailableLongUnaryOperator<E> compose(final FailableLongUnaryOperator<E> before) {
-        Objects.requireNonNull(before);
-        return (final long v) -> applyAsLong(before.applyAsLong(v));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

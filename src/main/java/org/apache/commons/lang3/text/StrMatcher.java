@@ -17,7 +17,6 @@
 package org.apache.commons.lang3.text;
 
 import java.util.Arrays;
-
 import org.apache.commons.lang3.ArraySorter;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -43,7 +42,9 @@ public abstract class StrMatcher {
      */
     static final class CharMatcher extends StrMatcher {
 
-        /** The character to match. */
+        /**
+         * The character to match.
+         */
         private final char ch;
 
         /**
@@ -66,7 +67,7 @@ public abstract class StrMatcher {
          */
         @Override
         public int isMatch(final char[] buffer, final int pos, final int bufferStart, final int bufferEnd) {
-            return ch == buffer[pos] ? 1 : 0;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -75,7 +76,9 @@ public abstract class StrMatcher {
      */
     static final class CharSetMatcher extends StrMatcher {
 
-        /** The set of characters to match. */
+        /**
+         * The set of characters to match.
+         */
         private final char[] chars;
 
         /**
@@ -98,7 +101,7 @@ public abstract class StrMatcher {
          */
         @Override
         public int isMatch(final char[] buffer, final int pos, final int bufferStart, final int bufferEnd) {
-            return Arrays.binarySearch(chars, buffer[pos]) >= 0 ? 1 : 0;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -124,7 +127,7 @@ public abstract class StrMatcher {
          */
         @Override
         public int isMatch(final char[] buffer, final int pos, final int bufferStart, final int bufferEnd) {
-            return 0;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -133,7 +136,9 @@ public abstract class StrMatcher {
      */
     static final class StringMatcher extends StrMatcher {
 
-        /** The string to match, as a character array. */
+        /**
+         * The string to match, as a character array.
+         */
         private final char[] chars;
 
         /**
@@ -156,23 +161,13 @@ public abstract class StrMatcher {
          */
         @Override
         public int isMatch(final char[] buffer, int pos, final int bufferStart, final int bufferEnd) {
-            final int len = chars.length;
-            if (pos + len > bufferEnd) {
-                return 0;
-            }
-            for (int i = 0; i < chars.length; i++, pos++) {
-                if (chars[i] != buffer[pos]) {
-                    return 0;
-                }
-            }
-            return len;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public String toString() {
-            return super.toString() + ' ' + Arrays.toString(chars);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -197,7 +192,7 @@ public abstract class StrMatcher {
          */
         @Override
         public int isMatch(final char[] buffer, final int pos, final int bufferStart, final int bufferEnd) {
-            return buffer[pos] <= 32 ? 1 : 0;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -254,7 +249,7 @@ public abstract class StrMatcher {
      * @return a new Matcher for the given char.
      */
     public static StrMatcher charMatcher(final char ch) {
-        return new CharMatcher(ch);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -264,13 +259,7 @@ public abstract class StrMatcher {
      * @return a new matcher for the given char[].
      */
     public static StrMatcher charSetMatcher(final char... chars) {
-        if (ArrayUtils.isEmpty(chars)) {
-            return NONE_MATCHER;
-        }
-        if (chars.length == 1) {
-            return new CharMatcher(chars[0]);
-        }
-        return new CharSetMatcher(chars);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -280,13 +269,7 @@ public abstract class StrMatcher {
      * @return a new Matcher for the given characters.
      */
     public static StrMatcher charSetMatcher(final String chars) {
-        if (StringUtils.isEmpty(chars)) {
-            return NONE_MATCHER;
-        }
-        if (chars.length() == 1) {
-            return new CharMatcher(chars.charAt(0));
-        }
-        return new CharSetMatcher(chars.toCharArray());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -295,7 +278,7 @@ public abstract class StrMatcher {
      * @return the matcher for a comma.
      */
     public static StrMatcher commaMatcher() {
-        return COMMA_MATCHER;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -304,7 +287,7 @@ public abstract class StrMatcher {
      * @return the matcher for a double quote.
      */
     public static StrMatcher doubleQuoteMatcher() {
-        return DOUBLE_QUOTE_MATCHER;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -313,7 +296,7 @@ public abstract class StrMatcher {
      * @return the matcher that matches nothing.
      */
     public static StrMatcher noneMatcher() {
-        return NONE_MATCHER;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -322,7 +305,7 @@ public abstract class StrMatcher {
      * @return the matcher for a single or double quote.
      */
     public static StrMatcher quoteMatcher() {
-        return QUOTE_MATCHER;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -331,7 +314,7 @@ public abstract class StrMatcher {
      * @return the matcher for a single quote.
      */
     public static StrMatcher singleQuoteMatcher() {
-        return SINGLE_QUOTE_MATCHER;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -340,7 +323,7 @@ public abstract class StrMatcher {
      * @return the matcher for a space.
      */
     public static StrMatcher spaceMatcher() {
-        return SPACE_MATCHER;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -350,7 +333,7 @@ public abstract class StrMatcher {
      * @return the split matcher.
      */
     public static StrMatcher splitMatcher() {
-        return SPLIT_MATCHER;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -360,10 +343,7 @@ public abstract class StrMatcher {
      * @return a new Matcher for the given String.
      */
     public static StrMatcher stringMatcher(final String str) {
-        if (StringUtils.isEmpty(str)) {
-            return NONE_MATCHER;
-        }
-        return new StringMatcher(str);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -372,7 +352,7 @@ public abstract class StrMatcher {
      * @return the matcher for a tab.
      */
     public static StrMatcher tabMatcher() {
-        return TAB_MATCHER;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -381,7 +361,7 @@ public abstract class StrMatcher {
      * @return the trim matcher.
      */
     public static StrMatcher trimMatcher() {
-        return TRIM_MATCHER;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -414,7 +394,7 @@ public abstract class StrMatcher {
      * @since 2.4
      */
     public int isMatch(final char[] buffer, final int pos) {
-        return isMatch(buffer, pos, 0, buffer.length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -447,5 +427,4 @@ public abstract class StrMatcher {
      * @return the number of matching characters, zero for no match.
      */
     public abstract int isMatch(char[] buffer, int pos, int bufferStart, int bufferEnd);
-
 }

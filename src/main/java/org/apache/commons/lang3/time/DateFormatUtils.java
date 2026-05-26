@@ -54,8 +54,7 @@ public class DateFormatUtils {
      *
      * @since 3.5
      */
-    public static final FastDateFormat ISO_8601_EXTENDED_DATETIME_FORMAT
-            = FastDateFormat.getInstance("yyyy-MM-dd'T'HH:mm:ss");
+    public static final FastDateFormat ISO_8601_EXTENDED_DATETIME_FORMAT = FastDateFormat.getInstance("yyyy-MM-dd'T'HH:mm:ss");
 
     /**
      * @deprecated - as of 4.0, ISO_DATETIME_FORMAT will be replaced by ISO_8601_EXTENDED_DATETIME_FORMAT.
@@ -73,8 +72,7 @@ public class DateFormatUtils {
      *
      * @since 3.5
      */
-    public static final FastDateFormat ISO_8601_EXTENDED_DATETIME_TIME_ZONE_FORMAT
-            = FastDateFormat.getInstance("yyyy-MM-dd'T'HH:mm:ssZZ");
+    public static final FastDateFormat ISO_8601_EXTENDED_DATETIME_TIME_ZONE_FORMAT = FastDateFormat.getInstance("yyyy-MM-dd'T'HH:mm:ssZZ");
 
     /**
      * @deprecated - as of 4.0, ISO_DATETIME_TIME_ZONE_FORMAT will be replaced by ISO_8601_EXTENDED_DATETIME_TIME_ZONE_FORMAT.
@@ -92,8 +90,7 @@ public class DateFormatUtils {
      *
      * @since 3.5
      */
-    public static final FastDateFormat ISO_8601_EXTENDED_DATE_FORMAT
-            = FastDateFormat.getInstance("yyyy-MM-dd");
+    public static final FastDateFormat ISO_8601_EXTENDED_DATE_FORMAT = FastDateFormat.getInstance("yyyy-MM-dd");
 
     /**
      * @deprecated - as of 4.0, ISO_DATE_FORMAT will be replaced by ISO_8601_EXTENDED_DATE_FORMAT.
@@ -114,8 +111,7 @@ public class DateFormatUtils {
      * @deprecated - as of 4.0, ISO_DATE_TIME_ZONE_FORMAT will be removed.
      */
     @Deprecated
-    public static final FastDateFormat ISO_DATE_TIME_ZONE_FORMAT
-            = FastDateFormat.getInstance("yyyy-MM-ddZZ");
+    public static final FastDateFormat ISO_DATE_TIME_ZONE_FORMAT = FastDateFormat.getInstance("yyyy-MM-ddZZ");
 
     /**
      * Non-compliant formatter for time without time zone (ISO 8601 does not
@@ -129,8 +125,7 @@ public class DateFormatUtils {
      * @deprecated - as of 4.0, ISO_TIME_FORMAT will be removed.
      */
     @Deprecated
-    public static final FastDateFormat ISO_TIME_FORMAT
-            = FastDateFormat.getInstance("'T'HH:mm:ss");
+    public static final FastDateFormat ISO_TIME_FORMAT = FastDateFormat.getInstance("'T'HH:mm:ss");
 
     /**
      * Non-compliant formatter for time with time zone (ISO 8601 does not
@@ -144,8 +139,7 @@ public class DateFormatUtils {
      * @deprecated - as of 4.0, ISO_TIME_TIME_ZONE_FORMAT will be removed.
      */
     @Deprecated
-    public static final FastDateFormat ISO_TIME_TIME_ZONE_FORMAT
-            = FastDateFormat.getInstance("'T'HH:mm:ssZZ");
+    public static final FastDateFormat ISO_TIME_TIME_ZONE_FORMAT = FastDateFormat.getInstance("'T'HH:mm:ssZZ");
 
     /**
      * ISO 8601 formatter for time without time zone.
@@ -157,8 +151,7 @@ public class DateFormatUtils {
      *
      * @since 3.5
      */
-    public static final FastDateFormat ISO_8601_EXTENDED_TIME_FORMAT
-            = FastDateFormat.getInstance("HH:mm:ss");
+    public static final FastDateFormat ISO_8601_EXTENDED_TIME_FORMAT = FastDateFormat.getInstance("HH:mm:ss");
 
     /**
      * @deprecated - as of 4.0, ISO_TIME_NO_T_FORMAT will be replaced by ISO_8601_EXTENDED_TIME_FORMAT.
@@ -176,8 +169,7 @@ public class DateFormatUtils {
      *
      * @since 3.5
      */
-    public static final FastDateFormat ISO_8601_EXTENDED_TIME_TIME_ZONE_FORMAT
-            = FastDateFormat.getInstance("HH:mm:ssZZ");
+    public static final FastDateFormat ISO_8601_EXTENDED_TIME_TIME_ZONE_FORMAT = FastDateFormat.getInstance("HH:mm:ssZZ");
 
     /**
      * @deprecated - as of 4.0, ISO_TIME_NO_T_TIME_ZONE_FORMAT will be replaced by ISO_8601_EXTENDED_TIME_TIME_ZONE_FORMAT.
@@ -194,8 +186,7 @@ public class DateFormatUtils {
      * DateFormatUtils class.
      * </p>
      */
-    public static final FastDateFormat SMTP_DATETIME_FORMAT
-            = FastDateFormat.getInstance("EEE, dd MMM yyyy HH:mm:ss Z", Locale.US);
+    public static final FastDateFormat SMTP_DATETIME_FORMAT = FastDateFormat.getInstance("EEE, dd MMM yyyy HH:mm:ss Z", Locale.US);
 
     /**
      * Formats a calendar into a specific pattern. The TimeZone from the calendar
@@ -208,7 +199,7 @@ public class DateFormatUtils {
      * @since 2.4
      */
     public static String format(final Calendar calendar, final String pattern) {
-        return format(calendar, pattern, getTimeZone(calendar), null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -223,7 +214,7 @@ public class DateFormatUtils {
      * @since 2.4
      */
     public static String format(final Calendar calendar, final String pattern, final Locale locale) {
-        return format(calendar, pattern, getTimeZone(calendar), locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -237,7 +228,7 @@ public class DateFormatUtils {
      * @since 2.4
      */
     public static String format(final Calendar calendar, final String pattern, final TimeZone timeZone) {
-        return format(calendar, pattern, timeZone, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -252,8 +243,7 @@ public class DateFormatUtils {
      * @since 2.4
      */
     public static String format(final Calendar calendar, final String pattern, final TimeZone timeZone, final Locale locale) {
-        final FastDateFormat df = FastDateFormat.getInstance(pattern, timeZone, locale);
-        return df.format(calendar);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -264,7 +254,7 @@ public class DateFormatUtils {
      * @return the formatted date.
      */
     public static String format(final Date date, final String pattern) {
-        return format(date, pattern, null, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -276,7 +266,7 @@ public class DateFormatUtils {
      * @return the formatted date.
      */
     public static String format(final Date date, final String pattern, final Locale locale) {
-        return format(date, pattern, null, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -288,7 +278,7 @@ public class DateFormatUtils {
      * @return the formatted date.
      */
     public static String format(final Date date, final String pattern, final TimeZone timeZone) {
-        return format(date, pattern, timeZone, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -301,8 +291,7 @@ public class DateFormatUtils {
      * @return the formatted date.
      */
     public static String format(final Date date, final String pattern, final TimeZone timeZone, final Locale locale) {
-        final FastDateFormat df = FastDateFormat.getInstance(pattern, timeZone, locale);
-        return df.format(date);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -313,7 +302,7 @@ public class DateFormatUtils {
      * @return the formatted date.
      */
     public static String format(final long millis, final String pattern) {
-        return format(new Date(millis), pattern, null, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -325,7 +314,7 @@ public class DateFormatUtils {
      * @return the formatted date.
      */
     public static String format(final long millis, final String pattern, final Locale locale) {
-        return format(new Date(millis), pattern, null, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -337,7 +326,7 @@ public class DateFormatUtils {
      * @return the formatted date.
      */
     public static String format(final long millis, final String pattern, final TimeZone timeZone) {
-        return format(new Date(millis), pattern, timeZone, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -350,7 +339,7 @@ public class DateFormatUtils {
      * @return the formatted date.
      */
     public static String format(final long millis, final String pattern, final TimeZone timeZone, final Locale locale) {
-        return format(new Date(millis), pattern, timeZone, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -361,7 +350,7 @@ public class DateFormatUtils {
      * @return the formatted date.
      */
     public static String formatUTC(final Date date, final String pattern) {
-        return format(date, pattern, UTC_TIME_ZONE, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -373,7 +362,7 @@ public class DateFormatUtils {
      * @return the formatted date.
      */
     public static String formatUTC(final Date date, final String pattern, final Locale locale) {
-        return format(date, pattern, UTC_TIME_ZONE, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -384,7 +373,7 @@ public class DateFormatUtils {
      * @return the formatted date.
      */
     public static String formatUTC(final long millis, final String pattern) {
-        return format(new Date(millis), pattern, UTC_TIME_ZONE, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -396,7 +385,7 @@ public class DateFormatUtils {
      * @return the formatted date.
      */
     public static String formatUTC(final long millis, final String pattern, final Locale locale) {
-        return format(new Date(millis), pattern, UTC_TIME_ZONE, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static TimeZone getTimeZone(final Calendar calendar) {
@@ -415,5 +404,4 @@ public class DateFormatUtils {
     public DateFormatUtils() {
         // empty
     }
-
 }

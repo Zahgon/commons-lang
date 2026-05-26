@@ -30,7 +30,6 @@ import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.apache.commons.lang3.Functions.FailableConsumer;
 import org.apache.commons.lang3.Functions.FailableFunction;
 import org.apache.commons.lang3.Functions.FailablePredicate;
@@ -79,7 +78,9 @@ public class Streams {
      */
     @Deprecated
     public static class ArrayCollector<O> implements Collector<O, List<O>, O[]> {
+
         private static final Set<Characteristics> characteristics = Collections.emptySet();
+
         private final Class<O> elementType;
 
         /**
@@ -93,30 +94,27 @@ public class Streams {
 
         @Override
         public BiConsumer<List<O>, O> accumulator() {
-            return List::add;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public Set<Characteristics> characteristics() {
-            return characteristics;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public BinaryOperator<List<O>> combiner() {
-            return (left, right) -> {
-                left.addAll(right);
-                return left;
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public Function<List<O>, O[]> finisher() {
-            return list -> list.toArray(ArrayUtils.newInstance(elementType, list.size()));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public Supplier<List<O>> supplier() {
-            return ArrayList::new;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -131,6 +129,7 @@ public class Streams {
     public static class FailableStream<O> {
 
         private Stream<O> stream;
+
         private boolean terminated;
 
         /**
@@ -166,8 +165,7 @@ public class Streams {
          * provided predicate or the stream is empty, otherwise {@code false}.
          */
         public boolean allMatch(final FailablePredicate<O, ?> predicate) {
-            assertNotTerminated();
-            return stream().allMatch(Functions.asPredicate(predicate));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -190,8 +188,7 @@ public class Streams {
          * predicate, otherwise {@code false}.
          */
         public boolean anyMatch(final FailablePredicate<O, ?> predicate) {
-            assertNotTerminated();
-            return stream().anyMatch(Functions.asPredicate(predicate));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -200,9 +197,7 @@ public class Streams {
          * @throws IllegalStateException if this stream is already terminated.
          */
         protected void assertNotTerminated() {
-            if (terminated) {
-                throw new IllegalStateException("This stream is already terminated.");
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -265,8 +260,7 @@ public class Streams {
          * @see Collectors
          */
         public <A, R> R collect(final Collector<? super O, A, R> collector) {
-            makeTerminated();
-            return stream().collect(collector);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -323,8 +317,7 @@ public class Streams {
          * @return The result of the reduction.
          */
         public <A, R> R collect(final Supplier<R> supplier, final BiConsumer<R, ? super O> accumulator, final BiConsumer<R, R> combiner) {
-            makeTerminated();
-            return stream().collect(supplier, accumulator, combiner);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -340,9 +333,7 @@ public class Streams {
          * @return the new stream.
          */
         public FailableStream<O> filter(final FailablePredicate<O, ?> predicate) {
-            assertNotTerminated();
-            stream = stream.filter(Functions.asPredicate(predicate));
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -365,8 +356,7 @@ public class Streams {
          * @param action a non-interfering action to perform on the elements.
          */
         public void forEach(final FailableConsumer<O, ?> action) {
-            makeTerminated();
-            stream().forEach(Functions.asConsumer(action));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -375,8 +365,7 @@ public class Streams {
          * @throws IllegalStateException if this stream is already terminated.
          */
         protected void makeTerminated() {
-            assertNotTerminated();
-            terminated = true;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -392,8 +381,7 @@ public class Streams {
          * @return the new stream.
          */
         public <R> FailableStream<R> map(final FailableFunction<O, R, ?> mapper) {
-            assertNotTerminated();
-            return new FailableStream<>(stream.map(Functions.asFunction(mapper)));
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -446,8 +434,7 @@ public class Streams {
          * @return the result of the reduction.
          */
         public O reduce(final O identity, final BinaryOperator<O> accumulator) {
-            makeTerminated();
-            return stream().reduce(identity, accumulator);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -456,7 +443,7 @@ public class Streams {
          * @return A stream, which will return the same elements, which this FailableStream would return.
          */
         public Stream<O> stream() {
-            return stream;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -504,7 +491,7 @@ public class Streams {
      *   converting the stream.
      */
     public static <O> FailableStream<O> stream(final Collection<O> stream) {
-        return stream(stream.stream());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -551,7 +538,7 @@ public class Streams {
      *   converting the stream.
      */
     public static <O> FailableStream<O> stream(final Stream<O> stream) {
-        return new FailableStream<>(stream);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -564,7 +551,7 @@ public class Streams {
      * array, in encounter order.
      */
     public static <O> Collector<O, ?, O[]> toArray(final Class<O> elementType) {
-        return new ArrayCollector<>(elementType);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

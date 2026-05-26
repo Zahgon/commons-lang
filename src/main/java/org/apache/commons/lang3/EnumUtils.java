@@ -27,7 +27,6 @@ import java.util.function.Function;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.apache.commons.lang3.stream.Streams;
 
 /**
@@ -40,8 +39,11 @@ import org.apache.commons.lang3.stream.Streams;
 public class EnumUtils {
 
     private static final String CANNOT_STORE_S_S_VALUES_IN_S_BITS = "Cannot store %s %s values in %s bits";
+
     private static final String ENUM_CLASS_MUST_BE_DEFINED = "EnumClass must be defined.";
+
     private static final String NULL_ELEMENTS_NOT_PERMITTED = "null elements not permitted";
+
     private static final String S_DOES_NOT_SEEM_TO_BE_AN_ENUM_TYPE = "%s does not seem to be an Enum type";
 
     /**
@@ -72,8 +74,7 @@ public class EnumUtils {
      */
     private static <E extends Enum<E>> Class<E> checkBitVectorable(final Class<E> enumClass) {
         final E[] constants = asEnum(enumClass).getEnumConstants();
-        Validate.isTrue(constants.length <= Long.SIZE, CANNOT_STORE_S_S_VALUES_IN_S_BITS, Integer.valueOf(constants.length), enumClass.getSimpleName(),
-                Integer.valueOf(Long.SIZE));
+        Validate.isTrue(constants.length <= Long.SIZE, CANNOT_STORE_S_S_VALUES_IN_S_BITS, Integer.valueOf(constants.length), enumClass.getSimpleName(), Integer.valueOf(Long.SIZE));
         return enumClass;
     }
 
@@ -96,8 +97,7 @@ public class EnumUtils {
      */
     @SafeVarargs
     public static <E extends Enum<E>> long generateBitVector(final Class<E> enumClass, final E... values) {
-        Validate.noNullElements(values);
-        return generateBitVector(enumClass, Arrays.asList(values));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -119,14 +119,7 @@ public class EnumUtils {
      * @see #generateBitVectors(Class, Iterable)
      */
     public static <E extends Enum<E>> long generateBitVector(final Class<E> enumClass, final Iterable<? extends E> values) {
-        checkBitVectorable(enumClass);
-        Objects.requireNonNull(values, "values");
-        long total = 0;
-        for (final E constant : values) {
-            Objects.requireNonNull(constant, NULL_ELEMENTS_NOT_PERMITTED);
-            total |= 1L << constant.ordinal();
-        }
-        return total;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -147,16 +140,7 @@ public class EnumUtils {
      */
     @SafeVarargs
     public static <E extends Enum<E>> long[] generateBitVectors(final Class<E> enumClass, final E... values) {
-        asEnum(enumClass);
-        Validate.noNullElements(values);
-        final EnumSet<E> condensed = EnumSet.noneOf(enumClass);
-        Collections.addAll(condensed, values);
-        final long[] result = new long[(enumClass.getEnumConstants().length - 1) / Long.SIZE + 1];
-        for (final E value : condensed) {
-            result[value.ordinal() / Long.SIZE] |= 1L << value.ordinal() % Long.SIZE;
-        }
-        ArrayUtils.reverse(result);
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -176,16 +160,7 @@ public class EnumUtils {
      * @since 3.2
      */
     public static <E extends Enum<E>> long[] generateBitVectors(final Class<E> enumClass, final Iterable<? extends E> values) {
-        asEnum(enumClass);
-        Objects.requireNonNull(values, "values");
-        final EnumSet<E> condensed = EnumSet.noneOf(enumClass);
-        values.forEach(constant -> condensed.add(Objects.requireNonNull(constant, NULL_ELEMENTS_NOT_PERMITTED)));
-        final long[] result = new long[(enumClass.getEnumConstants().length - 1) / Long.SIZE + 1];
-        for (final E value : condensed) {
-            result[value.ordinal() / Long.SIZE] |= 1L << value.ordinal() % Long.SIZE;
-        }
-        ArrayUtils.reverse(result);
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -200,7 +175,7 @@ public class EnumUtils {
      * @return the enum, null if not found.
      */
     public static <E extends Enum<E>> E getEnum(final Class<E> enumClass, final String enumName) {
-        return getEnum(enumClass, enumName, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -217,14 +192,7 @@ public class EnumUtils {
      * @since 3.10
      */
     public static <E extends Enum<E>> E getEnum(final Class<E> enumClass, final String enumName, final E defaultEnum) {
-        if (enumClass == null || enumName == null) {
-            return defaultEnum;
-        }
-        try {
-            return Enum.valueOf(enumClass, enumName);
-        } catch (final IllegalArgumentException e) {
-            return defaultEnum;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -240,7 +208,7 @@ public class EnumUtils {
      * @since 3.8
      */
     public static <E extends Enum<E>> E getEnumIgnoreCase(final Class<E> enumClass, final String enumName) {
-        return getEnumIgnoreCase(enumClass, enumName, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -256,9 +224,8 @@ public class EnumUtils {
      * @return the enum, default enum if not found.
      * @since 3.10
      */
-    public static <E extends Enum<E>> E getEnumIgnoreCase(final Class<E> enumClass, final String enumName,
-        final E defaultEnum) {
-        return getFirstEnumIgnoreCase(enumClass, enumName, Enum::name, defaultEnum);
+    public static <E extends Enum<E>> E getEnumIgnoreCase(final Class<E> enumClass, final String enumName, final E defaultEnum) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -271,7 +238,7 @@ public class EnumUtils {
      * @return the modifiable list of enums, never null.
      */
     public static <E extends Enum<E>> List<E> getEnumList(final Class<E> enumClass) {
-        return new ArrayList<>(Arrays.asList(enumClass.getEnumConstants()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -284,7 +251,7 @@ public class EnumUtils {
      * @return the modifiable map of enum names to enums, never null.
      */
     public static <E extends Enum<E>> Map<String, E> getEnumMap(final Class<E> enumClass) {
-        return getEnumMap(enumClass, E::name);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -302,7 +269,7 @@ public class EnumUtils {
      * @since 3.13.0
      */
     public static <E extends Enum<E>, K> Map<K, E> getEnumMap(final Class<E> enumClass, final Function<E, K> keyFunction) {
-        return stream(enumClass).collect(Collectors.toMap(keyFunction::apply, Function.identity()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -323,7 +290,7 @@ public class EnumUtils {
      * @since 3.13.0
      */
     public static <E extends Enum<E>> E getEnumSystemProperty(final Class<E> enumClass, final String propName, final E defaultEnum) {
-        return getEnum(enumClass, SystemProperties.getProperty(propName), defaultEnum);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -343,10 +310,7 @@ public class EnumUtils {
      * @since 3.18.0
      */
     public static <E extends Enum<E>> E getFirstEnum(final Class<E> enumClass, final int value, final ToIntFunction<E> toIntFunction, final E defaultEnum) {
-        if (!isEnum(enumClass)) {
-            return defaultEnum;
-        }
-        return stream(enumClass).filter(e -> value == toIntFunction.applyAsInt(e)).findFirst().orElse(defaultEnum);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -363,12 +327,8 @@ public class EnumUtils {
      * @return an enum, default enum if not found.
      * @since 3.13.0
      */
-    public static <E extends Enum<E>> E getFirstEnumIgnoreCase(final Class<E> enumClass, final String enumName, final Function<E, String> stringFunction,
-            final E defaultEnum) {
-        if (enumName == null) {
-            return defaultEnum;
-        }
-        return stream(enumClass).filter(e -> enumName.equalsIgnoreCase(stringFunction.apply(e))).findFirst().orElse(defaultEnum);
+    public static <E extends Enum<E>> E getFirstEnumIgnoreCase(final Class<E> enumClass, final String enumName, final Function<E, String> stringFunction, final E defaultEnum) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static <E extends Enum<E>> boolean isEnum(final Class<E> enumClass) {
@@ -388,7 +348,7 @@ public class EnumUtils {
      * @return true if the enum name is valid, otherwise false.
      */
     public static <E extends Enum<E>> boolean isValidEnum(final Class<E> enumClass, final String enumName) {
-        return getEnum(enumClass, enumName) != null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -406,7 +366,7 @@ public class EnumUtils {
      * @since 3.8
      */
     public static <E extends Enum<E>> boolean isValidEnumIgnoreCase(final Class<E> enumClass, final String enumName) {
-        return getEnumIgnoreCase(enumClass, enumName) != null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -424,7 +384,7 @@ public class EnumUtils {
      * @since 3.0.1
      */
     public static <E extends Enum<E>> EnumSet<E> processBitVector(final Class<E> enumClass, final long value) {
-        return processBitVectors(checkBitVectorable(enumClass), value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -442,16 +402,7 @@ public class EnumUtils {
      * @since 3.2
      */
     public static <E extends Enum<E>> EnumSet<E> processBitVectors(final Class<E> enumClass, final long... values) {
-        final EnumSet<E> results = EnumSet.noneOf(asEnum(enumClass));
-        final long[] lvalues = ArrayUtils.clone(Objects.requireNonNull(values, "values"));
-        ArrayUtils.reverse(lvalues);
-        stream(enumClass).forEach(constant -> {
-            final int block = constant.ordinal() / Long.SIZE;
-            if (block < lvalues.length && (lvalues[block] & 1L << constant.ordinal() % Long.SIZE) != 0) {
-                results.add(constant);
-            }
-        });
-        return results;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -464,7 +415,7 @@ public class EnumUtils {
      * @see Class#getEnumConstants()
      */
     public static <T> Stream<T> stream(final Class<T> clazz) {
-        return clazz != null ? Streams.of(clazz.getEnumConstants()) : Stream.empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

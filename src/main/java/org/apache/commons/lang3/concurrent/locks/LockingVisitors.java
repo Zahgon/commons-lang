@@ -23,7 +23,6 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.locks.StampedLock;
 import java.util.function.Supplier;
-
 import org.apache.commons.lang3.builder.AbstractSupplier;
 import org.apache.commons.lang3.function.Failable;
 import org.apache.commons.lang3.function.FailableConsumer;
@@ -184,16 +183,15 @@ public class LockingVisitors {
 
             @Override
             public LockVisitor<O, L> get() {
-                return new LockVisitor<>(this);
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             Supplier<Lock> getReadLockSupplier() {
-                return readLockSupplier;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
-
             Supplier<Lock> getWriteLockSupplier() {
-                return writeLockSupplier;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             /**
@@ -203,8 +201,7 @@ public class LockingVisitors {
              * @return {@code this} instance.
              */
             public B setLock(final L lock) {
-                this.lock = lock;
-                return asThis();
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             /**
@@ -214,8 +211,7 @@ public class LockingVisitors {
              * @return {@code this} instance.
              */
             public B setObject(final O object) {
-                this.object = object;
-                return asThis();
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             /**
@@ -225,8 +221,7 @@ public class LockingVisitors {
              * @return {@code this} instance.
              */
             public B setReadLockSupplier(final Supplier<Lock> readLockSupplier) {
-                this.readLockSupplier = readLockSupplier;
-                return asThis();
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             /**
@@ -236,8 +231,7 @@ public class LockingVisitors {
              * @return {@code this} instance.
              */
             public B setWriteLockSupplier(final Supplier<Lock> writeLockSupplier) {
-                this.writeLockSupplier = writeLockSupplier;
-                return asThis();
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
         }
 
@@ -307,7 +301,7 @@ public class LockingVisitors {
          * @see #applyReadLocked(FailableFunction)
          */
         public void acceptReadLocked(final FailableConsumer<O, ?> consumer) {
-            lockAcceptUnlock(readLockSupplier, consumer);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -328,7 +322,7 @@ public class LockingVisitors {
          * @see #applyWriteLocked(FailableFunction)
          */
         public void acceptWriteLocked(final FailableConsumer<O, ?> consumer) {
-            lockAcceptUnlock(writeLockSupplier, consumer);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -368,7 +362,7 @@ public class LockingVisitors {
          * @see #applyWriteLocked(FailableFunction)
          */
         public <T> T applyReadLocked(final FailableFunction<O, T, ?> function) {
-            return lockApplyUnlock(readLockSupplier, function);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -395,7 +389,7 @@ public class LockingVisitors {
          * @see #applyWriteLocked(FailableFunction)
          */
         public <T> T applyWriteLocked(final FailableFunction<O, T, ?> function) {
-            return lockApplyUnlock(writeLockSupplier, function);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -404,7 +398,7 @@ public class LockingVisitors {
          * @return the lock.
          */
         public L getLock() {
-            return lock;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -413,7 +407,7 @@ public class LockingVisitors {
          * @return the object.
          */
         public O getObject() {
-            return object;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -428,13 +422,7 @@ public class LockingVisitors {
          * @see #acceptWriteLocked(FailableConsumer)
          */
         protected void lockAcceptUnlock(final Supplier<Lock> lockSupplier, final FailableConsumer<O, ?> consumer) {
-            final Lock lock = Objects.requireNonNull(Suppliers.get(lockSupplier), "lock");
-            lock.lock();
-            try {
-                Failable.accept(consumer, object);
-            } finally {
-                lock.unlock();
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -453,15 +441,8 @@ public class LockingVisitors {
          * @see #applyWriteLocked(FailableFunction)
          */
         protected <T> T lockApplyUnlock(final Supplier<Lock> lockSupplier, final FailableFunction<O, T, ?> function) {
-            final Lock lock = Objects.requireNonNull(Suppliers.get(lockSupplier), "lock");
-            lock.lock();
-            try {
-                return Failable.apply(function, object);
-            } finally {
-                lock.unlock();
-            }
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -491,14 +472,12 @@ public class LockingVisitors {
 
             @Override
             public ReadWriteLockVisitor<O> get() {
-                return new ReadWriteLockVisitor<>(this);
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             @Override
             public Builder<O> setLock(final ReadWriteLock readWriteLock) {
-                setReadLockSupplier(readWriteLock::readLock);
-                setWriteLockSupplier(readWriteLock::writeLock);
-                return super.setLock(readWriteLock);
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
         }
 
@@ -510,7 +489,7 @@ public class LockingVisitors {
          * @since 3.18.0
          */
         public static <O> Builder<O> builder() {
-            return new Builder<>();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -532,7 +511,6 @@ public class LockingVisitors {
         protected ReadWriteLockVisitor(final O object, final ReadWriteLock readWriteLock) {
             super(object, readWriteLock, readWriteLock::readLock, readWriteLock::writeLock);
         }
-
     }
 
     /**
@@ -563,15 +541,12 @@ public class LockingVisitors {
 
             @Override
             public ReentrantLockVisitor<O> get() {
-                return new ReentrantLockVisitor<>(this);
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
-
 
             @Override
             public Builder<O> setLock(final ReentrantLock reentrantLock) {
-                setReadLockSupplier(() -> reentrantLock);
-                setWriteLockSupplier(() -> reentrantLock);
-                return super.setLock(reentrantLock);
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
         }
 
@@ -583,7 +558,7 @@ public class LockingVisitors {
          * @since 3.18.0
          */
         public static <O> Builder<O> builder() {
-            return new Builder<>();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -594,7 +569,6 @@ public class LockingVisitors {
         private ReentrantLockVisitor(final Builder<O> builder) {
             super(builder);
         }
-
 
         /**
          * Creates a new instance with the given object and lock.
@@ -638,15 +612,12 @@ public class LockingVisitors {
 
             @Override
             public StampedLockVisitor<O> get() {
-                return new StampedLockVisitor<>(this);
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
-
 
             @Override
             public Builder<O> setLock(final StampedLock stampedLock) {
-                setReadLockSupplier(stampedLock::asReadLock);
-                setWriteLockSupplier(stampedLock::asWriteLock);
-                return super.setLock(stampedLock);
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
         }
 
@@ -658,7 +629,7 @@ public class LockingVisitors {
          * @since 3.18.0
          */
         public static <O> Builder<O> builder() {
-            return new Builder<>();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -693,7 +664,7 @@ public class LockingVisitors {
      * @since 3.13.0
      */
     public static <O> ReadWriteLockVisitor<O> create(final O object, final ReadWriteLock readWriteLock) {
-        return new LockingVisitors.ReadWriteLockVisitor<>(object, readWriteLock);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -707,7 +678,7 @@ public class LockingVisitors {
      * @since 3.18.0
      */
     public static <O> ReentrantLockVisitor<O> create(final O object, final ReentrantLock reentrantLock) {
-        return new LockingVisitors.ReentrantLockVisitor<>(object, reentrantLock);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -720,7 +691,7 @@ public class LockingVisitors {
      * @since 3.18.0
      */
     public static <O> ReentrantLockVisitor<O> reentrantLockVisitor(final O object) {
-        return create(object, new ReentrantLock());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -732,7 +703,7 @@ public class LockingVisitors {
      * @see LockingVisitors
      */
     public static <O> ReadWriteLockVisitor<O> reentrantReadWriteLockVisitor(final O object) {
-        return create(object, new ReentrantReadWriteLock());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -744,7 +715,7 @@ public class LockingVisitors {
      * @see LockingVisitors
      */
     public static <O> StampedLockVisitor<O> stampedLockVisitor(final O object) {
-        return new LockingVisitors.StampedLockVisitor<>(object, new StampedLock());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

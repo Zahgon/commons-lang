@@ -53,7 +53,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public String getArrayEnd() {
-        return super.getArrayEnd();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -63,7 +63,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public String getArraySeparator() {
-        return super.getArraySeparator();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -73,7 +73,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public String getArrayStart() {
-        return super.getArrayStart();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -83,7 +83,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public String getContentEnd() {
-        return super.getContentEnd();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -93,7 +93,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public String getContentStart() {
-        return super.getContentStart();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -103,7 +103,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public String getFieldNameValueSeparator() {
-        return super.getFieldNameValueSeparator();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -113,7 +113,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public String getFieldSeparator() {
-        return super.getFieldSeparator();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -123,7 +123,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public String getNullText() {
-        return super.getNullText();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -136,7 +136,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public String getSizeEndText() {
-        return super.getSizeEndText();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -149,7 +149,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public String getSizeStartText() {
-        return super.getSizeStartText();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -162,7 +162,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public String getSummaryObjectEndText() {
-        return super.getSummaryObjectEndText();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -175,7 +175,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public String getSummaryObjectStartText() {
-        return super.getSummaryObjectStartText();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -185,7 +185,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public boolean isArrayContentDetail() {
-        return super.isArrayContentDetail();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -196,7 +196,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public boolean isDefaultFullDetail() {
-        return super.isDefaultFullDetail();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -208,7 +208,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public boolean isFieldSeparatorAtEnd() {
-        return super.isFieldSeparatorAtEnd();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -220,7 +220,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public boolean isFieldSeparatorAtStart() {
-        return super.isFieldSeparatorAtStart();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -230,7 +230,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public boolean isUseClassName() {
-        return super.isUseClassName();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -240,7 +240,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public boolean isUseFieldNames() {
-        return super.isUseFieldNames();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -250,7 +250,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public boolean isUseIdentityHashCode() {
-        return super.isUseIdentityHashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -261,7 +261,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public boolean isUseShortClassName() {
-        return super.isUseShortClassName();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -271,7 +271,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setArrayContentDetail(final boolean arrayContentDetail) {
-        super.setArrayContentDetail(arrayContentDetail);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -284,7 +284,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setArrayEnd(final String arrayEnd) {
-        super.setArrayEnd(arrayEnd);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -297,7 +297,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setArraySeparator(final String arraySeparator) {
-        super.setArraySeparator(arraySeparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -310,7 +310,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setArrayStart(final String arrayStart) {
-        super.setArrayStart(arrayStart);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -323,7 +323,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setContentEnd(final String contentEnd) {
-        super.setContentEnd(contentEnd);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -336,7 +336,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setContentStart(final String contentStart) {
-        super.setContentStart(contentStart);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -347,7 +347,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setDefaultFullDetail(final boolean defaultFullDetail) {
-        super.setDefaultFullDetail(defaultFullDetail);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -360,7 +360,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setFieldNameValueSeparator(final String fieldNameValueSeparator) {
-        super.setFieldNameValueSeparator(fieldNameValueSeparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -373,7 +373,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setFieldSeparator(final String fieldSeparator) {
-        super.setFieldSeparator(fieldSeparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -385,7 +385,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setFieldSeparatorAtEnd(final boolean fieldSeparatorAtEnd) {
-        super.setFieldSeparatorAtEnd(fieldSeparatorAtEnd);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -397,7 +397,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setFieldSeparatorAtStart(final boolean fieldSeparatorAtStart) {
-        super.setFieldSeparatorAtStart(fieldSeparatorAtStart);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -410,7 +410,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setNullText(final String nullText) {
-        super.setNullText(nullText);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -426,7 +426,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setSizeEndText(final String sizeEndText) {
-        super.setSizeEndText(sizeEndText);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -442,7 +442,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setSizeStartText(final String sizeStartText) {
-        super.setSizeStartText(sizeStartText);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -458,7 +458,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setSummaryObjectEndText(final String summaryObjectEndText) {
-        super.setSummaryObjectEndText(summaryObjectEndText);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -474,7 +474,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setSummaryObjectStartText(final String summaryObjectStartText) {
-        super.setSummaryObjectStartText(summaryObjectStartText);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -484,7 +484,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setUseClassName(final boolean useClassName) {
-        super.setUseClassName(useClassName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -494,7 +494,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setUseFieldNames(final boolean useFieldNames) {
-        super.setUseFieldNames(useFieldNames);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -504,7 +504,7 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setUseIdentityHashCode(final boolean useIdentityHashCode) {
-        super.setUseIdentityHashCode(useIdentityHashCode);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -515,7 +515,6 @@ public class StandardToStringStyle extends ToStringStyle {
      */
     @Override
     public void setUseShortClassName(final boolean useShortClassName) {
-        super.setUseShortClassName(useShortClassName);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

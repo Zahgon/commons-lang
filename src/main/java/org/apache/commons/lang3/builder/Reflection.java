@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.builder;
 
 import java.lang.reflect.Field;
@@ -34,11 +33,6 @@ final class Reflection {
      * @throws IllegalArgumentException Thrown after catching {@link IllegalAccessException}.
      */
     static Object getUnchecked(final Field field, final Object obj) {
-        try {
-            return Objects.requireNonNull(field, "field").get(obj);
-        } catch (final IllegalAccessException e) {
-            throw new IllegalArgumentException(e);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

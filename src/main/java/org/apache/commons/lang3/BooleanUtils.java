@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
-
 import org.apache.commons.lang3.math.NumberUtils;
 
 /**
@@ -99,13 +98,7 @@ public class BooleanUtils {
      * @since 3.0.1
      */
     public static boolean and(final boolean... array) {
-        ObjectUtils.requireNonEmpty(array, "array");
-        for (final boolean element : array) {
-            if (!element) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -131,8 +124,7 @@ public class BooleanUtils {
      * @since 3.0.1
      */
     public static Boolean and(final Boolean... array) {
-        ObjectUtils.requireNonEmpty(array, "array");
-        return and(ArrayUtils.toPrimitive(array)) ? Boolean.TRUE : Boolean.FALSE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -142,7 +134,7 @@ public class BooleanUtils {
      * @since 3.12.0
      */
     public static Boolean[] booleanValues() {
-        return new Boolean[] {Boolean.FALSE, Boolean.TRUE};
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -156,10 +148,7 @@ public class BooleanUtils {
      * @since 3.4
      */
     public static int compare(final boolean x, final boolean y) {
-        if (x == y) {
-            return 0;
-        }
-        return x ? 1 : -1;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -169,7 +158,7 @@ public class BooleanUtils {
      * @since 3.13.0
      */
     public static void forEach(final Consumer<Boolean> action) {
-        values().forEach(action);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -187,7 +176,7 @@ public class BooleanUtils {
      * @since 2.1
      */
     public static boolean isFalse(final Boolean bool) {
-        return Boolean.FALSE.equals(bool);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -205,7 +194,7 @@ public class BooleanUtils {
      * @since 2.3
      */
     public static boolean isNotFalse(final Boolean bool) {
-        return !isFalse(bool);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -223,7 +212,7 @@ public class BooleanUtils {
      * @since 2.3
      */
     public static boolean isNotTrue(final Boolean bool) {
-        return !isTrue(bool);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -241,7 +230,7 @@ public class BooleanUtils {
      * @since 2.1
      */
     public static boolean isTrue(final Boolean bool) {
-        return Boolean.TRUE.equals(bool);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -262,10 +251,7 @@ public class BooleanUtils {
      * @return the negated Boolean, or {@code null} if {@code null} input
      */
     public static Boolean negate(final Boolean bool) {
-        if (bool == null) {
-            return null;
-        }
-        return bool.booleanValue() ? Boolean.FALSE : Boolean.TRUE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -283,17 +269,7 @@ public class BooleanUtils {
      * @throws IllegalArgumentException if {@code array} is empty.
      */
     public static boolean oneHot(final boolean... array) {
-        ObjectUtils.requireNonEmpty(array, "array");
-        boolean result = false;
-        for (final boolean element: array) {
-            if (element) {
-                if (result) {
-                    return false;
-                }
-                result = true;
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -314,7 +290,7 @@ public class BooleanUtils {
      * @throws IllegalArgumentException if {@code array} is empty.
      */
     public static Boolean oneHot(final Boolean... array) {
-        return Boolean.valueOf(oneHot(ArrayUtils.toPrimitive(array)));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -336,13 +312,7 @@ public class BooleanUtils {
      * @since 3.0.1
      */
     public static boolean or(final boolean... array) {
-        ObjectUtils.requireNonEmpty(array, "array");
-        for (final boolean element : array) {
-            if (element) {
-                return true;
-            }
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -369,8 +339,7 @@ public class BooleanUtils {
      * @since 3.0.1
      */
     public static Boolean or(final Boolean... array) {
-        ObjectUtils.requireNonEmpty(array, "array");
-        return or(ArrayUtils.toPrimitive(array)) ? Boolean.TRUE : Boolean.FALSE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -380,7 +349,7 @@ public class BooleanUtils {
      * @since 3.12.0
      */
     public static boolean[] primitiveValues() {
-        return new boolean[] {false, true};
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -397,7 +366,7 @@ public class BooleanUtils {
      * @return {@code true} or {@code false}, {@code null} returns {@code false}
      */
     public static boolean toBoolean(final Boolean bool) {
-        return bool != null && bool.booleanValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -415,7 +384,7 @@ public class BooleanUtils {
      *  if zero
      */
     public static boolean toBoolean(final int value) {
-        return value != 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -440,13 +409,7 @@ public class BooleanUtils {
      * {@code trueValue} no {@code falseValue}
      */
     public static boolean toBoolean(final int value, final int trueValue, final int falseValue) {
-        if (value == trueValue) {
-            return true;
-        }
-        if (value == falseValue) {
-            return false;
-        }
-        throw new IllegalArgumentException("The Integer did not match either specified value");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -467,19 +430,7 @@ public class BooleanUtils {
      * @throws IllegalArgumentException if no match
      */
     public static boolean toBoolean(final Integer value, final Integer trueValue, final Integer falseValue) {
-        if (value == null) {
-            if (trueValue == null) {
-                return true;
-            }
-            if (falseValue == null) {
-                return false;
-            }
-        } else if (value.equals(trueValue)) {
-            return true;
-        } else if (value.equals(falseValue)) {
-            return false;
-        }
-        throw new IllegalArgumentException("The Integer did not match either specified value");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -512,7 +463,7 @@ public class BooleanUtils {
      * @return the boolean value of the string, {@code false} if no match or the String is null
      */
     public static boolean toBoolean(final String str) {
-        return toBooleanObject(str) == Boolean.TRUE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -530,21 +481,7 @@ public class BooleanUtils {
      * @throws IllegalArgumentException if the String doesn't match
      */
     public static boolean toBoolean(final String str, final String trueString, final String falseString) {
-        if (str == trueString) {
-            return true;
-        }
-        if (str == falseString) {
-            return false;
-        }
-        if (str != null) {
-            if (str.equals(trueString)) {
-                return true;
-            }
-            if (str.equals(falseString)) {
-                return false;
-            }
-        }
-        throw new IllegalArgumentException("The String did not match either specified value");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -564,10 +501,7 @@ public class BooleanUtils {
      * @return {@code true} or {@code false}
      */
     public static boolean toBooleanDefaultIfNull(final Boolean bool, final boolean valueIfNull) {
-        if (bool == null) {
-            return valueIfNull;
-        }
-        return bool.booleanValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -585,7 +519,7 @@ public class BooleanUtils {
      *  {@code null} if {@code null}
      */
     public static Boolean toBooleanObject(final int value) {
-        return value == 0 ? Boolean.FALSE : Boolean.TRUE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -614,16 +548,7 @@ public class BooleanUtils {
      * @throws IllegalArgumentException if no match
      */
     public static Boolean toBooleanObject(final int value, final int trueValue, final int falseValue, final int nullValue) {
-        if (value == trueValue) {
-            return Boolean.TRUE;
-        }
-        if (value == falseValue) {
-            return Boolean.FALSE;
-        }
-        if (value == nullValue) {
-            return null;
-        }
-        throw new IllegalArgumentException("The Integer did not match any specified value");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -646,56 +571,36 @@ public class BooleanUtils {
      *  {@code null} if {@code null} input
      */
     public static Boolean toBooleanObject(final Integer value) {
-        if (value == null) {
-            return null;
-        }
-        return value.intValue() == 0 ? Boolean.FALSE : Boolean.TRUE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
-     * Converts an Integer to a Boolean specifying the conversion values.
+     *  Converts an Integer to a Boolean specifying the conversion values.
      *
-     * <p>NOTE: This method may return {@code null} and may throw a {@link NullPointerException}
-     * if unboxed to a {@code boolean}.</p>
+     *  <p>NOTE: This method may return {@code null} and may throw a {@link NullPointerException}
+     *  if unboxed to a {@code boolean}.</p>
      *
-     * <p>The checks are done first for the {@code trueValue}, then for the {@code falseValue} and
-     * finally for the {@code nullValue}.</p>
-     **
-     * <pre>
-     *   BooleanUtils.toBooleanObject(Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(3)) = Boolean.TRUE
-     *   BooleanUtils.toBooleanObject(Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3)) = Boolean.TRUE
-     *   BooleanUtils.toBooleanObject(Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0)) = Boolean.TRUE
-     *   BooleanUtils.toBooleanObject(Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3)) = Boolean.FALSE
-     *   BooleanUtils.toBooleanObject(Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(2)) = Boolean.FALSE
-     *   BooleanUtils.toBooleanObject(Integer.valueOf(3), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3)) = null
-     * </pre>
+     *  <p>The checks are done first for the {@code trueValue}, then for the {@code falseValue} and
+     *  finally for the {@code nullValue}.</p>
+     * *
+     *  <pre>
+     *    BooleanUtils.toBooleanObject(Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(3)) = Boolean.TRUE
+     *    BooleanUtils.toBooleanObject(Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3)) = Boolean.TRUE
+     *    BooleanUtils.toBooleanObject(Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0)) = Boolean.TRUE
+     *    BooleanUtils.toBooleanObject(Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3)) = Boolean.FALSE
+     *    BooleanUtils.toBooleanObject(Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(2)) = Boolean.FALSE
+     *    BooleanUtils.toBooleanObject(Integer.valueOf(3), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3)) = null
+     *  </pre>
      *
-     * @param value  the Integer to convert
-     * @param trueValue  the value to match for {@code true}, may be {@code null}
-     * @param falseValue  the value to match for {@code false}, may be {@code null}
-     * @param nullValue  the value to match for {@code null}, may be {@code null}
-     * @return Boolean.TRUE, Boolean.FALSE, or {@code null}
-     * @throws IllegalArgumentException if no match
+     *  @param value  the Integer to convert
+     *  @param trueValue  the value to match for {@code true}, may be {@code null}
+     *  @param falseValue  the value to match for {@code false}, may be {@code null}
+     *  @param nullValue  the value to match for {@code null}, may be {@code null}
+     *  @return Boolean.TRUE, Boolean.FALSE, or {@code null}
+     *  @throws IllegalArgumentException if no match
      */
     public static Boolean toBooleanObject(final Integer value, final Integer trueValue, final Integer falseValue, final Integer nullValue) {
-        if (value == null) {
-            if (trueValue == null) {
-                return Boolean.TRUE;
-            }
-            if (falseValue == null) {
-                return Boolean.FALSE;
-            }
-            if (nullValue == null) {
-                return null;
-            }
-        } else if (value.equals(trueValue)) {
-            return Boolean.TRUE;
-        } else if (value.equals(falseValue)) {
-            return Boolean.FALSE;
-        } else if (value.equals(nullValue)) {
-            return null;
-        }
-        throw new IllegalArgumentException("The Integer did not match any specified value");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -736,95 +641,7 @@ public class BooleanUtils {
      * @return the Boolean value of the string, {@code null} if no match or {@code null} input
      */
     public static Boolean toBooleanObject(final String str) {
-        // Previously used equalsIgnoreCase, which was fast for interned 'true'.
-        // Non interned 'true' matched 15 times slower.
-        //
-        // Optimization provides same performance as before for interned 'true'.
-        // Similar performance for null, 'false', and other strings not length 2/3/4.
-        // 'true'/'TRUE' match 4 times slower, 'tRUE'/'True' 7 times slower.
-        if (str == TRUE) {
-            return Boolean.TRUE;
-        }
-        if (str == null) {
-            return null;
-        }
-        switch (str.length()) {
-            case 1: {
-                final char ch0 = str.charAt(0);
-                if (ch0 == 'y' || ch0 == 'Y' ||
-                    ch0 == 't' || ch0 == 'T' ||
-                    ch0 == '1') {
-                    return Boolean.TRUE;
-                }
-                if (ch0 == 'n' || ch0 == 'N' ||
-                    ch0 == 'f' || ch0 == 'F' ||
-                    ch0 == '0') {
-                    return Boolean.FALSE;
-                }
-                break;
-            }
-            case 2: {
-                final char ch0 = str.charAt(0);
-                final char ch1 = str.charAt(1);
-                if ((ch0 == 'o' || ch0 == 'O') &&
-                    (ch1 == 'n' || ch1 == 'N')) {
-                    return Boolean.TRUE;
-                }
-                if ((ch0 == 'n' || ch0 == 'N') &&
-                    (ch1 == 'o' || ch1 == 'O')) {
-                    return Boolean.FALSE;
-                }
-                break;
-            }
-            case 3: {
-                final char ch0 = str.charAt(0);
-                final char ch1 = str.charAt(1);
-                final char ch2 = str.charAt(2);
-                if ((ch0 == 'y' || ch0 == 'Y') &&
-                    (ch1 == 'e' || ch1 == 'E') &&
-                    (ch2 == 's' || ch2 == 'S')) {
-                    return Boolean.TRUE;
-                }
-                if ((ch0 == 'o' || ch0 == 'O') &&
-                    (ch1 == 'f' || ch1 == 'F') &&
-                    (ch2 == 'f' || ch2 == 'F')) {
-                    return Boolean.FALSE;
-                }
-                break;
-            }
-            case 4: {
-                final char ch0 = str.charAt(0);
-                final char ch1 = str.charAt(1);
-                final char ch2 = str.charAt(2);
-                final char ch3 = str.charAt(3);
-                if ((ch0 == 't' || ch0 == 'T') &&
-                    (ch1 == 'r' || ch1 == 'R') &&
-                    (ch2 == 'u' || ch2 == 'U') &&
-                    (ch3 == 'e' || ch3 == 'E')) {
-                    return Boolean.TRUE;
-                }
-                break;
-            }
-            case 5: {
-                final char ch0 = str.charAt(0);
-                final char ch1 = str.charAt(1);
-                final char ch2 = str.charAt(2);
-                final char ch3 = str.charAt(3);
-                final char ch4 = str.charAt(4);
-                if ((ch0 == 'f' || ch0 == 'F') &&
-                    (ch1 == 'a' || ch1 == 'A') &&
-                    (ch2 == 'l' || ch2 == 'L') &&
-                    (ch3 == 's' || ch3 == 'S') &&
-                    (ch4 == 'e' || ch4 == 'E')) {
-                    return Boolean.FALSE;
-                }
-                break;
-            }
-        default:
-            break;
-        }
-
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -854,25 +671,7 @@ public class BooleanUtils {
      * @throws IllegalArgumentException if the String doesn't match
      */
     public static Boolean toBooleanObject(final String str, final String trueString, final String falseString, final String nullString) {
-        if (str == null) {
-            if (trueString == null) {
-                return Boolean.TRUE;
-            }
-            if (falseString == null) {
-                return Boolean.FALSE;
-            }
-            if (nullString == null) {
-                return null;
-            }
-        } else if (str.equals(trueString)) {
-            return Boolean.TRUE;
-        } else if (str.equals(falseString)) {
-            return Boolean.FALSE;
-        } else if (str.equals(nullString)) {
-            return null;
-        }
-        // no match
-        throw new IllegalArgumentException("The String did not match any specified value");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -888,7 +687,7 @@ public class BooleanUtils {
      * @return one if {@code true}, zero if {@code false}
      */
     public static int toInteger(final boolean bool) {
-        return bool ? 1 : 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -905,7 +704,7 @@ public class BooleanUtils {
      * @return the appropriate value
      */
     public static int toInteger(final boolean bool, final int trueValue, final int falseValue) {
-        return bool ? trueValue : falseValue;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -924,10 +723,7 @@ public class BooleanUtils {
      * @return the appropriate value
      */
     public static int toInteger(final Boolean bool, final int trueValue, final int falseValue, final int nullValue) {
-        if (bool == null) {
-            return nullValue;
-        }
-        return bool.booleanValue() ? trueValue : falseValue;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -943,7 +739,7 @@ public class BooleanUtils {
      * @return one if {@code true}, zero if {@code false}
      */
     public static Integer toIntegerObject(final boolean bool) {
-        return bool ? NumberUtils.INTEGER_ONE : NumberUtils.INTEGER_ZERO;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -960,7 +756,7 @@ public class BooleanUtils {
      * @return the appropriate value
      */
     public static Integer toIntegerObject(final boolean bool, final Integer trueValue, final Integer falseValue) {
-        return bool ? trueValue : falseValue;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -978,10 +774,7 @@ public class BooleanUtils {
      * @return one if Boolean.TRUE, zero if Boolean.FALSE, {@code null} if {@code null}
      */
     public static Integer toIntegerObject(final Boolean bool) {
-        if (bool == null) {
-            return null;
-        }
-        return bool.booleanValue() ? NumberUtils.INTEGER_ONE : NumberUtils.INTEGER_ZERO;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1000,10 +793,7 @@ public class BooleanUtils {
      * @return the appropriate value
      */
     public static Integer toIntegerObject(final Boolean bool, final Integer trueValue, final Integer falseValue, final Integer nullValue) {
-        if (bool == null) {
-            return nullValue;
-        }
-        return bool.booleanValue() ? trueValue : falseValue;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1020,7 +810,7 @@ public class BooleanUtils {
      * @return one of the two input Strings
      */
     public static String toString(final boolean bool, final String trueString, final String falseString) {
-        return bool ? trueString : falseString;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1039,10 +829,7 @@ public class BooleanUtils {
      * @return one of the three input Strings
      */
     public static String toString(final Boolean bool, final String trueString, final String falseString, final String nullString) {
-        if (bool == null) {
-            return nullString;
-        }
-        return bool.booleanValue() ? trueString : falseString;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1058,7 +845,7 @@ public class BooleanUtils {
      * @return {@code 'on'}, {@code 'off'}, or {@code null}
      */
     public static String toStringOnOff(final boolean bool) {
-        return toString(bool, ON, OFF);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1075,7 +862,7 @@ public class BooleanUtils {
      * @return {@code 'on'}, {@code 'off'}, or {@code null}
      */
     public static String toStringOnOff(final Boolean bool) {
-        return toString(bool, ON, OFF, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1091,7 +878,7 @@ public class BooleanUtils {
      * @return {@code 'true'}, {@code 'false'}, or {@code null}
      */
     public static String toStringTrueFalse(final boolean bool) {
-        return toString(bool, TRUE, FALSE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1108,7 +895,7 @@ public class BooleanUtils {
      * @return {@code 'true'}, {@code 'false'}, or {@code null}
      */
     public static String toStringTrueFalse(final Boolean bool) {
-        return toString(bool, TRUE, FALSE, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1124,7 +911,7 @@ public class BooleanUtils {
      * @return {@code 'yes'}, {@code 'no'}, or {@code null}
      */
     public static String toStringYesNo(final boolean bool) {
-        return toString(bool, YES, NO);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1141,7 +928,7 @@ public class BooleanUtils {
      * @return {@code 'yes'}, {@code 'no'}, or {@code null}
      */
     public static String toStringYesNo(final Boolean bool) {
-        return toString(bool, YES, NO, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1151,7 +938,7 @@ public class BooleanUtils {
      * @since 3.13.0
      */
     public static List<Boolean> values() {
-        return BOOLEAN_LIST;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1177,14 +964,7 @@ public class BooleanUtils {
      * @throws IllegalArgumentException if {@code array} is empty.
      */
     public static boolean xor(final boolean... array) {
-        ObjectUtils.requireNonEmpty(array, "array");
-        // false if the neutral element of the xor operator
-        boolean result = false;
-        for (final boolean element : array) {
-            result ^= element;
-        }
-
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1207,8 +987,7 @@ public class BooleanUtils {
      * @throws IllegalArgumentException if {@code array} is empty.
      */
     public static Boolean xor(final Boolean... array) {
-        ObjectUtils.requireNonEmpty(array, "array");
-        return xor(ArrayUtils.toPrimitive(array)) ? Boolean.TRUE : Boolean.FALSE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1224,5 +1003,4 @@ public class BooleanUtils {
     public BooleanUtils() {
         // empty
     }
-
 }

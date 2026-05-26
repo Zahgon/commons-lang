@@ -25,7 +25,6 @@ import java.util.Objects;
 import java.util.TimeZone;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-
 import org.apache.commons.lang3.LocaleUtils;
 
 /**
@@ -43,6 +42,7 @@ abstract class AbstractFormatCache<F extends Format> {
     private static final class ArrayKey {
 
         private final Object[] keys;
+
         private final int hashCode;
 
         /**
@@ -57,24 +57,13 @@ abstract class AbstractFormatCache<F extends Format> {
 
         @Override
         public boolean equals(final Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj == null) {
-                return false;
-            }
-            if (getClass() != obj.getClass()) {
-                return false;
-            }
-            final ArrayKey other = (ArrayKey) obj;
-            return Arrays.deepEquals(keys, other.keys);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public int hashCode() {
-            return hashCode;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -88,7 +77,7 @@ abstract class AbstractFormatCache<F extends Format> {
      * Clears the cache.
      */
     static void clear() {
-        dateTimeInstanceCache.clear();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -102,23 +91,7 @@ abstract class AbstractFormatCache<F extends Format> {
      */
     // package protected, for access from test code; do not make public or protected
     static String getPatternForStyle(final Integer dateStyle, final Integer timeStyle, final Locale locale) {
-        final Locale safeLocale = LocaleUtils.toLocale(locale);
-        final ArrayKey key = new ArrayKey(dateStyle, timeStyle, safeLocale);
-        return dateTimeInstanceCache.computeIfAbsent(key, k -> {
-            try {
-                final DateFormat formatter;
-                if (dateStyle == null) {
-                    formatter = DateFormat.getTimeInstance(timeStyle.intValue(), safeLocale);
-                } else if (timeStyle == null) {
-                    formatter = DateFormat.getDateInstance(dateStyle.intValue(), safeLocale);
-                } else {
-                    formatter = DateFormat.getDateTimeInstance(dateStyle.intValue(), timeStyle.intValue(), safeLocale);
-                }
-                return ((SimpleDateFormat) formatter).toPattern();
-            } catch (final ClassCastException ex) {
-                throw new IllegalArgumentException("No date time pattern for locale: " + safeLocale);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private final ConcurrentMap<ArrayKey, F> instanceCache = new ConcurrentHashMap<>(7);
@@ -127,7 +100,7 @@ abstract class AbstractFormatCache<F extends Format> {
      * Clears the cache.
      */
     void clearInstance() {
-        instanceCache.clear();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -154,7 +127,7 @@ abstract class AbstractFormatCache<F extends Format> {
      */
     // package protected, for access from FastDateFormat; do not make public or protected
     F getDateInstance(final int dateStyle, final TimeZone timeZone, final Locale locale) {
-        return getDateTimeInstance(Integer.valueOf(dateStyle), null, timeZone, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -170,7 +143,7 @@ abstract class AbstractFormatCache<F extends Format> {
      */
     // package protected, for access from FastDateFormat; do not make public or protected
     F getDateTimeInstance(final int dateStyle, final int timeStyle, final TimeZone timeZone, final Locale locale) {
-        return getDateTimeInstance(Integer.valueOf(dateStyle), Integer.valueOf(timeStyle), timeZone, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -197,7 +170,7 @@ abstract class AbstractFormatCache<F extends Format> {
      * @return a date/time formatter.
      */
     public F getInstance() {
-        return getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, TimeZone.getDefault(), Locale.getDefault());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -212,11 +185,7 @@ abstract class AbstractFormatCache<F extends Format> {
      * @throws IllegalArgumentException if pattern is invalid.
      */
     public F getInstance(final String pattern, final TimeZone timeZone, final Locale locale) {
-        Objects.requireNonNull(pattern, "pattern");
-        final TimeZone actualTimeZone = TimeZones.toTimeZone(timeZone);
-        final Locale actualLocale = LocaleUtils.toLocale(locale);
-        final ArrayKey key = new ArrayKey(pattern, actualTimeZone, actualLocale);
-        return instanceCache.computeIfAbsent(key, k -> createInstance(pattern, actualTimeZone, actualLocale));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -231,7 +200,6 @@ abstract class AbstractFormatCache<F extends Format> {
      */
     // package protected, for access from FastDateFormat; do not make public or protected
     F getTimeInstance(final int timeStyle, final TimeZone timeZone, final Locale locale) {
-        return getDateTimeInstance(null, Integer.valueOf(timeStyle), timeZone, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

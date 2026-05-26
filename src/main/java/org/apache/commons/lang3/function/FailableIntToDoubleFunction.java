@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.function.IntToDoubleFunction;
@@ -28,7 +27,9 @@ import java.util.function.IntToDoubleFunction;
 @FunctionalInterface
 public interface FailableIntToDoubleFunction<E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableIntToDoubleFunction NOP = t -> 0d;
 
@@ -40,7 +41,7 @@ public interface FailableIntToDoubleFunction<E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <E extends Throwable> FailableIntToDoubleFunction<E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

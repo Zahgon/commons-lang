@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.function.Consumer;
@@ -27,7 +26,9 @@ import java.util.function.Function;
  */
 public class Consumers {
 
-    /** NOP singleton. */
+    /**
+     * NOP singleton.
+     */
     @SuppressWarnings("rawtypes")
     private static final Consumer NOP = Function.identity()::apply;
 
@@ -40,9 +41,7 @@ public class Consumers {
      * @since 3.15.0
      */
     public static <T> void accept(final Consumer<T> consumer, final T object) {
-        if (consumer != null) {
-            consumer.accept(object);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -53,7 +52,7 @@ public class Consumers {
      */
     @SuppressWarnings("unchecked")
     public static <T> Consumer<T> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private Consumers() {

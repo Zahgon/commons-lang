@@ -36,10 +36,7 @@ public class ArraySorter {
      * @see Arrays#sort(byte[])
      */
     public static byte[] sort(final byte[] array) {
-        if (array != null) {
-            Arrays.sort(array);
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -50,10 +47,7 @@ public class ArraySorter {
      * @see Arrays#sort(char[])
      */
     public static char[] sort(final char[] array) {
-        if (array != null) {
-            Arrays.sort(array);
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -64,10 +58,7 @@ public class ArraySorter {
      * @see Arrays#sort(double[])
      */
     public static double[] sort(final double[] array) {
-        if (array != null) {
-            Arrays.sort(array);
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -78,10 +69,7 @@ public class ArraySorter {
      * @see Arrays#sort(float[])
      */
     public static float[] sort(final float[] array) {
-        if (array != null) {
-            Arrays.sort(array);
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -92,10 +80,7 @@ public class ArraySorter {
      * @see Arrays#sort(int[])
      */
     public static int[] sort(final int[] array) {
-        if (array != null) {
-            Arrays.sort(array);
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -106,10 +91,7 @@ public class ArraySorter {
      * @see Arrays#sort(long[])
      */
     public static long[] sort(final long[] array) {
-        if (array != null) {
-            Arrays.sort(array);
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -120,10 +102,7 @@ public class ArraySorter {
      * @see Arrays#sort(short[])
      */
     public static short[] sort(final short[] array) {
-        if (array != null) {
-            Arrays.sort(array);
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -135,10 +114,7 @@ public class ArraySorter {
      * @see Arrays#sort(Object[])
      */
     public static <T> T[] sort(final T[] array) {
-        if (array != null) {
-            Arrays.sort(array);
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -152,10 +128,7 @@ public class ArraySorter {
      * @see Arrays#sort(Object[])
      */
     public static <T> T[] sort(final T[] array, final Comparator<? super T> comparator) {
-        if (array != null) {
-            Arrays.sort(array, comparator);
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -167,5 +140,4 @@ public class ArraySorter {
     public ArraySorter() {
         // empty
     }
-
 }

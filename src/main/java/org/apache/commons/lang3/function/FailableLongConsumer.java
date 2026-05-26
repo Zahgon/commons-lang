@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -29,9 +28,13 @@ import java.util.function.LongConsumer;
 @FunctionalInterface
 public interface FailableLongConsumer<E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
-    FailableLongConsumer NOP = t -> { /* NOP */ };
+    FailableLongConsumer NOP = t -> {
+        /* NOP */
+    };
 
     /**
      * Gets the NOP singleton.
@@ -41,7 +44,7 @@ public interface FailableLongConsumer<E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <E extends Throwable> FailableLongConsumer<E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -60,10 +63,6 @@ public interface FailableLongConsumer<E extends Throwable> {
      * @throws NullPointerException if {@code after} is null
      */
     default FailableLongConsumer<E> andThen(final FailableLongConsumer<E> after) {
-        Objects.requireNonNull(after);
-        return (final long t) -> {
-            accept(t);
-            after.accept(t);
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

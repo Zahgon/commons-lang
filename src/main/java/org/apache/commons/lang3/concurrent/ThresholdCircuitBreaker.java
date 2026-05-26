@@ -82,7 +82,7 @@ public class ThresholdCircuitBreaker extends AbstractCircuitBreaker<Long> {
      */
     @Override
     public boolean checkState() {
-        return !isOpen();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -92,8 +92,7 @@ public class ThresholdCircuitBreaker extends AbstractCircuitBreaker<Long> {
      */
     @Override
     public void close() {
-        super.close();
-        this.used.set(INITIAL_COUNT);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -102,7 +101,7 @@ public class ThresholdCircuitBreaker extends AbstractCircuitBreaker<Long> {
      * @return the threshold
      */
     public long getThreshold() {
-        return threshold;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -112,16 +111,6 @@ public class ThresholdCircuitBreaker extends AbstractCircuitBreaker<Long> {
      */
     @Override
     public boolean incrementAndCheckState(final Long increment) {
-        if (threshold == 0) {
-            open();
-        }
-
-        final long used = this.used.addAndGet(increment);
-        if (used > threshold) {
-            open();
-        }
-
-        return checkState();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

@@ -102,10 +102,14 @@ public class BasicThreadFactory implements ThreadFactory {
      */
     public static class Builder implements org.apache.commons.lang3.builder.Builder<BasicThreadFactory> {
 
-        /** The wrapped factory. */
+        /**
+         * The wrapped factory.
+         */
         private ThreadFactory factory;
 
-        /** The uncaught exception handler. */
+        /**
+         * The uncaught exception handler.
+         */
         private Thread.UncaughtExceptionHandler exceptionHandler;
 
         /**
@@ -118,10 +122,14 @@ public class BasicThreadFactory implements ThreadFactory {
          */
         private String namingPattern;
 
-        /** The priority. */
+        /**
+         * The priority.
+         */
         private Integer priority;
 
-        /** The daemon flag. */
+        /**
+         * The daemon flag.
+         */
         private Boolean daemon;
 
         /**
@@ -143,9 +151,7 @@ public class BasicThreadFactory implements ThreadFactory {
          */
         @Override
         public BasicThreadFactory build() {
-            final BasicThreadFactory factory = new BasicThreadFactory(this);
-            reset();
-            return factory;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -155,7 +161,7 @@ public class BasicThreadFactory implements ThreadFactory {
          * @since 3.18.0
          */
         public Builder daemon() {
-            return daemon(true);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -167,8 +173,7 @@ public class BasicThreadFactory implements ThreadFactory {
          * @return a reference to this {@link Builder}.
          */
         public Builder daemon(final boolean daemon) {
-            this.daemon = Boolean.valueOf(daemon);
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -185,8 +190,7 @@ public class BasicThreadFactory implements ThreadFactory {
          * @throws NullPointerException if the naming pattern is {@code null}.
          */
         public Builder namingPattern(final String namingPattern) {
-            this.namingPattern = Objects.requireNonNull(namingPattern, "pattern");
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -197,8 +201,7 @@ public class BasicThreadFactory implements ThreadFactory {
          * @return a reference to this {@link Builder}.
          */
         public Builder priority(final int priority) {
-            this.priority = Integer.valueOf(priority);
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -208,11 +211,7 @@ public class BasicThreadFactory implements ThreadFactory {
          * automatically.
          */
         public void reset() {
-            factory = null;
-            exceptionHandler = null;
-            namingPattern = null;
-            priority = null;
-            daemon = null;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -222,10 +221,8 @@ public class BasicThreadFactory implements ThreadFactory {
          * @return a reference to this {@link Builder}.
          * @throws NullPointerException if the exception handler is {@code null}.
          */
-        public Builder uncaughtExceptionHandler(
-                final Thread.UncaughtExceptionHandler exceptionHandler) {
-            this.exceptionHandler = Objects.requireNonNull(exceptionHandler, "handler");
-            return this;
+        public Builder uncaughtExceptionHandler(final Thread.UncaughtExceptionHandler exceptionHandler) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -237,8 +234,7 @@ public class BasicThreadFactory implements ThreadFactory {
          * @throws NullPointerException if the passed in {@link ThreadFactory} is {@code null}
          */
         public Builder wrappedFactory(final ThreadFactory factory) {
-            this.factory = Objects.requireNonNull(factory, "factory");
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -249,16 +245,22 @@ public class BasicThreadFactory implements ThreadFactory {
      * @since 3.18.0
      */
     public static Builder builder() {
-        return new Builder();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** A counter for the threads created by this factory. */
+    /**
+     * A counter for the threads created by this factory.
+     */
     private final AtomicLong threadCounter;
 
-    /** The wrapped factory. */
+    /**
+     * The wrapped factory.
+     */
     private final ThreadFactory wrappedFactory;
 
-    /** The uncaught exception handler. */
+    /**
+     * The uncaught exception handler.
+     */
     private final Thread.UncaughtExceptionHandler uncaughtExceptionHandler;
 
     /**
@@ -271,10 +273,14 @@ public class BasicThreadFactory implements ThreadFactory {
      */
     private final String namingPattern;
 
-    /** Stores the priority. */
+    /**
+     * Stores the priority.
+     */
     private final Integer priority;
 
-    /** Stores the daemon status flag. */
+    /**
+     * Stores the daemon status flag.
+     */
     private final Boolean daemon;
 
     /**
@@ -301,7 +307,7 @@ public class BasicThreadFactory implements ThreadFactory {
      * @return the daemon flag.
      */
     public final Boolean getDaemonFlag() {
-        return daemon;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -315,7 +321,7 @@ public class BasicThreadFactory implements ThreadFactory {
      * @return the naming pattern.
      */
     public final String getNamingPattern() {
-        return namingPattern;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -325,7 +331,7 @@ public class BasicThreadFactory implements ThreadFactory {
      * @return the priority for newly created threads.
      */
     public final Integer getPriority() {
-        return priority;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -336,7 +342,7 @@ public class BasicThreadFactory implements ThreadFactory {
      * @return the number of threads created by this factory.
      */
     public long getThreadCount() {
-        return threadCounter.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -346,7 +352,7 @@ public class BasicThreadFactory implements ThreadFactory {
      * @return the {@link UncaughtExceptionHandler}.
      */
     public final Thread.UncaughtExceptionHandler getUncaughtExceptionHandler() {
-        return uncaughtExceptionHandler;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -358,7 +364,7 @@ public class BasicThreadFactory implements ThreadFactory {
      * @return the wrapped {@link ThreadFactory}.
      */
     public final ThreadFactory getWrappedFactory() {
-        return wrappedFactory;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -395,8 +401,6 @@ public class BasicThreadFactory implements ThreadFactory {
      */
     @Override
     public Thread newThread(final Runnable runnable) {
-        final Thread thread = getWrappedFactory().newThread(runnable);
-        initializeThread(thread);
-        return thread;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

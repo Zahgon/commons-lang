@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.builder;
 
 import org.apache.commons.lang3.function.FailableSupplier;
@@ -49,7 +48,6 @@ public abstract class AbstractSupplier<T, B extends AbstractSupplier<T, B, E>, E
      */
     @SuppressWarnings("unchecked")
     protected B asThis() {
-        return (B) this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

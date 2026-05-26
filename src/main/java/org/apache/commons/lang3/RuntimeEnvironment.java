@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3;
 
 import java.io.IOException;
@@ -66,7 +65,7 @@ public class RuntimeEnvironment {
      * @see <a href="https://github.com/systemd/systemd/blob/0747e3b60eb4496ee122066c844210ce818d76d9/src/basic/virt.c#L692">SystemD virt.c</a>
      */
     public static Boolean inContainer() {
-        return inContainer(StringUtils.EMPTY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -101,11 +100,7 @@ public class RuntimeEnvironment {
      * @see <a href="https://github.com/systemd/systemd/blob/0747e3b60eb4496ee122066c844210ce818d76d9/src/basic/virt.c#L692">SystemD virt.c</a>
      */
     static boolean inContainer(final String dirPrefix) {
-        final String value = readFile(dirPrefix + "/proc/1/environ", "container");
-        if (value != null) {
-            return !value.isEmpty();
-        }
-        return fileExists(dirPrefix + "/.dockerenv") || fileExists(dirPrefix + "/run/.containerenv");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -123,12 +118,7 @@ public class RuntimeEnvironment {
             final String[] lines = content.split(String.valueOf(CharUtils.NUL));
             final String prefix = key + "=";
             // @formatter:off
-            return Arrays.stream(lines)
-                    .filter(line -> line.startsWith(prefix))
-                    .map(line -> line.split("=", 2))
-                    .map(keyValue -> keyValue[1])
-                    .findFirst()
-                    .orElse(null);
+            return Arrays.stream(lines).filter(line -> line.startsWith(prefix)).map(line -> line.split("=", 2)).map(keyValue -> keyValue[1]).findFirst().orElse(null);
             // @formatter:on
         } catch (final IOException e) {
             return null;

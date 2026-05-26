@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -29,11 +28,15 @@ import java.util.function.LongPredicate;
 @FunctionalInterface
 public interface FailableLongPredicate<E extends Throwable> {
 
-    /** FALSE singleton */
+    /**
+     * FALSE singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableLongPredicate FALSE = t -> false;
 
-    /** TRUE singleton */
+    /**
+     * TRUE singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableLongPredicate TRUE = t -> true;
 
@@ -43,9 +46,9 @@ public interface FailableLongPredicate<E extends Throwable> {
      * @param <E> The kind of thrown exception or error.
      * @return The NOP singleton.
      */
-   @SuppressWarnings("unchecked")
-   static <E extends Throwable> FailableLongPredicate<E> falsePredicate() {
-        return FALSE;
+    @SuppressWarnings("unchecked")
+    static <E extends Throwable> FailableLongPredicate<E> falsePredicate() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -56,7 +59,7 @@ public interface FailableLongPredicate<E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <E extends Throwable> FailableLongPredicate<E> truePredicate() {
-        return TRUE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -67,8 +70,7 @@ public interface FailableLongPredicate<E extends Throwable> {
      * @throws NullPointerException if other is null
      */
     default FailableLongPredicate<E> and(final FailableLongPredicate<E> other) {
-        Objects.requireNonNull(other);
-        return t -> test(t) && other.test(t);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -77,7 +79,7 @@ public interface FailableLongPredicate<E extends Throwable> {
      * @return a predicate that negates this predicate.
      */
     default FailableLongPredicate<E> negate() {
-        return t -> !test(t);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -88,8 +90,7 @@ public interface FailableLongPredicate<E extends Throwable> {
      * @throws NullPointerException if other is null
      */
     default FailableLongPredicate<E> or(final FailableLongPredicate<E> other) {
-        Objects.requireNonNull(other);
-        return t -> test(t) || other.test(t);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

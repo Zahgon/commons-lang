@@ -35,9 +35,10 @@ public class IntStreams {
      * @return the new stream on {@code values} or {@link IntStream#empty()}.
      * @since 3.18.0
      */
-    @SafeVarargs // Creating a stream from an array is safe
+    // Creating a stream from an array is safe
+    @SafeVarargs
     public static IntStream of(final int... values) {
-        return values == null ? IntStream.empty() : IntStream.of(values);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -47,7 +48,7 @@ public class IntStreams {
      * @return a sequential {@link IntStream} for the range of {@code int} elements.
      */
     public static IntStream range(final int endExclusive) {
-        return IntStream.range(0, endExclusive);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -57,7 +58,7 @@ public class IntStreams {
      * @return a sequential {@link IntStream} for the range of {@code int} elements.
      */
     public static IntStream rangeClosed(final int endInclusive) {
-        return IntStream.rangeClosed(0, endInclusive);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

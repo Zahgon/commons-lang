@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -28,7 +27,9 @@ import java.util.function.DoubleUnaryOperator;
  */
 public interface FailableDoubleUnaryOperator<E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableDoubleUnaryOperator NOP = t -> 0d;
 
@@ -39,7 +40,7 @@ public interface FailableDoubleUnaryOperator<E extends Throwable> {
      * @return a unary operator that always returns its input argument
      */
     static <E extends Throwable> FailableDoubleUnaryOperator<E> identity() {
-        return t -> t;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -50,7 +51,7 @@ public interface FailableDoubleUnaryOperator<E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <E extends Throwable> FailableDoubleUnaryOperator<E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -64,8 +65,7 @@ public interface FailableDoubleUnaryOperator<E extends Throwable> {
      * @see #compose(FailableDoubleUnaryOperator)
      */
     default FailableDoubleUnaryOperator<E> andThen(final FailableDoubleUnaryOperator<E> after) {
-        Objects.requireNonNull(after);
-        return (final double t) -> after.applyAsDouble(applyAsDouble(t));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -88,7 +88,6 @@ public interface FailableDoubleUnaryOperator<E extends Throwable> {
      * @see #andThen(FailableDoubleUnaryOperator)
      */
     default FailableDoubleUnaryOperator<E> compose(final FailableDoubleUnaryOperator<E> before) {
-        Objects.requireNonNull(before);
-        return (final double v) -> applyAsDouble(before.applyAsDouble(v));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

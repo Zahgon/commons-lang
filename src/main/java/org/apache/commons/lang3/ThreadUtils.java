@@ -24,7 +24,6 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.apache.commons.lang3.function.Predicates;
 import org.apache.commons.lang3.time.DurationUtils;
 
@@ -54,12 +53,12 @@ public class ThreadUtils {
 
         @Override
         public boolean test(final Thread thread) {
-            return true;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public boolean test(final ThreadGroup threadGroup) {
-            return true;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -89,12 +88,12 @@ public class ThreadUtils {
 
         @Override
         public boolean test(final Thread thread) {
-            return thread != null && thread.getName().equals(name);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public boolean test(final ThreadGroup threadGroup) {
-            return threadGroup != null && threadGroup.getName().equals(name);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -142,7 +141,7 @@ public class ThreadUtils {
 
         @Override
         public boolean test(final Thread thread) {
-            return thread != null && thread.getId() == threadId;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -183,11 +182,7 @@ public class ThreadUtils {
      * @throws SecurityException        if the current thread cannot modify thread groups from this thread's thread group up to the system thread group.
      */
     public static Thread findThreadById(final long threadId) {
-        if (threadId <= 0) {
-            throw new IllegalArgumentException("The thread id must be greater than zero");
-        }
-        final Collection<Thread> result = findThreads((Predicate<Thread>) t -> t != null && t.getId() == threadId);
-        return result.isEmpty() ? null : result.iterator().next();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -203,12 +198,7 @@ public class ThreadUtils {
      * @throws SecurityException        if the current thread cannot modify thread groups from this thread's thread group up to the system thread group.
      */
     public static Thread findThreadById(final long threadId, final String threadGroupName) {
-        Objects.requireNonNull(threadGroupName, "threadGroupName");
-        final Thread thread = findThreadById(threadId);
-        if (thread != null && thread.getThreadGroup() != null && thread.getThreadGroup().getName().equals(threadGroupName)) {
-            return thread;
-        }
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -224,12 +214,7 @@ public class ThreadUtils {
      * @throws SecurityException        if the current thread cannot modify thread groups from this thread's thread group up to the system thread group.
      */
     public static Thread findThreadById(final long threadId, final ThreadGroup threadGroup) {
-        Objects.requireNonNull(threadGroup, "threadGroup");
-        final Thread thread = findThreadById(threadId);
-        if (thread != null && threadGroup.equals(thread.getThreadGroup())) {
-            return thread;
-        }
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -243,7 +228,7 @@ public class ThreadUtils {
      * @since 3.13.0
      */
     public static Collection<ThreadGroup> findThreadGroups(final Predicate<ThreadGroup> predicate) {
-        return findThreadGroups(getSystemThreadGroup(), true, predicate);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -258,16 +243,7 @@ public class ThreadUtils {
      * @since 3.13.0
      */
     public static Collection<ThreadGroup> findThreadGroups(final ThreadGroup threadGroup, final boolean recurse, final Predicate<ThreadGroup> predicate) {
-        Objects.requireNonNull(threadGroup, "threadGroup");
-        Objects.requireNonNull(predicate, "predicate");
-        int count = threadGroup.activeGroupCount();
-        ThreadGroup[] threadGroups;
-        do {
-            threadGroups = new ThreadGroup[count + count / 2 + 1]; //slightly grow the array size
-            count = threadGroup.enumerate(threadGroups, recurse);
-            //return value of enumerate() must be strictly less than the array size according to Javadoc
-        } while (count >= threadGroups.length);
-        return Collections.unmodifiableCollection(Stream.of(threadGroups).limit(count).filter(predicate).collect(Collectors.toList()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -312,7 +288,7 @@ public class ThreadUtils {
      * @throws SecurityException    if the current thread cannot modify thread groups from this thread's thread group up to the system thread group.
      */
     public static Collection<ThreadGroup> findThreadGroupsByName(final String threadGroupName) {
-        return findThreadGroups(predicateThreadGroup(threadGroupName));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -326,7 +302,7 @@ public class ThreadUtils {
      * @since 3.13.0
      */
     public static Collection<Thread> findThreads(final Predicate<Thread> predicate) {
-        return findThreads(getSystemThreadGroup(), true, predicate);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -341,16 +317,7 @@ public class ThreadUtils {
      * @since 3.13.0
      */
     public static Collection<Thread> findThreads(final ThreadGroup threadGroup, final boolean recurse, final Predicate<Thread> predicate) {
-        Objects.requireNonNull(threadGroup, "The group must not be null");
-        Objects.requireNonNull(predicate, "The predicate must not be null");
-        int count = threadGroup.activeCount();
-        Thread[] threads;
-        do {
-            threads = new Thread[count + count / 2 + 1]; //slightly grow the array size
-            count = threadGroup.enumerate(threads, recurse);
-            //return value of enumerate() must be strictly less than the array size according to javadoc
-        } while (count >= threads.length);
-        return Collections.unmodifiableCollection(Stream.of(threads).limit(count).filter(predicate).collect(Collectors.toList()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -394,7 +361,7 @@ public class ThreadUtils {
      * @throws SecurityException    if the current thread cannot modify thread groups from this thread's thread group up to the system thread group.
      */
     public static Collection<Thread> findThreadsByName(final String threadName) {
-        return findThreads(predicateThread(threadName));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -409,10 +376,7 @@ public class ThreadUtils {
      * @throws SecurityException    if the current thread cannot modify thread groups from this thread's thread group up to the system thread group.
      */
     public static Collection<Thread> findThreadsByName(final String threadName, final String threadGroupName) {
-        Objects.requireNonNull(threadName, "threadName");
-        Objects.requireNonNull(threadGroupName, "threadGroupName");
-        return Collections.unmodifiableCollection(findThreadGroups(predicateThreadGroup(threadGroupName)).stream()
-            .flatMap(group -> findThreads(group, false, predicateThread(threadName)).stream()).collect(Collectors.toList()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -427,7 +391,7 @@ public class ThreadUtils {
      * @throws SecurityException    if the current thread cannot modify thread groups from this thread's thread group up to the system thread group.
      */
     public static Collection<Thread> findThreadsByName(final String threadName, final ThreadGroup threadGroup) {
-        return findThreads(threadGroup, false, predicateThread(threadName));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -438,7 +402,7 @@ public class ThreadUtils {
      * @throws SecurityException if the current thread cannot modify thread groups from this thread's thread group up to the system thread group.
      */
     public static Collection<ThreadGroup> getAllThreadGroups() {
-        return findThreadGroups(Predicates.truePredicate());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -449,7 +413,7 @@ public class ThreadUtils {
      * @throws SecurityException if the current thread cannot modify thread groups from this thread's thread group up to the system thread group.
      */
     public static Collection<Thread> getAllThreads() {
-        return findThreads(Predicates.truePredicate());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -462,11 +426,7 @@ public class ThreadUtils {
      * @throws SecurityException if the current thread cannot modify thread groups from this thread's thread group up to the system thread group.
      */
     public static ThreadGroup getSystemThreadGroup() {
-        ThreadGroup threadGroup = Thread.currentThread().getThreadGroup();
-        while (threadGroup != null && threadGroup.getParent() != null) {
-            threadGroup = threadGroup.getParent();
-        }
-        return threadGroup;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -482,7 +442,7 @@ public class ThreadUtils {
      * @since 3.12.0
      */
     public static void join(final Thread thread, final Duration duration) throws InterruptedException {
-        DurationUtils.accept(thread::join, duration);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static <T> Predicate<T> namePredicate(final String name, final Function<T, String> nameGetter) {
@@ -506,7 +466,7 @@ public class ThreadUtils {
      * @since 3.12.0
      */
     public static void sleep(final Duration duration) throws InterruptedException {
-        DurationUtils.accept(Thread::sleep, duration);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -521,11 +481,7 @@ public class ThreadUtils {
      * @since 3.13.0
      */
     public static void sleepQuietly(final Duration duration) {
-        try {
-            sleep(duration);
-        } catch (final InterruptedException ignore) {
-            Thread.currentThread().interrupt();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

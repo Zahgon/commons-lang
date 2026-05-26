@@ -43,17 +43,17 @@ public abstract class AbstractFutureProxy<V> implements Future<V> {
 
     @Override
     public boolean cancel(final boolean mayInterruptIfRunning) {
-        return future.cancel(mayInterruptIfRunning);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public V get() throws InterruptedException, ExecutionException {
-        return future.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public V get(final long timeout, final TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
-        return future.get(timeout, unit);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -62,17 +62,16 @@ public abstract class AbstractFutureProxy<V> implements Future<V> {
      * @return the delegate.
      */
     public Future<V> getFuture() {
-        return future;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean isCancelled() {
-        return future.isCancelled();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean isDone() {
-        return future.isDone();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

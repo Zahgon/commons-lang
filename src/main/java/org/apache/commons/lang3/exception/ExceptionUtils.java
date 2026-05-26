@@ -28,7 +28,6 @@ import java.util.Objects;
 import java.util.StringTokenizer;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -47,20 +46,7 @@ public class ExceptionUtils {
      * The names of methods commonly used to access a wrapped exception.
      */
     // TODO: Remove in Lang 4
-    private static final String[] CAUSE_METHOD_NAMES = {
-        "getCause",
-        "getNextException",
-        "getTargetException",
-        "getException",
-        "getSourceException",
-        "getRootCause",
-        "getCausedByException",
-        "getNested",
-        "getLinkedException",
-        "getNestedException",
-        "getLinkedCause",
-        "getThrowable",
-    };
+    private static final String[] CAUSE_METHOD_NAMES = { "getCause", "getNextException", "getTargetException", "getException", "getSourceException", "getRootCause", "getCausedByException", "getNested", "getLinkedException", "getNestedException", "getLinkedCause", "getThrowable" };
 
     private static final int NOT_FOUND = -1;
 
@@ -143,8 +129,7 @@ public class ExceptionUtils {
      * @see #wrapAndThrow(Throwable)
      */
     public static <T extends RuntimeException> T asRuntimeException(final Throwable throwable) {
-        // claim that the typeErasure invocation throws a RuntimeException
-        return ExceptionUtils.<T, RuntimeException>eraseType(throwable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -176,7 +161,7 @@ public class ExceptionUtils {
      * @since 3.13.0
      */
     public static void forEach(final Throwable throwable, final Consumer<Throwable> consumer) {
-        stream(throwable).forEach(consumer);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -291,11 +276,7 @@ public class ExceptionUtils {
      * @since 2.2
      */
     public static String getMessage(final Throwable th) {
-        if (th == null) {
-            return StringUtils.EMPTY;
-        }
-        final String clsName = ClassUtils.getShortClassName(th, null);
-        return clsName + ": " + StringUtils.defaultString(th.getMessage());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -315,8 +296,7 @@ public class ExceptionUtils {
      *  {@code null} if null throwable input.
      */
     public static Throwable getRootCause(final Throwable throwable) {
-        final List<Throwable> list = getThrowableList(throwable);
-        return list.isEmpty() ? null : list.get(list.size() - 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -331,8 +311,7 @@ public class ExceptionUtils {
      * @since 2.2
      */
     public static String getRootCauseMessage(final Throwable throwable) {
-        final Throwable root = getRootCause(throwable);
-        return getMessage(root == null ? throwable : root);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -349,7 +328,7 @@ public class ExceptionUtils {
      * @since 2.0
      */
     public static String[] getRootCauseStackTrace(final Throwable throwable) {
-        return getRootCauseStackTraceList(throwable).toArray(ArrayUtils.EMPTY_STRING_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -365,27 +344,7 @@ public class ExceptionUtils {
      * @since 3.13.0
      */
     public static List<String> getRootCauseStackTraceList(final Throwable throwable) {
-        if (throwable == null) {
-            return Collections.emptyList();
-        }
-        final Throwable[] throwables = getThrowables(throwable);
-        final int count = throwables.length;
-        final List<String> frames = new ArrayList<>();
-        List<String> nextTrace = getStackFrameList(throwables[count - 1]);
-        for (int i = count; --i >= 0;) {
-            final List<String> trace = nextTrace;
-            if (i != 0) {
-                nextTrace = getStackFrameList(throwables[i - 1]);
-                removeCommonFrames(trace, nextTrace);
-            }
-            if (i == count - 1) {
-                frames.add(throwables[i].toString());
-            } else {
-                frames.add(WRAPPED_MARKER + throwables[i].toString());
-            }
-            frames.addAll(trace);
-        }
-        return frames;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -400,23 +359,7 @@ public class ExceptionUtils {
      * @return List of stack frames.
      */
     static List<String> getStackFrameList(final Throwable throwable) {
-        final String stackTrace = getStackTrace(throwable);
-        final String linebreak = System.lineSeparator();
-        final StringTokenizer frames = new StringTokenizer(stackTrace, linebreak);
-        final List<String> list = new ArrayList<>();
-        boolean traceStarted = false;
-        while (frames.hasMoreTokens()) {
-            final String token = frames.nextToken();
-            // Determine if the line starts with "<whitespace>at"
-            final int at = token.indexOf("at");
-            if (at != NOT_FOUND && token.substring(0, at).trim().isEmpty()) {
-                traceStarted = true;
-                list.add(token);
-            } else if (traceStarted) {
-                break;
-            }
-        }
-        return list;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -428,7 +371,7 @@ public class ExceptionUtils {
      * @return an array where each element is a line from the argument.
      */
     static String[] getStackFrames(final String stackTrace) {
-        return new IterableStringTokenizer(stackTrace, System.lineSeparator()).toArray();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -445,10 +388,7 @@ public class ExceptionUtils {
      * @return an array of strings describing each stack frame, never null.
      */
     public static String[] getStackFrames(final Throwable throwable) {
-        if (throwable == null) {
-            return ArrayUtils.EMPTY_STRING_ARRAY;
-        }
-        return getStackFrames(getStackTrace(throwable));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -464,12 +404,7 @@ public class ExceptionUtils {
      * {@code printStackTrace(PrintWriter)} method, or an empty String if {@code null} input.
      */
     public static String getStackTrace(final Throwable throwable) {
-        if (throwable == null) {
-            return StringUtils.EMPTY;
-        }
-        final StringWriter sw = new StringWriter();
-        throwable.printStackTrace(new PrintWriter(sw, true));
-        return sw.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -489,7 +424,7 @@ public class ExceptionUtils {
      * @return the count of throwables, zero on null input.
      */
     public static int getThrowableCount(final Throwable throwable) {
-        return getThrowableList(throwable).size();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -512,12 +447,7 @@ public class ExceptionUtils {
      * @since 2.2
      */
     public static List<Throwable> getThrowableList(Throwable throwable) {
-        final List<Throwable> list = new ArrayList<>();
-        while (throwable != null && !list.contains(throwable)) {
-            list.add(throwable);
-            throwable = throwable.getCause();
-        }
-        return list;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -540,7 +470,7 @@ public class ExceptionUtils {
      * @see #getThrowableList(Throwable)
      */
     public static Throwable[] getThrowables(final Throwable throwable) {
-        return getThrowableList(throwable).toArray(ArrayUtils.EMPTY_THROWABLE_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -556,12 +486,8 @@ public class ExceptionUtils {
      * @since 3.5
      * @see #wrapAndThrow(Throwable)
      */
-    public static boolean hasCause(Throwable chain,
-            final Class<? extends Throwable> type) {
-        if (chain instanceof UndeclaredThrowableException) {
-            chain = chain.getCause();
-        }
-        return type.isInstance(chain);
+    public static boolean hasCause(Throwable chain, final Class<? extends Throwable> type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -615,7 +541,7 @@ public class ExceptionUtils {
      * @return the index into the throwable chain, -1 if no match or null input.
      */
     public static int indexOfThrowable(final Throwable throwable, final Class<? extends Throwable> clazz) {
-        return indexOf(throwable, clazz, 0, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -633,7 +559,7 @@ public class ExceptionUtils {
      * @return the index into the throwable chain, -1 if no match or null input.
      */
     public static int indexOfThrowable(final Throwable throwable, final Class<? extends Throwable> clazz, final int fromIndex) {
-        return indexOf(throwable, clazz, fromIndex, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -652,7 +578,7 @@ public class ExceptionUtils {
      * @since 2.1
      */
     public static int indexOfType(final Throwable throwable, final Class<? extends Throwable> type) {
-        return indexOf(throwable, type, 0, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -671,7 +597,7 @@ public class ExceptionUtils {
      * @since 2.1
      */
     public static int indexOfType(final Throwable throwable, final Class<? extends Throwable> type, final int fromIndex) {
-        return indexOf(throwable, type, fromIndex, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -683,7 +609,7 @@ public class ExceptionUtils {
      * @since 3.13.0
      */
     public static boolean isChecked(final Throwable throwable) {
-        return throwable != null && !(throwable instanceof Error) && !(throwable instanceof RuntimeException);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -695,7 +621,7 @@ public class ExceptionUtils {
      * @since 3.13.0
      */
     public static boolean isUnchecked(final Throwable throwable) {
-        return throwable != null && (throwable instanceof Error || throwable instanceof RuntimeException);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -719,7 +645,7 @@ public class ExceptionUtils {
      * @since 2.0
      */
     public static void printRootCauseStackTrace(final Throwable throwable) {
-        printRootCauseStackTrace(throwable, System.err);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -743,12 +669,7 @@ public class ExceptionUtils {
      */
     @SuppressWarnings("resource")
     public static void printRootCauseStackTrace(final Throwable throwable, final PrintStream printStream) {
-        if (throwable == null) {
-            return;
-        }
-        Objects.requireNonNull(printStream, "printStream");
-        getRootCauseStackTraceList(throwable).forEach(printStream::println);
-        printStream.flush();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -772,12 +693,7 @@ public class ExceptionUtils {
      */
     @SuppressWarnings("resource")
     public static void printRootCauseStackTrace(final Throwable throwable, final PrintWriter printWriter) {
-        if (throwable == null) {
-            return;
-        }
-        Objects.requireNonNull(printWriter, "printWriter");
-        getRootCauseStackTraceList(throwable).forEach(printWriter::println);
-        printWriter.flush();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -789,21 +705,7 @@ public class ExceptionUtils {
      * @since 2.0
      */
     public static void removeCommonFrames(final List<String> causeFrames, final List<String> wrapperFrames) {
-        Objects.requireNonNull(causeFrames, "causeFrames");
-        Objects.requireNonNull(wrapperFrames, "wrapperFrames");
-        int causeFrameIndex = causeFrames.size() - 1;
-        int wrapperFrameIndex = wrapperFrames.size() - 1;
-        while (causeFrameIndex >= 0 && wrapperFrameIndex >= 0) {
-            // Remove the frame from the cause trace if it is the same
-            // as in the wrapper trace
-            final String causeFrame = causeFrames.get(causeFrameIndex);
-            final String wrapperFrame = wrapperFrames.get(wrapperFrameIndex);
-            if (causeFrame.equals(wrapperFrame)) {
-                causeFrames.remove(causeFrameIndex);
-            }
-            causeFrameIndex--;
-            wrapperFrameIndex--;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -871,8 +773,7 @@ public class ExceptionUtils {
      * @see #wrapAndThrow(Throwable)
      */
     public static <T> T rethrow(final Throwable throwable) {
-        // claim that the typeErasure invocation throws a RuntimeException
-        return ExceptionUtils.<T, RuntimeException>eraseType(throwable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -893,8 +794,7 @@ public class ExceptionUtils {
      * @since 3.13.0
      */
     public static Stream<Throwable> stream(final Throwable throwable) {
-        // No point building a custom Iterable as it would keep track of visited elements to avoid infinite loops
-        return getThrowableList(throwable).stream();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -953,7 +853,7 @@ public class ExceptionUtils {
      * @since 3.10
      */
     public static <T extends Throwable> T throwableOfThrowable(final Throwable throwable, final Class<T> clazz) {
-        return throwableOf(throwable, clazz, 0, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -973,7 +873,7 @@ public class ExceptionUtils {
      * @since 3.10
      */
     public static <T extends Throwable> T throwableOfThrowable(final Throwable throwable, final Class<T> clazz, final int fromIndex) {
-        return throwableOf(throwable, clazz, fromIndex, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -993,7 +893,7 @@ public class ExceptionUtils {
      * @since 3.10
      */
     public static <T extends Throwable> T throwableOfType(final Throwable throwable, final Class<T> type) {
-        return throwableOf(throwable, type, 0, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1013,7 +913,7 @@ public class ExceptionUtils {
      * @since 3.10
      */
     public static <T extends Throwable> T throwableOfType(final Throwable throwable, final Class<T> type, final int fromIndex) {
-        return throwableOf(throwable, type, fromIndex, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1045,10 +945,7 @@ public class ExceptionUtils {
      * @since 3.14.0
      */
     public static <T extends Throwable> T throwUnchecked(final T throwable) {
-        if (isUnchecked(throwable)) {
-            throw asRuntimeException(throwable);
-        }
-        return throwable;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1074,7 +971,7 @@ public class ExceptionUtils {
      * @see #hasCause(Throwable, Class)
      */
     public static <R> R wrapAndThrow(final Throwable throwable) {
-        throw new UndeclaredThrowableException(throwUnchecked(throwable));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

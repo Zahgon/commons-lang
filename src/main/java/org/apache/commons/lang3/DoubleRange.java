@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3;
 
 /**
@@ -46,7 +45,7 @@ public final class DoubleRange extends NumberRange<Double> {
      * @return the range object, not null.
      */
     public static DoubleRange of(final double fromInclusive, final double toInclusive) {
-        return of(Double.valueOf(fromInclusive), Double.valueOf(toInclusive));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -66,7 +65,7 @@ public final class DoubleRange extends NumberRange<Double> {
      * @throws NullPointerException if either element is null.
      */
     public static DoubleRange of(final Double fromInclusive, final Double toInclusive) {
-        return new DoubleRange(fromInclusive, toInclusive);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -103,7 +102,6 @@ public final class DoubleRange extends NumberRange<Double> {
      * @since 3.19.0
      */
     public double fit(final double element) {
-        return super.fit(element).doubleValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

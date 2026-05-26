@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.tuple.Pair;
@@ -105,9 +104,8 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
 
         @Override
         public EqualsBuilder get() {
-            return new EqualsBuilder(this);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -121,7 +119,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return a new Builder.
      */
     public static Builder builder() {
-        return new Builder();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /*
@@ -140,7 +138,6 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * We now use the IDKey helper class (adapted from org.apache.axis.utils.IDKey)
      * to disambiguate the duplicate ids.
      */
-
     /**
      * Gets the registry of object pairs being traversed by the reflection
      * methods in the current thread.
@@ -148,7 +145,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return Set the registry of objects being traversed
      */
     static Set<Pair<IDKey, IDKey>> getRegistry() {
-        return REGISTRY.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -164,7 +161,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return boolean {@code true} if the registry contains the given object.
      */
     static boolean isRegistered(final Object lhs, final Object rhs) {
-        return isRegistered(lhs, rhs, getRegistry());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -190,7 +187,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @see EqualsExclude
      */
     public static boolean reflectionEquals(final Object lhs, final Object rhs, final boolean testTransients) {
-        return reflectionEquals(lhs, rhs, testTransients, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -228,23 +225,8 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @see EqualsExclude
      * @since 3.6
      */
-    public static boolean reflectionEquals(final Object lhs, final Object rhs, final boolean testTransients, final Class<?> reflectUpToClass,
-            final boolean testRecursive, final String... excludeFields) {
-        if (lhs == rhs) {
-            return true;
-        }
-        if (lhs == null || rhs == null) {
-            return false;
-        }
-        // @formatter:off
-        return new EqualsBuilder()
-            .setExcludeFields(excludeFields)
-            .setReflectUpToClass(reflectUpToClass)
-            .setTestTransients(testTransients)
-            .setTestRecursive(testRecursive)
-            .reflectionAppend(lhs, rhs)
-            .isEquals();
-        // @formatter:on
+    public static boolean reflectionEquals(final Object lhs, final Object rhs, final boolean testTransients, final Class<?> reflectUpToClass, final boolean testRecursive, final String... excludeFields) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -275,9 +257,8 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @see EqualsExclude
      * @since 2.0
      */
-    public static boolean reflectionEquals(final Object lhs, final Object rhs, final boolean testTransients, final Class<?> reflectUpToClass,
-            final String... excludeFields) {
-        return reflectionEquals(lhs, rhs, testTransients, reflectUpToClass, false, excludeFields);
+    public static boolean reflectionEquals(final Object lhs, final Object rhs, final boolean testTransients, final Class<?> reflectUpToClass, final String... excludeFields) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -302,7 +283,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @see EqualsExclude
      */
     public static boolean reflectionEquals(final Object lhs, final Object rhs, final Collection<String> excludeFields) {
-        return reflectionEquals(lhs, rhs, ReflectionToStringBuilder.toNoNullStringArray(excludeFields));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -327,7 +308,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @see EqualsExclude
      */
     public static boolean reflectionEquals(final Object lhs, final Object rhs, final String... excludeFields) {
-        return reflectionEquals(lhs, rhs, false, null, excludeFields);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -382,7 +363,8 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
         super(builder());
         // set up default classes to bypass reflection for
         bypassReflectionClasses = new ArrayList<>(1);
-        bypassReflectionClasses.add(String.class); //hashCode field being lazy but not transient
+        //hashCode field being lazy but not transient
+        bypassReflectionClasses.add(String.class);
     }
 
     private EqualsBuilder(final Builder builder) {
@@ -395,13 +377,9 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @param lhs  the left-hand side {@code boolean}
      * @param rhs  the right-hand side {@code boolean}
      * @return {@code this} instance.
-      */
+     */
     public EqualsBuilder append(final boolean lhs, final boolean rhs) {
-        if (!isEquals) {
-            return this;
-        }
-        isEquals = lhs == rhs;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -415,24 +393,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final boolean[] lhs, final boolean[] rhs) {
-        if (!isEquals) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null || rhs == null) {
-            setEquals(false);
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            setEquals(false);
-            return this;
-        }
-        for (int i = 0; i < lhs.length && isEquals; ++i) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -443,10 +404,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final byte lhs, final byte rhs) {
-        if (isEquals) {
-            isEquals = lhs == rhs;
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -460,24 +418,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final byte[] lhs, final byte[] rhs) {
-        if (!isEquals) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null || rhs == null) {
-            setEquals(false);
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            setEquals(false);
-            return this;
-        }
-        for (int i = 0; i < lhs.length && isEquals; ++i) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -488,10 +429,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final char lhs, final char rhs) {
-        if (isEquals) {
-            isEquals = lhs == rhs;
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -505,24 +443,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final char[] lhs, final char[] rhs) {
-        if (!isEquals) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null || rhs == null) {
-            setEquals(false);
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            setEquals(false);
-            return this;
-        }
-        for (int i = 0; i < lhs.length && isEquals; ++i) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -539,10 +460,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final double lhs, final double rhs) {
-        if (isEquals) {
-            return append(Double.doubleToLongBits(lhs), Double.doubleToLongBits(rhs));
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -556,24 +474,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final double[] lhs, final double[] rhs) {
-        if (!isEquals) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null || rhs == null) {
-            setEquals(false);
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            setEquals(false);
-            return this;
-        }
-        for (int i = 0; i < lhs.length && isEquals; ++i) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -590,10 +491,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final float lhs, final float rhs) {
-        if (isEquals) {
-            return append(Float.floatToIntBits(lhs), Float.floatToIntBits(rhs));
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -607,24 +505,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final float[] lhs, final float[] rhs) {
-        if (!isEquals) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null || rhs == null) {
-            setEquals(false);
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            setEquals(false);
-            return this;
-        }
-        for (int i = 0; i < lhs.length && isEquals; ++i) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -635,10 +516,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final int lhs, final int rhs) {
-        if (isEquals) {
-            isEquals = lhs == rhs;
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -652,24 +530,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final int[] lhs, final int[] rhs) {
-        if (!isEquals) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null || rhs == null) {
-            setEquals(false);
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            setEquals(false);
-            return this;
-        }
-        for (int i = 0; i < lhs.length && isEquals; ++i) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -682,10 +543,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final long lhs, final long rhs) {
-        if (isEquals) {
-            isEquals = lhs == rhs;
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -699,24 +557,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final long[] lhs, final long[] rhs) {
-        if (!isEquals) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null || rhs == null) {
-            setEquals(false);
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            setEquals(false);
-            return this;
-        }
-        for (int i = 0; i < lhs.length && isEquals; ++i) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -731,28 +572,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final Object lhs, final Object rhs) {
-        if (!isEquals) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null || rhs == null) {
-            setEquals(false);
-            return this;
-        }
-        final Class<?> lhsClass = lhs.getClass();
-        if (lhsClass.isArray()) {
-            // factor out array case in order to keep method small enough
-            // to be inlined
-            appendArray(lhs, rhs);
-        } else // The simple case, not an array, just test the element
-        if (testRecursive && !ClassUtils.isPrimitiveOrWrapper(lhsClass)) {
-            reflectionAppend(lhs, rhs);
-        } else {
-            isEquals = lhs.equals(rhs);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -769,29 +589,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final Object[] lhs, final Object[] rhs) {
-        if (!isEquals || isRegistered(lhs, rhs)) {
-            return this;
-        }
-        try {
-            register(lhs, rhs);
-            if (lhs == rhs) {
-                return this;
-            }
-            if (lhs == null || rhs == null) {
-                setEquals(false);
-                return this;
-            }
-            if (lhs.length != rhs.length) {
-                setEquals(false);
-                return this;
-            }
-            for (int i = 0; i < lhs.length && isEquals; ++i) {
-                append(lhs[i], rhs[i]);
-            }
-            return this;
-        } finally {
-            unregister(lhs, rhs);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -802,10 +600,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final short lhs, final short rhs) {
-        if (isEquals) {
-            isEquals = lhs == rhs;
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -819,24 +614,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder append(final short[] lhs, final short[] rhs) {
-        if (!isEquals) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null || rhs == null) {
-            setEquals(false);
-            return this;
-        }
-        if (lhs.length != rhs.length) {
-            setEquals(false);
-            return this;
-        }
-        for (int i = 0; i < lhs.length && isEquals; ++i) {
-            append(lhs[i], rhs[i]);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -881,11 +659,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @since 2.0
      */
     public EqualsBuilder appendSuper(final boolean superEquals) {
-        if (!isEquals) {
-            return this;
-        }
-        isEquals = superEquals;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -899,7 +673,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      */
     @Override
     public Boolean build() {
-        return Boolean.valueOf(isEquals());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -909,7 +683,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return boolean
      */
     public boolean isEquals() {
-        return isEquals;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -940,62 +714,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @return {@code this} instance.
      */
     public EqualsBuilder reflectionAppend(final Object lhs, final Object rhs) {
-        if (!isEquals) {
-            return this;
-        }
-        if (lhs == rhs) {
-            return this;
-        }
-        if (lhs == null || rhs == null) {
-            isEquals = false;
-            return this;
-        }
-        // Find the leaf class since there may be transients in the leaf
-        // class or in classes between the leaf and root.
-        // If we are not testing transients or a subclass has no ivars,
-        // then a subclass can test equals to a superclass.
-        final Class<?> lhsClass = lhs.getClass();
-        final Class<?> rhsClass = rhs.getClass();
-        Class<?> testClass;
-        if (lhsClass.isInstance(rhs)) {
-            testClass = lhsClass;
-            if (!rhsClass.isInstance(lhs)) {
-                // rhsClass is a subclass of lhsClass
-                testClass = rhsClass;
-            }
-        } else if (rhsClass.isInstance(lhs)) {
-            testClass = rhsClass;
-            if (!lhsClass.isInstance(rhs)) {
-                // lhsClass is a subclass of rhsClass
-                testClass = lhsClass;
-            }
-        } else {
-            // The two classes are not related.
-            isEquals = false;
-            return this;
-        }
-        try {
-            if (testClass.isArray()) {
-                append(lhs, rhs);
-            } else // If either class is being excluded, call normal object equals method on lhsClass.
-            if (bypassReflectionClasses != null && (bypassReflectionClasses.contains(lhsClass) || bypassReflectionClasses.contains(rhsClass))) {
-                isEquals = lhs.equals(rhs);
-            } else {
-                reflectionAppend(lhs, rhs, testClass);
-                while (testClass.getSuperclass() != null && testClass != reflectUpToClass) {
-                    testClass = testClass.getSuperclass();
-                    reflectionAppend(lhs, rhs, testClass);
-                }
-            }
-        } catch (final IllegalArgumentException e) {
-            // In this case, we tried to test a subclass vs. a superclass and
-            // the subclass has ivars or the ivars are transient and
-            // we are testing transients.
-            // If a subclass has ivars that we are trying to test them, we get an
-            // exception and we know that the objects are not equal.
-            isEquals = false;
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1015,11 +734,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
             final Field[] fields = clazz.getDeclaredFields();
             for (int i = 0; i < fields.length && isEquals; i++) {
                 final Field field = fields[i];
-                if (!ArrayUtils.contains(excludeFields, field.getName())
-                    && !field.getName().contains("$")
-                    && (testTransients || !Modifier.isTransient(field.getModifiers()))
-                    && !Modifier.isStatic(field.getModifiers())
-                    && !field.isAnnotationPresent(EqualsExclude.class)) {
+                if (!ArrayUtils.contains(excludeFields, field.getName()) && !field.getName().contains("$") && (testTransients || !Modifier.isTransient(field.getModifiers())) && !Modifier.isStatic(field.getModifiers()) && !field.isAnnotationPresent(EqualsExclude.class)) {
                     if (setAccessible(field)) {
                         append(Reflection.getUnchecked(field, lhs), Reflection.getUnchecked(field, rhs));
                     }
@@ -1036,7 +751,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @since 2.5
      */
     public void reset() {
-        isEquals = true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1054,8 +769,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @since 3.8
      */
     public EqualsBuilder setBypassReflectionClasses(final List<Class<?>> bypassReflectionClasses) {
-        this.bypassReflectionClasses = bypassReflectionClasses;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1065,7 +779,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @since 2.1
      */
     protected void setEquals(final boolean isEquals) {
-        this.isEquals = isEquals;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1076,8 +790,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @since 3.6
      */
     public EqualsBuilder setExcludeFields(final String... excludeFields) {
-        this.excludeFields = excludeFields;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1088,8 +801,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @since 3.6
      */
     public EqualsBuilder setReflectUpToClass(final Class<?> reflectUpToClass) {
-        this.reflectUpToClass = reflectUpToClass;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1103,8 +815,7 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @since 3.6
      */
     public EqualsBuilder setTestRecursive(final boolean testRecursive) {
-        this.testRecursive = testRecursive;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1115,7 +826,6 @@ public class EqualsBuilder extends AbstractReflection implements Builder<Boolean
      * @since 3.6
      */
     public EqualsBuilder setTestTransients(final boolean testTransients) {
-        this.testTransients = testTransients;
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

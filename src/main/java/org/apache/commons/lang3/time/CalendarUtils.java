@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.time;
 
 import java.time.LocalDate;
@@ -50,7 +49,7 @@ public class CalendarUtils {
      * @since 3.14.0
      */
     public static CalendarUtils getInstance() {
-        return new CalendarUtils(Calendar.getInstance());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -61,7 +60,7 @@ public class CalendarUtils {
      * @return a Calendar.
      */
     static CalendarUtils getInstance(final Locale locale) {
-        return new CalendarUtils(Calendar.getInstance(locale), locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -72,7 +71,7 @@ public class CalendarUtils {
      * @since 3.17.0
      */
     public static LocalDateTime toLocalDateTime(final Calendar calendar) {
-        return LocalDateTime.ofInstant(calendar.toInstant(), toZoneId(calendar));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -83,7 +82,7 @@ public class CalendarUtils {
      * @since 3.17.0
      */
     public static OffsetDateTime toOffsetDateTime(final Calendar calendar) {
-        return OffsetDateTime.ofInstant(calendar.toInstant(), toZoneId(calendar));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -94,7 +93,7 @@ public class CalendarUtils {
      * @since 3.17.0
      */
     public static ZonedDateTime toZonedDateTime(final Calendar calendar) {
-        return ZonedDateTime.ofInstant(calendar.toInstant(), toZoneId(calendar));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static ZoneId toZoneId(final Calendar calendar) {
@@ -131,7 +130,7 @@ public class CalendarUtils {
      * @return the current day of month.
      */
     public int getDayOfMonth() {
-        return calendar.get(Calendar.DAY_OF_MONTH);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -141,7 +140,7 @@ public class CalendarUtils {
      * @since 3.13.0
      */
     public int getDayOfYear() {
-        return calendar.get(Calendar.DAY_OF_YEAR);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -150,7 +149,7 @@ public class CalendarUtils {
      * @return the current month.
      */
     public int getMonth() {
-        return calendar.get(Calendar.MONTH);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -160,15 +159,7 @@ public class CalendarUtils {
      * @return Styled names of months
      */
     String[] getMonthDisplayNames(final int style) {
-        // Unfortunately standalone month names are not available in DateFormatSymbols,
-        // so we have to extract them.
-        final Map<String, Integer> displayNames = calendar.getDisplayNames(Calendar.MONTH, style, locale);
-        if (displayNames == null) {
-            return null;
-        }
-        final String[] monthNames = new String[displayNames.size()];
-        displayNames.forEach((k, v) -> monthNames[v] = k);
-        return monthNames;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -177,7 +168,7 @@ public class CalendarUtils {
      * @return Long names of months
      */
     String[] getStandaloneLongMonthNames() {
-        return getMonthDisplayNames(Calendar.LONG_STANDALONE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -186,7 +177,7 @@ public class CalendarUtils {
      * @return Short names of months
      */
     String[] getStandaloneShortMonthNames() {
-        return getMonthDisplayNames(Calendar.SHORT_STANDALONE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -195,7 +186,7 @@ public class CalendarUtils {
      * @return the current year.
      */
     public int getYear() {
-        return calendar.get(Calendar.YEAR);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -205,7 +196,7 @@ public class CalendarUtils {
      * @since 3.18.0
      */
     public LocalDate toLocalDate() {
-        return toLocalDateTime().toLocalDate();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -215,7 +206,7 @@ public class CalendarUtils {
      * @since 3.17.0
      */
     public LocalDateTime toLocalDateTime() {
-        return toLocalDateTime(calendar);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -225,7 +216,7 @@ public class CalendarUtils {
      * @since 3.17.0
      */
     public OffsetDateTime toOffsetDateTime() {
-        return toOffsetDateTime(calendar);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -235,7 +226,6 @@ public class CalendarUtils {
      * @since 3.17.0
      */
     public ZonedDateTime toZonedDateTime() {
-        return toZonedDateTime(calendar);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

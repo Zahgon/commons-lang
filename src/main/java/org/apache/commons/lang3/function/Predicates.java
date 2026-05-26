@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.function.Predicate;
@@ -27,6 +26,7 @@ import java.util.function.Predicate;
 public class Predicates {
 
     private static final Predicate<?> TRUE = t -> true;
+
     private static final Predicate<?> FALSE = t -> false;
 
     /**
@@ -36,9 +36,9 @@ public class Predicates {
      * @return the Predicate singleton.
      */
     @SuppressWarnings("unchecked")
-    // method name cannot be "false".
-    public static <T> Predicate<T> falsePredicate() {
-        return (Predicate<T>) FALSE;
+    public static <// method name cannot be "false".
+    T> Predicate<T> falsePredicate() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -48,9 +48,9 @@ public class Predicates {
      * @return the Predicate singleton.
      */
     @SuppressWarnings("unchecked")
-    // method name cannot be "true".
-    public static <T> Predicate<T> truePredicate() {
-        return (Predicate<T>) TRUE;
+    public static <// method name cannot be "true".
+    T> Predicate<T> truePredicate() {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

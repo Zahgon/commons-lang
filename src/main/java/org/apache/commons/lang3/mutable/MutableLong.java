@@ -40,7 +40,9 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      */
     private static final long serialVersionUID = 62986528375L;
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private long value;
 
     /**
@@ -86,7 +88,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 2.2
      */
     public void add(final long operand) {
-        this.value += operand;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -97,7 +99,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 2.2
      */
     public void add(final Number operand) {
-        this.value += operand.longValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -109,8 +111,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 3.5
      */
     public long addAndGet(final long operand) {
-        this.value += operand;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -123,8 +124,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 3.5
      */
     public long addAndGet(final Number operand) {
-        this.value += operand.longValue();
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -135,7 +135,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      */
     @Override
     public int compareTo(final MutableLong other) {
-        return Long.compare(this.value, other.value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -144,7 +144,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 2.2
      */
     public void decrement() {
-        value--;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -155,8 +155,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 3.5
      */
     public long decrementAndGet() {
-        value--;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -166,7 +165,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      */
     @Override
     public double doubleValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -179,10 +178,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj instanceof MutableLong) {
-            return value == ((MutableLong) obj).longValue();
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -192,7 +188,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      */
     @Override
     public float floatValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -204,9 +200,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 3.5
      */
     public long getAndAdd(final long operand) {
-        final long last = value;
-        this.value += operand;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -219,9 +213,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 3.5
      */
     public long getAndAdd(final Number operand) {
-        final long last = value;
-        this.value += operand.longValue();
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -232,9 +224,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 3.5
      */
     public long getAndDecrement() {
-        final long last = value;
-        value--;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -245,9 +235,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 3.5
      */
     public long getAndIncrement() {
-        final long last = value;
-        value++;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -269,7 +257,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      */
     @Override
     public int hashCode() {
-        return (int) (value ^ value >>> 32);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -278,7 +266,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 2.2
      */
     public void increment() {
-        value++;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -289,8 +277,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 3.5
      */
     public long incrementAndGet() {
-        value++;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // shortValue and byteValue rely on Number implementation
@@ -301,7 +288,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      */
     @Override
     public int intValue() {
-        return (int) value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -311,7 +298,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      */
     @Override
     public long longValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -320,7 +307,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @param value  the value to set.
      */
     public void setValue(final long value) {
-        this.value = value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -331,7 +318,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      */
     @Override
     public void setValue(final Number value) {
-        this.value = value.longValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -341,7 +328,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 2.2
      */
     public void subtract(final long operand) {
-        this.value -= operand;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -352,7 +339,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @since 2.2
      */
     public void subtract(final Number operand) {
-        this.value -= operand.longValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -361,7 +348,7 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      * @return a Long instance containing the value from this mutable, never null.
      */
     public Long toLong() {
-        return Long.valueOf(longValue());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -371,7 +358,6 @@ public class MutableLong extends Number implements Comparable<MutableLong>, Muta
      */
     @Override
     public String toString() {
-        return String.valueOf(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

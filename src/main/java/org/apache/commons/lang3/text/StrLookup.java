@@ -18,7 +18,6 @@ package org.apache.commons.lang3.text;
 
 import java.util.Map;
 import java.util.Objects;
-
 import org.apache.commons.lang3.SystemProperties;
 
 /**
@@ -53,7 +52,9 @@ public abstract class StrLookup<V> {
      */
     private static final class MapStrLookup<V> extends StrLookup<V> {
 
-        /** Map keys are variable names and value. */
+        /**
+         * Map keys are variable names and value.
+         */
         private final Map<String, V> map;
 
         /**
@@ -77,10 +78,7 @@ public abstract class StrLookup<V> {
          */
         @Override
         public String lookup(final String key) {
-            if (map == null) {
-                return null;
-            }
-            return Objects.toString(map.get(key), null);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -94,7 +92,7 @@ public abstract class StrLookup<V> {
          */
         @Override
         public String lookup(final String key) {
-            return SystemProperties.getProperty(key);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -120,7 +118,7 @@ public abstract class StrLookup<V> {
      * @return a lookup using the map, not null.
      */
     public static <V> StrLookup<V> mapLookup(final Map<String, V> map) {
-        return new MapStrLookup<>(map);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -129,7 +127,7 @@ public abstract class StrLookup<V> {
      * @return a lookup that always returns null, not null.
      */
     public static StrLookup<?> noneLookup() {
-        return NONE_LOOKUP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -146,7 +144,7 @@ public abstract class StrLookup<V> {
      * @return a lookup using system properties, not null.
      */
     public static StrLookup<String> systemPropertiesLookup() {
-        return SYSTEM_PROPERTIES_LOOKUP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

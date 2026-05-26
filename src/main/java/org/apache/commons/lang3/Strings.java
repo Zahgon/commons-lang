@@ -14,11 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3;
 
 import static org.apache.commons.lang3.StringUtils.INDEX_NOT_FOUND;
-
 import org.apache.commons.lang3.builder.AbstractSupplier;
 import org.apache.commons.lang3.function.ToBooleanBiFunction;
 
@@ -58,7 +56,7 @@ public abstract class Strings {
          */
         @Override
         public Strings get() {
-            return ignoreCase ? new CiStrings(nullIsLess) : new CsStrings(nullIsLess);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -68,8 +66,7 @@ public abstract class Strings {
          * @return {@code this} instance.
          */
         public Builder setIgnoreCase(final boolean ignoreCase) {
-            this.ignoreCase = ignoreCase;
-            return asThis();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -79,10 +76,8 @@ public abstract class Strings {
          * @return {@code this} instance.
          */
         public Builder setNullIsLess(final boolean nullIsLess) {
-            this.nullIsLess = nullIsLess;
-            return asThis();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -96,100 +91,33 @@ public abstract class Strings {
 
         @Override
         public int compare(final String s1, final String s2) {
-            if (s1 == s2) {
-                // Both null or same object
-                return 0;
-            }
-            if (s1 == null) {
-                return isNullIsLess() ? -1 : 1;
-            }
-            if (s2 == null) {
-                return isNullIsLess() ? 1 : -1;
-            }
-            return s1.compareToIgnoreCase(s2);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public boolean contains(final CharSequence str, final CharSequence searchStr) {
-            if (str == null || searchStr == null) {
-                return false;
-            }
-            final int len = searchStr.length();
-            final int max = str.length() - len;
-            for (int i = 0; i <= max; i++) {
-                if (CharSequenceUtils.regionMatches(str, true, i, searchStr, 0, len)) {
-                    return true;
-                }
-            }
-            return false;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public boolean equals(final CharSequence cs1, final CharSequence cs2) {
-            if (cs1 == cs2) {
-                return true;
-            }
-            if (cs1 == null || cs2 == null) {
-                return false;
-            }
-            if (cs1.length() != cs2.length()) {
-                return false;
-            }
-            return CharSequenceUtils.regionMatches(cs1, true, 0, cs2, 0, cs1.length());
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public boolean equals(final String s1, final String s2) {
-            return s1 == null ? s2 == null : s1.equalsIgnoreCase(s2);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public int indexOf(final CharSequence str, final CharSequence searchStr, int startPos) {
-            if (str == null || searchStr == null) {
-                return INDEX_NOT_FOUND;
-            }
-            if (startPos < 0) {
-                startPos = 0;
-            }
-            final int endLimit = str.length() - searchStr.length() + 1;
-            if (startPos > endLimit) {
-                return INDEX_NOT_FOUND;
-            }
-            if (searchStr.length() == 0) {
-                return startPos;
-            }
-            for (int i = startPos; i < endLimit; i++) {
-                if (CharSequenceUtils.regionMatches(str, true, i, searchStr, 0, searchStr.length())) {
-                    return i;
-                }
-            }
-            return INDEX_NOT_FOUND;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public int lastIndexOf(final CharSequence str, final CharSequence searchStr, int startPos) {
-            if (str == null || searchStr == null) {
-                return INDEX_NOT_FOUND;
-            }
-            final int searchStrLength = searchStr.length();
-            final int strLength = str.length();
-            if (startPos > strLength - searchStrLength) {
-                startPos = strLength - searchStrLength;
-            }
-            if (startPos < 0) {
-                return INDEX_NOT_FOUND;
-            }
-            if (searchStrLength == 0) {
-                return startPos;
-            }
-            for (int i = startPos; i >= 0; i--) {
-                if (CharSequenceUtils.regionMatches(str, true, i, searchStr, 0, searchStrLength)) {
-                    return i;
-                }
-            }
-            return INDEX_NOT_FOUND;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -203,63 +131,33 @@ public abstract class Strings {
 
         @Override
         public int compare(final String s1, final String s2) {
-            if (s1 == s2) {
-                // Both null or same object
-                return 0;
-            }
-            if (s1 == null) {
-                return isNullIsLess() ? -1 : 1;
-            }
-            if (s2 == null) {
-                return isNullIsLess() ? 1 : -1;
-            }
-            return s1.compareTo(s2);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public boolean contains(final CharSequence seq, final CharSequence searchSeq) {
-            return CharSequenceUtils.indexOf(seq, searchSeq, 0) >= 0;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public boolean equals(final CharSequence cs1, final CharSequence cs2) {
-            if (cs1 == cs2) {
-                return true;
-            }
-            if (cs1 == null || cs2 == null) {
-                return false;
-            }
-            if (cs1.length() != cs2.length()) {
-                return false;
-            }
-            if (cs1 instanceof String && cs2 instanceof String) {
-                return cs1.equals(cs2);
-            }
-            // Step-wise comparison
-            final int length = cs1.length();
-            for (int i = 0; i < length; i++) {
-                if (cs1.charAt(i) != cs2.charAt(i)) {
-                    return false;
-                }
-            }
-            return true;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public boolean equals(final String s1, final String s2) {
-            return eq(s1, s2);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public int indexOf(final CharSequence seq, final CharSequence searchSeq, final int startPos) {
-            return CharSequenceUtils.indexOf(seq, searchSeq, startPos);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public int lastIndexOf(final CharSequence seq, final CharSequence searchSeq, final int startPos) {
-            return CharSequenceUtils.lastIndexOf(seq, searchSeq, startPos);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -278,7 +176,7 @@ public abstract class Strings {
      * @return a new {@link Builder} instance.
      */
     public static final Builder builder() {
-        return new Builder();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -292,8 +190,7 @@ public abstract class Strings {
      * @param searchCharSequences The array of CharSequences to search for, may be null. Individual CharSequences may be null as well.
      * @return {@code true} if any of the search CharSequences are found, {@code false} otherwise
      */
-    private static boolean containsAny(final ToBooleanBiFunction<CharSequence, CharSequence> test, final CharSequence cs,
-            final CharSequence... searchCharSequences) {
+    private static boolean containsAny(final ToBooleanBiFunction<CharSequence, CharSequence> test, final CharSequence cs, final CharSequence... searchCharSequences) {
         if (StringUtils.isEmpty(cs) || ArrayUtils.isEmpty(searchCharSequences)) {
             return false;
         }
@@ -402,17 +299,7 @@ public abstract class Strings {
      * @return A new String if suffix was appended, the same string otherwise.
      */
     public String appendIfMissing(final String str, final CharSequence suffix, final CharSequence... suffixes) {
-        if (str == null || StringUtils.isEmpty(suffix) || endsWith(str, suffix)) {
-            return str;
-        }
-        if (ArrayUtils.isNotEmpty(suffixes)) {
-            for (final CharSequence s : suffixes) {
-                if (endsWith(str, s)) {
-                    return str;
-                }
-            }
-        }
-        return str + suffix;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -557,7 +444,7 @@ public abstract class Strings {
      * @return {@code true} if any of the search CharSequences are found, {@code false} otherwise
      */
     public boolean containsAny(final CharSequence cs, final CharSequence... searchCharSequences) {
-        return containsAny(this::contains, cs, searchCharSequences);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -596,14 +483,7 @@ public abstract class Strings {
      * @see String#endsWith(String)
      */
     public boolean endsWith(final CharSequence str, final CharSequence suffix) {
-        if (str == null || suffix == null) {
-            return str == suffix;
-        }
-        final int sufLen = suffix.length();
-        if (sufLen > str.length()) {
-            return false;
-        }
-        return CharSequenceUtils.regionMatches(str, ignoreCase, str.length() - sufLen, suffix, 0, sufLen);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -631,15 +511,7 @@ public abstract class Strings {
      *         of the provided {@code searchStrings}.
      */
     public boolean endsWithAny(final CharSequence sequence, final CharSequence... searchStrings) {
-        if (StringUtils.isEmpty(sequence) || ArrayUtils.isEmpty(searchStrings)) {
-            return false;
-        }
-        for (final CharSequence searchString : searchStrings) {
-            if (endsWith(sequence, searchString)) {
-                return true;
-            }
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -755,14 +627,7 @@ public abstract class Strings {
      *         null or contains no matches.
      */
     public boolean equalsAny(final CharSequence string, final CharSequence... searchStrings) {
-        if (ArrayUtils.isNotEmpty(searchStrings)) {
-            for (final CharSequence next : searchStrings) {
-                if (equals(string, next)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -805,7 +670,7 @@ public abstract class Strings {
      * @return the first index of the search CharSequence, -1 if no match or {@code null} string input
      */
     public int indexOf(final CharSequence seq, final CharSequence searchSeq) {
-        return indexOf(seq, searchSeq, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -865,7 +730,7 @@ public abstract class Strings {
      * @return whether to ignore case.
      */
     public boolean isCaseSensitive() {
-        return !ignoreCase;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -874,7 +739,7 @@ public abstract class Strings {
      * @return whether null is less when comparing.
      */
     boolean isNullIsLess() {
-        return nullIsLess;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -914,10 +779,7 @@ public abstract class Strings {
      * @return the last index of the search String, -1 if no match or {@code null} string input
      */
     public int lastIndexOf(final CharSequence str, final CharSequence searchStr) {
-        if (str == null) {
-            return INDEX_NOT_FOUND;
-        }
-        return lastIndexOf(str, searchStr, str.length());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1037,17 +899,7 @@ public abstract class Strings {
      * @return A new String if prefix was prepended, the same string otherwise.
      */
     public String prependIfMissing(final String str, final CharSequence prefix, final CharSequence... prefixes) {
-        if (str == null || StringUtils.isEmpty(prefix) || startsWith(str, prefix)) {
-            return str;
-        }
-        if (ArrayUtils.isNotEmpty(prefixes)) {
-            for (final CharSequence p : prefixes) {
-                if (startsWith(str, p)) {
-                    return str;
-                }
-            }
-        }
-        return prefix + str;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1091,7 +943,7 @@ public abstract class Strings {
      * @return the substring with the string removed if found, {@code null} if null String input
      */
     public String remove(final String str, final String remove) {
-        return replace(str, remove, StringUtils.EMPTY, -1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1136,13 +988,7 @@ public abstract class Strings {
      * @return the substring with the string removed if found, {@code null} if null String input
      */
     public String removeEnd(final String str, final CharSequence remove) {
-        if (StringUtils.isEmpty(str) || StringUtils.isEmpty(remove)) {
-            return str;
-        }
-        if (endsWith(str, remove)) {
-            return str.substring(0, str.length() - remove.length());
-        }
-        return str;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1186,10 +1032,7 @@ public abstract class Strings {
      * @return the substring with the string removed if found, {@code null} if null String input
      */
     public String removeStart(final String str, final CharSequence remove) {
-        if (str != null && startsWith(str, remove)) {
-            return str.substring(StringUtils.length(remove));
-        }
-        return str;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1235,7 +1078,7 @@ public abstract class Strings {
      * @return the text with any replacements processed, {@code null} if null String input
      */
     public String replace(final String text, final String searchString, final String replacement) {
-        return replace(text, searchString, replacement, -1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1289,31 +1132,7 @@ public abstract class Strings {
      * @return the text with any replacements processed, {@code null} if null String input
      */
     public String replace(final String text, String searchString, final String replacement, int max) {
-        if (StringUtils.isEmpty(text) || StringUtils.isEmpty(searchString) || replacement == null || max == 0) {
-            return text;
-        }
-        if (ignoreCase) {
-            searchString = searchString.toLowerCase();
-        }
-        int start = 0;
-        int end = indexOf(text, searchString, start);
-        if (end == INDEX_NOT_FOUND) {
-            return text;
-        }
-        final int replLength = searchString.length();
-        int increase = Math.max(replacement.length() - replLength, 0);
-        increase *= max < 0 ? 16 : Math.min(max, 64);
-        final StringBuilder buf = new StringBuilder(text.length() + increase);
-        while (end != INDEX_NOT_FOUND) {
-            buf.append(text, start, end).append(replacement);
-            start = end + replLength;
-            if (--max == 0) {
-                break;
-            }
-            end = indexOf(text, searchString, start);
-        }
-        buf.append(text, start, text.length());
-        return buf.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1361,7 +1180,7 @@ public abstract class Strings {
      * @return the text with any replacements processed, {@code null} if null String input
      */
     public String replaceOnce(final String text, final String searchString, final String replacement) {
-        return replace(text, searchString, replacement, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1401,14 +1220,7 @@ public abstract class Strings {
      * @return {@code true} if the CharSequence starts with the prefix, case-sensitive, or both {@code null}
      */
     public boolean startsWith(final CharSequence str, final CharSequence prefix) {
-        if (str == null || prefix == null) {
-            return str == prefix;
-        }
-        final int preLen = prefix.length();
-        if (preLen > str.length()) {
-            return false;
-        }
-        return CharSequenceUtils.regionMatches(str, ignoreCase, 0, prefix, 0, preLen);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1451,15 +1263,6 @@ public abstract class Strings {
      *         any of the provided {@code searchStrings}.
      */
     public boolean startsWithAny(final CharSequence sequence, final CharSequence... searchStrings) {
-        if (StringUtils.isEmpty(sequence) || ArrayUtils.isEmpty(searchStrings)) {
-            return false;
-        }
-        for (final CharSequence searchString : searchStrings) {
-            if (startsWith(sequence, searchString)) {
-                return true;
-            }
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

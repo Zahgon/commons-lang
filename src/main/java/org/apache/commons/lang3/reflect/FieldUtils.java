@@ -25,7 +25,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.JavaVersion;
@@ -56,7 +55,7 @@ public class FieldUtils {
      * @since 3.2
      */
     public static Field[] getAllFields(final Class<?> cls) {
-        return getAllFieldsList(cls).toArray(ArrayUtils.EMPTY_FIELD_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -70,14 +69,7 @@ public class FieldUtils {
      * @since 3.2
      */
     public static List<Field> getAllFieldsList(final Class<?> cls) {
-        Objects.requireNonNull(cls, "cls");
-        final List<Field> allFields = new ArrayList<>();
-        Class<?> currentClass = cls;
-        while (currentClass != null) {
-            Collections.addAll(allFields, currentClass.getDeclaredFields());
-            currentClass = currentClass.getSuperclass();
-        }
-        return allFields;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -96,7 +88,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Field getDeclaredField(final Class<?> cls, final String fieldName) {
-        return getDeclaredField(cls, fieldName, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -120,22 +112,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Field getDeclaredField(final Class<?> cls, final String fieldName, final boolean forceAccess) {
-        Objects.requireNonNull(cls, "cls");
-        Validate.isTrue(StringUtils.isNotBlank(fieldName), "The field name must not be blank/empty");
-        try {
-            // only consider the specified class by using getDeclaredField()
-            final Field field = cls.getDeclaredField(fieldName);
-            if (!MemberUtils.isAccessible(field)) {
-                if (!forceAccess) {
-                    return null;
-                }
-                field.setAccessible(true);
-            }
-            return field;
-        } catch (final NoSuchFieldException ignored) {
-            // ignore
-        }
-        return null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -154,7 +131,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Field getField(final Class<?> cls, final String fieldName) {
-        return MemberUtils.setAccessibleWorkaround(getField(cls, fieldName, false));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -177,54 +154,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Field getField(final Class<?> cls, final String fieldName, final boolean forceAccess) {
-        Objects.requireNonNull(cls, "cls");
-        Validate.isTrue(StringUtils.isNotBlank(fieldName), "The field name must not be blank/empty");
-        // FIXME is this workaround still needed? lang requires Java 6
-        // Sun Java 1.3 has a bugged implementation of getField hence we write the
-        // code ourselves
-
-        // getField() will return the Field object with the declaring class
-        // set correctly to the class that declares the field. Thus requesting the
-        // field on a subclass will return the field from the superclass.
-        //
-        // priority order for lookup:
-        // searchclass private/protected/package/public
-        // superclass protected/package/public
-        // private/different package blocks access to further superclasses
-        // implementedinterface public
-
-        // check up the superclass hierarchy
-        for (Class<?> acls = cls; acls != null; acls = acls.getSuperclass()) {
-            try {
-                final Field field = acls.getDeclaredField(fieldName);
-                // getDeclaredField checks for non-public scopes as well
-                // and it returns accurate results
-                if (!MemberUtils.isPublic(field)) {
-                    if (!forceAccess) {
-                        continue;
-                    }
-                    field.setAccessible(true);
-                }
-                return field;
-            } catch (final NoSuchFieldException ignored) {
-                // ignore
-            }
-        }
-        // check the public interface case. This must be manually searched for
-        // incase there is a public supersuperclass field hidden by a private/package
-        // superclass field.
-        Field match = null;
-        for (final Class<?> class1 : ClassUtils.getAllInterfaces(cls)) {
-            try {
-                final Field test = class1.getField(fieldName);
-                Validate.isTrue(match == null,
-                        "Reference to field %s is ambiguous relative to %s; a matching field exists on two or more implemented interfaces.", fieldName, cls);
-                match = test;
-            } catch (final NoSuchFieldException ignored) {
-                // ignore
-            }
-        }
-        return match;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -240,8 +170,7 @@ public class FieldUtils {
      * @since 3.4
      */
     public static List<Field> getFieldsListWithAnnotation(final Class<?> cls, final Class<? extends Annotation> annotationCls) {
-        Objects.requireNonNull(annotationCls, "annotationCls");
-        return getAllFieldsList(cls).stream().filter(field -> field.getAnnotation(annotationCls) != null).collect(Collectors.toList());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -257,7 +186,7 @@ public class FieldUtils {
      * @since 3.4
      */
     public static Field[] getFieldsWithAnnotation(final Class<?> cls, final Class<? extends Annotation> annotationCls) {
-        return getFieldsListWithAnnotation(cls, annotationCls).toArray(ArrayUtils.EMPTY_FIELD_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -278,7 +207,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Object readDeclaredField(final Object target, final String fieldName) throws IllegalAccessException {
-        return readDeclaredField(target, fieldName, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -303,12 +232,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Object readDeclaredField(final Object target, final String fieldName, final boolean forceAccess) throws IllegalAccessException {
-        Objects.requireNonNull(target, "target");
-        final Class<?> cls = target.getClass();
-        final Field field = getDeclaredField(cls, fieldName, forceAccess);
-        Validate.isTrue(field != null, "Cannot locate declared field %s.%s", cls, fieldName);
-        // already forced access above, don't repeat it here:
-        return readField(field, target, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -330,7 +254,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Object readDeclaredStaticField(final Class<?> cls, final String fieldName) throws IllegalAccessException {
-        return readDeclaredStaticField(cls, fieldName, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -355,10 +279,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Object readDeclaredStaticField(final Class<?> cls, final String fieldName, final boolean forceAccess) throws IllegalAccessException {
-        final Field field = getDeclaredField(cls, fieldName, forceAccess);
-        Validate.notNull(field, "Cannot locate declared field %s.%s", cls.getName(), fieldName);
-        // already forced access above, don't repeat it here:
-        return readStaticField(field, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -377,7 +298,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Object readField(final Field field, final Object target) throws IllegalAccessException {
-        return readField(field, target, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -401,8 +322,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Object readField(final Field field, final Object target, final boolean forceAccess) throws IllegalAccessException {
-        Objects.requireNonNull(field, "field");
-        return setAccessible(field, forceAccess).get(target);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -423,7 +343,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Object readField(final Object target, final String fieldName) throws IllegalAccessException {
-        return readField(target, fieldName, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -448,12 +368,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Object readField(final Object target, final String fieldName, final boolean forceAccess) throws IllegalAccessException {
-        Objects.requireNonNull(target, "target");
-        final Class<?> cls = target.getClass();
-        final Field field = getField(cls, fieldName, forceAccess);
-        Validate.isTrue(field != null, "Cannot locate field %s on %s", fieldName, cls);
-        // already forced access above, don't repeat it here:
-        return readField(field, target, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -474,7 +389,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Object readStaticField(final Class<?> cls, final String fieldName) throws IllegalAccessException {
-        return readStaticField(cls, fieldName, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -499,10 +414,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Object readStaticField(final Class<?> cls, final String fieldName, final boolean forceAccess) throws IllegalAccessException {
-        final Field field = getField(cls, fieldName, forceAccess);
-        Validate.notNull(field, "Cannot locate field '%s' on %s", fieldName, cls);
-        // already forced access above, don't repeat it here:
-        return readStaticField(field, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -521,7 +433,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Object readStaticField(final Field field) throws IllegalAccessException {
-        return readStaticField(field, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -543,9 +455,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static Object readStaticField(final Field field, final boolean forceAccess) throws IllegalAccessException {
-        Objects.requireNonNull(field, "field");
-        Validate.isTrue(MemberUtils.isStatic(field), "The field '%s' is not static", field.getName());
-        return readField(field, (Object) null, forceAccess);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -560,7 +470,7 @@ public class FieldUtils {
      * @since 3.2
      */
     public static void removeFinalModifier(final Field field) {
-        removeFinalModifier(field, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -609,12 +519,7 @@ public class FieldUtils {
     }
 
     static Field setAccessible(final Field field, final boolean forceAccess) {
-        if (forceAccess && !field.isAccessible()) {
-            field.setAccessible(true);
-        } else {
-            MemberUtils.setAccessibleWorkaround(field);
-        }
-        return field;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -637,7 +542,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static void writeDeclaredField(final Object target, final String fieldName, final Object value) throws IllegalAccessException {
-        writeDeclaredField(target, fieldName, value, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -661,14 +566,8 @@ public class FieldUtils {
      * @throws SecurityException if an underlying accessible object's method denies the request.
      * @see SecurityManager#checkPermission
      */
-    public static void writeDeclaredField(final Object target, final String fieldName, final Object value, final boolean forceAccess)
-            throws IllegalAccessException {
-        Objects.requireNonNull(target, "target");
-        final Class<?> cls = target.getClass();
-        final Field field = getDeclaredField(cls, fieldName, forceAccess);
-        Validate.isTrue(field != null, "Cannot locate declared field %s.%s", cls.getName(), fieldName);
-        // already forced access above, don't repeat it here:
-        writeField(field, target, value, false);
+    public static void writeDeclaredField(final Object target, final String fieldName, final Object value, final boolean forceAccess) throws IllegalAccessException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -690,7 +589,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static void writeDeclaredStaticField(final Class<?> cls, final String fieldName, final Object value) throws IllegalAccessException {
-        writeDeclaredStaticField(cls, fieldName, value, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -714,12 +613,8 @@ public class FieldUtils {
      * @throws SecurityException if an underlying accessible object's method denies the request.
      * @see SecurityManager#checkPermission
      */
-    public static void writeDeclaredStaticField(final Class<?> cls, final String fieldName, final Object value, final boolean forceAccess)
-            throws IllegalAccessException {
-        final Field field = getDeclaredField(cls, fieldName, forceAccess);
-        Validate.notNull(field, "Cannot locate declared field %s.%s", cls.getName(), fieldName);
-        // already forced access above, don't repeat it here:
-        writeField(field, (Object) null, value, false);
+    public static void writeDeclaredStaticField(final Class<?> cls, final String fieldName, final Object value, final boolean forceAccess) throws IllegalAccessException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -741,7 +636,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static void writeField(final Field field, final Object target, final Object value) throws IllegalAccessException {
-        writeField(field, target, value, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -766,10 +661,8 @@ public class FieldUtils {
      * @throws SecurityException if an underlying accessible object's method denies the request.
      * @see SecurityManager#checkPermission
      */
-    public static void writeField(final Field field, final Object target, final Object value, final boolean forceAccess)
-            throws IllegalAccessException {
-        Objects.requireNonNull(field, "field");
-        setAccessible(field, forceAccess).set(target, value);
+    public static void writeField(final Field field, final Object target, final Object value, final boolean forceAccess) throws IllegalAccessException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -792,7 +685,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static void writeField(final Object target, final String fieldName, final Object value) throws IllegalAccessException {
-        writeField(target, fieldName, value, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -818,14 +711,8 @@ public class FieldUtils {
      * @throws SecurityException if an underlying accessible object's method denies the request.
      * @see SecurityManager#checkPermission
      */
-    public static void writeField(final Object target, final String fieldName, final Object value, final boolean forceAccess)
-            throws IllegalAccessException {
-        Objects.requireNonNull(target, "target");
-        final Class<?> cls = target.getClass();
-        final Field field = getField(cls, fieldName, forceAccess);
-        Validate.isTrue(field != null, "Cannot locate declared field %s.%s", cls.getName(), fieldName);
-        // already forced access above, don't repeat it here:
-        writeField(field, target, value, false);
+    public static void writeField(final Object target, final String fieldName, final Object value, final boolean forceAccess) throws IllegalAccessException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -848,7 +735,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static void writeStaticField(final Class<?> cls, final String fieldName, final Object value) throws IllegalAccessException {
-        writeStaticField(cls, fieldName, value, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -873,12 +760,8 @@ public class FieldUtils {
      * @throws SecurityException if an underlying accessible object's method denies the request.
      * @see SecurityManager#checkPermission
      */
-    public static void writeStaticField(final Class<?> cls, final String fieldName, final Object value, final boolean forceAccess)
-            throws IllegalAccessException {
-        final Field field = getField(cls, fieldName, forceAccess);
-        Validate.notNull(field, "Cannot locate field %s on %s", fieldName, cls);
-        // already forced access above, don't repeat it here:
-        writeStaticField(field, value, false);
+    public static void writeStaticField(final Class<?> cls, final String fieldName, final Object value, final boolean forceAccess) throws IllegalAccessException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -898,7 +781,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static void writeStaticField(final Field field, final Object value) throws IllegalAccessException {
-        writeStaticField(field, value, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -922,10 +805,7 @@ public class FieldUtils {
      * @see SecurityManager#checkPermission
      */
     public static void writeStaticField(final Field field, final Object value, final boolean forceAccess) throws IllegalAccessException {
-        Objects.requireNonNull(field, "field");
-        Validate.isTrue(MemberUtils.isStatic(field), "The field %s.%s is not static", field.getDeclaringClass().getName(),
-                field.getName());
-        writeField(field, (Object) null, value, forceAccess);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

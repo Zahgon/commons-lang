@@ -41,10 +41,13 @@ final class CharRange implements Iterable<Character>, Serializable {
      */
     private static final class CharacterIterator implements Iterator<Character> {
 
-        /** The current character */
+        /**
+         * The current character
+         */
         private char current;
 
         private final CharRange range;
+
         private boolean hasNext;
 
         /**
@@ -55,7 +58,6 @@ final class CharRange implements Iterable<Character>, Serializable {
         private CharacterIterator(final CharRange r) {
             range = r;
             hasNext = true;
-
             if (range.negated) {
                 if (range.start == 0) {
                     if (range.end == Character.MAX_VALUE) {
@@ -79,7 +81,7 @@ final class CharRange implements Iterable<Character>, Serializable {
          */
         @Override
         public boolean hasNext() {
-            return hasNext;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -89,12 +91,7 @@ final class CharRange implements Iterable<Character>, Serializable {
          */
         @Override
         public Character next() {
-            if (!hasNext) {
-                throw new NoSuchElementException();
-            }
-            final char cur = current;
-            prepareNext();
-            return Character.valueOf(cur);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -128,7 +125,7 @@ final class CharRange implements Iterable<Character>, Serializable {
          */
         @Override
         public void remove() {
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -140,7 +137,9 @@ final class CharRange implements Iterable<Character>, Serializable {
      */
     private static final long serialVersionUID = 2L;
 
-    /** Empty array. */
+    /**
+     * Empty array.
+     */
     static final CharRange[] EMPTY_ARRAY = {};
 
     /**
@@ -151,7 +150,7 @@ final class CharRange implements Iterable<Character>, Serializable {
      * @since 2.5
      */
     public static CharRange is(final char ch) {
-        return new CharRange(ch, ch, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -166,7 +165,7 @@ final class CharRange implements Iterable<Character>, Serializable {
      * @since 2.5
      */
     public static CharRange isIn(final char start, final char end) {
-        return new CharRange(start, end, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -180,7 +179,7 @@ final class CharRange implements Iterable<Character>, Serializable {
      * @since 2.5
      */
     public static CharRange isNot(final char ch) {
-        return new CharRange(ch, ch, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -198,19 +197,27 @@ final class CharRange implements Iterable<Character>, Serializable {
      * @since 2.5
      */
     public static CharRange isNotIn(final char start, final char end) {
-        return new CharRange(start, end, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** The first character, inclusive, in the range. */
+    /**
+     * The first character, inclusive, in the range.
+     */
     private final char start;
 
-    /** The last character, inclusive, in the range. */
+    /**
+     * The last character, inclusive, in the range.
+     */
     private final char end;
 
-    /** True if the range is everything except the characters specified. */
+    /**
+     * True if the range is everything except the characters specified.
+     */
     private final boolean negated;
 
-    /** Cached toString. */
+    /**
+     * Cached toString.
+     */
     private transient String iToString;
 
     /**
@@ -233,7 +240,6 @@ final class CharRange implements Iterable<Character>, Serializable {
             start = end;
             end = temp;
         }
-
         this.start = start;
         this.end = end;
         this.negated = negated;
@@ -246,7 +252,7 @@ final class CharRange implements Iterable<Character>, Serializable {
      * @return {@code true} if this range contains the input character.
      */
     public boolean contains(final char ch) {
-        return (ch >= start && ch <= end) != negated;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -258,17 +264,7 @@ final class CharRange implements Iterable<Character>, Serializable {
      * @throws NullPointerException if {@code null} input.
      */
     public boolean contains(final CharRange range) {
-        Objects.requireNonNull(range, "range");
-        if (negated) {
-            if (range.negated) {
-                return start >= range.start && end <= range.end;
-            }
-            return range.end < start || range.start > end;
-        }
-        if (range.negated) {
-            return start == 0 && end == Character.MAX_VALUE;
-        }
-        return start <= range.start && end >= range.end;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -280,14 +276,7 @@ final class CharRange implements Iterable<Character>, Serializable {
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof CharRange)) {
-            return false;
-        }
-        final CharRange other = (CharRange) obj;
-        return start == other.start && end == other.end && negated == other.negated;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -296,7 +285,7 @@ final class CharRange implements Iterable<Character>, Serializable {
      * @return the end char (inclusive).
      */
     public char getEnd() {
-        return this.end;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -305,7 +294,7 @@ final class CharRange implements Iterable<Character>, Serializable {
      * @return the start char (inclusive).
      */
     public char getStart() {
-        return this.start;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -315,7 +304,7 @@ final class CharRange implements Iterable<Character>, Serializable {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(end, negated, start);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -327,7 +316,7 @@ final class CharRange implements Iterable<Character>, Serializable {
      * @return {@code true} if negated.
      */
     public boolean isNegated() {
-        return negated;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -340,7 +329,7 @@ final class CharRange implements Iterable<Character>, Serializable {
      */
     @Override
     public Iterator<Character> iterator() {
-        return new CharacterIterator(this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -350,18 +339,6 @@ final class CharRange implements Iterable<Character>, Serializable {
      */
     @Override
     public String toString() {
-        if (iToString == null) {
-            final StringBuilder buf = new StringBuilder(4);
-            if (isNegated()) {
-                buf.append('^');
-            }
-            buf.append(start);
-            if (start != end) {
-                buf.append('-');
-                buf.append(end);
-            }
-            iToString = buf.toString();
-        }
-        return iToString;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

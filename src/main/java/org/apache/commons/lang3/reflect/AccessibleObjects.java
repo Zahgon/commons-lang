@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.reflect;
 
 import java.lang.reflect.AccessibleObject;
@@ -31,7 +30,7 @@ class AccessibleObjects {
      * @return The value of the object's {@code accessible} flag
      */
     static boolean isAccessible(final AccessibleObject accessibleObject) {
-        return accessibleObject == null || accessibleObject.isAccessible();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -42,10 +41,6 @@ class AccessibleObjects {
      * @return Whether {@link AccessibleObject#setAccessible(boolean)} was called.
      */
     static boolean setAccessible(final AccessibleObject accessibleObject) {
-        if (!isAccessible(accessibleObject)) {
-            accessibleObject.setAccessible(true);
-            return true;
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

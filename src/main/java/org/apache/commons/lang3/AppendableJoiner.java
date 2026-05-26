@@ -14,14 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3;
 
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.StringJoiner;
 import java.util.function.Supplier;
-
 import org.apache.commons.lang3.exception.UncheckedException;
 import org.apache.commons.lang3.function.FailableBiConsumer;
 
@@ -90,16 +88,24 @@ public final class AppendableJoiner<T> {
      */
     public static final class Builder<T> implements Supplier<AppendableJoiner<T>> {
 
-        /** The sequence of characters to be used at the beginning. */
+        /**
+         * The sequence of characters to be used at the beginning.
+         */
         private CharSequence prefix;
 
-        /** The sequence of characters to be used at the end. */
+        /**
+         * The sequence of characters to be used at the end.
+         */
         private CharSequence suffix;
 
-        /** The delimiter that separates each element. */
+        /**
+         * The delimiter that separates each element.
+         */
         private CharSequence delimiter;
 
-        /** The consumer used to render each element of type {@code T} onto an {@link Appendable}. */
+        /**
+         * The consumer used to render each element of type {@code T} onto an {@link Appendable}.
+         */
         private FailableBiConsumer<Appendable, T, IOException> appender;
 
         /**
@@ -114,7 +120,7 @@ public final class AppendableJoiner<T> {
          */
         @Override
         public AppendableJoiner<T> get() {
-            return new AppendableJoiner<>(prefix, suffix, delimiter, appender);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -124,8 +130,7 @@ public final class AppendableJoiner<T> {
          * @return {@code this} instance.
          */
         public Builder<T> setDelimiter(final CharSequence delimiter) {
-            this.delimiter = delimiter;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -135,8 +140,7 @@ public final class AppendableJoiner<T> {
          * @return {@code this} instance.
          */
         public Builder<T> setElementAppender(final FailableBiConsumer<Appendable, T, IOException> appender) {
-            this.appender = appender;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -146,8 +150,7 @@ public final class AppendableJoiner<T> {
          * @return {@code this} instance.
          */
         public Builder<T> setPrefix(final CharSequence prefix) {
-            this.prefix = prefix;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -157,10 +160,8 @@ public final class AppendableJoiner<T> {
          * @return {@code this} instance.
          */
         public Builder<T> setSuffix(final CharSequence suffix) {
-            this.suffix = suffix;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -170,18 +171,18 @@ public final class AppendableJoiner<T> {
      * @return a new builder.
      */
     public static <T> Builder<T> builder() {
-        return new Builder<>();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** Could be public in the future, in some form. */
+    /**
+     * Could be public in the future, in some form.
+     */
     @SafeVarargs
-    static <A extends Appendable, T> A joinA(final A appendable, final CharSequence prefix, final CharSequence suffix, final CharSequence delimiter,
-            final FailableBiConsumer<Appendable, T, IOException> appender, final T... elements) throws IOException {
-        return joinArray(appendable, prefix, suffix, delimiter, appender, elements);
+    static <A extends Appendable, T> A joinA(final A appendable, final CharSequence prefix, final CharSequence suffix, final CharSequence delimiter, final FailableBiConsumer<Appendable, T, IOException> appender, final T... elements) throws IOException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    private static <A extends Appendable, T> A joinArray(final A appendable, final CharSequence prefix, final CharSequence suffix, final CharSequence delimiter,
-            final FailableBiConsumer<Appendable, T, IOException> appender, final T[] elements) throws IOException {
+    private static <A extends Appendable, T> A joinArray(final A appendable, final CharSequence prefix, final CharSequence suffix, final CharSequence delimiter, final FailableBiConsumer<Appendable, T, IOException> appender, final T[] elements) throws IOException {
         appendable.append(prefix);
         if (elements != null) {
             if (elements.length > 0) {
@@ -196,19 +197,14 @@ public final class AppendableJoiner<T> {
         return appendable;
     }
 
-    /** Could be public in the future, in some form. */
-    static <T> StringBuilder joinI(final StringBuilder stringBuilder, final CharSequence prefix, final CharSequence suffix, final CharSequence delimiter,
-            final FailableBiConsumer<Appendable, T, IOException> appender, final Iterable<T> elements) {
-        try {
-            return joinIterable(stringBuilder, prefix, suffix, delimiter, appender, elements);
-        } catch (final IOException e) {
-            // Cannot happen with a StringBuilder.
-            throw new UncheckedException(e);
-        }
+    /**
+     * Could be public in the future, in some form.
+     */
+    static <T> StringBuilder joinI(final StringBuilder stringBuilder, final CharSequence prefix, final CharSequence suffix, final CharSequence delimiter, final FailableBiConsumer<Appendable, T, IOException> appender, final Iterable<T> elements) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    private static <A extends Appendable, T> A joinIterable(final A appendable, final CharSequence prefix, final CharSequence suffix,
-            final CharSequence delimiter, final FailableBiConsumer<Appendable, T, IOException> appender, final Iterable<T> elements) throws IOException {
+    private static <A extends Appendable, T> A joinIterable(final A appendable, final CharSequence prefix, final CharSequence suffix, final CharSequence delimiter, final FailableBiConsumer<Appendable, T, IOException> appender, final Iterable<T> elements) throws IOException {
         appendable.append(prefix);
         if (elements != null) {
             final Iterator<T> iterator = elements.iterator();
@@ -224,29 +220,31 @@ public final class AppendableJoiner<T> {
         return appendable;
     }
 
-    /** Could be public in the future, in some form. */
+    /**
+     * Could be public in the future, in some form.
+     */
     @SafeVarargs
-    static <T> StringBuilder joinSB(final StringBuilder stringBuilder, final CharSequence prefix, final CharSequence suffix, final CharSequence delimiter,
-            final FailableBiConsumer<Appendable, T, IOException> appender, final T... elements) {
-        try {
-            return joinArray(stringBuilder, prefix, suffix, delimiter, appender, elements);
-        } catch (final IOException e) {
-            // Cannot happen with a StringBuilder.
-            throw new UncheckedException(e);
-        }
+    static <T> StringBuilder joinSB(final StringBuilder stringBuilder, final CharSequence prefix, final CharSequence suffix, final CharSequence delimiter, final FailableBiConsumer<Appendable, T, IOException> appender, final T... elements) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static CharSequence nonNull(final CharSequence value) {
         return value != null ? value : StringUtils.EMPTY;
     }
 
-    /** The sequence of characters to be used at the beginning. */
+    /**
+     * The sequence of characters to be used at the beginning.
+     */
     private final CharSequence prefix;
 
-    /** The sequence of characters to be used at the end. */
+    /**
+     * The sequence of characters to be used at the end.
+     */
     private final CharSequence suffix;
 
-    /** The delimiter that separates each element. */
+    /**
+     * The delimiter that separates each element.
+     */
     private final CharSequence delimiter;
 
     private final FailableBiConsumer<Appendable, T, IOException> appender;
@@ -254,8 +252,7 @@ public final class AppendableJoiner<T> {
     /**
      * Constructs a new instance.
      */
-    private AppendableJoiner(final CharSequence prefix, final CharSequence suffix, final CharSequence delimiter,
-            final FailableBiConsumer<Appendable, T, IOException> appender) {
+    private AppendableJoiner(final CharSequence prefix, final CharSequence suffix, final CharSequence delimiter, final FailableBiConsumer<Appendable, T, IOException> appender) {
         this.prefix = nonNull(prefix);
         this.suffix = nonNull(suffix);
         this.delimiter = nonNull(delimiter);
@@ -270,7 +267,7 @@ public final class AppendableJoiner<T> {
      * @return The given StringBuilder.
      */
     public StringBuilder join(final StringBuilder stringBuilder, final Iterable<T> elements) {
-        return joinI(stringBuilder, prefix, suffix, delimiter, appender, elements);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -281,7 +278,7 @@ public final class AppendableJoiner<T> {
      * @return the given target StringBuilder.
      */
     public StringBuilder join(final StringBuilder stringBuilder, @SuppressWarnings("unchecked") final T... elements) {
-        return joinSB(stringBuilder, prefix, suffix, delimiter, appender, elements);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -294,7 +291,7 @@ public final class AppendableJoiner<T> {
      * @throws IOException If an I/O error occurs
      */
     public <A extends Appendable> A joinA(final A appendable, final Iterable<T> elements) throws IOException {
-        return joinIterable(appendable, prefix, suffix, delimiter, appender, elements);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -307,7 +304,6 @@ public final class AppendableJoiner<T> {
      * @throws IOException If an I/O error occurs
      */
     public <A extends Appendable> A joinA(final A appendable, @SuppressWarnings("unchecked") final T... elements) throws IOException {
-        return joinA(appendable, prefix, suffix, delimiter, appender, elements);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

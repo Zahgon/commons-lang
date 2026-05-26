@@ -107,13 +107,19 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
      */
     public static class MultiBackgroundInitializerResults {
 
-        /** A map with the child initializers. */
+        /**
+         * A map with the child initializers.
+         */
         private final Map<String, BackgroundInitializer<?>> initializers;
 
-        /** A map with the result objects. */
+        /**
+         * A map with the result objects.
+         */
         private final Map<String, Object> resultObjects;
 
-        /** A map with the exceptions. */
+        /**
+         * A map with the exceptions.
+         */
         private final Map<String, ConcurrentException> exceptions;
 
         /**
@@ -124,8 +130,7 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
          * @param resultObjects the result objects.
          * @param exceptions    the exceptions.
          */
-        private MultiBackgroundInitializerResults(final Map<String, BackgroundInitializer<?>> initializers, final Map<String, Object> resultObjects,
-                final Map<String, ConcurrentException> exceptions) {
+        private MultiBackgroundInitializerResults(final Map<String, BackgroundInitializer<?>> initializers, final Map<String, Object> resultObjects, final Map<String, ConcurrentException> exceptions) {
             this.initializers = initializers;
             this.resultObjects = resultObjects;
             this.exceptions = exceptions;
@@ -159,8 +164,7 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
          * @throws NoSuchElementException if the name cannot be resolved.
          */
         public ConcurrentException getException(final String name) {
-            checkName(name);
-            return exceptions.get(name);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -172,7 +176,7 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
          * @throws NoSuchElementException if the name cannot be resolved.
          */
         public BackgroundInitializer<?> getInitializer(final String name) {
-            return checkName(name);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -185,8 +189,7 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
          * @throws NoSuchElementException if the name cannot be resolved.
          */
         public Object getResultObject(final String name) {
-            checkName(name);
-            return resultObjects.get(name);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -195,7 +198,7 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
          * @return an (unmodifiable) set with the names of the managed {@code BackgroundInitializer} objects.
          */
         public Set<String> initializerNames() {
-            return Collections.unmodifiableSet(initializers.keySet());
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -207,8 +210,7 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
          * @throws NoSuchElementException if the name cannot be resolved.
          */
         public boolean isException(final String name) {
-            checkName(name);
-            return exceptions.containsKey(name);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -218,11 +220,13 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
          * @return a flag whether the initialization was successful.
          */
         public boolean isSuccessful() {
-            return exceptions.isEmpty();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
-    /** A map with the child initializers. */
+    /**
+     * A map with the child initializers.
+     */
     private final Map<String, BackgroundInitializer<?>> childInitializers = new HashMap<>();
 
     /**
@@ -251,14 +255,7 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
      * @throws IllegalStateException if {@code start()} has already been called.
      */
     public void addInitializer(final String name, final BackgroundInitializer<?> backgroundInitializer) {
-        Objects.requireNonNull(name, "name");
-        Objects.requireNonNull(backgroundInitializer, "backgroundInitializer");
-        synchronized (this) {
-            if (isStarted()) {
-                throw new IllegalStateException("addInitializer() must not be called after start().");
-            }
-            childInitializers.put(name, backgroundInitializer);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -270,26 +267,7 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
      */
     @Override
     public void close() throws ConcurrentException {
-        ConcurrentException exception = null;
-        for (final BackgroundInitializer<?> child : childInitializers.values()) {
-            try {
-                child.close();
-            } catch (final Exception e) {
-                if (exception == null) {
-                    exception = new ConcurrentException();
-                }
-                if (e instanceof ConcurrentException) {
-                    // Because ConcurrentException is only created by classes in this package
-                    // we can safely unwrap it.
-                    exception.addSuppressed(e.getCause());
-                } else {
-                    exception.addSuppressed(e);
-                }
-            }
-        }
-        if (exception != null) {
-            throw exception;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -304,7 +282,7 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
      */
     @Override
     protected int getTaskCount() {
-        return 1 + childInitializers.values().stream().mapToInt(BackgroundInitializer::getTaskCount).sum();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -319,31 +297,7 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
      */
     @Override
     protected MultiBackgroundInitializerResults initialize() throws Exception {
-        final Map<String, BackgroundInitializer<?>> inits;
-        synchronized (this) {
-            // create a snapshot to operate on
-            inits = new HashMap<>(childInitializers);
-        }
-        // start the child initializers
-        final ExecutorService exec = getActiveExecutor();
-        inits.values().forEach(bi -> {
-            if (bi.getExternalExecutor() == null) {
-                // share the executor service if necessary
-                bi.setExternalExecutor(exec);
-            }
-            bi.start();
-        });
-        // collect the results
-        final Map<String, Object> results = new HashMap<>();
-        final Map<String, ConcurrentException> excepts = new HashMap<>();
-        inits.forEach((k, v) -> {
-            try {
-                results.put(k, v.get());
-            } catch (final ConcurrentException cex) {
-                excepts.put(k, cex);
-            }
-        });
-        return new MultiBackgroundInitializerResults(inits, results, excepts);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -355,9 +309,6 @@ public class MultiBackgroundInitializer extends BackgroundInitializer<MultiBackg
      */
     @Override
     public boolean isInitialized() {
-        if (childInitializers.isEmpty()) {
-            return false;
-        }
-        return childInitializers.values().stream().allMatch(BackgroundInitializer::isInitialized);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

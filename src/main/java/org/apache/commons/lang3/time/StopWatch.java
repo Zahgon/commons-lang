@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.time;
 
 import java.time.Duration;
@@ -25,7 +24,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.function.FailableConsumer;
 import org.apache.commons.lang3.function.FailableRunnable;
@@ -96,7 +94,7 @@ public class StopWatch {
          * @return The duration of this split.
          */
         public Duration getDuration() {
-            return getRight();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -105,7 +103,7 @@ public class StopWatch {
          * @return The label of this split.
          */
         public String getLabel() {
-            return getLeft();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -115,7 +113,7 @@ public class StopWatch {
          */
         @Override
         public String toString() {
-            return String.format("Split [%s, %s])", getLabel(), getDuration());
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -123,6 +121,7 @@ public class StopWatch {
      * Enumerates the split states of a StopWatch.
      */
     private enum SplitState {
+
         SPLIT, UNSPLIT
     }
 
@@ -132,72 +131,74 @@ public class StopWatch {
     private enum State {
 
         RUNNING {
+
             @Override
             boolean isStarted() {
-                return true;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             @Override
             boolean isStopped() {
-                return false;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             @Override
             boolean isSuspended() {
-                return false;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
-        },
+        }
+        , STOPPED {
 
-        STOPPED {
             @Override
             boolean isStarted() {
-                return false;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             @Override
             boolean isStopped() {
-                return true;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             @Override
             boolean isSuspended() {
-                return false;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
-        },
+        }
+        , SUSPENDED {
 
-        SUSPENDED {
             @Override
             boolean isStarted() {
-                return true;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             @Override
             boolean isStopped() {
-                return false;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             @Override
             boolean isSuspended() {
-                return true;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
-        },
+        }
+        , UNSTARTED {
 
-        UNSTARTED {
             @Override
             boolean isStarted() {
-                return false;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             @Override
             boolean isStopped() {
-                return true;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
 
             @Override
             boolean isSuspended() {
-                return false;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
-        };
+        }
+        ;
 
         /**
          * Tests whether this StopWatch is started. A suspended StopWatch is also started.
@@ -230,7 +231,7 @@ public class StopWatch {
      * @since 3.10
      */
     public static StopWatch create() {
-        return new StopWatch();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -240,9 +241,7 @@ public class StopWatch {
      * @since 3.5
      */
     public static StopWatch createStarted() {
-        final StopWatch sw = new StopWatch();
-        sw.start();
-        return sw;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -327,7 +326,7 @@ public class StopWatch {
      * @since 3.10
      */
     public String formatSplitTime() {
-        return DurationFormatUtils.formatDurationHMS(DurationUtils.toMillisInt(getSplitDuration()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -337,7 +336,7 @@ public class StopWatch {
      * @since 3.10
      */
     public String formatTime() {
-        return DurationFormatUtils.formatDurationHMS(getTime());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -349,12 +348,7 @@ public class StopWatch {
      * @since 3.18.0
      */
     public <T> T get(final Supplier<T> supplier) {
-        startResume();
-        try {
-            return supplier.get();
-        } finally {
-            suspend();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -368,7 +362,7 @@ public class StopWatch {
      * @since 3.16.0
      */
     public Duration getDuration() {
-        return Duration.ofNanos(getNanoTime());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -378,7 +372,7 @@ public class StopWatch {
      * @since 3.10
      */
     public String getMessage() {
-        return message;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -393,18 +387,7 @@ public class StopWatch {
      * @since 3.0
      */
     public long getNanoTime() {
-        switch (runningState) {
-        case STOPPED:
-        case SUSPENDED:
-            return stopTimeNanos - startTimeNanos;
-        case UNSTARTED:
-            return 0;
-        case RUNNING:
-            return System.nanoTime() - startTimeNanos;
-        default:
-            break;
-        }
-        throw new IllegalStateException("Illegal running state has occurred.");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -419,7 +402,7 @@ public class StopWatch {
      * @since 3.16.0
      */
     public Duration getSplitDuration() {
-        return Duration.ofNanos(getSplitNanoTime());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -434,10 +417,7 @@ public class StopWatch {
      * @since 3.0
      */
     public long getSplitNanoTime() {
-        if (splitState != SplitState.SPLIT) {
-            throw new IllegalStateException("Stopwatch must be split to get the split time.");
-        }
-        return splits.get(splits.size() - 1).getRight().toNanos();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -447,7 +427,7 @@ public class StopWatch {
      * @since 3.20.0
      */
     public List<Split> getSplits() {
-        return Collections.unmodifiableList(splits);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -475,10 +455,7 @@ public class StopWatch {
      * @since 3.16.0
      */
     public Instant getStartInstant() {
-        if (runningState == State.UNSTARTED) {
-            throw new IllegalStateException("Stopwatch has not been started");
-        }
-        return startInstant;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -502,10 +479,7 @@ public class StopWatch {
      * @since 3.16.0
      */
     public Instant getStopInstant() {
-        if (runningState == State.UNSTARTED) {
-            throw new IllegalStateException("Stopwatch has not been started");
-        }
-        return stopInstant;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -534,12 +508,7 @@ public class StopWatch {
      * @since 3.18.0
      */
     public <T, E extends Throwable> T getT(final FailableSupplier<T, E> supplier) throws Throwable {
-        startResume();
-        try {
-            return supplier.get();
-        } finally {
-            suspend();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -553,7 +522,7 @@ public class StopWatch {
      * @see #getDuration()
      */
     public long getTime() {
-        return nanosToMillis(getNanoTime());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -570,7 +539,7 @@ public class StopWatch {
      * @since 3.5
      */
     public long getTime(final TimeUnit timeUnit) {
-        return timeUnit.convert(getNanoTime(), TimeUnit.NANOSECONDS);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -580,7 +549,7 @@ public class StopWatch {
      * @since 3.2
      */
     public boolean isStarted() {
-        return runningState.isStarted();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -590,7 +559,7 @@ public class StopWatch {
      * @since 3.2
      */
     public boolean isStopped() {
-        return runningState.isStopped();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -600,7 +569,7 @@ public class StopWatch {
      * @since 3.2
      */
     public boolean isSuspended() {
-        return runningState.isSuspended();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -621,9 +590,7 @@ public class StopWatch {
      * </p>
      */
     public void reset() {
-        runningState = State.UNSTARTED;
-        splitState = SplitState.UNSPLIT;
-        splits.clear();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -636,11 +603,7 @@ public class StopWatch {
      * @throws IllegalStateException if this StopWatch has not been suspended.
      */
     public void resume() {
-        if (runningState != State.SUSPENDED) {
-            throw new IllegalStateException("Stopwatch must be suspended to resume.");
-        }
-        startTimeNanos += System.nanoTime() - stopTimeNanos;
-        runningState = State.RUNNING;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -650,12 +613,7 @@ public class StopWatch {
      * @since 3.18.0
      */
     public void run(final Runnable runnable) {
-        startResume();
-        try {
-            runnable.run();
-        } finally {
-            suspend();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -667,12 +625,7 @@ public class StopWatch {
      * @since 3.18.0
      */
     public <E extends Throwable> void runT(final FailableRunnable<E> runnable) throws Throwable {
-        startResume();
-        try {
-            runnable.run();
-        } finally {
-            suspend();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -686,12 +639,7 @@ public class StopWatch {
      * @throws IllegalStateException if this StopWatch is not running.
      */
     public void split() {
-        if (runningState != State.RUNNING) {
-            throw new IllegalStateException("Stopwatch is not running.");
-        }
-        stopSet();
-        splitState = SplitState.SPLIT;
-        splits.add(new Split(String.valueOf(splits.size()), Duration.ofNanos(stopTimeNanos - startTimeNanos)));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -707,12 +655,7 @@ public class StopWatch {
      * @since 3.20.0
      */
     public void split(final String label) {
-        if (runningState != State.RUNNING) {
-            throw new IllegalStateException("Stopwatch is not running.");
-        }
-        stopSet();
-        splitState = SplitState.SPLIT;
-        splits.add(new Split(label, Duration.ofNanos(stopTimeNanos - startTimeNanos)));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -725,16 +668,7 @@ public class StopWatch {
      * @throws IllegalStateException if this StopWatch is already running.
      */
     public void start() {
-        if (runningState == State.STOPPED) {
-            throw new IllegalStateException("Stopwatch must be reset before being restarted.");
-        }
-        if (runningState != State.UNSTARTED) {
-            throw new IllegalStateException("Stopwatch already started.");
-        }
-        startTimeNanos = System.nanoTime();
-        startInstant = Instant.now();
-        runningState = State.RUNNING;
-        splits.clear();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -758,13 +692,7 @@ public class StopWatch {
      * @throws IllegalStateException if this StopWatch is not running.
      */
     public void stop() {
-        if (runningState != State.RUNNING && runningState != State.SUSPENDED) {
-            throw new IllegalStateException("Stopwatch is not running.");
-        }
-        if (runningState == State.RUNNING) {
-            stopSet();
-        }
-        runningState = State.STOPPED;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void stopSet() {
@@ -782,11 +710,7 @@ public class StopWatch {
      * @throws IllegalStateException if this StopWatch is not currently running.
      */
     public void suspend() {
-        if (runningState != State.RUNNING) {
-            throw new IllegalStateException("Stopwatch must be running to suspend.");
-        }
-        stopSet();
-        runningState = State.SUSPENDED;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -801,9 +725,7 @@ public class StopWatch {
      * @since 3.10 Returns the prefix {@code "message "} if the message is set.
      */
     public String toSplitString() {
-        final String msgStr = Objects.toString(message, StringUtils.EMPTY);
-        final String formattedTime = formatSplitTime();
-        return msgStr.isEmpty() ? formattedTime : msgStr + StringUtils.SPACE + formattedTime;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -818,9 +740,7 @@ public class StopWatch {
      */
     @Override
     public String toString() {
-        final String msgStr = Objects.toString(message, StringUtils.EMPTY);
-        final String formattedTime = formatTime();
-        return msgStr.isEmpty() ? formattedTime : msgStr + StringUtils.SPACE + formattedTime;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -833,10 +753,6 @@ public class StopWatch {
      * @throws IllegalStateException if this StopWatch has not been split.
      */
     public void unsplit() {
-        if (splitState != SplitState.SPLIT) {
-            throw new IllegalStateException("Stopwatch has not been split.");
-        }
-        splitState = SplitState.UNSPLIT;
-        splits.remove(splits.size() - 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

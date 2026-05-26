@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.function.ToIntBiFunction;
@@ -30,7 +29,9 @@ import java.util.function.ToIntBiFunction;
 @FunctionalInterface
 public interface FailableToIntBiFunction<T, U, E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableToIntBiFunction NOP = (t, u) -> 0;
 
@@ -44,7 +45,7 @@ public interface FailableToIntBiFunction<T, U, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, U, E extends Throwable> FailableToIntBiFunction<T, U, E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

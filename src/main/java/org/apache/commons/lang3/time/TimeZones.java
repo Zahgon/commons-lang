@@ -14,12 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.time;
 
 import java.time.ZoneId;
 import java.util.TimeZone;
-
 import org.apache.commons.lang3.ArraySorter;
 import org.apache.commons.lang3.JavaVersion;
 import org.apache.commons.lang3.ObjectUtils;
@@ -74,7 +72,7 @@ public class TimeZones {
      * @since 3.20.0
      */
     public static TimeZone getTimeZone(final String id) {
-        return TimeZone.getTimeZone(JAVA_25 && mapShortIDs() ? ZoneId.SHORT_IDS.getOrDefault(id, id) : id);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static boolean mapShortIDs() {
@@ -89,10 +87,12 @@ public class TimeZones {
      * @since 3.13.0
      */
     public static TimeZone toTimeZone(final TimeZone timeZone) {
-        return ObjectUtils.getIfNull(timeZone, TimeZone::getDefault);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** Do not instantiate. */
+    /**
+     * Do not instantiate.
+     */
     private TimeZones() {
     }
 }

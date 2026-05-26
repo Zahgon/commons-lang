@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.util;
 
 import java.util.ArrayList;
@@ -24,7 +23,6 @@ import java.util.Objects;
 import java.util.StringTokenizer;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-
 import org.apache.commons.lang3.ArrayUtils;
 
 /**
@@ -69,18 +67,7 @@ public class IterableStringTokenizer extends StringTokenizer implements Iterable
 
     @Override
     public Iterator<String> iterator() {
-        return new Iterator<String>() {
-
-            @Override
-            public boolean hasNext() {
-                return hasMoreElements();
-            }
-
-            @Override
-            public String next() {
-                return Objects.toString(nextElement(), null);
-            }
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -89,7 +76,7 @@ public class IterableStringTokenizer extends StringTokenizer implements Iterable
      * @return a new {@code String[]}.
      */
     public String[] toArray() {
-        return toList().toArray(ArrayUtils.EMPTY_STRING_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -98,9 +85,7 @@ public class IterableStringTokenizer extends StringTokenizer implements Iterable
      * @return a new {@link List}.
      */
     public List<String> toList() {
-        final List<String> list = new ArrayList<>();
-        forEach(list::add);
-        return list;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -109,6 +94,6 @@ public class IterableStringTokenizer extends StringTokenizer implements Iterable
      * @return a sequential stream on this Iterable instance.
      */
     public Stream<String> toStream() {
-        return StreamSupport.stream(spliterator(), false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

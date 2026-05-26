@@ -37,8 +37,9 @@ import java.util.Objects;
  */
 public class Range<T> implements Serializable {
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     private enum ComparableComparator implements Comparator {
+
         INSTANCE;
 
         /**
@@ -50,7 +51,7 @@ public class Range<T> implements Serializable {
          */
         @Override
         public int compare(final Object obj1, final Object obj2) {
-            return ((Comparable) obj1).compareTo(obj2);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -127,7 +128,7 @@ public class Range<T> implements Serializable {
      * @throws ClassCastException if the element is not {@link Comparable}.
      */
     public static <T extends Comparable<? super T>> Range<T> is(final T element) {
-        return of(element, element, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -145,7 +146,7 @@ public class Range<T> implements Serializable {
      * @throws ClassCastException if using natural ordering and the elements are not {@link Comparable}.
      */
     public static <T> Range<T> is(final T element, final Comparator<T> comparator) {
-        return of(element, element, comparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -166,7 +167,7 @@ public class Range<T> implements Serializable {
      * @since 3.13.0
      */
     public static <T extends Comparable<? super T>> Range<T> of(final T fromInclusive, final T toInclusive) {
-        return of(fromInclusive, toInclusive, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -189,7 +190,7 @@ public class Range<T> implements Serializable {
      * @since 3.13.0
      */
     public static <T> Range<T> of(final T fromInclusive, final T toInclusive, final Comparator<T> comparator) {
-        return new Range<>(fromInclusive, toInclusive, comparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -252,10 +253,7 @@ public class Range<T> implements Serializable {
      * @return true if the specified element occurs within this range.
      */
     public boolean contains(final T element) {
-        if (element == null) {
-            return false;
-        }
-        return comparator.compare(element, minimum) > -1 && comparator.compare(element, maximum) < 1;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -268,11 +266,7 @@ public class Range<T> implements Serializable {
      * @throws RuntimeException if ranges cannot be compared.
      */
     public boolean containsRange(final Range<T> otherRange) {
-        if (otherRange == null) {
-            return false;
-        }
-        return contains(otherRange.minimum)
-            && contains(otherRange.maximum);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -287,15 +281,7 @@ public class Range<T> implements Serializable {
      * @throws NullPointerException if {@code element} is {@code null}.
      */
     public int elementCompareTo(final T element) {
-        // Comparable API says throw NPE on null
-        Objects.requireNonNull(element, "element");
-        if (isAfter(element)) {
-            return -1;
-        }
-        if (isBefore(element)) {
-            return 1;
-        }
-        return 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -309,17 +295,7 @@ public class Range<T> implements Serializable {
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj == null || obj.getClass() != getClass()) {
-            return false;
-        }
-        @SuppressWarnings("unchecked") // OK because we checked the class above
-        final
-        Range<T> range = (Range<T>) obj;
-        return minimum.equals(range.minimum) &&
-               maximum.equals(range.maximum);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -345,15 +321,7 @@ public class Range<T> implements Serializable {
      * @since 3.10
      */
     public T fit(final T element) {
-        // Comparable API says throw NPE on null
-        Objects.requireNonNull(element, "element");
-        if (isAfter(element)) {
-            return minimum;
-        }
-        if (isBefore(element)) {
-            return maximum;
-        }
-        return element;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -365,7 +333,7 @@ public class Range<T> implements Serializable {
      * @return the comparator being used, not null.
      */
     public Comparator<T> getComparator() {
-        return comparator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -374,7 +342,7 @@ public class Range<T> implements Serializable {
      * @return the maximum value in this range, not null.
      */
     public T getMaximum() {
-        return maximum;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -383,7 +351,7 @@ public class Range<T> implements Serializable {
      * @return the minimum value in this range, not null.
      */
     public T getMinimum() {
-        return minimum;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -393,7 +361,7 @@ public class Range<T> implements Serializable {
      */
     @Override
     public int hashCode() {
-        return hashCode;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -405,16 +373,7 @@ public class Range<T> implements Serializable {
      * @since 3.0.1
      */
     public Range<T> intersectionWith(final Range<T> other) {
-        if (!this.isOverlappedBy(other)) {
-            throw new IllegalArgumentException(String.format(
-                "Cannot calculate intersection with non-overlapping range %s", other));
-        }
-        if (this.equals(other)) {
-            return this;
-        }
-        final T min = getComparator().compare(minimum, other.minimum) < 0 ? other.minimum : minimum;
-        final T max = getComparator().compare(maximum, other.maximum) < 0 ? maximum : other.maximum;
-        return of(min, max, getComparator());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -424,10 +383,7 @@ public class Range<T> implements Serializable {
      * @return true if this range is entirely after the specified element.
      */
     public boolean isAfter(final T element) {
-        if (element == null) {
-            return false;
-        }
-        return comparator.compare(element, minimum) < 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -440,10 +396,7 @@ public class Range<T> implements Serializable {
      * @throws RuntimeException if ranges cannot be compared.
      */
     public boolean isAfterRange(final Range<T> otherRange) {
-        if (otherRange == null) {
-            return false;
-        }
-        return isAfter(otherRange.maximum);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -453,10 +406,7 @@ public class Range<T> implements Serializable {
      * @return true if this range is entirely before the specified element.
      */
     public boolean isBefore(final T element) {
-        if (element == null) {
-            return false;
-        }
-        return comparator.compare(element, maximum) > 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -469,10 +419,7 @@ public class Range<T> implements Serializable {
      * @throws RuntimeException if ranges cannot be compared.
      */
     public boolean isBeforeRange(final Range<T> otherRange) {
-        if (otherRange == null) {
-            return false;
-        }
-        return isBefore(otherRange.minimum);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -482,10 +429,7 @@ public class Range<T> implements Serializable {
      * @return true if the specified element occurs within this range.
      */
     public boolean isEndedBy(final T element) {
-        if (element == null) {
-            return false;
-        }
-        return comparator.compare(element, maximum) == 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -497,7 +441,7 @@ public class Range<T> implements Serializable {
      * @return true if using natural ordering.
      */
     public boolean isNaturalOrdering() {
-        return comparator == ComparableComparator.INSTANCE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -513,12 +457,7 @@ public class Range<T> implements Serializable {
      * @throws RuntimeException if ranges cannot be compared.
      */
     public boolean isOverlappedBy(final Range<T> otherRange) {
-        if (otherRange == null) {
-            return false;
-        }
-        return otherRange.contains(minimum)
-            || otherRange.contains(maximum)
-            || contains(otherRange.minimum);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -528,10 +467,7 @@ public class Range<T> implements Serializable {
      * @return true if the specified element occurs within this range.
      */
     public boolean isStartedBy(final T element) {
-        if (element == null) {
-            return false;
-        }
-        return comparator.compare(element, minimum) == 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -570,10 +506,7 @@ public class Range<T> implements Serializable {
      */
     @Override
     public String toString() {
-        if (toString == null) {
-            toString = "[" + minimum + ".." + maximum + "]";
-        }
-        return toString;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -589,7 +522,6 @@ public class Range<T> implements Serializable {
      * @return the formatted string, not null.
      */
     public String toString(final String format) {
-        return String.format(format, minimum, maximum, comparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

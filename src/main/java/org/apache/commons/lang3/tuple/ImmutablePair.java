@@ -51,7 +51,9 @@ public class ImmutablePair<L, R> extends Pair<L, R> {
     @SuppressWarnings("rawtypes")
     private static final ImmutablePair NULL = new ImmutablePair<>(null, null);
 
-    /** Serialization version */
+    /**
+     * Serialization version
+     */
     private static final long serialVersionUID = 4954918890077093841L;
 
     /**
@@ -64,7 +66,7 @@ public class ImmutablePair<L, R> extends Pair<L, R> {
      */
     @SuppressWarnings("unchecked")
     public static <L, R> ImmutablePair<L, R>[] emptyArray() {
-        return (ImmutablePair<L, R>[]) EMPTY_ARRAY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -77,7 +79,7 @@ public class ImmutablePair<L, R> extends Pair<L, R> {
      * @since 3.11
      */
     public static <L, R> Pair<L, R> left(final L left) {
-        return of(left, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -90,7 +92,7 @@ public class ImmutablePair<L, R> extends Pair<L, R> {
      */
     @SuppressWarnings("unchecked")
     public static <L, R> ImmutablePair<L, R> nullPair() {
-        return NULL;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -103,7 +105,7 @@ public class ImmutablePair<L, R> extends Pair<L, R> {
      * @return an immutable formed from the two parameters, not null.
      */
     public static <L, R> ImmutablePair<L, R> of(final L left, final R right) {
-        return left != null || right != null ? new ImmutablePair<>(left, right) : nullPair();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -116,7 +118,7 @@ public class ImmutablePair<L, R> extends Pair<L, R> {
      * @since 3.10
      */
     public static <L, R> ImmutablePair<L, R> of(final Map.Entry<L, R> pair) {
-        return pair != null ? new ImmutablePair<>(pair.getKey(), pair.getValue()) : nullPair();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -131,7 +133,7 @@ public class ImmutablePair<L, R> extends Pair<L, R> {
      * @since 3.13.0
      */
     public static <L, R> ImmutablePair<L, R> ofNonNull(final L left, final R right) {
-        return of(Objects.requireNonNull(left, "left"), Objects.requireNonNull(right, "right"));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -144,13 +146,17 @@ public class ImmutablePair<L, R> extends Pair<L, R> {
      * @since 3.11
      */
     public static <L, R> Pair<L, R> right(final R right) {
-        return of(null, right);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** Left object */
+    /**
+     * Left object
+     */
     public final L left;
 
-    /** Right object */
+    /**
+     * Right object
+     */
     public final R right;
 
     /**
@@ -169,7 +175,7 @@ public class ImmutablePair<L, R> extends Pair<L, R> {
      */
     @Override
     public L getLeft() {
-        return left;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -177,7 +183,7 @@ public class ImmutablePair<L, R> extends Pair<L, R> {
      */
     @Override
     public R getRight() {
-        return right;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -191,7 +197,6 @@ public class ImmutablePair<L, R> extends Pair<L, R> {
      */
     @Override
     public R setValue(final R value) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

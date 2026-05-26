@@ -135,51 +135,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @throws ArithmeticException if the algorithm does not converge
      */
     public static Fraction getFraction(double value) {
-        final int sign = value < 0 ? -1 : 1;
-        value = Math.abs(value);
-        if (value > Integer.MAX_VALUE || Double.isNaN(value)) {
-            throw new ArithmeticException("The value must not be greater than Integer.MAX_VALUE or NaN");
-        }
-        final int wholeNumber = (int) value;
-        value -= wholeNumber;
-        int numer0 = 0; // the pre-previous
-        int denom0 = 1; // the pre-previous
-        int numer1 = 1; // the previous
-        int denom1 = 0; // the previous
-        int numer2; // the current, setup in calculation
-        int denom2; // the current, setup in calculation
-        int a1 = (int) value;
-        int a2;
-        double x1 = 1;
-        double x2;
-        double y1 = value - a1;
-        double y2;
-        double delta1;
-        double delta2 = Double.MAX_VALUE;
-        double fraction;
-        int i = 1;
-        do {
-            delta1 = delta2;
-            a2 = (int) (x1 / y1);
-            x2 = y1;
-            y2 = x1 - a2 * y1;
-            numer2 = a1 * numer1 + numer0;
-            denom2 = a1 * denom1 + denom0;
-            fraction = (double) numer2 / (double) denom2;
-            delta2 = Math.abs(value - fraction);
-            a1 = a2;
-            x1 = x2;
-            y1 = y2;
-            numer0 = numer1;
-            denom0 = denom1;
-            numer1 = numer2;
-            denom1 = denom2;
-            i++;
-        } while (delta1 > delta2 && denom2 <= 10000 && denom2 > 0 && i < 25);
-        if (i == 25) {
-            throw new ArithmeticException("Unable to convert double to fraction");
-        }
-        return getReducedFraction((numer0 + wholeNumber * denom0) * sign, denom0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -194,17 +150,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @throws ArithmeticException if the denominator is {@code zero} or the denominator is {@code negative} and the numerator is {@code Integer#MIN_VALUE}
      */
     public static Fraction getFraction(int numerator, int denominator) {
-        if (denominator == 0) {
-            throw new ArithmeticException("The denominator must not be zero");
-        }
-        if (denominator < 0) {
-            if (numerator == Integer.MIN_VALUE || denominator == Integer.MIN_VALUE) {
-                throw new ArithmeticException("overflow: can't negate");
-            }
-            numerator = -numerator;
-            denominator = -denominator;
-        }
-        return new Fraction(numerator, denominator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -223,25 +169,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @throws ArithmeticException if the resulting numerator exceeds {@code Integer.MAX_VALUE}
      */
     public static Fraction getFraction(final int whole, final int numerator, final int denominator) {
-        if (denominator == 0) {
-            throw new ArithmeticException("The denominator must not be zero");
-        }
-        if (denominator < 0) {
-            throw new ArithmeticException("The denominator must not be negative");
-        }
-        if (numerator < 0) {
-            throw new ArithmeticException("The numerator must not be negative");
-        }
-        final long numeratorValue;
-        if (whole < 0) {
-            numeratorValue = whole * (long) denominator - numerator;
-        } else {
-            numeratorValue = whole * (long) denominator + numerator;
-        }
-        if (numeratorValue < Integer.MIN_VALUE || numeratorValue > Integer.MAX_VALUE) {
-            throw new ArithmeticException("Numerator too large to represent as an Integer.");
-        }
-        return new Fraction((int) numeratorValue, denominator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -265,36 +193,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @throws NumberFormatException if the number format is invalid
      */
     public static Fraction getFraction(String str) {
-        Objects.requireNonNull(str, "str");
-        // parse double format
-        int pos = str.indexOf('.');
-        if (pos >= 0) {
-            return getFraction(Double.parseDouble(str));
-        }
-
-        // parse X Y/Z format
-        pos = str.indexOf(' ');
-        if (pos > 0) {
-            final int whole = Integer.parseInt(str.substring(0, pos));
-            str = str.substring(pos + 1);
-            pos = str.indexOf('/');
-            if (pos < 0) {
-                throw new NumberFormatException("The fraction could not be parsed as the format X Y/Z");
-            }
-            final int numer = Integer.parseInt(str.substring(0, pos));
-            final int denom = Integer.parseInt(str.substring(pos + 1));
-            return getFraction(whole, numer, denom);
-        }
-
-        // parse Y/Z format
-        pos = str.indexOf('/');
-        if (pos < 0) {
-            // simple whole number
-            return getFraction(Integer.parseInt(str), 1);
-        }
-        final int numer = Integer.parseInt(str.substring(0, pos));
-        final int denom = Integer.parseInt(str.substring(pos + 1));
-        return getFraction(numer, denom);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -313,29 +212,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @throws ArithmeticException if the denominator is {@code zero}
      */
     public static Fraction getReducedFraction(int numerator, int denominator) {
-        if (denominator == 0) {
-            throw new ArithmeticException("The denominator must not be zero");
-        }
-        if (numerator == 0) {
-            return ZERO; // normalize zero.
-        }
-        // allow 2^k/-2^31 as a valid fraction (where k>0)
-        if (denominator == Integer.MIN_VALUE && (numerator & 1) == 0) {
-            numerator /= 2;
-            denominator /= 2;
-        }
-        if (denominator < 0) {
-            if (numerator == Integer.MIN_VALUE || denominator == Integer.MIN_VALUE) {
-                throw new ArithmeticException("overflow: can't negate");
-            }
-            numerator = -numerator;
-            denominator = -denominator;
-        }
-        // simplify fraction.
-        final int gcd = greatestCommonDivisor(numerator, denominator);
-        numerator /= gcd;
-        denominator /= gcd;
-        return new Fraction(numerator, denominator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -366,30 +243,36 @@ public final class Fraction extends Number implements Comparable<Fraction> {
         // overflow)
         if (u > 0) {
             u = -u;
-        } // make u negative
+        }
+        // make u negative
         if (v > 0) {
             v = -v;
-        } // make v negative
+        }
+        // make v negative
         // B1. [Find power of 2]
         int k = 0;
-        while ((u & 1) == 0 && (v & 1) == 0 && k < 31) { // while u and v are both even...
+        while ((u & 1) == 0 && (v & 1) == 0 && k < 31) {
+            // while u and v are both even...
             u /= 2;
             v /= 2;
-            k++; // cast out twos.
+            // cast out twos.
+            k++;
         }
         if (k == 31) {
             throw new ArithmeticException("overflow: gcd is 2^31");
         }
         // B2. Initialize: u and v have been divided by 2^k and at least
         // one is odd.
-        int t = (u & 1) == 1 ? v : -(u / 2)/* B3 */;
+        int t = (u & 1) == 1 ? v : -(u / 2);
         // t negative: u was odd, v may be even (t replaces v)
         // t positive: u was even, v is odd (t replaces u)
         do {
             /* assert u<0 && v<0; */
             // B4/B3: cast out twos from t.
-            while ((t & 1) == 0) { // while t is even.
-                t /= 2; // cast out twos
+            while ((t & 1) == 0) {
+                // while t is even.
+                // cast out twos
+                t /= 2;
             }
             // B5 [reset max(u,v)]
             if (t > 0) {
@@ -402,7 +285,8 @@ public final class Fraction extends Number implements Comparable<Fraction> {
             // |u| larger: t positive (replace u)
             // |v| larger: t negative (replace v)
         } while (t != 0);
-        return -u * (1 << k); // gcd is u*2^k
+        // gcd is u*2^k
+        return -u * (1 << k);
     }
 
     private static int hash(final int value1, final int value2) {
@@ -511,10 +395,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @return {@code this} if it is positive, or a new positive fraction instance with the opposite signed numerator
      */
     public Fraction abs() {
-        if (numerator >= 0) {
-            return this;
-        }
-        return negate();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -528,7 +409,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      *  {@code Integer.MAX_VALUE}
      */
     public Fraction add(final Fraction fraction) {
-        return addSub(fraction, true /* add */);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -558,8 +439,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
             // result is ((u*v' +/- u'v) / u'v')
             final int uvp = mulAndCheck(numerator, fraction.denominator);
             final int upv = mulAndCheck(fraction.numerator, denominator);
-            return new Fraction(isAdd ? addAndCheck(uvp, upv) : subAndCheck(uvp, upv), mulPosAndCheck(denominator,
-                    fraction.denominator));
+            return new Fraction(isAdd ? addAndCheck(uvp, upv) : subAndCheck(uvp, upv), mulPosAndCheck(denominator, fraction.denominator));
         }
         // the quantity 't' requires 65 bits of precision; see knuth 4.5.1
         // exercise 7. we're going to use a BigInteger.
@@ -571,7 +451,6 @@ public final class Fraction extends Number implements Comparable<Fraction> {
         // d2 = gcd(t,d1) = gcd(t mod d1, d1)
         final int tmodd1 = t.mod(BigInteger.valueOf(d1)).intValue();
         final int d2 = tmodd1 == 0 ? d1 : greatestCommonDivisor(tmodd1, d1);
-
         // result is (t/d2) / (u'/d1)(v'/d2)
         final BigInteger w = t.divide(BigInteger.valueOf(d2));
         if (w.bitLength() > 31) {
@@ -594,17 +473,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      */
     @Override
     public int compareTo(final Fraction other) {
-        if (this == other) {
-            return 0;
-        }
-        if (numerator == other.numerator && denominator == other.denominator) {
-            return 0;
-        }
-
-        // otherwise see which is less
-        final long first = (long) numerator * (long) other.denominator;
-        final long second = (long) other.numerator * (long) denominator;
-        return Long.compare(first, second);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -618,11 +487,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      *  {@code Integer.MAX_VALUE}
      */
     public Fraction divideBy(final Fraction fraction) {
-        Objects.requireNonNull(fraction, "fraction");
-        if (fraction.numerator == 0) {
-            throw new ArithmeticException("The fraction to divide by must not be zero");
-        }
-        return multiplyBy(fraction.invert());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -633,7 +498,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      */
     @Override
     public double doubleValue() {
-        return (double) numerator / (double) denominator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -647,14 +512,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof Fraction)) {
-            return false;
-        }
-        final Fraction other = (Fraction) obj;
-        return getNumerator() == other.getNumerator() && getDenominator() == other.getDenominator();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -665,7 +523,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      */
     @Override
     public float floatValue() {
-        return (float) numerator / (float) denominator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -674,7 +532,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @return the denominator fraction part
      */
     public int getDenominator() {
-        return denominator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -686,7 +544,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @return the numerator fraction part
      */
     public int getNumerator() {
-        return numerator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -702,7 +560,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @return the numerator fraction part of a proper fraction, always positive
      */
     public int getProperNumerator() {
-        return Math.abs(numerator % denominator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -718,7 +576,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @return the whole fraction part of a proper fraction, that includes the sign
      */
     public int getProperWhole() {
-        return numerator / denominator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -728,7 +586,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      */
     @Override
     public int hashCode() {
-        return hashCode;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -739,7 +597,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      */
     @Override
     public int intValue() {
-        return numerator / denominator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -752,16 +610,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @throws ArithmeticException if the fraction represents zero.
      */
     public Fraction invert() {
-        if (numerator == 0) {
-            throw new ArithmeticException("Unable to invert zero.");
-        }
-        if (numerator == Integer.MIN_VALUE) {
-            throw new ArithmeticException("overflow: can't negate numerator");
-        }
-        if (numerator < 0) {
-            return new Fraction(-denominator, -numerator);
-        }
-        return new Fraction(denominator, numerator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -772,7 +621,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      */
     @Override
     public long longValue() {
-        return (long) numerator / denominator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -786,15 +635,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      *  {@code Integer.MAX_VALUE}
      */
     public Fraction multiplyBy(final Fraction fraction) {
-        Objects.requireNonNull(fraction, "fraction");
-        if (numerator == 0 || fraction.numerator == 0) {
-            return ZERO;
-        }
-        // knuth 4.5.1
-        // make sure we don't overflow unless the result *must* overflow.
-        final int d1 = greatestCommonDivisor(numerator, fraction.denominator);
-        final int d2 = greatestCommonDivisor(fraction.numerator, denominator);
-        return getReducedFraction(mulAndCheck(numerator / d1, fraction.numerator / d2), mulPosAndCheck(denominator / d2, fraction.denominator / d1));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -806,11 +647,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @return a new fraction instance with the opposite signed numerator
      */
     public Fraction negate() {
-        // the positive range is one smaller than the negative range of an int.
-        if (numerator == Integer.MIN_VALUE) {
-            throw new ArithmeticException("overflow: too large to negate");
-        }
-        return new Fraction(-numerator, denominator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -825,23 +662,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @throws ArithmeticException if the resulting numerator or denominator exceeds {@code Integer.MAX_VALUE}
      */
     public Fraction pow(final int power) {
-        if (power == 1) {
-            return this;
-        }
-        if (power == 0) {
-            return ONE;
-        }
-        if (power < 0) {
-            if (power == Integer.MIN_VALUE) { // MIN_VALUE can't be negated.
-                return invert().pow(2).pow(-(power / 2));
-            }
-            return invert().pow(-power);
-        }
-        final Fraction f = multiplyBy(this);
-        if (power % 2 == 0) { // if even...
-            return f.pow(power / 2);
-        }
-        return f.pow(power / 2).multiplyBy(this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -869,14 +690,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @return a new reduced fraction instance, or this if no simplification possible
      */
     public Fraction reduce() {
-        if (numerator == 0) {
-            return equals(ZERO) ? this : ZERO;
-        }
-        final int gcd = greatestCommonDivisor(Math.abs(numerator), denominator);
-        if (gcd == 1) {
-            return this;
-        }
-        return getFraction(numerator / gcd, denominator / gcd);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -890,7 +704,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      *   cannot be represented in an {@code int}.
      */
     public Fraction subtract(final Fraction fraction) {
-        return addSub(fraction, false /* subtract */);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -903,29 +717,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      * @return a {@link String} form of the fraction
      */
     public String toProperString() {
-        if (toProperString == null) {
-            if (numerator == 0) {
-                toProperString = "0";
-            } else if (numerator == denominator) {
-                toProperString = "1";
-            } else if (numerator == -1 * denominator) {
-                toProperString = "-1";
-            } else if ((numerator > 0 ? -numerator : numerator) < -denominator) {
-                // note that we do the magnitude comparison test above with
-                // NEGATIVE (not positive) numbers, since negative numbers
-                // have a larger range. otherwise numerator == Integer.MIN_VALUE
-                // is handled incorrectly.
-                final int properNumerator = getProperNumerator();
-                if (properNumerator == 0) {
-                    toProperString = Integer.toString(getProperWhole());
-                } else {
-                    toProperString = getProperWhole() + " " + properNumerator + "/" + getDenominator();
-                }
-            } else {
-                toProperString = getNumerator() + "/" + getDenominator();
-            }
-        }
-        return toProperString;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -938,9 +730,6 @@ public final class Fraction extends Number implements Comparable<Fraction> {
      */
     @Override
     public String toString() {
-        if (toString == null) {
-            toString = getNumerator() + "/" + getDenominator();
-        }
-        return toString;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

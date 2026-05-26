@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.event;
 
 import java.io.ByteArrayOutputStream;
@@ -30,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -100,7 +98,7 @@ public class EventListenerSupport<L> implements Serializable {
          * @since 3.15.0
          */
         protected void handle(final Throwable t) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-            handler.accept(t);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -118,20 +116,14 @@ public class EventListenerSupport<L> implements Serializable {
          * @throws IllegalAccessException if an error occurs
          */
         @Override
-        public Object invoke(final Object unusedProxy, final Method method, final Object[] args)
-                throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-            for (final L listener : listeners) {
-                try {
-                    method.invoke(listener, args);
-                } catch (final Throwable t) {
-                    handle(t);
-                }
-            }
-            return null;
+        public Object invoke(final Object unusedProxy, final Method method, final Object[] args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
-    /** Serialization version */
+    /**
+     * Serialization version
+     */
     private static final long serialVersionUID = 3593265990380473632L;
 
     /**
@@ -151,7 +143,7 @@ public class EventListenerSupport<L> implements Serializable {
      *         not an interface.
      */
     public static <T> EventListenerSupport<T> create(final Class<T> listenerInterface) {
-        return new EventListenerSupport<>(listenerInterface);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -224,7 +216,7 @@ public class EventListenerSupport<L> implements Serializable {
      * @throws NullPointerException if {@code listener} is {@code null}.
      */
     public void addListener(final L listener) {
-        addListener(listener, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -240,10 +232,7 @@ public class EventListenerSupport<L> implements Serializable {
      * @since 3.5
      */
     public void addListener(final L listener, final boolean allowDuplicate) {
-        Objects.requireNonNull(listener, "listener");
-        if (allowDuplicate || !listeners.contains(listener)) {
-            listeners.add(listener);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -253,7 +242,7 @@ public class EventListenerSupport<L> implements Serializable {
      * @return ProxyInvocationHandler
      */
     protected InvocationHandler createInvocationHandler() {
-        return new ProxyInvocationHandler();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -275,7 +264,7 @@ public class EventListenerSupport<L> implements Serializable {
      * of the registered event listeners
      */
     public L fire() {
-        return proxy;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -284,7 +273,7 @@ public class EventListenerSupport<L> implements Serializable {
      * @return the number of registered listeners.
      */
     int getListenerCount() {
-        return listeners.size();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -295,7 +284,7 @@ public class EventListenerSupport<L> implements Serializable {
      * @return L[]
      */
     public L[] getListeners() {
-        return listeners.toArray(prototypeArray);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -318,7 +307,8 @@ public class EventListenerSupport<L> implements Serializable {
      * @throws ClassNotFoundException if the class cannot be resolved
      */
     private void readObject(final ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException {
-        @SuppressWarnings("unchecked") // Will throw CCE here if not correct
+        // Will throw CCE here if not correct
+        @SuppressWarnings("unchecked")
         final L[] srcListeners = (L[]) objectInputStream.readObject();
         this.listeners = new CopyOnWriteArrayList<>(srcListeners);
         final Class<L> listenerInterface = ArrayUtils.getComponentType(srcListeners);
@@ -333,7 +323,7 @@ public class EventListenerSupport<L> implements Serializable {
      *         {@code null}.
      */
     public void removeListener(final L listener) {
-        listeners.remove(Objects.requireNonNull(listener, "listener"));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

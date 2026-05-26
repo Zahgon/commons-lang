@@ -18,7 +18,6 @@ package org.apache.commons.lang3.text;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -60,7 +59,7 @@ public class WordUtils {
      * @see #capitalizeFully(String)
      */
     public static String capitalize(final String str) {
-        return capitalize(str, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -93,22 +92,7 @@ public class WordUtils {
      * @since 2.1
      */
     public static String capitalize(final String str, final char... delimiters) {
-        final int delimLen = delimiters == null ? -1 : delimiters.length;
-        if (StringUtils.isEmpty(str) || delimLen == 0) {
-            return str;
-        }
-        final char[] buffer = str.toCharArray();
-        boolean capitalizeNext = true;
-        for (int i = 0; i < buffer.length; i++) {
-            final char ch = buffer[i];
-            if (isDelimiter(ch, delimiters)) {
-                capitalizeNext = true;
-            } else if (capitalizeNext) {
-                buffer[i] = Character.toTitleCase(ch);
-                capitalizeNext = false;
-            }
-        }
-        return new String(buffer);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -131,7 +115,7 @@ public class WordUtils {
      * @return capitalized String, {@code null} if null String input.
      */
     public static String capitalizeFully(final String str) {
-        return capitalizeFully(str, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -161,11 +145,7 @@ public class WordUtils {
      * @since 2.1
      */
     public static String capitalizeFully(final String str, final char... delimiters) {
-        final int delimLen = delimiters == null ? -1 : delimiters.length;
-        if (StringUtils.isEmpty(str) || delimLen == 0) {
-            return str;
-        }
-        return capitalize(str.toLowerCase(), delimiters);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -191,19 +171,7 @@ public class WordUtils {
      * @since 3.5
      */
     public static boolean containsAllWords(final CharSequence word, final CharSequence... words) {
-        if (StringUtils.isEmpty(word) || ArrayUtils.isEmpty(words)) {
-            return false;
-        }
-        for (final CharSequence w : words) {
-            if (StringUtils.isBlank(w)) {
-                return false;
-            }
-            final Pattern p = Pattern.compile(".*\\b" + Pattern.quote(w.toString()) + "\\b.*");
-            if (!p.matcher(word).matches()) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -228,7 +196,7 @@ public class WordUtils {
      * @since 2.2
      */
     public static String initials(final String str) {
-        return initials(str, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -258,28 +226,7 @@ public class WordUtils {
      * @since 2.2
      */
     public static String initials(final String str, final char... delimiters) {
-        if (StringUtils.isEmpty(str)) {
-            return str;
-        }
-        if (delimiters != null && delimiters.length == 0) {
-            return StringUtils.EMPTY;
-        }
-        final int strLen = str.length();
-        final char[] buf = new char[strLen / 2 + 1];
-        int count = 0;
-        boolean lastWasGap = true;
-        for (int i = 0; i < strLen; i++) {
-            final char ch = str.charAt(i);
-            if (isDelimiter(ch, delimiters)) {
-                lastWasGap = true;
-                continue;  // ignore ch
-            }
-            if (lastWasGap) {
-                buf[count++] = ch;
-                lastWasGap = false;
-            }
-        }
-        return new String(buf, 0, count);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -316,30 +263,7 @@ public class WordUtils {
      * @return A new String, {@code null} if null String input.
      */
     public static String swapCase(final String str) {
-        if (StringUtils.isEmpty(str)) {
-            return str;
-        }
-        final char[] buffer = str.toCharArray();
-
-        boolean whitespace = true;
-
-        for (int i = 0; i < buffer.length; i++) {
-            final char ch = buffer[i];
-            if (Character.isUpperCase(ch) || Character.isTitleCase(ch)) {
-                buffer[i] = Character.toLowerCase(ch);
-                whitespace = false;
-            } else if (Character.isLowerCase(ch)) {
-                if (whitespace) {
-                    buffer[i] = Character.toTitleCase(ch);
-                    whitespace = false;
-                } else {
-                    buffer[i] = Character.toUpperCase(ch);
-                }
-            } else {
-                whitespace = Character.isWhitespace(ch);
-            }
-        }
-        return new String(buffer);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -360,7 +284,7 @@ public class WordUtils {
      * @see #capitalize(String)
      */
     public static String uncapitalize(final String str) {
-        return uncapitalize(str, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -389,22 +313,7 @@ public class WordUtils {
      * @since 2.1
      */
     public static String uncapitalize(final String str, final char... delimiters) {
-        final int delimLen = delimiters == null ? -1 : delimiters.length;
-        if (StringUtils.isEmpty(str) || delimLen == 0) {
-            return str;
-        }
-        final char[] buffer = str.toCharArray();
-        boolean uncapitalizeNext = true;
-        for (int i = 0; i < buffer.length; i++) {
-            final char ch = buffer[i];
-            if (isDelimiter(ch, delimiters)) {
-                uncapitalizeNext = true;
-            } else if (uncapitalizeNext) {
-                buffer[i] = Character.toLowerCase(ch);
-                uncapitalizeNext = false;
-            }
-        }
-        return new String(buffer);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -457,7 +366,7 @@ public class WordUtils {
      * @return a line with newlines inserted, {@code null} if null input.
      */
     public static String wrap(final String str, final int wrapLength) {
-        return wrap(str, wrapLength, null, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -534,7 +443,7 @@ public class WordUtils {
      * @return a line with newlines inserted, {@code null} if null input.
      */
     public static String wrap(final String str, final int wrapLength, final String newLineStr, final boolean wrapLongWords) {
-        return wrap(str, wrapLength, newLineStr, wrapLongWords, " ");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -629,79 +538,7 @@ public class WordUtils {
      * @return a line with newlines inserted, {@code null} if null input.
      */
     public static String wrap(final String str, int wrapLength, String newLineStr, final boolean wrapLongWords, String wrapOn) {
-        if (str == null) {
-            return null;
-        }
-        if (newLineStr == null) {
-            newLineStr = System.lineSeparator();
-        }
-        if (wrapLength < 1) {
-            wrapLength = 1;
-        }
-        if (StringUtils.isBlank(wrapOn)) {
-            wrapOn = " ";
-        }
-        final Pattern patternToWrapOn = Pattern.compile(wrapOn);
-        final int inputLineLength = str.length();
-        int offset = 0;
-        final StringBuilder wrappedLine = new StringBuilder(inputLineLength + 32);
-
-        while (offset < inputLineLength) {
-            int spaceToWrapAt = -1;
-            int endOfWrapAt = -1;
-            Matcher matcher = patternToWrapOn.matcher(
-                str.substring(offset, Math.min((int) Math.min(Integer.MAX_VALUE, offset + wrapLength + 1L), inputLineLength)));
-            if (matcher.find()) {
-                spaceToWrapAt = matcher.start() + offset;
-                endOfWrapAt = matcher.end() + offset;
-                // Skip leading match, if it is not zero-width
-                if (spaceToWrapAt == offset && endOfWrapAt != offset) {
-                    offset = endOfWrapAt;
-                    continue;
-                }
-            }
-            // only last line without leading spaces is left
-            if (inputLineLength - offset <= wrapLength) {
-                break;
-            }
-            while (matcher.find()) {
-                spaceToWrapAt = matcher.start() + offset;
-                endOfWrapAt = matcher.end() + offset;
-            }
-            if (endOfWrapAt > offset) {
-                // normal case
-                wrappedLine.append(str, offset, spaceToWrapAt);
-                wrappedLine.append(newLineStr);
-                offset = endOfWrapAt;
-            } else // really long word or URL
-            if (wrapLongWords) {
-                // wrap really long word one line at a time
-                wrappedLine.append(str, offset, wrapLength + offset);
-                wrappedLine.append(newLineStr);
-                offset += wrapLength;
-            } else {
-                // do not wrap really long word, just extend beyond limit
-                matcher = patternToWrapOn.matcher(str.substring(offset + wrapLength));
-                spaceToWrapAt = -1;
-                if (matcher.find()) {
-                    spaceToWrapAt = matcher.start() + offset + wrapLength;
-                    endOfWrapAt = matcher.end() + offset + wrapLength;
-                }
-
-                if (spaceToWrapAt >= 0) {
-                    wrappedLine.append(str, offset, spaceToWrapAt);
-                    wrappedLine.append(newLineStr);
-                    // at least offset + wrapLength >= offset + 1
-                    offset = endOfWrapAt;
-                } else {
-                    wrappedLine.append(str, offset, str.length());
-                    offset = inputLineLength;
-                }
-            }
-        }
-        // Whatever is left in line is short enough to just pass through
-        wrappedLine.append(str, offset, str.length());
-        return wrappedLine.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -714,5 +551,4 @@ public class WordUtils {
      */
     public WordUtils() {
     }
-
 }

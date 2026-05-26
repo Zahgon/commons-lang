@@ -33,8 +33,11 @@ import java.util.HashSet;
 public class LookupTranslator extends CharSequenceTranslator {
 
     private final HashMap<String, String> lookupMap;
+
     private final HashSet<Character> prefixSet;
+
     private final int shortest;
+
     private final int longest;
 
     /**
@@ -73,23 +76,6 @@ public class LookupTranslator extends CharSequenceTranslator {
      */
     @Override
     public int translate(final CharSequence input, final int index, final Writer out) throws IOException {
-        // check if translation exists for the input at position index
-        if (prefixSet.contains(input.charAt(index))) {
-            int max = longest;
-            if (index + longest > input.length()) {
-                max = input.length() - index;
-            }
-            // implement greedy algorithm by trying maximum match first
-            for (int i = max; i >= shortest; i--) {
-                final CharSequence subSeq = input.subSequence(index, index + i);
-                final String result = lookupMap.get(subSeq.toString());
-
-                if (result != null) {
-                    out.write(result);
-                    return i;
-                }
-            }
-        }
-        return 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

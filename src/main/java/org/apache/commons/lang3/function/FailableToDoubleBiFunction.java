@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.function.ToDoubleBiFunction;
@@ -30,7 +29,9 @@ import java.util.function.ToDoubleBiFunction;
 @FunctionalInterface
 public interface FailableToDoubleBiFunction<T, U, E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableToDoubleBiFunction NOP = (t, u) -> 0d;
 
@@ -44,7 +45,7 @@ public interface FailableToDoubleBiFunction<T, U, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, U, E extends Throwable> FailableToDoubleBiFunction<T, U, E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

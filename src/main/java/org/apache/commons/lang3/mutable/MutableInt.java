@@ -40,7 +40,9 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      */
     private static final long serialVersionUID = 512176391864L;
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private int value;
 
     /**
@@ -86,7 +88,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 2.2
      */
     public void add(final int operand) {
-        this.value += operand;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -97,7 +99,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 2.2
      */
     public void add(final Number operand) {
-        this.value += operand.intValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -109,8 +111,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 3.5
      */
     public int addAndGet(final int operand) {
-        this.value += operand;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -123,8 +124,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 3.5
      */
     public int addAndGet(final Number operand) {
-        this.value += operand.intValue();
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -135,7 +135,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      */
     @Override
     public int compareTo(final MutableInt other) {
-        return Integer.compare(this.value, other.value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -144,7 +144,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 2.2
      */
     public void decrement() {
-        value--;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -155,8 +155,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 3.5
      */
     public int decrementAndGet() {
-        value--;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -166,7 +165,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      */
     @Override
     public double doubleValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -179,10 +178,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj instanceof MutableInt) {
-            return value == ((MutableInt) obj).intValue();
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -192,7 +188,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      */
     @Override
     public float floatValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -204,9 +200,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 3.5
      */
     public int getAndAdd(final int operand) {
-        final int last = value;
-        this.value += operand;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -219,9 +213,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 3.5
      */
     public int getAndAdd(final Number operand) {
-        final int last = value;
-        this.value += operand.intValue();
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -232,9 +224,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 3.5
      */
     public int getAndDecrement() {
-        final int last = value;
-        value--;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -245,9 +235,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 3.5
      */
     public int getAndIncrement() {
-        final int last = value;
-        value++;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -269,7 +257,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      */
     @Override
     public int hashCode() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -278,7 +266,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 2.2
      */
     public void increment() {
-        value++;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -289,8 +277,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 3.5
      */
     public int incrementAndGet() {
-        value++;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // shortValue and byteValue rely on Number implementation
@@ -301,7 +288,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      */
     @Override
     public int intValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -311,7 +298,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      */
     @Override
     public long longValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -320,7 +307,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @param value  the value to set.
      */
     public void setValue(final int value) {
-        this.value = value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -331,7 +318,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      */
     @Override
     public void setValue(final Number value) {
-        this.value = value.intValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -341,7 +328,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 2.2
      */
     public void subtract(final int operand) {
-        this.value -= operand;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -352,7 +339,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @since 2.2
      */
     public void subtract(final Number operand) {
-        this.value -= operand.intValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -361,7 +348,7 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      * @return an Integer instance containing the value from this mutable, never null.
      */
     public Integer toInteger() {
-        return Integer.valueOf(intValue());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -371,7 +358,6 @@ public class MutableInt extends Number implements Comparable<MutableInt>, Mutabl
      */
     @Override
     public String toString() {
-        return String.valueOf(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

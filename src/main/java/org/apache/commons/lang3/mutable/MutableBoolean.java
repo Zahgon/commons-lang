@@ -14,12 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.mutable;
 
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicBoolean;
-
 import org.apache.commons.lang3.BooleanUtils;
 
 /**
@@ -44,7 +42,9 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      */
     private static final long serialVersionUID = -4830728138360036487L;
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private boolean value;
 
     /**
@@ -78,7 +78,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      * @return the boolean value represented by this object.
      */
     public boolean booleanValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -90,7 +90,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      */
     @Override
     public int compareTo(final MutableBoolean other) {
-        return BooleanUtils.compare(this.value, other.value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -103,10 +103,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj instanceof MutableBoolean) {
-            return value == ((MutableBoolean) obj).booleanValue();
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -128,7 +125,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      */
     @Override
     public int hashCode() {
-        return value ? Boolean.TRUE.hashCode() : Boolean.FALSE.hashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -138,7 +135,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      * @since 2.5
      */
     public boolean isFalse() {
-        return !value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -148,7 +145,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      * @since 2.5
      */
     public boolean isTrue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -157,7 +154,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      * @since 3.3
      */
     public void setFalse() {
-        this.value = false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -166,7 +163,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      * @since 3.3
      */
     public void setTrue() {
-        this.value = true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -175,7 +172,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      * @param value  the value to set
      */
     public void setValue(final boolean value) {
-        this.value = value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -186,7 +183,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      */
     @Override
     public void setValue(final Boolean value) {
-        this.value = value.booleanValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -196,7 +193,7 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      * @since 2.5
      */
     public Boolean toBoolean() {
-        return Boolean.valueOf(booleanValue());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -206,7 +203,6 @@ public class MutableBoolean implements Mutable<Boolean>, Serializable, Comparabl
      */
     @Override
     public String toString() {
-        return String.valueOf(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

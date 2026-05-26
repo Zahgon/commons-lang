@@ -22,7 +22,6 @@ import java.security.Security;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
-
 import org.apache.commons.lang3.exception.UncheckedException;
 
 /**
@@ -100,7 +99,7 @@ public class RandomUtils {
      * @since 3.17.0
      */
     public static RandomUtils insecure() {
-        return INSECURE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -248,11 +247,11 @@ public class RandomUtils {
      * @since 3.16.0
      */
     public static RandomUtils secure() {
-        return SECURE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     static SecureRandom secureRandom() {
-        return SECURE_RANDOM_STRONG.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -267,7 +266,7 @@ public class RandomUtils {
      * @since 3.17.0
      */
     public static RandomUtils secureStrong() {
-        return SECURE_STRONG;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private final Supplier<Random> random;
@@ -291,7 +290,7 @@ public class RandomUtils {
     }
 
     Random random() {
-        return random.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -301,7 +300,7 @@ public class RandomUtils {
      * @since 3.16.0
      */
     public boolean randomBoolean() {
-        return random().nextBoolean();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -313,10 +312,7 @@ public class RandomUtils {
      * @since 3.16.0
      */
     public byte[] randomBytes(final int count) {
-        Validate.isTrue(count >= 0, "Count cannot be negative.");
-        final byte[] result = new byte[count];
-        random().nextBytes(result);
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -327,7 +323,7 @@ public class RandomUtils {
      * @since 3.16.0
      */
     public double randomDouble() {
-        return randomDouble(0, Double.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -340,12 +336,7 @@ public class RandomUtils {
      * @since 3.16.0
      */
     public double randomDouble(final double startInclusive, final double endExclusive) {
-        Validate.isTrue(endExclusive >= startInclusive, "Start value must be smaller or equal to end value.");
-        Validate.isTrue(startInclusive >= 0, "Both range values must be non-negative.");
-        if (startInclusive == endExclusive) {
-            return startInclusive;
-        }
-        return startInclusive + (endExclusive - startInclusive) * random().nextDouble();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -356,7 +347,7 @@ public class RandomUtils {
      * @since 3.16.0
      */
     public float randomFloat() {
-        return randomFloat(0, Float.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -369,12 +360,7 @@ public class RandomUtils {
      * @since 3.16.0
      */
     public float randomFloat(final float startInclusive, final float endExclusive) {
-        Validate.isTrue(endExclusive >= startInclusive, "Start value must be smaller or equal to end value.");
-        Validate.isTrue(startInclusive >= 0, "Both range values must be non-negative.");
-        if (startInclusive == endExclusive) {
-            return startInclusive;
-        }
-        return startInclusive + (endExclusive - startInclusive) * random().nextFloat();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -385,7 +371,7 @@ public class RandomUtils {
      * @since 3.16.0
      */
     public int randomInt() {
-        return randomInt(0, Integer.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -398,12 +384,7 @@ public class RandomUtils {
      * @since 3.16.0
      */
     public int randomInt(final int startInclusive, final int endExclusive) {
-        Validate.isTrue(endExclusive >= startInclusive, "Start value must be smaller or equal to end value.");
-        Validate.isTrue(startInclusive >= 0, "Both range values must be non-negative.");
-        if (startInclusive == endExclusive) {
-            return startInclusive;
-        }
-        return startInclusive + random().nextInt(endExclusive - startInclusive);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -414,7 +395,7 @@ public class RandomUtils {
      * @since 3.16.0
      */
     public long randomLong() {
-        return randomLong(Long.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -444,17 +425,11 @@ public class RandomUtils {
      * @since 3.16.0
      */
     public long randomLong(final long startInclusive, final long endExclusive) {
-        Validate.isTrue(endExclusive >= startInclusive, "Start value must be smaller or equal to end value.");
-        Validate.isTrue(startInclusive >= 0, "Both range values must be non-negative.");
-        if (startInclusive == endExclusive) {
-            return startInclusive;
-        }
-        return startInclusive + randomLong(endExclusive - startInclusive);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return "RandomUtils [random=" + random() + "]";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

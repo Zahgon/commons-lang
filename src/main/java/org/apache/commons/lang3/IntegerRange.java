@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3;
 
 import java.util.stream.IntStream;
@@ -48,7 +47,7 @@ public final class IntegerRange extends NumberRange<Integer> {
      * @return the range object, not null.
      */
     public static IntegerRange of(final int fromInclusive, final int toInclusive) {
-        return of(Integer.valueOf(fromInclusive), Integer.valueOf(toInclusive));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -68,7 +67,7 @@ public final class IntegerRange extends NumberRange<Integer> {
      * @throws NullPointerException if either element is null.
      */
     public static IntegerRange of(final Integer fromInclusive, final Integer toInclusive) {
-        return new IntegerRange(fromInclusive, toInclusive);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -105,7 +104,7 @@ public final class IntegerRange extends NumberRange<Integer> {
      * @since 3.19.0
      */
     public int fit(final int element) {
-        return super.fit(element).intValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -116,6 +115,6 @@ public final class IntegerRange extends NumberRange<Integer> {
      * @since 3.18.0
      */
     public IntStream toIntStream() {
-        return IntStream.rangeClosed(getMinimum(), getMaximum());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

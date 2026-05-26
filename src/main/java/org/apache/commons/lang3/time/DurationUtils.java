@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.time;
 
 import java.time.Duration;
@@ -24,7 +23,6 @@ import java.time.temporal.Temporal;
 import java.time.temporal.TemporalUnit;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.lang3.LongRange;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -54,12 +52,10 @@ public class DurationUtils {
      * @throws T See the function signature.
      * @see StopWatch
      */
-    @SuppressWarnings("boxing") // boxing unavoidable
-    public static <T extends Throwable> void accept(final FailableBiConsumer<Long, Integer, T> consumer, final Duration duration)
-            throws T {
-        if (consumer != null && duration != null) {
-            consumer.accept(duration.toMillis(), getNanosOfMilli(duration));
-        }
+    // boxing unavoidable
+    @SuppressWarnings("boxing")
+    public static <T extends Throwable> void accept(final FailableBiConsumer<Long, Integer, T> consumer, final Duration duration) throws T {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -72,7 +68,7 @@ public class DurationUtils {
      * @since 3.19.0
      */
     public static Duration get(final String key, final TemporalUnit unit, final long def) {
-        return Duration.of(getLong(key, def), unit);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static long getLong(final String key, final long def) {
@@ -88,7 +84,7 @@ public class DurationUtils {
      * @since 3.19.0
      */
     public static Duration getMillis(final String key, final long def) {
-        return Duration.ofMillis(getLong(key, def));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -125,7 +121,7 @@ public class DurationUtils {
      * @since 3.13.0
      */
     public static int getNanosOfMilli(final Duration duration) {
-        return zeroIfNull(duration).getNano() % 1_000_000;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -137,7 +133,7 @@ public class DurationUtils {
      * @since 3.19.0
      */
     public static Duration getSeconds(final String key, final long def) {
-        return Duration.ofSeconds(getLong(key, def));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -147,7 +143,7 @@ public class DurationUtils {
      * @return whether the given Duration is positive (duration &gt; 0).
      */
     public static boolean isPositive(final Duration duration) {
-        return !duration.isNegative() && !duration.isZero();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static <E extends Throwable> Instant now(final FailableConsumer<Instant, E> nowConsumer) throws E {
@@ -167,7 +163,7 @@ public class DurationUtils {
      * @since 3.13.0
      */
     public static <E extends Throwable> Duration of(final FailableConsumer<Instant, E> consumer) throws E {
-        return since(now(consumer::accept));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -181,7 +177,7 @@ public class DurationUtils {
      * @since 3.13.0
      */
     public static <E extends Throwable> Duration of(final FailableRunnable<E> runnable) throws E {
-        return of(start -> runnable.run());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -192,7 +188,7 @@ public class DurationUtils {
      * @since 3.13.0
      */
     public static Duration since(final Temporal startInclusive) {
-        return Duration.between(startInclusive, Instant.now());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -202,25 +198,7 @@ public class DurationUtils {
      * @return The corresponding ChronoUnit.
      */
     static ChronoUnit toChronoUnit(final TimeUnit timeUnit) {
-        // TODO when using Java >= 9: Use TimeUnit.toChronoUnit().
-        switch (Objects.requireNonNull(timeUnit)) {
-        case NANOSECONDS:
-            return ChronoUnit.NANOS;
-        case MICROSECONDS:
-            return ChronoUnit.MICROS;
-        case MILLISECONDS:
-            return ChronoUnit.MILLIS;
-        case SECONDS:
-            return ChronoUnit.SECONDS;
-        case MINUTES:
-            return ChronoUnit.MINUTES;
-        case HOURS:
-            return ChronoUnit.HOURS;
-        case DAYS:
-            return ChronoUnit.DAYS;
-        default:
-            throw new IllegalArgumentException(timeUnit.toString());
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -231,7 +209,7 @@ public class DurationUtils {
      * @return a Duration.
      */
     public static Duration toDuration(final long amount, final TimeUnit timeUnit) {
-        return Duration.of(amount, toChronoUnit(timeUnit));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -250,15 +228,7 @@ public class DurationUtils {
      * @return int milliseconds.
      */
     public static int toMillisInt(final Duration duration) {
-        Objects.requireNonNull(duration, "duration");
-        // intValue() does not do a narrowing conversion here
-        final long millis;
-        try {
-            millis = duration.toMillis();
-        } catch (final ArithmeticException e) {
-            return duration.isNegative() ? Integer.MIN_VALUE : Integer.MAX_VALUE;
-        }
-        return LONG_TO_INT_RANGE.fit(Long.valueOf(millis)).intValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -268,7 +238,7 @@ public class DurationUtils {
      * @return The given duration or {@link Duration#ZERO}.
      */
     public static Duration zeroIfNull(final Duration duration) {
-        return ObjectUtils.getIfNull(duration, Duration.ZERO);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

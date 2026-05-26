@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.mutable;
 
 import java.util.function.Supplier;
@@ -43,7 +42,7 @@ public interface Mutable<T> extends Supplier<T> {
      */
     @Override
     default T get() {
-        return getValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

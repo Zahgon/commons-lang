@@ -17,7 +17,6 @@
 package org.apache.commons.lang3.compare;
 
 import java.util.function.Predicate;
-
 import org.apache.commons.lang3.ObjectUtils;
 
 /**
@@ -52,7 +51,7 @@ public class ComparableUtils {
          * @return true if the base object is between b and c
          */
         public boolean between(final A b, final A c) {
-            return betweenOrdered(b, c) || betweenOrdered(c, b);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -63,7 +62,7 @@ public class ComparableUtils {
          * @return true if the base object is between b and c and not equal to those
          */
         public boolean betweenExclusive(final A b, final A c) {
-            return betweenOrderedExclusive(b, c) || betweenOrderedExclusive(c, b);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         private boolean betweenOrdered(final A b, final A c) {
@@ -81,7 +80,7 @@ public class ComparableUtils {
          * @return true if the value returned by {@link Comparable#compareTo} is equal to {@code 0}
          */
         public boolean equalTo(final A b) {
-            return a != null && a.compareTo(b) == 0;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -91,7 +90,7 @@ public class ComparableUtils {
          * @return true if the value returned by {@link Comparable#compareTo} is greater than {@code 0}
          */
         public boolean greaterThan(final A b) {
-            return a != null && a.compareTo(b) > 0;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -101,7 +100,7 @@ public class ComparableUtils {
          * @return true if the value returned by {@link Comparable#compareTo} is greater than or equal to {@code 0}
          */
         public boolean greaterThanOrEqualTo(final A b) {
-            return a != null && a.compareTo(b) >= 0;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -111,7 +110,7 @@ public class ComparableUtils {
          * @return true if the value returned by {@link Comparable#compareTo} is less than {@code 0}
          */
         public boolean lessThan(final A b) {
-            return a != null && a.compareTo(b) < 0;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -121,7 +120,7 @@ public class ComparableUtils {
          * @return true if the value returned by {@link Comparable#compareTo} is less than or equal to {@code 0}
          */
         public boolean lessThanOrEqualTo(final A b) {
-            return a != null && a.compareTo(b) <= 0;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -134,7 +133,7 @@ public class ComparableUtils {
      * @return a predicate for true if the tested object is between b and c
      */
     public static <A extends Comparable<A>> Predicate<A> between(final A b, final A c) {
-        return a -> is(a).between(b, c);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -146,7 +145,7 @@ public class ComparableUtils {
      * @return a predicate for true if the tested object is between b and c and not equal to those
      */
     public static <A extends Comparable<A>> Predicate<A> betweenExclusive(final A b, final A c) {
-        return a -> is(a).betweenExclusive(b, c);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -158,7 +157,7 @@ public class ComparableUtils {
      * is greater than or equal to {@code 0}
      */
     public static <A extends Comparable<A>> Predicate<A> ge(final A b) {
-        return a -> is(a).greaterThanOrEqualTo(b);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -169,7 +168,7 @@ public class ComparableUtils {
      * @return a predicate for true if the value returned by {@link Comparable#compareTo} is greater than {@code 0}
      */
     public static <A extends Comparable<A>> Predicate<A> gt(final A b) {
-        return a -> is(a).greaterThan(b);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -180,7 +179,7 @@ public class ComparableUtils {
      * @return a builder object with further methods
      */
     public static <A extends Comparable<A>> ComparableCheckBuilder<A> is(final A a) {
-        return new ComparableCheckBuilder<>(a);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -192,7 +191,7 @@ public class ComparableUtils {
      * is less than or equal to {@code 0}
      */
     public static <A extends Comparable<A>> Predicate<A> le(final A b) {
-        return a -> is(a).lessThanOrEqualTo(b);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -203,7 +202,7 @@ public class ComparableUtils {
      * @return a predicate for true if the value returned by {@link Comparable#compareTo} is less than {@code 0}
      */
     public static <A extends Comparable<A>> Predicate<A> lt(final A b) {
-        return a -> is(a).lessThan(b);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -220,7 +219,7 @@ public class ComparableUtils {
      * @since 3.13.0
      */
     public static <A extends Comparable<A>> A max(final A comparable1, final A comparable2) {
-        return ObjectUtils.compare(comparable1, comparable2, false) > 0 ? comparable1 : comparable2;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -237,7 +236,7 @@ public class ComparableUtils {
      * @since 3.13.0
      */
     public static <A extends Comparable<A>> A min(final A comparable1, final A comparable2) {
-        return ObjectUtils.compare(comparable1, comparable2, true) < 0 ? comparable1 : comparable2;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private ComparableUtils() {

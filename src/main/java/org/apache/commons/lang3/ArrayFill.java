@@ -14,12 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3;
 
 import java.util.Arrays;
 import java.util.function.IntFunction;
-
 import org.apache.commons.lang3.function.FailableIntFunction;
 
 /**
@@ -42,7 +40,7 @@ public final class ArrayFill {
      * @since 3.21.0
      */
     public static byte[] clear(final byte[] a) {
-        return fill(a, (byte) 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -62,7 +60,7 @@ public final class ArrayFill {
      * @since 3.21.0
      */
     public static char[] clear(final char[] a) {
-        return fill(a, CharUtils.NUL); // and not '0'!
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -82,7 +80,7 @@ public final class ArrayFill {
      * @since 3.21.0
      */
     public static char[] clear(char[] a, int fromIndex, int toIndex) {
-        return fill(a, fromIndex, toIndex, CharUtils.NUL);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -95,10 +93,7 @@ public final class ArrayFill {
      * @since 3.18.0
      */
     public static boolean[] fill(final boolean[] a, final boolean val) {
-        if (a != null) {
-            Arrays.fill(a, val);
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -110,10 +105,7 @@ public final class ArrayFill {
      * @see Arrays#fill(byte[],byte)
      */
     public static byte[] fill(final byte[] a, final byte val) {
-        if (a != null) {
-            Arrays.fill(a, val);
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -125,10 +117,7 @@ public final class ArrayFill {
      * @see Arrays#fill(char[],char)
      */
     public static char[] fill(final char[] a, final char val) {
-        if (a != null) {
-            Arrays.fill(a, val);
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -143,10 +132,7 @@ public final class ArrayFill {
      * @since 3.21.0
      */
     public static char[] fill(char[] a, int fromIndex, int toIndex, char val) {
-        if (a != null) {
-            Arrays.fill(a, fromIndex, toIndex, val);
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -158,10 +144,7 @@ public final class ArrayFill {
      * @see Arrays#fill(double[],double)
      */
     public static double[] fill(final double[] a, final double val) {
-        if (a != null) {
-            Arrays.fill(a, val);
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -173,10 +156,7 @@ public final class ArrayFill {
      * @see Arrays#fill(float[],float)
      */
     public static float[] fill(final float[] a, final float val) {
-        if (a != null) {
-            Arrays.fill(a, val);
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -188,10 +168,7 @@ public final class ArrayFill {
      * @see Arrays#fill(int[],int)
      */
     public static int[] fill(final int[] a, final int val) {
-        if (a != null) {
-            Arrays.fill(a, val);
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -203,10 +180,7 @@ public final class ArrayFill {
      * @see Arrays#fill(long[],long)
      */
     public static long[] fill(final long[] a, final long val) {
-        if (a != null) {
-            Arrays.fill(a, val);
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -218,10 +192,7 @@ public final class ArrayFill {
      * @see Arrays#fill(short[],short)
      */
     public static short[] fill(final short[] a, final short val) {
-        if (a != null) {
-            Arrays.fill(a, val);
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -244,12 +215,7 @@ public final class ArrayFill {
      * @since 3.18.0
      */
     public static <T, E extends Throwable> T[] fill(final T[] array, final FailableIntFunction<? extends T, E> generator) throws E {
-        if (array != null && generator != null) {
-            for (int i = 0; i < array.length; i++) {
-                array[i] = generator.apply(i);
-            }
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -262,14 +228,10 @@ public final class ArrayFill {
      * @see Arrays#fill(Object[],Object)
      */
     public static <T> T[] fill(final T[] a, final T val) {
-        if (a != null) {
-            Arrays.fill(a, val);
-        }
-        return a;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private ArrayFill() {
         // no instances
     }
-
 }

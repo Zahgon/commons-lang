@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.time;
 
 import java.text.DateFormat;
@@ -108,7 +107,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
 
         @Override
         protected FastDateFormat createInstance(final String pattern, final TimeZone timeZone, final Locale locale) {
-            return new FastDateFormat(pattern, timeZone, locale);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     };
 
@@ -116,8 +115,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * Clears the cache.
      */
     static void clear() {
-        AbstractFormatCache.clear();
-        CACHE.clearInstance();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -129,7 +127,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @since 2.1
      */
     public static FastDateFormat getDateInstance(final int style) {
-        return CACHE.getDateInstance(style, null, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -142,7 +140,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @since 2.1
      */
     public static FastDateFormat getDateInstance(final int style, final Locale locale) {
-        return CACHE.getDateInstance(style, null, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -155,7 +153,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @since 2.1
      */
     public static FastDateFormat getDateInstance(final int style, final TimeZone timeZone) {
-        return CACHE.getDateInstance(style, timeZone, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -168,7 +166,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @throws IllegalArgumentException if the Locale has no date pattern defined.
      */
     public static FastDateFormat getDateInstance(final int style, final TimeZone timeZone, final Locale locale) {
-        return CACHE.getDateInstance(style, timeZone, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -181,7 +179,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @since 2.1
      */
     public static FastDateFormat getDateTimeInstance(final int dateStyle, final int timeStyle) {
-        return CACHE.getDateTimeInstance(dateStyle, timeStyle, null, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -195,7 +193,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @since 2.1
      */
     public static FastDateFormat getDateTimeInstance(final int dateStyle, final int timeStyle, final Locale locale) {
-        return CACHE.getDateTimeInstance(dateStyle, timeStyle, null, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -209,7 +207,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @since 2.1
      */
     public static FastDateFormat getDateTimeInstance(final int dateStyle, final int timeStyle, final TimeZone timeZone) {
-        return getDateTimeInstance(dateStyle, timeStyle, timeZone, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -223,7 +221,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @throws IllegalArgumentException if the Locale has no date/time pattern defined.
      */
     public static FastDateFormat getDateTimeInstance(final int dateStyle, final int timeStyle, final TimeZone timeZone, final Locale locale) {
-        return CACHE.getDateTimeInstance(dateStyle, timeStyle, timeZone, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -232,7 +230,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @return a date/time formatter.
      */
     public static FastDateFormat getInstance() {
-        return CACHE.getInstance();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -243,7 +241,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @throws IllegalArgumentException if pattern is invalid.
      */
     public static FastDateFormat getInstance(final String pattern) {
-        return CACHE.getInstance(pattern, null, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -255,7 +253,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @throws IllegalArgumentException if pattern is invalid.
      */
     public static FastDateFormat getInstance(final String pattern, final Locale locale) {
-        return CACHE.getInstance(pattern, null, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -267,7 +265,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @throws IllegalArgumentException if pattern is invalid.
      */
     public static FastDateFormat getInstance(final String pattern, final TimeZone timeZone) {
-        return CACHE.getInstance(pattern, timeZone, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -280,7 +278,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @throws IllegalArgumentException if pattern is invalid or {@code null}.
      */
     public static FastDateFormat getInstance(final String pattern, final TimeZone timeZone, final Locale locale) {
-        return CACHE.getInstance(pattern, timeZone, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -292,7 +290,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @since 2.1
      */
     public static FastDateFormat getTimeInstance(final int style) {
-        return CACHE.getTimeInstance(style, null, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -305,7 +303,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @since 2.1
      */
     public static FastDateFormat getTimeInstance(final int style, final Locale locale) {
-        return CACHE.getTimeInstance(style, null, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -318,7 +316,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @since 2.1
      */
     public static FastDateFormat getTimeInstance(final int style, final TimeZone timeZone) {
-        return CACHE.getTimeInstance(style, timeZone, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -331,13 +329,17 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @throws IllegalArgumentException if the Locale has no time pattern defined.
      */
     public static FastDateFormat getTimeInstance(final int style, final TimeZone timeZone, final Locale locale) {
-        return CACHE.getTimeInstance(style, timeZone, locale);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** Our fast printer. */
+    /**
+     * Our fast printer.
+     */
     private final FastDatePrinter printer;
 
-    /** Our fast parser. */
+    /**
+     * Our fast parser.
+     */
     private final FastDateParser parser;
 
     /**
@@ -388,12 +390,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public boolean equals(final Object obj) {
-        if (!(obj instanceof FastDateFormat)) {
-            return false;
-        }
-        final FastDateFormat other = (FastDateFormat) obj;
-        // no need to check parser, as it has same invariants as printer
-        return printer.equals(other.printer);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -404,7 +401,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public String format(final Calendar calendar) {
-        return printer.format(calendar);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -417,7 +414,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public <B extends Appendable> B format(final Calendar calendar, final B buf) {
-        return printer.format(calendar, buf);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -442,7 +439,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public String format(final Date date) {
-        return printer.format(date);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -455,7 +452,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public <B extends Appendable> B format(final Date date, final B buf) {
-        return printer.format(date, buf);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -481,7 +478,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public String format(final long millis) {
-        return printer.format(millis);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -494,7 +491,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public <B extends Appendable> B format(final long millis, final B buf) {
-        return printer.format(millis, buf);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -523,7 +520,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public StringBuffer format(final Object obj, final StringBuffer toAppendTo, final FieldPosition pos) {
-        return toAppendTo.append(printer.format(obj));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -533,7 +530,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public Locale getLocale() {
-        return printer.getLocale();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -546,7 +543,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      * @return the maximum formatted length.
      */
     public int getMaxLengthEstimate() {
-        return printer.getMaxLengthEstimate();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -556,7 +553,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public String getPattern() {
-        return printer.getPattern();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -570,7 +567,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public TimeZone getTimeZone() {
-        return printer.getTimeZone();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -580,7 +577,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public int hashCode() {
-        return printer.hashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /*
@@ -590,7 +587,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public Date parse(final String source) throws ParseException {
-        return parser.parse(source);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /*
@@ -600,7 +597,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public Date parse(final String source, final ParsePosition pos) {
-        return parser.parse(source, pos);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /*
@@ -610,7 +607,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public boolean parse(final String source, final ParsePosition pos, final Calendar calendar) {
-        return parser.parse(source, pos, calendar);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /*
@@ -620,7 +617,7 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public Object parseObject(final String source, final ParsePosition pos) {
-        return parser.parseObject(source, pos);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -630,6 +627,6 @@ public class FastDateFormat extends Format implements DateParser, DatePrinter {
      */
     @Override
     public String toString() {
-        return "FastDateFormat[" + printer.getPattern() + "," + printer.getLocale() + "," + printer.getTimeZone().getID() + "]";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -40,7 +40,9 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      */
     private static final long serialVersionUID = -2135791679L;
 
-    /** The mutable value. */
+    /**
+     * The mutable value.
+     */
     private short value;
 
     /**
@@ -87,7 +89,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 2.2
      */
     public void add(final Number operand) {
-        this.value += operand.shortValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -97,7 +99,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 2.2
      */
     public void add(final short operand) {
-        this.value += operand;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -110,8 +112,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 3.5
      */
     public short addAndGet(final Number operand) {
-        this.value += operand.shortValue();
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -123,8 +124,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 3.5
      */
     public short addAndGet(final short operand) {
-        this.value += operand;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -135,7 +135,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      */
     @Override
     public int compareTo(final MutableShort other) {
-        return Short.compare(this.value, other.value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -144,7 +144,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 2.2
      */
     public void decrement() {
-        value--;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -155,8 +155,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 3.5
      */
     public short decrementAndGet() {
-        value--;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -166,7 +165,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      */
     @Override
     public double doubleValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -179,10 +178,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj instanceof MutableShort) {
-            return value == ((MutableShort) obj).shortValue();
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -192,7 +188,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      */
     @Override
     public float floatValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -205,9 +201,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 3.5
      */
     public short getAndAdd(final Number operand) {
-        final short last = value;
-        this.value += operand.shortValue();
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -219,9 +213,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 3.5
      */
     public short getAndAdd(final short operand) {
-        final short last = value;
-        this.value += operand;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -232,9 +224,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 3.5
      */
     public short getAndDecrement() {
-        final short last = value;
-        value--;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -245,9 +235,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 3.5
      */
     public short getAndIncrement() {
-        final short last = value;
-        value++;
-        return last;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -269,7 +257,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      */
     @Override
     public int hashCode() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -278,7 +266,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 2.2
      */
     public void increment() {
-        value++;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -289,8 +277,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 3.5
      */
     public short incrementAndGet() {
-        value++;
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -300,7 +287,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      */
     @Override
     public int intValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -310,7 +297,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      */
     @Override
     public long longValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -321,7 +308,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      */
     @Override
     public void setValue(final Number value) {
-        this.value = value.shortValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -330,7 +317,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @param value  the value to set
      */
     public void setValue(final short value) {
-        this.value = value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // byteValue relies on Number implementation
@@ -341,7 +328,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      */
     @Override
     public short shortValue() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -352,7 +339,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 2.2
      */
     public void subtract(final Number operand) {
-        this.value -= operand.shortValue();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -362,7 +349,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @since 2.2
      */
     public void subtract(final short operand) {
-        this.value -= operand;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -371,7 +358,7 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      * @return a Short instance containing the value from this mutable, never null.
      */
     public Short toShort() {
-        return Short.valueOf(shortValue());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -381,7 +368,6 @@ public class MutableShort extends Number implements Comparable<MutableShort>, Mu
      */
     @Override
     public String toString() {
-        return String.valueOf(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

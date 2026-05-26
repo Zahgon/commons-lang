@@ -20,7 +20,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -45,9 +44,13 @@ public class DiffResult<T> implements Iterable<Diff<?>> {
     public static final String OBJECTS_SAME_STRING = StringUtils.EMPTY;
 
     private final List<Diff<?>> diffList;
+
     private final T lhs;
+
     private final T rhs;
+
     private final ToStringStyle style;
+
     private final String toStringFormat;
 
     /**
@@ -83,7 +86,7 @@ public class DiffResult<T> implements Iterable<Diff<?>> {
      * @return an unmodifiable list of {@link Diff}s
      */
     public List<Diff<?>> getDiffs() {
-        return Collections.unmodifiableList(diffList);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -93,7 +96,7 @@ public class DiffResult<T> implements Iterable<Diff<?>> {
      * @since 3.10
      */
     public T getLeft() {
-        return this.lhs;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -102,7 +105,7 @@ public class DiffResult<T> implements Iterable<Diff<?>> {
      * @return the number of differences
      */
     public int getNumberOfDiffs() {
-        return diffList.size();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -112,7 +115,7 @@ public class DiffResult<T> implements Iterable<Diff<?>> {
      * @since 3.10
      */
     public T getRight() {
-        return this.rhs;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -121,7 +124,7 @@ public class DiffResult<T> implements Iterable<Diff<?>> {
      * @return the style
      */
     public ToStringStyle getToStringStyle() {
-        return style;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -131,7 +134,7 @@ public class DiffResult<T> implements Iterable<Diff<?>> {
      */
     @Override
     public Iterator<Diff<?>> iterator() {
-        return diffList.iterator();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -165,7 +168,7 @@ public class DiffResult<T> implements Iterable<Diff<?>> {
      */
     @Override
     public String toString() {
-        return toString(style);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -178,18 +181,6 @@ public class DiffResult<T> implements Iterable<Diff<?>> {
      * @return a {@link String} description of the differences.
      */
     public String toString(final ToStringStyle style) {
-        if (diffList.isEmpty()) {
-            return OBJECTS_SAME_STRING;
-        }
-
-        final ToStringBuilder lhsBuilder = new ToStringBuilder(lhs, style);
-        final ToStringBuilder rhsBuilder = new ToStringBuilder(rhs, style);
-
-        diffList.forEach(diff -> {
-            lhsBuilder.append(diff.getFieldName(), diff.getLeft());
-            rhsBuilder.append(diff.getFieldName(), diff.getRight());
-        });
-
-        return String.format(toStringFormat, lhsBuilder.build(), rhsBuilder.build());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -18,7 +18,6 @@ package org.apache.commons.lang3.concurrent;
 
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.LockSupport;
-
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.commons.lang3.function.FailableConsumer;
 import org.apache.commons.lang3.function.FailableSupplier;
@@ -77,9 +76,8 @@ public class AtomicSafeInitializer<T> extends AbstractConcurrentInitializer<T, C
         @SuppressWarnings("unchecked")
         @Override
         public I get() {
-            return (I) new AtomicSafeInitializer(getInitializer(), getCloser());
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     private static final Object NO_INIT = new Object();
@@ -92,13 +90,17 @@ public class AtomicSafeInitializer<T> extends AbstractConcurrentInitializer<T, C
      * @since 3.14.0
      */
     public static <T> Builder<AtomicSafeInitializer<T>, T> builder() {
-        return new Builder<>();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** A guard which ensures that initialize() is called only once. */
+    /**
+     * A guard which ensures that initialize() is called only once.
+     */
     private final AtomicReference<AtomicSafeInitializer<T>> factory = new AtomicReference<>();
 
-    /** Holds the reference to the managed object. */
+    /**
+     * Holds the reference to the managed object.
+     */
     private final AtomicReference<T> reference = new AtomicReference<>(getNoInit());
 
     /**
@@ -126,27 +128,12 @@ public class AtomicSafeInitializer<T> extends AbstractConcurrentInitializer<T, C
      */
     @Override
     public final T get() throws ConcurrentException {
-        T result;
-        while ((result = reference.get()) == getNoInit()) {
-            if (factory.compareAndSet(null, this)) {
-                try {
-                    reference.set(initialize());
-                } catch (final Throwable t) {
-                    // Allow retry on failure; otherwise callers spin forever.
-                    factory.set(null);
-                    // Rethrow preserving original semantics: unchecked as-is, checked wrapped.
-                    final Throwable checked = ExceptionUtils.throwUnchecked(t);
-                    throw checked instanceof ConcurrentException ? (ConcurrentException) checked : new ConcurrentException(checked);
-                }
-            } else {
-                // Another thread won the CAS; park 1 ms rather than busy-waiting.
-                LockSupport.parkNanos(1_000_000L);
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** Gets the internal no-init object cast for this instance. */
+    /**
+     * Gets the internal no-init object cast for this instance.
+     */
     @SuppressWarnings("unchecked")
     private T getNoInit() {
         return (T) NO_INIT;
@@ -157,7 +144,7 @@ public class AtomicSafeInitializer<T> extends AbstractConcurrentInitializer<T, C
      */
     @Override
     protected ConcurrentException getTypedException(final Exception e) {
-        return new ConcurrentException(e);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -168,6 +155,6 @@ public class AtomicSafeInitializer<T> extends AbstractConcurrentInitializer<T, C
      */
     @Override
     public boolean isInitialized() {
-        return reference.get() != NO_INIT;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

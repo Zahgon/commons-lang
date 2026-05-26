@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.event;
 
 import java.lang.reflect.InvocationHandler;
@@ -23,7 +22,6 @@ import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-
 import org.apache.commons.lang3.reflect.MethodUtils;
 
 /**
@@ -34,8 +32,11 @@ import org.apache.commons.lang3.reflect.MethodUtils;
 public class EventUtils {
 
     private static final class EventBindingInvocationHandler implements InvocationHandler {
+
         private final Object target;
+
         private final String methodName;
+
         private final Set<String> eventTypes;
 
         /**
@@ -74,13 +75,7 @@ public class EventUtils {
          */
         @Override
         public Object invoke(final Object proxy, final Method method, final Object[] parameters) throws Throwable {
-            if (eventTypes.isEmpty() || eventTypes.contains(method.getName())) {
-                if (hasMatchingParametersMethod(method)) {
-                    return MethodUtils.invokeMethod(target, methodName, parameters);
-                }
-                return MethodUtils.invokeMethod(target, methodName);
-            }
-            return null;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -95,13 +90,7 @@ public class EventUtils {
      * @throws IllegalArgumentException if the object doesn't support the listener type.
      */
     public static <L> void addEventListener(final Object eventSource, final Class<L> listenerType, final L listener) {
-        try {
-            MethodUtils.invokeMethod(eventSource, "add" + listenerType.getSimpleName(), listener);
-        } catch (final ReflectiveOperationException e) {
-            throw new IllegalArgumentException("Unable to add listener for class " + eventSource.getClass().getName()
-                    + " and public add" + listenerType.getSimpleName()
-                    + " method which takes a parameter of type " + listenerType.getName() + ".");
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -115,11 +104,8 @@ public class EventUtils {
      * @param eventTypes   the event types (method names) from the listener interface (if none specified, all will be
      *                     supported).
      */
-    public static <L> void bindEventsToMethod(final Object target, final String methodName, final Object eventSource,
-            final Class<L> listenerType, final String... eventTypes) {
-        final L listener = listenerType.cast(Proxy.newProxyInstance(target.getClass().getClassLoader(),
-                new Class[] { listenerType }, new EventBindingInvocationHandler(target, methodName, eventTypes)));
-        addEventListener(eventSource, listenerType, listener);
+    public static <L> void bindEventsToMethod(final Object target, final String methodName, final Object eventSource, final Class<L> listenerType, final String... eventTypes) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

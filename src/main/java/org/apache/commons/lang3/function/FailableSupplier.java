@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.function.Supplier;
@@ -53,7 +52,7 @@ public interface FailableSupplier<T, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, E extends Exception> FailableSupplier<T, E> nul() {
-        return NUL;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

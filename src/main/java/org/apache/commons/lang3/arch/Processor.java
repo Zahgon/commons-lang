@@ -40,12 +40,10 @@ public class Processor {
          * A 32-bit processor architecture.
          */
         BIT_32("32-bit"),
-
         /**
          * A 64-bit processor architecture.
          */
         BIT_64("64-bit"),
-
         /**
          * An unknown-bit processor architecture.
          */
@@ -66,7 +64,7 @@ public class Processor {
          * @return the label.
          */
         public String getLabel() {
-            return label;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -92,29 +90,24 @@ public class Processor {
          * @since 3.13.0
          */
         AARCH_64("AArch64"),
-
         /**
          * Intel x86 series of instruction set architectures.
          */
         X86("x86"),
-
         /**
          * Intel Itanium 64-bit architecture.
          */
         IA_64("IA-64"),
-
         /**
          * Apple–IBM–Motorola PowerPC architecture.
          */
         PPC("PPC"),
-
         /**
          * RISC-V architecture.
          *
          * @since 3.14.0
          */
         RISC_V("RISC-V"),
-
         /**
          * Unknown architecture.
          */
@@ -136,12 +129,12 @@ public class Processor {
          * @since 3.13.0
          */
         public String getLabel() {
-            return label;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     private final Arch arch;
+
     private final Type type;
 
     /**
@@ -164,7 +157,7 @@ public class Processor {
      * @return A {@link Arch} enum.
      */
     public Arch getArch() {
-        return arch;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -175,7 +168,7 @@ public class Processor {
      * @return A {@link Type} enum.
      */
     public Type getType() {
-        return type;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -184,7 +177,7 @@ public class Processor {
      * @return {@code true}, if {@link Processor} is {@link Arch#BIT_32}, else {@code false}.
      */
     public boolean is32Bit() {
-        return Arch.BIT_32 == arch;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -193,7 +186,7 @@ public class Processor {
      * @return {@code true}, if {@link Processor} is {@link Arch#BIT_64}, else {@code false}.
      */
     public boolean is64Bit() {
-        return Arch.BIT_64 == arch;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -203,7 +196,7 @@ public class Processor {
      * @since 3.13.0
      */
     public boolean isAarch64() {
-        return Type.AARCH_64 == type;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -212,7 +205,7 @@ public class Processor {
      * @return {@code true}. if {@link Processor} is {@link Type#IA_64}, else {@code false}.
      */
     public boolean isIA64() {
-        return Type.IA_64 == type;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -221,7 +214,7 @@ public class Processor {
      * @return {@code true}. if {@link Processor} is {@link Type#PPC}, else {@code false}.
      */
     public boolean isPPC() {
-        return Type.PPC == type;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -231,7 +224,7 @@ public class Processor {
      * @since 3.14.0
      */
     public boolean isRISCV() {
-        return Type.RISC_V == type;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -240,14 +233,11 @@ public class Processor {
      * @return {@code true}, if {@link Processor} is {@link Type#X86}, else {@code false}.
      */
     public boolean isX86() {
-        return Type.X86 == type;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(type.getLabel()).append(' ').append(arch.getLabel());
-        return builder.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

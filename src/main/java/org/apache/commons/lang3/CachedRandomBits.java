@@ -46,15 +46,23 @@ final class CachedRandomBits {
      */
     private static final int MAX_CACHE_SIZE = Integer.MAX_VALUE >> 3;
 
-    /** Maximum number of bits that can be generated (size of an int) */
+    /**
+     * Maximum number of bits that can be generated (size of an int)
+     */
     private static final int MAX_BITS = 32;
 
-    /** Mask to extract the bit offset within a byte (0-7) */
+    /**
+     * Mask to extract the bit offset within a byte (0-7)
+     */
     private static final int BIT_INDEX_MASK = 0x7;
 
-    /** Number of bits in a byte */
+    /**
+     * Number of bits in a byte
+     */
     private static final int BITS_PER_BYTE = 8;
+
     private final Random random;
+
     private final byte[] cache;
 
     /**
@@ -101,39 +109,6 @@ final class CachedRandomBits {
      * @throws IllegalArgumentException if bits is not between 1 and 32
      */
     public int nextBits(final int bits) {
-        if (bits > MAX_BITS || bits <= 0) {
-            throw new IllegalArgumentException("number of bits must be between 1 and " + MAX_BITS);
-        }
-        int result = 0;
-        int generatedBits = 0; // number of generated bits up to now
-        while (generatedBits < bits) {
-            // Check if we need to refill the cache
-            // Convert bitIndex to byte index by dividing by 8 (right shift by 3)
-            if (bitIndex >> 3 >= cache.length) {
-                // We exhausted the number of bits in the cache
-                // This should only happen if the bitIndex is exactly matching the cache length
-                assert bitIndex == cache.length * BITS_PER_BYTE;
-                random.nextBytes(cache);
-                bitIndex = 0;
-            }
-            // Calculate how many bits we can extract from the current byte
-            // 1. Get current position within byte (0-7) using bitIndex & 0x7
-            // 2. Calculate remaining bits in byte: 8 - (position within byte)
-            // 3. Take minimum of remaining bits in byte and bits still needed
-            final int generatedBitsInIteration = Math.min(
-                BITS_PER_BYTE - (bitIndex & BIT_INDEX_MASK),
-                bits - generatedBits);
-            // Shift existing result left to make room for new bits
-            result = result << generatedBitsInIteration;
-            // Extract and append new bits:
-            // 1. Get byte from cache (bitIndex >> 3 converts bit index to byte index)
-            // 2. Shift right by bit position within byte (bitIndex & 0x7)
-            // 3. Mask to keep only the bits we want ((1 << generatedBitsInIteration) - 1)
-            result |= cache[bitIndex >> 3] >> (bitIndex & BIT_INDEX_MASK) & ((1 << generatedBitsInIteration) - 1);
-            // Update counters
-            generatedBits += generatedBitsInIteration;
-            bitIndex += generatedBitsInIteration;
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

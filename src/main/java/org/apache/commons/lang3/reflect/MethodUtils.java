@@ -36,7 +36,6 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.ClassUtils.Interfaces;
@@ -108,19 +107,7 @@ public class MethodUtils {
      * @since 3.19.0
      */
     public static Method getAccessibleMethod(final Class<?> cls, final Method method) {
-        if (!MemberUtils.isPublic(method)) {
-            return null;
-        }
-        // If the declaring class is public, we are done
-        if (ClassUtils.isPublic(cls)) {
-            return method;
-        }
-        final String methodName = method.getName();
-        final Class<?>[] parameterTypes = method.getParameterTypes();
-        // Check the implemented interfaces and subinterfaces
-        final Method method2 = getAccessibleMethodFromInterfaceNest(cls, methodName, parameterTypes);
-        // Check the superclass chain
-        return method2 != null ? method2 : getAccessibleMethodFromSuperclass(cls, methodName, parameterTypes);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -133,7 +120,7 @@ public class MethodUtils {
      * @return The accessible method.
      */
     public static Method getAccessibleMethod(final Class<?> cls, final String methodName, final Class<?>... parameterTypes) {
-        return getAccessibleMethod(getMethodObject(cls, methodName, parameterTypes));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -144,7 +131,7 @@ public class MethodUtils {
      * @return The accessible method
      */
     public static Method getAccessibleMethod(final Method method) {
-        return method != null ? getAccessibleMethod(method.getDeclaringClass(), method) : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -262,74 +249,8 @@ public class MethodUtils {
      * @see SecurityManager#checkPermission
      * @since 3.6
      */
-    public static <A extends Annotation> A getAnnotation(final Method method, final Class<A> annotationCls, final boolean searchSupers,
-            final boolean ignoreAccess) {
-        Objects.requireNonNull(method, "method");
-        Objects.requireNonNull(annotationCls, "annotationCls");
-        if (!ignoreAccess && !MemberUtils.isAccessible(method)) {
-            return null;
-        }
-        A annotation = method.getAnnotation(annotationCls);
-        if (annotation == null && searchSupers) {
-            final Class<?> mcls = method.getDeclaringClass();
-            final String methodName = method.getName();
-            final Class<?>[] paramTypes = method.getParameterTypes();
-            final List<Class<?>> classes = getAllSuperclassesAndInterfaces(mcls);
-            for (final Class<?> acls : classes) {
-                // First, attempt an exact parameter-type match (getDeclaredMethod) to
-                // find a true override. This avoids matching unrelated overloads that
-                // are merely assignable-compatible (e.g. process(Integer) vs
-                // process(Number)).
-                Method equivalentMethod = null;
-                try {
-                    equivalentMethod = acls.getDeclaredMethod(methodName, paramTypes);
-                } catch (final NoSuchMethodException ignored) {
-                    // No exact match; check for generic-bridge scenario: the declaring
-                    // class may use a type variable whose erased form is Object (or
-                    // another bound). In that case the parent method's erased
-                    // parameter types differ from the child's concrete types, so we
-                    // scan declared methods for a same-name method whose *erased*
-                    // parameter count matches and whose erased types are assignable
-                    // from our concrete types.
-                    for (final Method candidate : acls.getDeclaredMethods()) {
-                        if (!candidate.getName().equals(methodName)) {
-                            continue;
-                        }
-                        final Class<?>[] candidateParams = candidate.getParameterTypes();
-                        if (candidateParams.length != paramTypes.length) {
-                            continue;
-                        }
-                        // Require that every concrete param type is assignable to the
-                        // candidate's (erased) param type AND that the candidate is
-                        // generic (has at least one TypeVariable in its generic
-                        // parameter types). This prevents matching plain overloads.
-                        boolean genericMatch = false;
-                        boolean paramsMatch = true;
-                        final java.lang.reflect.Type[] genericParams = candidate.getGenericParameterTypes();
-                        for (int i = 0; i < candidateParams.length; i++) {
-                            if (genericParams[i] instanceof java.lang.reflect.TypeVariable) {
-                                genericMatch = true;
-                            }
-                            if (!ClassUtils.isAssignable(paramTypes[i], candidateParams[i], true)) {
-                                paramsMatch = false;
-                                break;
-                            }
-                        }
-                        if (paramsMatch && genericMatch) {
-                            equivalentMethod = candidate;
-                            break;
-                        }
-                    }
-                }
-                if (equivalentMethod != null && (ignoreAccess || MemberUtils.isAccessible(equivalentMethod))) {
-                    annotation = equivalentMethod.getAnnotation(annotationCls);
-                    if (annotation != null) {
-                        break;
-                    }
-                }
-            }
-        }
-        return annotation;
+    public static <A extends Annotation> A getAnnotation(final Method method, final Class<A> annotationCls, final boolean searchSupers, final boolean ignoreAccess) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static Method getInvokeMethod(final boolean forceAccess, final String methodName, final Class<?>[] parameterTypes, final Class<?> cls) {
@@ -362,38 +283,7 @@ public class MethodUtils {
      * @see SecurityManager#checkPermission
      */
     public static Method getMatchingAccessibleMethod(final Class<?> cls, final String methodName, final Class<?>... requestTypes) {
-        final Method candidate = getMethodObject(cls, methodName, requestTypes);
-        if (candidate != null) {
-            return MemberUtils.setAccessibleWorkaround(candidate);
-        }
-        // search through all methods
-        final Method[] methods = cls.getMethods();
-        final List<Method> matchingMethods = Stream.of(methods)
-                .filter(method -> method.getName().equals(methodName) && MemberUtils.isMatchingMethod(method, requestTypes)).collect(Collectors.toList());
-        // Sort methods by signature to force deterministic result
-        matchingMethods.sort(METHOD_BY_SIGNATURE);
-        Method bestMatch = null;
-        for (final Method method : matchingMethods) {
-            // get accessible version of method
-            final Method accessibleMethod = getAccessibleMethod(method);
-            if (accessibleMethod != null && (bestMatch == null || MemberUtils.compareMethodFit(accessibleMethod, bestMatch, requestTypes) < 0)) {
-                bestMatch = accessibleMethod;
-            }
-        }
-        if (bestMatch != null) {
-            MemberUtils.setAccessibleWorkaround(bestMatch);
-            if (bestMatch.isVarArgs()) {
-                final Class<?>[] bestMatchParameterTypes = bestMatch.getParameterTypes();
-                final Class<?> varArgType = bestMatchParameterTypes[bestMatchParameterTypes.length - 1].getComponentType();
-                for (int paramIdx = bestMatchParameterTypes.length - 1; paramIdx < requestTypes.length; paramIdx++) {
-                    final Class<?> parameterType = requestTypes[paramIdx];
-                    if (!ClassUtils.isAssignable(parameterType, varArgType, true)) {
-                        return null;
-                    }
-                }
-            }
-        }
-        return bestMatch;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -408,42 +298,7 @@ public class MethodUtils {
      * @since 3.5
      */
     public static Method getMatchingMethod(final Class<?> cls, final String methodName, final Class<?>... parameterTypes) {
-        Objects.requireNonNull(cls, "cls");
-        Validate.notEmpty(methodName, "methodName");
-        final List<Method> methods = Stream.of(cls.getDeclaredMethods())
-                .filter(method -> method.getName().equals(methodName))
-                .collect(Collectors.toList());
-        final List<Class<?>> allSuperclassesAndInterfaces = getAllSuperclassesAndInterfaces(cls);
-        Collections.reverse(allSuperclassesAndInterfaces);
-        allSuperclassesAndInterfaces.stream()
-                .map(Class::getDeclaredMethods)
-                .flatMap(Stream::of)
-                .filter(method -> method.getName().equals(methodName))
-                .forEach(methods::add);
-        for (final Method method : methods) {
-            if (Arrays.deepEquals(method.getParameterTypes(), parameterTypes)) {
-                return method;
-            }
-        }
-        final TreeMap<Integer, List<Method>> candidates = new TreeMap<>();
-        methods.stream()
-            .filter(method -> ClassUtils.isAssignable(parameterTypes, method.getParameterTypes(), true))
-            .forEach(method -> {
-                 final int distance = distance(parameterTypes, method.getParameterTypes());
-                 final List<Method> candidatesAtDistance = candidates.computeIfAbsent(distance, k -> new ArrayList<>());
-                 candidatesAtDistance.add(method);
-        });
-        if (candidates.isEmpty()) {
-            return null;
-        }
-        final List<Method> bestCandidates = candidates.values().iterator().next();
-        if (bestCandidates.size() == 1 || !Objects.equals(bestCandidates.get(0).getDeclaringClass(),
-                bestCandidates.get(1).getDeclaringClass())) {
-            return bestCandidates.get(0);
-        }
-        throw new IllegalStateException(String.format("Found multiple candidates for method %s on class %s : %s",
-                methodName + Stream.of(parameterTypes).map(String::valueOf).collect(Collectors.joining(",", "(", ")")), cls.getName(),
-                bestCandidates.stream().map(Method::toString).collect(Collectors.joining(",", "[", "]"))));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -458,11 +313,7 @@ public class MethodUtils {
      * @since 3.15.0
      */
     public static Method getMethodObject(final Class<?> cls, final String name, final Class<?>... parameterTypes) {
-        try {
-            return name != null && cls != null ? cls.getMethod(name, parameterTypes) : null;
-        } catch (final NoSuchMethodException | SecurityException e) {
-            return null;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -475,7 +326,7 @@ public class MethodUtils {
      * @since 3.4
      */
     public static List<Method> getMethodsListWithAnnotation(final Class<?> cls, final Class<? extends Annotation> annotationCls) {
-        return getMethodsListWithAnnotation(cls, annotationCls, false, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -489,18 +340,8 @@ public class MethodUtils {
      * @throws NullPointerException if either the class or annotation class is {@code null}.
      * @since 3.6
      */
-    public static List<Method> getMethodsListWithAnnotation(final Class<?> cls, final Class<? extends Annotation> annotationCls, final boolean searchSupers,
-            final boolean ignoreAccess) {
-        Objects.requireNonNull(cls, "cls");
-        Objects.requireNonNull(annotationCls, "annotationCls");
-        final List<Class<?>> classes = searchSupers ? getAllSuperclassesAndInterfaces(cls) : new ArrayList<>();
-        classes.add(0, cls);
-        final List<Method> annotatedMethods = new ArrayList<>();
-        classes.forEach(acls -> {
-            final Method[] methods = ignoreAccess ? acls.getDeclaredMethods() : acls.getMethods();
-            Stream.of(methods).filter(method -> method.isAnnotationPresent(annotationCls)).forEachOrdered(annotatedMethods::add);
-        });
-        return annotatedMethods;
+    public static List<Method> getMethodsListWithAnnotation(final Class<?> cls, final Class<? extends Annotation> annotationCls, final boolean searchSupers, final boolean ignoreAccess) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -513,7 +354,7 @@ public class MethodUtils {
      * @since 3.4
      */
     public static Method[] getMethodsWithAnnotation(final Class<?> cls, final Class<? extends Annotation> annotationCls) {
-        return getMethodsWithAnnotation(cls, annotationCls, false, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -527,9 +368,8 @@ public class MethodUtils {
      * @throws NullPointerException if the class or annotation are {@code null}.
      * @since 3.6
      */
-    public static Method[] getMethodsWithAnnotation(final Class<?> cls, final Class<? extends Annotation> annotationCls, final boolean searchSupers,
-            final boolean ignoreAccess) {
-        return getMethodsListWithAnnotation(cls, annotationCls, searchSupers, ignoreAccess).toArray(ArrayUtils.EMPTY_METHOD_ARRAY);
+    public static Method[] getMethodsWithAnnotation(final Class<?> cls, final Class<? extends Annotation> annotationCls, final boolean searchSupers, final boolean ignoreAccess) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -544,37 +384,7 @@ public class MethodUtils {
      * @since 3.2
      */
     public static Set<Method> getOverrideHierarchy(final Method method, final Interfaces interfacesBehavior) {
-        Objects.requireNonNull(method, "method");
-        final Set<Method> result = new LinkedHashSet<>();
-        result.add(method);
-        final Class<?>[] parameterTypes = method.getParameterTypes();
-        final Class<?> declaringClass = method.getDeclaringClass();
-        final Iterator<Class<?>> hierarchy = ClassUtils.hierarchy(declaringClass, interfacesBehavior).iterator();
-        //skip the declaring class :P
-        hierarchy.next();
-        hierarchyTraversal: while (hierarchy.hasNext()) {
-            final Class<?> c = hierarchy.next();
-            final Method m = getMatchingAccessibleMethod(c, method.getName(), parameterTypes);
-            if (m == null) {
-                continue;
-            }
-            if (Arrays.equals(m.getParameterTypes(), parameterTypes)) {
-                // matches without generics
-                result.add(m);
-                continue;
-            }
-            // necessary to get arguments every time in the case that we are including interfaces
-            final Map<TypeVariable<?>, Type> typeArguments = TypeUtils.getTypeArguments(declaringClass, m.getDeclaringClass());
-            for (int i = 0; i < parameterTypes.length; i++) {
-                final Type childType = TypeUtils.unrollVariables(typeArguments, method.getGenericParameterTypes()[i]);
-                final Type parentType = TypeUtils.unrollVariables(typeArguments, m.getGenericParameterTypes()[i]);
-                if (!TypeUtils.equals(childType, parentType)) {
-                    continue hierarchyTraversal;
-                }
-            }
-            result.add(m);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -601,9 +411,8 @@ public class MethodUtils {
      * @throws ExceptionInInitializerError Thrown if the initialization provoked by this method fails.
      * @since 3.4
      */
-    public static Object invokeExactMethod(final Object object, final String methodName)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        return invokeExactMethod(object, methodName, ArrayUtils.EMPTY_OBJECT_ARRAY, null);
+    public static Object invokeExactMethod(final Object object, final String methodName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -633,10 +442,8 @@ public class MethodUtils {
      * @throws NullPointerException        Thrown if the specified {@code object} is null.
      * @throws ExceptionInInitializerError Thrown if the initialization provoked by this method fails.
      */
-    public static Object invokeExactMethod(final Object object, final String methodName, final Object... args)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        final Object[] actuals = ArrayUtils.nullToEmpty(args);
-        return invokeExactMethod(object, methodName, actuals, ClassUtils.toClass(actuals));
+    public static Object invokeExactMethod(final Object object, final String methodName, final Object... args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -667,13 +474,8 @@ public class MethodUtils {
      * @throws NullPointerException        Thrown if the specified {@code object} is null.
      * @throws ExceptionInInitializerError Thrown if the initialization provoked by this method fails.
      */
-    public static Object invokeExactMethod(final Object object, final String methodName, final Object[] args, final Class<?>[] parameterTypes)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        final Class<?> cls = Objects.requireNonNull(object, "object").getClass();
-        final Class<?>[] paramTypes = ArrayUtils.nullToEmpty(parameterTypes);
-        final Method method = getAccessibleMethod(cls, methodName, paramTypes);
-        requireNonNull(method, cls, methodName, paramTypes);
-        return method.invoke(object, ArrayUtils.nullToEmpty(args));
+    public static Object invokeExactMethod(final Object object, final String methodName, final Object[] args, final Class<?>[] parameterTypes) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -702,10 +504,8 @@ public class MethodUtils {
      * @throws InvocationTargetException   Thrown if the underlying method throws an exception.
      * @throws ExceptionInInitializerError Thrown if the initialization provoked by this method fails.
      */
-    public static Object invokeExactStaticMethod(final Class<?> cls, final String methodName, final Object... args)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        final Object[] actuals = ArrayUtils.nullToEmpty(args);
-        return invokeExactStaticMethod(cls, methodName, actuals, ClassUtils.toClass(actuals));
+    public static Object invokeExactStaticMethod(final Class<?> cls, final String methodName, final Object... args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -735,12 +535,8 @@ public class MethodUtils {
      * @throws InvocationTargetException   Thrown if the underlying method throws an exception.
      * @throws ExceptionInInitializerError Thrown if the initialization provoked by this method fails.
      */
-    public static Object invokeExactStaticMethod(final Class<?> cls, final String methodName, final Object[] args, final Class<?>[] parameterTypes)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        final Class<?>[] paramTypes = ArrayUtils.nullToEmpty(parameterTypes);
-        final Method method = getAccessibleMethod(cls, methodName, ArrayUtils.nullToEmpty(paramTypes));
-        requireNonNull(method, cls, methodName, paramTypes);
-        return method.invoke(null, ArrayUtils.nullToEmpty(args));
+    public static Object invokeExactStaticMethod(final Class<?> cls, final String methodName, final Object[] args, final Class<?>[] parameterTypes) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -773,9 +569,8 @@ public class MethodUtils {
      * @see SecurityManager#checkPermission
      * @since 3.5
      */
-    public static Object invokeMethod(final Object object, final boolean forceAccess, final String methodName)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        return invokeMethod(object, forceAccess, methodName, ArrayUtils.EMPTY_OBJECT_ARRAY, null);
+    public static Object invokeMethod(final Object object, final boolean forceAccess, final String methodName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -814,10 +609,8 @@ public class MethodUtils {
      * @see SecurityManager#checkPermission
      * @since 3.5
      */
-    public static Object invokeMethod(final Object object, final boolean forceAccess, final String methodName, final Object... args)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        final Object[] actuals = ArrayUtils.nullToEmpty(args);
-        return invokeMethod(object, forceAccess, methodName, actuals, ClassUtils.toClass(actuals));
+    public static Object invokeMethod(final Object object, final boolean forceAccess, final String methodName, final Object... args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -853,13 +646,8 @@ public class MethodUtils {
      * @see SecurityManager#checkPermission
      * @since 3.5
      */
-    public static Object invokeMethod(final Object object, final boolean forceAccess, final String methodName, final Object[] args, final Class<?>[] parameterTypes)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        final Class<?> cls = Objects.requireNonNull(object, "object").getClass();
-        final Class<?>[] paramTypes = ArrayUtils.nullToEmpty(parameterTypes);
-        final Method method = getInvokeMethod(forceAccess, methodName, paramTypes, cls);
-        requireNonNull(method, cls, methodName, paramTypes);
-        return method.invoke(object, toVarArgs(method, ArrayUtils.nullToEmpty(args)));
+    public static Object invokeMethod(final Object object, final boolean forceAccess, final String methodName, final Object[] args, final Class<?>[] parameterTypes) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -883,9 +671,8 @@ public class MethodUtils {
      * @see SecurityManager#checkPermission
      * @since 3.4
      */
-    public static Object invokeMethod(final Object object, final String methodName) throws NoSuchMethodException,
-            IllegalAccessException, InvocationTargetException {
-        return invokeMethod(object, methodName, ArrayUtils.EMPTY_OBJECT_ARRAY, null);
+    public static Object invokeMethod(final Object object, final String methodName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -915,10 +702,8 @@ public class MethodUtils {
      * @throws SecurityException if an underlying accessible object's method denies the request.
      * @see SecurityManager#checkPermission
      */
-    public static Object invokeMethod(final Object object, final String methodName, final Object... args)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        final Object[] actuals = ArrayUtils.nullToEmpty(args);
-        return invokeMethod(object, methodName, actuals, ClassUtils.toClass(actuals));
+    public static Object invokeMethod(final Object object, final String methodName, final Object... args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -955,9 +740,8 @@ public class MethodUtils {
      * @throws ExceptionInInitializerError Thrown if the initialization provoked by this method fails.
      * @see SecurityManager#checkPermission
      */
-    public static Object invokeMethod(final Object object, final String methodName, final Object[] args, final Class<?>[] parameterTypes)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        return invokeMethod(object, false, methodName, args, parameterTypes);
+    public static Object invokeMethod(final Object object, final String methodName, final Object[] args, final Class<?>[] parameterTypes) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -996,10 +780,8 @@ public class MethodUtils {
      * @throws ExceptionInInitializerError Thrown if the initialization provoked by this method fails.
      * @see SecurityManager#checkPermission
      */
-    public static Object invokeStaticMethod(final Class<?> cls, final String methodName, final Object... args)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        final Object[] actuals = ArrayUtils.nullToEmpty(args);
-        return invokeStaticMethod(cls, methodName, actuals, ClassUtils.toClass(actuals));
+    public static Object invokeStaticMethod(final Class<?> cls, final String methodName, final Object... args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1035,26 +817,19 @@ public class MethodUtils {
      * @throws ExceptionInInitializerError Thrown if the initialization provoked by this method fails.
      * @see SecurityManager#checkPermission
      */
-    public static Object invokeStaticMethod(final Class<?> cls, final String methodName, final Object[] args, final Class<?>[] parameterTypes)
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        final Class<?>[] paramTypes = ArrayUtils.nullToEmpty(parameterTypes);
-        final Method method = getMatchingAccessibleMethod(cls, methodName, paramTypes);
-        requireNonNull(method, cls, methodName, paramTypes);
-        return method.invoke(null, toVarArgs(method, ArrayUtils.nullToEmpty(args)));
+    public static Object invokeStaticMethod(final Class<?> cls, final String methodName, final Object[] args, final Class<?>[] parameterTypes) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    private static Method requireNonNull(final Method method, final Class<?> cls, final String methodName, final Class<?>[] parameterTypes)
-            throws NoSuchMethodException {
+    private static Method requireNonNull(final Method method, final Class<?> cls, final String methodName, final Class<?>[] parameterTypes) throws NoSuchMethodException {
         if (method == null) {
-            throw new NoSuchMethodException(String.format("No method: %s.%s(%s)", ClassUtils.getName(cls), methodName,
-                    Streams.of(parameterTypes).map(ClassUtils::getName).collect(LangCollectors.joining(", "))));
+            throw new NoSuchMethodException(String.format("No method: %s.%s(%s)", ClassUtils.getName(cls), methodName, Streams.of(parameterTypes).map(ClassUtils::getName).collect(LangCollectors.joining(", "))));
         }
         return method;
     }
 
-    static Object[] toVarArgs(final Executable executable, final Object[] args)
-            throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-        return executable.isVarArgs() ? toVarArgs(args, executable.getParameterTypes()) : args;
+    static Object[] toVarArgs(final Executable executable, final Object[] args) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1078,8 +853,7 @@ public class MethodUtils {
      * @throws ExceptionInInitializerError Thrown if an initialization provoked by this method fails.
      * @see <a href="https://docs.oracle.com/javase/specs/jls/se21/html/jls-5.html#jls-5.1.2">JLS 5.1.2. Widening Primitive Conversion</a>
      */
-    private static Object[] toVarArgs(final Object[] args, final Class<?>[] methodParameterTypes)
-            throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    private static Object[] toVarArgs(final Object[] args, final Class<?>[] methodParameterTypes) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         final int mptLength = methodParameterTypes.length;
         if (args.length == mptLength) {
             final Object lastArg = args[args.length - 1];
@@ -1101,9 +875,7 @@ public class MethodUtils {
         for (int i = 0; i < varArgLength; i++) {
             final Object arg = args[mptLength - 1 + i];
             try {
-                Array.set(varArgsArray, i, primitiveOrWrapper
-                        ? varArgComponentWrappedType.getConstructor(ClassUtils.wrapperToPrimitive(varArgComponentWrappedType)).newInstance(arg)
-                        : varArgComponentWrappedType.cast(arg));
+                Array.set(varArgsArray, i, primitiveOrWrapper ? varArgComponentWrappedType.getConstructor(ClassUtils.wrapperToPrimitive(varArgComponentWrappedType)).newInstance(arg) : varArgComponentWrappedType.cast(arg));
             } catch (final InstantiationException e) {
                 throw new IllegalArgumentException("Cannot convert vararg #" + i, e);
             }

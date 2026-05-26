@@ -37,7 +37,7 @@ public class NumericEntityEscaper extends CodePointTranslator {
      * @return the newly created {@link NumericEntityEscaper} instance.
      */
     public static NumericEntityEscaper above(final int codePoint) {
-        return outsideOf(0, codePoint);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -47,7 +47,7 @@ public class NumericEntityEscaper extends CodePointTranslator {
      * @return the newly created {@link NumericEntityEscaper} instance.
      */
     public static NumericEntityEscaper below(final int codePoint) {
-        return outsideOf(codePoint, Integer.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -58,7 +58,7 @@ public class NumericEntityEscaper extends CodePointTranslator {
      * @return the newly created {@link NumericEntityEscaper} instance.
      */
     public static NumericEntityEscaper between(final int codePointLow, final int codePointHigh) {
-        return new NumericEntityEscaper(codePointLow, codePointHigh, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -69,7 +69,7 @@ public class NumericEntityEscaper extends CodePointTranslator {
      * @return the newly created {@link NumericEntityEscaper} instance.
      */
     public static NumericEntityEscaper outsideOf(final int codePointLow, final int codePointHigh) {
-        return new NumericEntityEscaper(codePointLow, codePointHigh, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private final int below;
@@ -106,17 +106,6 @@ public class NumericEntityEscaper extends CodePointTranslator {
      */
     @Override
     public boolean translate(final int codePoint, final Writer out) throws IOException {
-        if (between) {
-            if (codePoint < below || codePoint > above) {
-                return false;
-            }
-        } else if (codePoint >= below && codePoint <= above) {
-            return false;
-        }
-
-        out.write("&#");
-        out.write(Integer.toString(codePoint, 10));
-        out.write(';');
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

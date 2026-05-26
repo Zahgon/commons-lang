@@ -18,7 +18,6 @@ package org.apache.commons.lang3.tuple;
 
 import java.io.Serializable;
 import java.util.Objects;
-
 import org.apache.commons.lang3.builder.CompareToBuilder;
 
 /**
@@ -38,7 +37,9 @@ import org.apache.commons.lang3.builder.CompareToBuilder;
  */
 public abstract class Triple<L, M, R> implements Comparable<Triple<L, M, R>>, Serializable {
 
-    /** Serialization version */
+    /**
+     * Serialization version
+     */
     private static final long serialVersionUID = 1L;
 
     /**
@@ -62,7 +63,7 @@ public abstract class Triple<L, M, R> implements Comparable<Triple<L, M, R>>, Se
      */
     @SuppressWarnings("unchecked")
     public static <L, M, R> Triple<L, M, R>[] emptyArray() {
-        return (Triple<L, M, R>[]) EMPTY_ARRAY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -77,7 +78,7 @@ public abstract class Triple<L, M, R> implements Comparable<Triple<L, M, R>>, Se
      * @return an immutable triple formed from the three parameters, not null.
      */
     public static <L, M, R> Triple<L, M, R> of(final L left, final M middle, final R right) {
-        return ImmutableTriple.of(left, middle, right);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -94,7 +95,7 @@ public abstract class Triple<L, M, R> implements Comparable<Triple<L, M, R>>, Se
      * @since 3.13.0
      */
     public static <L, M, R> Triple<L, M, R> ofNonNull(final L left, final M middle, final R right) {
-        return ImmutableTriple.ofNonNull(left, middle, right);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -114,9 +115,7 @@ public abstract class Triple<L, M, R> implements Comparable<Triple<L, M, R>>, Se
      */
     @Override
     public int compareTo(final Triple<L, M, R> other) {
-      return new CompareToBuilder().append(getLeft(), other.getLeft())
-          .append(getMiddle(), other.getMiddle())
-          .append(getRight(), other.getRight()).toComparison();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -127,16 +126,7 @@ public abstract class Triple<L, M, R> implements Comparable<Triple<L, M, R>>, Se
      */
     @Override
     public boolean equals(final Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj instanceof Triple<?, ?, ?>) {
-            final Triple<?, ?, ?> other = (Triple<?, ?, ?>) obj;
-            return Objects.equals(getLeft(), other.getLeft())
-                && Objects.equals(getMiddle(), other.getMiddle())
-                && Objects.equals(getRight(), other.getRight());
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -170,8 +160,7 @@ public abstract class Triple<L, M, R> implements Comparable<Triple<L, M, R>>, Se
      */
     @Override
     public int hashCode() {
-        // See Map.Entry API specification
-        return Objects.hashCode(getLeft()) ^ Objects.hashCode(getMiddle()) ^ Objects.hashCode(getRight());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -181,7 +170,7 @@ public abstract class Triple<L, M, R> implements Comparable<Triple<L, M, R>>, Se
      */
     @Override
     public String toString() {
-        return "(" + getLeft() + "," + getMiddle() + "," + getRight() + ")";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -196,8 +185,6 @@ public abstract class Triple<L, M, R> implements Comparable<Triple<L, M, R>>, Se
      * @return the formatted string, not null.
      */
     public String toString(final String format) {
-        return String.format(format, getLeft(), getMiddle(), getRight());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }
-

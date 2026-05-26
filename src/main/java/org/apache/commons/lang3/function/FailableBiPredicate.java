@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -31,11 +30,15 @@ import java.util.function.BiPredicate;
 @FunctionalInterface
 public interface FailableBiPredicate<T, U, E extends Throwable> {
 
-    /** FALSE singleton */
+    /**
+     * FALSE singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableBiPredicate FALSE = (t, u) -> false;
 
-    /** TRUE singleton */
+    /**
+     * TRUE singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableBiPredicate TRUE = (t, u) -> true;
 
@@ -49,7 +52,7 @@ public interface FailableBiPredicate<T, U, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, U, E extends Throwable> FailableBiPredicate<T, U, E> falsePredicate() {
-        return FALSE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -62,7 +65,7 @@ public interface FailableBiPredicate<T, U, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <T, U, E extends Throwable> FailableBiPredicate<T, U, E> truePredicate() {
-        return TRUE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -73,8 +76,7 @@ public interface FailableBiPredicate<T, U, E extends Throwable> {
      * @throws NullPointerException if other is null
      */
     default FailableBiPredicate<T, U, E> and(final FailableBiPredicate<? super T, ? super U, E> other) {
-        Objects.requireNonNull(other);
-        return (final T t, final U u) -> test(t, u) && other.test(t, u);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -83,7 +85,7 @@ public interface FailableBiPredicate<T, U, E extends Throwable> {
      * @return a predicate that negates this predicate.
      */
     default FailableBiPredicate<T, U, E> negate() {
-        return (final T t, final U u) -> !test(t, u);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -94,8 +96,7 @@ public interface FailableBiPredicate<T, U, E extends Throwable> {
      * @throws NullPointerException if other is null
      */
     default FailableBiPredicate<T, U, E> or(final FailableBiPredicate<? super T, ? super U, E> other) {
-        Objects.requireNonNull(other);
-        return (final T t, final U u) -> test(t, u) || other.test(t, u);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

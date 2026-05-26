@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -29,9 +28,12 @@ import java.util.function.IntConsumer;
 @FunctionalInterface
 public interface ByteConsumer {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     ByteConsumer NOP = t -> {
-        /* NOP */ };
+        /* NOP */
+    };
 
     /**
      * Gets the NOP singleton.
@@ -39,7 +41,7 @@ public interface ByteConsumer {
      * @return The NOP singleton.
      */
     static ByteConsumer nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -59,10 +61,6 @@ public interface ByteConsumer {
      * @throws NullPointerException if {@code after} is null
      */
     default ByteConsumer andThen(final ByteConsumer after) {
-        Objects.requireNonNull(after);
-        return (final byte t) -> {
-            accept(t);
-            after.accept(t);
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

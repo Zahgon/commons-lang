@@ -22,7 +22,6 @@ import java.io.UncheckedIOException;
 import java.io.Writer;
 import java.util.Locale;
 import java.util.Objects;
-
 import org.apache.commons.lang3.ArrayUtils;
 
 /**
@@ -38,7 +37,7 @@ import org.apache.commons.lang3.ArrayUtils;
 @Deprecated
 public abstract class CharSequenceTranslator {
 
-    static final char[] HEX_DIGITS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+    static final char[] HEX_DIGITS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
     /**
      * Returns an upper case hexadecimal {@link String} for the given
@@ -48,7 +47,7 @@ public abstract class CharSequenceTranslator {
      * @return An upper case hexadecimal {@link String}.
      */
     public static String hex(final int codePoint) {
-        return Integer.toHexString(codePoint).toUpperCase(Locale.ENGLISH);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -65,17 +64,7 @@ public abstract class CharSequenceTranslator {
      * @return String output of translation.
      */
     public final String translate(final CharSequence input) {
-        if (input == null) {
-            return null;
-        }
-        try {
-            final StringWriter writer = new StringWriter(input.length() * 2);
-            translate(input, writer);
-            return writer.toString();
-        } catch (final IOException ioe) {
-            // this should never ever happen while writing to a StringWriter
-            throw new UncheckedIOException(ioe);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -100,37 +89,10 @@ public abstract class CharSequenceTranslator {
      * @param writer Writer to translate the text to.
      * @throws IOException if and only if the Writer produces an IOException.
      */
-    @SuppressWarnings("resource") // Caller closes writer
+    // Caller closes writer
+    @SuppressWarnings("resource")
     public final void translate(final CharSequence input, final Writer writer) throws IOException {
-        Objects.requireNonNull(writer, "writer");
-        if (input == null) {
-            return;
-        }
-        int pos = 0;
-        final int len = input.length();
-        while (pos < len) {
-            final int consumed = translate(input, pos, writer);
-            if (consumed == 0) {
-                // inlined implementation of Character.toChars(Character.codePointAt(input, pos))
-                // avoids allocating temp char arrays and duplicate checks
-                final char c1 = input.charAt(pos);
-                writer.write(c1);
-                pos++;
-                if (Character.isHighSurrogate(c1) && pos < len) {
-                    final char c2 = input.charAt(pos);
-                    if (Character.isLowSurrogate(c2)) {
-                      writer.write(c2);
-                      pos++;
-                    }
-                }
-                continue;
-            }
-            // contract with translators is that they have to understand code points
-            // and they just took care of a surrogate pair
-            for (int pt = 0; pt < consumed; pt++) {
-                pos += Character.charCount(Character.codePointAt(input, pos));
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -141,9 +103,6 @@ public abstract class CharSequenceTranslator {
      * @return CharSequenceTranslator merging this translator with the others.
      */
     public final CharSequenceTranslator with(final CharSequenceTranslator... translators) {
-        final CharSequenceTranslator[] newArray = new CharSequenceTranslator[translators.length + 1];
-        newArray[0] = this;
-        return new AggregateTranslator(ArrayUtils.arraycopy(translators, 0, newArray, 1, translators.length));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

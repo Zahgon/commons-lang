@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.stream;
 
 import java.util.Arrays;
@@ -29,7 +28,6 @@ import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -51,13 +49,16 @@ public final class LangCollectors {
     private static final class SimpleCollector<T, A, R> implements Collector<T, A, R> {
 
         private final BiConsumer<A, T> accumulator;
+
         private final Set<Characteristics> characteristics;
+
         private final BinaryOperator<A> combiner;
+
         private final Function<A, R> finisher;
+
         private final Supplier<A> supplier;
 
-        private SimpleCollector(final Supplier<A> supplier, final BiConsumer<A, T> accumulator, final BinaryOperator<A> combiner, final Function<A, R> finisher,
-            final Set<Characteristics> characteristics) {
+        private SimpleCollector(final Supplier<A> supplier, final BiConsumer<A, T> accumulator, final BinaryOperator<A> combiner, final Function<A, R> finisher, final Set<Characteristics> characteristics) {
             this.supplier = supplier;
             this.accumulator = accumulator;
             this.combiner = combiner;
@@ -67,27 +68,27 @@ public final class LangCollectors {
 
         @Override
         public BiConsumer<A, T> accumulator() {
-            return accumulator;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public Set<Characteristics> characteristics() {
-            return characteristics;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public BinaryOperator<A> combiner() {
-            return combiner;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public Function<A, R> finisher() {
-            return finisher;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public Supplier<A> supplier() {
-            return supplier;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -109,7 +110,7 @@ public final class LangCollectors {
      */
     @SafeVarargs
     public static <T, R, A> R collect(final Collector<? super T, A, R> collector, final T... array) {
-        return Streams.of(array).collect(collector);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -130,7 +131,7 @@ public final class LangCollectors {
      * @return A {@code Collector} which concatenates Object elements, separated by the specified delimiter, in encounter order.
      */
     public static Collector<Object, ?, String> joining() {
-        return new SimpleCollector<>(StringBuilder::new, StringBuilder::append, StringBuilder::append, StringBuilder::toString, CH_NOID);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -152,7 +153,7 @@ public final class LangCollectors {
      * @return A {@code Collector} which concatenates Object elements, separated by the specified delimiter, in encounter order.
      */
     public static Collector<Object, ?, String> joining(final CharSequence delimiter) {
-        return joining(delimiter, StringUtils.EMPTY, StringUtils.EMPTY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -179,7 +180,7 @@ public final class LangCollectors {
      *         encounter order
      */
     public static Collector<Object, ?, String> joining(final CharSequence delimiter, final CharSequence prefix, final CharSequence suffix) {
-        return joining(delimiter, prefix, suffix, Objects::toString);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -205,14 +206,11 @@ public final class LangCollectors {
      * @param toString  A function that takes an Object and returns a non-null String.
      * @return A {@code Collector} which concatenates CharSequence elements, separated by the specified delimiter, in encounter order
      */
-    public static Collector<Object, ?, String> joining(final CharSequence delimiter, final CharSequence prefix, final CharSequence suffix,
-        final Function<Object, String> toString) {
-        return new SimpleCollector<>(() -> new StringJoiner(delimiter, prefix, suffix), (a, t) -> a.add(toString.apply(t)), StringJoiner::merge,
-            StringJoiner::toString, CH_NOID);
+    public static Collector<Object, ?, String> joining(final CharSequence delimiter, final CharSequence prefix, final CharSequence suffix, final Function<Object, String> toString) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private LangCollectors() {
         // No instance
     }
-
 }

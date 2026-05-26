@@ -52,16 +52,7 @@ public class CharSetUtils {
      * @since 3.2
      */
     public static boolean containsAny(final String str, final String... set) {
-        if (isEmpty(str, set)) {
-            return false;
-        }
-        final CharSet chars = CharSet.getInstance(set);
-        for (final char c : str.toCharArray()) {
-            if (chars.contains(c)) {
-                return true;
-            }
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -83,17 +74,7 @@ public class CharSetUtils {
      * @return the character count, zero if null string input
      */
     public static int count(final String str, final String... set) {
-        if (isEmpty(str, set)) {
-            return 0;
-        }
-        final CharSet chars = CharSet.getInstance(set);
-        int count = 0;
-        for (final char c : str.toCharArray()) {
-            if (chars.contains(c)) {
-                count++;
-            }
-        }
-        return count;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -126,10 +107,7 @@ public class CharSetUtils {
      * @return the modified String, {@code null} if null string input
      */
     public static String delete(final String str, final String... set) {
-        if (isEmpty(str, set)) {
-            return str;
-        }
-        return modify(str, set, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static boolean isEmpty(final String str, final String... set) {
@@ -156,13 +134,7 @@ public class CharSetUtils {
      * @since 2.0
      */
     public static String keep(final String str, final String... set) {
-        if (str == null) {
-            return null;
-        }
-        if (str.isEmpty() || deepEmpty(set)) {
-            return StringUtils.EMPTY;
-        }
-        return modify(str, set, true);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -204,36 +176,7 @@ public class CharSetUtils {
      * @return the modified String, {@code null} if null string input
      */
     public static String squeeze(final String str, final String... set) {
-        if (isEmpty(str, set)) {
-            return str;
-        }
-        final CharSet chars = CharSet.getInstance(set);
-        final StringBuilder buffer = new StringBuilder(str.length());
-        final char[] chrs = str.toCharArray();
-        final int sz = chrs.length;
-        char lastChar = chrs[0];
-        char ch;
-        Character inChars = null;
-        Character notInChars = null;
-        buffer.append(lastChar);
-        for (int i = 1; i < sz; i++) {
-            ch = chrs[i];
-            if (ch == lastChar) {
-                if (inChars != null && ch == inChars) {
-                    continue;
-                }
-                if (notInChars == null || ch != notInChars) {
-                    if (chars.contains(ch)) {
-                        inChars = ch;
-                        continue;
-                    }
-                    notInChars = ch;
-                }
-            }
-            buffer.append(ch);
-            lastChar = ch;
-        }
-        return buffer.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

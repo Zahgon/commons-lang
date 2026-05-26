@@ -23,7 +23,6 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.apache.commons.lang3.Strings;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -41,10 +40,14 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class DefaultExceptionContext implements ExceptionContext, Serializable {
 
-    /** The serialization version. */
+    /**
+     * The serialization version.
+     */
     private static final long serialVersionUID = 20110706L;
 
-    /** The list storing the label-data pairs. */
+    /**
+     * The list storing the label-data pairs.
+     */
     private final List<Pair<String, Object>> contextValues = new ArrayList<>();
 
     /**
@@ -59,8 +62,7 @@ public class DefaultExceptionContext implements ExceptionContext, Serializable {
      */
     @Override
     public DefaultExceptionContext addContextValue(final String label, final Object value) {
-        contextValues.add(new ImmutablePair<>(label, value));
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -68,7 +70,7 @@ public class DefaultExceptionContext implements ExceptionContext, Serializable {
      */
     @Override
     public List<Pair<String, Object>> getContextEntries() {
-        return contextValues;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -76,7 +78,7 @@ public class DefaultExceptionContext implements ExceptionContext, Serializable {
      */
     @Override
     public Set<String> getContextLabels() {
-        return stream().map(Pair::getKey).collect(Collectors.toSet());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -84,7 +86,7 @@ public class DefaultExceptionContext implements ExceptionContext, Serializable {
      */
     @Override
     public List<Object> getContextValues(final String label) {
-        return stream().filter(pair -> Strings.CS.equals(label, pair.getKey())).map(Pair::getValue).collect(Collectors.toList());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -92,7 +94,7 @@ public class DefaultExceptionContext implements ExceptionContext, Serializable {
      */
     @Override
     public Object getFirstContextValue(final String label) {
-        return stream().filter(pair -> Strings.CS.equals(label, pair.getKey())).findFirst().map(Pair::getValue).orElse(null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -103,34 +105,7 @@ public class DefaultExceptionContext implements ExceptionContext, Serializable {
      */
     @Override
     public String getFormattedExceptionMessage(final String baseMessage) {
-        final StringBuilder buffer = new StringBuilder(256);
-        if (baseMessage != null) {
-            buffer.append(baseMessage);
-        }
-        if (!contextValues.isEmpty()) {
-            if (buffer.length() > 0) {
-                buffer.append('\n');
-            }
-            buffer.append("Exception Context:\n");
-            int i = 0;
-            for (final Pair<String, Object> pair : contextValues) {
-                buffer.append("\t[");
-                buffer.append(++i);
-                buffer.append(':');
-                buffer.append(pair.getKey());
-                buffer.append("=");
-                final Object value = pair.getValue();
-                try {
-                    buffer.append(Objects.toString(value));
-                } catch (final Exception e) {
-                    buffer.append("Exception thrown on toString(): ");
-                    buffer.append(ExceptionUtils.getStackTrace(e));
-                }
-                buffer.append("]\n");
-            }
-            buffer.append("---------------------------------");
-        }
-        return buffer.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -138,13 +113,10 @@ public class DefaultExceptionContext implements ExceptionContext, Serializable {
      */
     @Override
     public DefaultExceptionContext setContextValue(final String label, final Object value) {
-        contextValues.removeIf(p -> Strings.CS.equals(label, p.getKey()));
-        addContextValue(label, value);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private Stream<Pair<String, Object>> stream() {
         return contextValues.stream();
     }
-
 }

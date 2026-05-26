@@ -18,7 +18,6 @@ package org.apache.commons.lang3.builder;
 
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicBoolean;
-
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 
@@ -84,28 +83,16 @@ public class RecursiveToStringStyle extends ToStringStyle {
      * @return Whether or not to recursively format instances of the given {@link Class}.
      */
     protected boolean accept(final Class<?> clazz) {
-        // @formatter:off
-        return !ClassUtils.isPrimitiveWrapper(clazz) &&
-               !String.class.equals(clazz) &&
-               !Number.class.isAssignableFrom(clazz) &&
-               !AtomicBoolean.class.equals(clazz) &&
-               !MutableBoolean.class.equals(clazz);
-        // @formatter:on
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     protected void appendDetail(final StringBuffer buffer, final String fieldName, final Collection<?> coll) {
-        appendClassName(buffer, coll);
-        appendIdentityHashCode(buffer, coll);
-        appendDetail(buffer, fieldName, coll.toArray());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void appendDetail(final StringBuffer buffer, final String fieldName, final Object value) {
-        if (value != null && accept(value.getClass())) {
-            buffer.append(ReflectionToStringBuilder.toString(value, this));
-        } else {
-            super.appendDetail(buffer, fieldName, value);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

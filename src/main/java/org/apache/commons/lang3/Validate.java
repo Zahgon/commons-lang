@@ -48,34 +48,44 @@ import java.util.regex.Pattern;
  */
 public class Validate {
 
-    private static final String DEFAULT_NOT_NAN_EX_MESSAGE =
-        "The validated value is not a number";
-    private static final String DEFAULT_FINITE_EX_MESSAGE =
-        "The value is invalid: %f";
-    private static final String DEFAULT_EXCLUSIVE_BETWEEN_EX_MESSAGE =
-        "The value %s is not in the specified exclusive range of %s to %s";
-    private static final String DEFAULT_INCLUSIVE_BETWEEN_EX_MESSAGE =
-        "The value %s is not in the specified inclusive range of %s to %s";
+    private static final String DEFAULT_NOT_NAN_EX_MESSAGE = "The validated value is not a number";
+
+    private static final String DEFAULT_FINITE_EX_MESSAGE = "The value is invalid: %f";
+
+    private static final String DEFAULT_EXCLUSIVE_BETWEEN_EX_MESSAGE = "The value %s is not in the specified exclusive range of %s to %s";
+
+    private static final String DEFAULT_INCLUSIVE_BETWEEN_EX_MESSAGE = "The value %s is not in the specified inclusive range of %s to %s";
+
     private static final String DEFAULT_MATCHES_PATTERN_EX = "The string %s does not match the pattern %s";
+
     private static final String DEFAULT_IS_NULL_EX_MESSAGE = "The validated object is null";
+
     private static final String DEFAULT_IS_TRUE_EX_MESSAGE = "The validated expression is false";
-    private static final String DEFAULT_NO_NULL_ELEMENTS_ARRAY_EX_MESSAGE =
-        "The validated array contains null element at index: %d";
-    private static final String DEFAULT_NO_NULL_ELEMENTS_COLLECTION_EX_MESSAGE =
-        "The validated collection contains null element at index: %d";
+
+    private static final String DEFAULT_NO_NULL_ELEMENTS_ARRAY_EX_MESSAGE = "The validated array contains null element at index: %d";
+
+    private static final String DEFAULT_NO_NULL_ELEMENTS_COLLECTION_EX_MESSAGE = "The validated collection contains null element at index: %d";
+
     private static final String DEFAULT_NOT_BLANK_EX_MESSAGE = "The validated character sequence is blank";
+
     private static final String DEFAULT_NOT_EMPTY_ARRAY_EX_MESSAGE = "The validated array is empty";
-    private static final String DEFAULT_NOT_EMPTY_CHAR_SEQUENCE_EX_MESSAGE =
-        "The validated character sequence is empty";
+
+    private static final String DEFAULT_NOT_EMPTY_CHAR_SEQUENCE_EX_MESSAGE = "The validated character sequence is empty";
+
     private static final String DEFAULT_NOT_EMPTY_COLLECTION_EX_MESSAGE = "The validated collection is empty";
+
     private static final String DEFAULT_NOT_EMPTY_MAP_EX_MESSAGE = "The validated map is empty";
+
     private static final String DEFAULT_VALID_INDEX_ARRAY_EX_MESSAGE = "The validated array index is invalid: %d";
-    private static final String DEFAULT_VALID_INDEX_CHAR_SEQUENCE_EX_MESSAGE =
-        "The validated character sequence index is invalid: %d";
-    private static final String DEFAULT_VALID_INDEX_COLLECTION_EX_MESSAGE =
-        "The validated collection index is invalid: %d";
+
+    private static final String DEFAULT_VALID_INDEX_CHAR_SEQUENCE_EX_MESSAGE = "The validated character sequence index is invalid: %d";
+
+    private static final String DEFAULT_VALID_INDEX_COLLECTION_EX_MESSAGE = "The validated collection index is invalid: %d";
+
     private static final String DEFAULT_VALID_STATE_EX_MESSAGE = "The validated state is false";
+
     private static final String DEFAULT_IS_ASSIGNABLE_EX_MESSAGE = "Cannot assign a %s to a %s";
+
     private static final String DEFAULT_IS_INSTANCE_OF_EX_MESSAGE = "Expected type: %s, actual: %s";
 
     /**
@@ -92,10 +102,7 @@ public class Validate {
      */
     @SuppressWarnings("boxing")
     public static void exclusiveBetween(final double start, final double end, final double value) {
-        // TODO when breaking BC, consider returning value
-        if (value <= start || value >= end || Double.isNaN(value)) {
-            throw new IllegalArgumentException(String.format(DEFAULT_EXCLUSIVE_BETWEEN_EX_MESSAGE, value, start, end));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -113,10 +120,7 @@ public class Validate {
      * @since 3.3
      */
     public static void exclusiveBetween(final double start, final double end, final double value, final String message) {
-        // TODO when breaking BC, consider returning value
-        if (value <= start || value >= end || Double.isNaN(value)) {
-            throw new IllegalArgumentException(message);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -133,10 +137,7 @@ public class Validate {
      */
     @SuppressWarnings("boxing")
     public static void exclusiveBetween(final long start, final long end, final long value) {
-        // TODO when breaking BC, consider returning value
-        if (value <= start || value >= end) {
-            throw new IllegalArgumentException(String.format(DEFAULT_EXCLUSIVE_BETWEEN_EX_MESSAGE, value, start, end));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -154,10 +155,7 @@ public class Validate {
      * @since 3.3
      */
     public static void exclusiveBetween(final long start, final long end, final long value, final String message) {
-        // TODO when breaking BC, consider returning value
-        if (value <= start || value >= end) {
-            throw new IllegalArgumentException(message);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -175,10 +173,7 @@ public class Validate {
      * @since 3.0
      */
     public static <T> void exclusiveBetween(final T start, final T end, final Comparable<T> value) {
-        // TODO when breaking BC, consider returning value
-        if (value.compareTo(start) <= 0 || value.compareTo(end) >= 0) {
-            throw new IllegalArgumentException(String.format(DEFAULT_EXCLUSIVE_BETWEEN_EX_MESSAGE, value, start, end));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -199,10 +194,7 @@ public class Validate {
      * @since 3.0
      */
     public static <T> void exclusiveBetween(final T start, final T end, final Comparable<T> value, final String message, final Object... values) {
-        // TODO when breaking BC, consider returning value
-        if (value.compareTo(start) <= 0 || value.compareTo(end) >= 0) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -219,7 +211,7 @@ public class Validate {
      * @since 3.5
      */
     public static void finite(final double value) {
-        finite(value, DEFAULT_FINITE_EX_MESSAGE, value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -236,9 +228,7 @@ public class Validate {
      * @since 3.5
      */
     public static void finite(final double value, final String message, final Object... values) {
-        if (Double.isNaN(value) || Double.isInfinite(value)) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -269,10 +259,7 @@ public class Validate {
      */
     @SuppressWarnings("boxing")
     public static void inclusiveBetween(final double start, final double end, final double value) {
-        // TODO when breaking BC, consider returning value
-        if (value < start || value > end || Double.isNaN(value)) {
-            throw new IllegalArgumentException(String.format(DEFAULT_INCLUSIVE_BETWEEN_EX_MESSAGE, value, start, end));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -290,10 +277,7 @@ public class Validate {
      * @since 3.3
      */
     public static void inclusiveBetween(final double start, final double end, final double value, final String message) {
-        // TODO when breaking BC, consider returning value
-        if (value < start || value > end || Double.isNaN(value)) {
-            throw new IllegalArgumentException(message);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -310,10 +294,7 @@ public class Validate {
      */
     @SuppressWarnings("boxing")
     public static void inclusiveBetween(final long start, final long end, final long value) {
-        // TODO when breaking BC, consider returning value
-        if (value < start || value > end) {
-            throw new IllegalArgumentException(String.format(DEFAULT_INCLUSIVE_BETWEEN_EX_MESSAGE, value, start, end));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -331,10 +312,7 @@ public class Validate {
      * @since 3.3
      */
     public static void inclusiveBetween(final long start, final long end, final long value, final String message) {
-        // TODO when breaking BC, consider returning value
-        if (value < start || value > end) {
-            throw new IllegalArgumentException(message);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -352,10 +330,7 @@ public class Validate {
      * @since 3.0
      */
     public static <T> void inclusiveBetween(final T start, final T end, final Comparable<T> value) {
-        // TODO when breaking BC, consider returning value
-        if (value.compareTo(start) < 0 || value.compareTo(end) > 0) {
-            throw new IllegalArgumentException(String.format(DEFAULT_INCLUSIVE_BETWEEN_EX_MESSAGE, value, start, end));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -376,10 +351,7 @@ public class Validate {
      * @since 3.0
      */
     public static <T> void inclusiveBetween(final T start, final T end, final Comparable<T> value, final String message, final Object... values) {
-        // TODO when breaking BC, consider returning value
-        if (value.compareTo(start) < 0 || value.compareTo(end) > 0) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -398,11 +370,7 @@ public class Validate {
      * @since 3.0
      */
     public static void isAssignableFrom(final Class<?> superType, final Class<?> type) {
-        // TODO when breaking BC, consider returning type
-        if (type == null || superType == null || !superType.isAssignableFrom(type)) {
-            throw new IllegalArgumentException(
-                String.format(DEFAULT_IS_ASSIGNABLE_EX_MESSAGE, ClassUtils.getName(type, "null type"), ClassUtils.getName(superType, "null type")));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -423,10 +391,7 @@ public class Validate {
      * @see #isAssignableFrom(Class, Class)
      */
     public static void isAssignableFrom(final Class<?> superType, final Class<?> type, final String message, final Object... values) {
-        // TODO when breaking BC, consider returning type
-        if (!superType.isAssignableFrom(type)) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -445,10 +410,7 @@ public class Validate {
      * @since 3.0
      */
     public static void isInstanceOf(final Class<?> type, final Object obj) {
-        // TODO when breaking BC, consider returning obj
-        if (!type.isInstance(obj)) {
-            throw new IllegalArgumentException(String.format(DEFAULT_IS_INSTANCE_OF_EX_MESSAGE, type.getName(), ClassUtils.getName(obj, "null")));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -468,10 +430,7 @@ public class Validate {
      * @since 3.0
      */
     public static void isInstanceOf(final Class<?> type, final Object obj, final String message, final Object... values) {
-        // TODO when breaking BC, consider returning obj
-        if (!type.isInstance(obj)) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -495,9 +454,7 @@ public class Validate {
      * @see #isTrue(boolean, Supplier)
      */
     public static void isTrue(final boolean expression) {
-        if (!expression) {
-            throw new IllegalArgumentException(DEFAULT_IS_TRUE_EX_MESSAGE);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -521,9 +478,7 @@ public class Validate {
      * @see #isTrue(boolean, Supplier)
      */
     public static void isTrue(final boolean expression, final String message, final double value) {
-        if (!expression) {
-            throw new IllegalArgumentException(String.format(message, Double.valueOf(value)));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -547,9 +502,7 @@ public class Validate {
      * @see #isTrue(boolean, Supplier)
      */
     public static void isTrue(final boolean expression, final String message, final long value) {
-        if (!expression) {
-            throw new IllegalArgumentException(String.format(message, Long.valueOf(value)));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -571,9 +524,7 @@ public class Validate {
      * @see #isTrue(boolean, Supplier)
      */
     public static void isTrue(final boolean expression, final String message, final Object... values) {
-        if (!expression) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -593,9 +544,7 @@ public class Validate {
      * @since 3.18.0
      */
     public static void isTrue(final boolean expression, final Supplier<String> messageSupplier) {
-        if (!expression) {
-            throw new IllegalArgumentException(messageSupplier.get());
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -613,10 +562,7 @@ public class Validate {
      * @since 3.0
      */
     public static void matchesPattern(final CharSequence input, final String pattern) {
-        // TODO when breaking BC, consider returning input
-        if (!Pattern.matches(pattern, input)) {
-            throw new IllegalArgumentException(String.format(DEFAULT_MATCHES_PATTERN_EX, input, pattern));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -636,10 +582,7 @@ public class Validate {
      * @since 3.0
      */
     public static void matchesPattern(final CharSequence input, final String pattern, final String message, final Object... values) {
-        // TODO when breaking BC, consider returning input
-        if (!Pattern.matches(pattern, input)) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -664,7 +607,7 @@ public class Validate {
      * @see #noNullElements(Iterable, String, Object...)
      */
     public static <T extends Iterable<?>> T noNullElements(final T iterable) {
-        return noNullElements(iterable, DEFAULT_NO_NULL_ELEMENTS_COLLECTION_EX_MESSAGE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -691,14 +634,7 @@ public class Validate {
      * @see #noNullElements(Iterable)
      */
     public static <T extends Iterable<?>> T noNullElements(final T iterable, final String message, final Object... values) {
-        Objects.requireNonNull(iterable, "iterable");
-        final AtomicInteger ai = new AtomicInteger();
-        iterable.forEach(e -> {
-            if (e == null) {
-                throw new IllegalArgumentException(getMessage(message, ArrayUtils.addAll(values, ai.getAndIncrement())));
-            }
-        });
-        return iterable;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -723,7 +659,7 @@ public class Validate {
      * @see #noNullElements(Object[], String, Object...)
      */
     public static <T> T[] noNullElements(final T[] array) {
-        return noNullElements(array, DEFAULT_NO_NULL_ELEMENTS_ARRAY_EX_MESSAGE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -750,14 +686,7 @@ public class Validate {
      * @see #noNullElements(Object[])
      */
     public static <T> T[] noNullElements(final T[] array, final String message, final Object... values) {
-        Objects.requireNonNull(array, "array");
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == null) {
-                final Object[] values2 = ArrayUtils.add(values, Integer.valueOf(i));
-                throw new IllegalArgumentException(getMessage(message, values2));
-            }
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -779,7 +708,7 @@ public class Validate {
      * @since 3.0
      */
     public static <T extends CharSequence> T notBlank(final T chars) {
-        return notBlank(chars, DEFAULT_NOT_BLANK_EX_MESSAGE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -802,11 +731,7 @@ public class Validate {
      * @since 3.0
      */
     public static <T extends CharSequence> T notBlank(final T chars, final String message, final Object... values) {
-        Objects.requireNonNull(chars, toSupplier(message, values));
-        if (StringUtils.isBlank(chars)) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
-        return chars;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -826,7 +751,7 @@ public class Validate {
      * @see #notEmpty(Collection, String, Object...)
      */
     public static <T extends Collection<?>> T notEmpty(final T collection) {
-        return notEmpty(collection, DEFAULT_NOT_EMPTY_COLLECTION_EX_MESSAGE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -846,7 +771,7 @@ public class Validate {
      * @see #notEmpty(Map, String, Object...)
      */
     public static <T extends Map<?, ?>> T notEmpty(final T map) {
-        return notEmpty(map, DEFAULT_NOT_EMPTY_MAP_EX_MESSAGE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -867,7 +792,7 @@ public class Validate {
      * @see #notEmpty(CharSequence, String, Object...)
      */
     public static <T extends CharSequence> T notEmpty(final T chars) {
-        return notEmpty(chars, DEFAULT_NOT_EMPTY_CHAR_SEQUENCE_EX_MESSAGE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -887,11 +812,7 @@ public class Validate {
      * @see #notEmpty(Object[])
      */
     public static <T extends Collection<?>> T notEmpty(final T collection, final String message, final Object... values) {
-        Objects.requireNonNull(collection, toSupplier(message, values));
-        if (collection.isEmpty()) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
-        return collection;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -911,11 +832,7 @@ public class Validate {
      * @see #notEmpty(Object[])
      */
     public static <T extends Map<?, ?>> T notEmpty(final T map, final String message, final Object... values) {
-        Objects.requireNonNull(map, toSupplier(message, values));
-        if (map.isEmpty()) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
-        return map;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -935,11 +852,7 @@ public class Validate {
      * @see #notEmpty(CharSequence)
      */
     public static <T extends CharSequence> T notEmpty(final T chars, final String message, final Object... values) {
-        Objects.requireNonNull(chars, toSupplier(message, values));
-        if (chars.length() == 0) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
-        return chars;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -959,7 +872,7 @@ public class Validate {
      * @see #notEmpty(Object[], String, Object...)
      */
     public static <T> T[] notEmpty(final T[] array) {
-        return notEmpty(array, DEFAULT_NOT_EMPTY_ARRAY_EX_MESSAGE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -979,11 +892,7 @@ public class Validate {
      * @see #notEmpty(Object[])
      */
     public static <T> T[] notEmpty(final T[] array, final String message, final Object... values) {
-        Objects.requireNonNull(array, toSupplier(message, values));
-        if (array.length == 0) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1001,7 +910,7 @@ public class Validate {
      * @since 3.5
      */
     public static void notNaN(final double value) {
-        notNaN(value, DEFAULT_NOT_NAN_EX_MESSAGE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1018,9 +927,7 @@ public class Validate {
      * @since 3.5
      */
     public static void notNaN(final double value, final String message, final Object... values) {
-        if (Double.isNaN(value)) {
-            throw new IllegalArgumentException(getMessage(message, values));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1059,7 +966,7 @@ public class Validate {
      * @see Objects#requireNonNull(Object)
      */
     public static <T> T notNull(final T object, final String message, final Object... values) {
-        return Objects.requireNonNull(object, toSupplier(message, values));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static Supplier<String> toSupplier(final String message, final Object... values) {
@@ -1086,7 +993,7 @@ public class Validate {
      * @since 3.0
      */
     public static <T extends Collection<?>> T validIndex(final T collection, final int index) {
-        return validIndex(collection, index, DEFAULT_VALID_INDEX_COLLECTION_EX_MESSAGE, Integer.valueOf(index));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1113,7 +1020,7 @@ public class Validate {
      * @since 3.0
      */
     public static <T extends CharSequence> T validIndex(final T chars, final int index) {
-        return validIndex(chars, index, DEFAULT_VALID_INDEX_CHAR_SEQUENCE_EX_MESSAGE, Integer.valueOf(index));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1137,11 +1044,7 @@ public class Validate {
      * @since 3.0
      */
     public static <T extends Collection<?>> T validIndex(final T collection, final int index, final String message, final Object... values) {
-        Objects.requireNonNull(collection, "collection");
-        if (index < 0 || index >= collection.size()) {
-            throw new IndexOutOfBoundsException(getMessage(message, values));
-        }
-        return collection;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1166,11 +1069,7 @@ public class Validate {
      * @since 3.0
      */
     public static <T extends CharSequence> T validIndex(final T chars, final int index, final String message, final Object... values) {
-        Objects.requireNonNull(chars, "chars");
-        if (index < 0 || index >= chars.length()) {
-            throw new IndexOutOfBoundsException(getMessage(message, values));
-        }
-        return chars;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1196,7 +1095,7 @@ public class Validate {
      * @since 3.0
      */
     public static <T> T[] validIndex(final T[] array, final int index) {
-        return validIndex(array, index, DEFAULT_VALID_INDEX_ARRAY_EX_MESSAGE, Integer.valueOf(index));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1220,11 +1119,7 @@ public class Validate {
      * @since 3.0
      */
     public static <T> T[] validIndex(final T[] array, final int index, final String message, final Object... values) {
-        Objects.requireNonNull(array, "array");
-        if (index < 0 || index >= array.length) {
-            throw new IndexOutOfBoundsException(getMessage(message, values));
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1246,9 +1141,7 @@ public class Validate {
      * @since 3.0
      */
     public static void validState(final boolean expression) {
-        if (!expression) {
-            throw new IllegalStateException(DEFAULT_VALID_STATE_EX_MESSAGE);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1267,9 +1160,7 @@ public class Validate {
      * @since 3.0
      */
     public static void validState(final boolean expression, final String message, final Object... values) {
-        if (!expression) {
-            throw new IllegalStateException(getMessage(message, values));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

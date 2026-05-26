@@ -42,9 +42,6 @@ public class UnicodeUnpairedSurrogateRemover extends CodePointTranslator {
      */
     @Override
     public boolean translate(final int codePoint, final Writer out) throws IOException {
-        // true: It's a surrogate. Write nothing and say we've translated.
-        return codePoint >= Character.MIN_SURROGATE && codePoint <= Character.MAX_SURROGATE;
-        // It's not a surrogate. Don't translate it.
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }
-

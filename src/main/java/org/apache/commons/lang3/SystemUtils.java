@@ -44,7 +44,6 @@ public class SystemUtils {
     // System property constants
     // -----------------------------------------------------------------------
     // These MUST be declared first. Other constants depend on this.
-
     /**
      * A constant for the System Property {@code file.encoding}.
      *
@@ -663,8 +662,7 @@ public class SystemUtils {
      * @since 2.0
      * @since Java 1.2
      */
-    public static final String USER_COUNTRY = SystemProperties.getProperty(SystemProperties.USER_COUNTRY,
-            () -> SystemProperties.getProperty(SystemProperties.USER_REGION));
+    public static final String USER_COUNTRY = SystemProperties.getProperty(SystemProperties.USER_COUNTRY, () -> SystemProperties.getProperty(SystemProperties.USER_REGION));
 
     /**
      * A constant for the System Property {@code user.dir}. User's current working directory.
@@ -751,7 +749,6 @@ public class SystemUtils {
     // -----------------------------------------------------------------------
     // These MUST be declared after those above as they depend on the
     // values being set up
-
     /**
      * The constant {@code true} if this is Java version 1.1 (also 1.1.x versions).
      * <p>
@@ -1196,7 +1193,6 @@ public class SystemUtils {
     // values being set up
     // Please advise dev@commons.apache.org if you want another added
     // or a mistake corrected
-
     /**
      * The constant {@code true} if this is AIX.
      * <p>
@@ -1781,8 +1777,7 @@ public class SystemUtils {
      *
      * @since 2.1
      */
-    public static final boolean IS_OS_UNIX = IS_OS_AIX || IS_OS_HP_UX || IS_OS_IRIX || IS_OS_LINUX || IS_OS_MAC_OSX || IS_OS_SOLARIS || IS_OS_SUN_OS
-            || IS_OS_FREE_BSD || IS_OS_OPEN_BSD || IS_OS_NET_BSD;
+    public static final boolean IS_OS_UNIX = IS_OS_AIX || IS_OS_HP_UX || IS_OS_IRIX || IS_OS_LINUX || IS_OS_MAC_OSX || IS_OS_SOLARIS || IS_OS_SUN_OS || IS_OS_FREE_BSD || IS_OS_OPEN_BSD || IS_OS_NET_BSD;
 
     /**
      * The constant {@code true} if this is Windows.
@@ -2126,14 +2121,7 @@ public class SystemUtils {
      * @since 3.8
      */
     public static String getEnvironmentVariable(final String name, final String defaultValue) {
-        try {
-            final String value = System.getenv(name);
-            return value == null ? defaultValue : value;
-        } catch (final SecurityException ex) {
-            // we are not allowed to look at this property
-            // System.err.println("Caught a SecurityException reading the environment variable '" + name + "'.");
-            return defaultValue;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2147,7 +2135,7 @@ public class SystemUtils {
      * @since 3.6
      */
     public static String getHostName() {
-        return IS_OS_WINDOWS ? System.getenv("COMPUTERNAME") : System.getenv("HOSTNAME");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2159,7 +2147,7 @@ public class SystemUtils {
      * @since 2.1
      */
     public static File getJavaHome() {
-        return new File(SystemProperties.getJavaHome());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2171,7 +2159,7 @@ public class SystemUtils {
      * @since 3.18.0
      */
     public static Path getJavaHomePath() {
-        return Paths.get(SystemProperties.getJavaHome());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2183,7 +2171,7 @@ public class SystemUtils {
      * @since 2.1
      */
     public static File getJavaIoTmpDir() {
-        return new File(SystemProperties.getJavaIoTmpdir());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2195,7 +2183,7 @@ public class SystemUtils {
      * @since 3.18.0
      */
     public static Path getJavaIoTmpDirPath() {
-        return Paths.get(SystemProperties.getJavaIoTmpdir());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2256,7 +2244,7 @@ public class SystemUtils {
      * @since 2.1
      */
     public static File getUserDir() {
-        return new File(SystemProperties.getUserDir());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2271,7 +2259,7 @@ public class SystemUtils {
      * @since 3.18.0
      */
     public static Path getUserDirPath() {
-        return Paths.get(SystemProperties.getUserDir());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2286,7 +2274,7 @@ public class SystemUtils {
      * @since 2.1
      */
     public static File getUserHome() {
-        return new File(SystemProperties.getUserHome());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2301,7 +2289,7 @@ public class SystemUtils {
      * @since 3.18.0
      */
     public static Path getUserHomePath() {
-        return Paths.get(SystemProperties.getUserHome());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2366,7 +2354,7 @@ public class SystemUtils {
      * @return {@code true} if the actual version is equal or greater than the required version.
      */
     public static boolean isJavaVersionAtLeast(final JavaVersion requiredVersion) {
-        return JAVA_SPECIFICATION_VERSION_ENUM != null && JAVA_SPECIFICATION_VERSION_ENUM.atLeast(requiredVersion);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2380,7 +2368,7 @@ public class SystemUtils {
      * @since 3.9
      */
     public static boolean isJavaVersionAtMost(final JavaVersion requiredVersion) {
-        return JAVA_SPECIFICATION_VERSION_ENUM != null && JAVA_SPECIFICATION_VERSION_ENUM.atMost(requiredVersion);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2395,10 +2383,7 @@ public class SystemUtils {
      * @return true if matches, or false if not or can't determine.
      */
     static boolean isJavaVersionMatch(final String version, final String versionPrefix) {
-        if (version == null) {
-            return false;
-        }
-        return version.startsWith(versionPrefix);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2414,10 +2399,7 @@ public class SystemUtils {
      * @return true if matches, or false if not or can't determine.
      */
     static boolean isOsMatch(final String osName, final String osVersion, final String osNamePrefix, final String osVersionPrefix) {
-        if (osName == null || osVersion == null) {
-            return false;
-        }
-        return isOsNameMatch(osName, osNamePrefix) && isOsVersionMatch(osVersion, osVersionPrefix);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2431,10 +2413,7 @@ public class SystemUtils {
      * @return true for a case-insensitive match, or false if not.
      */
     static boolean isOsNameMatch(final String osName, final String osNamePrefix) {
-        if (osName == null) {
-            return false;
-        }
-        return Strings.CI.startsWith(osName, osNamePrefix);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2448,19 +2427,7 @@ public class SystemUtils {
      * @return true if matches, or false if not or can't determine.
      */
     static boolean isOsVersionMatch(final String osVersion, final String osVersionPrefix) {
-        if (StringUtils.isEmpty(osVersion)) {
-            return false;
-        }
-        // Compare parts of the version string instead of using String.startsWith(String) because otherwise
-        // osVersionPrefix 10.1 would also match osVersion 10.10
-        final String[] versionPrefixParts = JavaVersion.split(osVersionPrefix);
-        final String[] versionParts = JavaVersion.split(osVersion);
-        for (int i = 0; i < Math.min(versionPrefixParts.length, versionParts.length); i++) {
-            if (!versionPrefixParts[i].equals(versionParts[i])) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2473,5 +2440,4 @@ public class SystemUtils {
      */
     public SystemUtils() {
     }
-
 }

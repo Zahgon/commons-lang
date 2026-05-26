@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.function.DoubleFunction;
@@ -29,7 +28,9 @@ import java.util.function.DoubleFunction;
 @FunctionalInterface
 public interface FailableDoubleFunction<R, E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableDoubleFunction NOP = t -> null;
 
@@ -42,7 +43,7 @@ public interface FailableDoubleFunction<R, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <R, E extends Throwable> FailableDoubleFunction<R, E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

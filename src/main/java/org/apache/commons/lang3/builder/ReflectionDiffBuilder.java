@@ -20,7 +20,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Objects;
-
 import org.apache.commons.lang3.ArraySorter;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ClassUtils;
@@ -86,6 +85,7 @@ public class ReflectionDiffBuilder<T> implements Builder<DiffResult<T>> {
     public static final class Builder<T> {
 
         private String[] excludeFieldNames = ArrayUtils.EMPTY_STRING_ARRAY;
+
         private DiffBuilder<T> diffBuilder;
 
         /**
@@ -101,7 +101,7 @@ public class ReflectionDiffBuilder<T> implements Builder<DiffResult<T>> {
          * @return a new configured {@link ReflectionDiffBuilder}.
          */
         public ReflectionDiffBuilder<T> build() {
-            return new ReflectionDiffBuilder<>(diffBuilder, excludeFieldNames);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -111,8 +111,7 @@ public class ReflectionDiffBuilder<T> implements Builder<DiffResult<T>> {
          * @return {@code this} instance.
          */
         public Builder<T> setDiffBuilder(final DiffBuilder<T> diffBuilder) {
-            this.diffBuilder = diffBuilder;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -122,10 +121,8 @@ public class ReflectionDiffBuilder<T> implements Builder<DiffResult<T>> {
          * @return {@code this} instance.
          */
         public Builder<T> setExcludeFieldNames(final String... excludeFieldNames) {
-            this.excludeFieldNames = toExcludeFieldNames(excludeFieldNames);
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 
     /**
@@ -136,7 +133,7 @@ public class ReflectionDiffBuilder<T> implements Builder<DiffResult<T>> {
      * @since 3.15.0
      */
     public static <T> Builder<T> builder() {
-        return new Builder<>();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static String[] toExcludeFieldNames(final String[] excludeFieldNames) {
@@ -186,8 +183,7 @@ public class ReflectionDiffBuilder<T> implements Builder<DiffResult<T>> {
     }
 
     private boolean accept(final Field field) {
-        if (field.getName().indexOf(ClassUtils.INNER_CLASS_SEPARATOR_CHAR) != -1 || Modifier.isTransient(field.getModifiers())
-                || Modifier.isStatic(field.getModifiers()) || Arrays.binarySearch(excludeFieldNames, field.getName()) >= 0) {
+        if (field.getName().indexOf(ClassUtils.INNER_CLASS_SEPARATOR_CHAR) != -1 || Modifier.isTransient(field.getModifiers()) || Modifier.isStatic(field.getModifiers()) || Arrays.binarySearch(excludeFieldNames, field.getName()) >= 0) {
             // Rejected.
             return false;
         }
@@ -222,11 +218,7 @@ public class ReflectionDiffBuilder<T> implements Builder<DiffResult<T>> {
      */
     @Override
     public DiffResult<T> build() {
-        if (getLeft().equals(getRight())) {
-            return diffBuilder.build();
-        }
-        appendFields(getLeft().getClass());
-        return diffBuilder.build();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -236,7 +228,7 @@ public class ReflectionDiffBuilder<T> implements Builder<DiffResult<T>> {
      * @since 3.13.0
      */
     public String[] getExcludeFieldNames() {
-        return excludeFieldNames.clone();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private T getLeft() {
@@ -275,5 +267,4 @@ public class ReflectionDiffBuilder<T> implements Builder<DiffResult<T>> {
         this.excludeFieldNames = toExcludeFieldNames(excludeFieldNames);
         return this;
     }
-
 }

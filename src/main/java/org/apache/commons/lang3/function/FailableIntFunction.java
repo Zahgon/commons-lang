@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.function.IntFunction;
@@ -29,7 +28,9 @@ import java.util.function.IntFunction;
 @FunctionalInterface
 public interface FailableIntFunction<R, E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableIntFunction NOP = t -> null;
 
@@ -42,7 +43,7 @@ public interface FailableIntFunction<R, E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <R, E extends Throwable> FailableIntFunction<R, E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

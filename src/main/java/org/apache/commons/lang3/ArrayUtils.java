@@ -33,7 +33,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
-
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -64,8 +63,9 @@ public class ArrayUtils {
      * Bridge class to {@link Math} methods for testing purposes.
      */
     static class MathBridge {
+
         static int addExact(final int a, final int b) {
-            return Math.addExact(a, b);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -238,9 +238,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean[] add(final boolean[] array, final boolean element) {
-        final boolean[] newArray = (boolean[]) copyArrayGrow1(array, Boolean.TYPE);
-        newArray[newArray.length - 1] = element;
-        return newArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -301,9 +299,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static byte[] add(final byte[] array, final byte element) {
-        final byte[] newArray = (byte[]) copyArrayGrow1(array, Byte.TYPE);
-        newArray[newArray.length - 1] = element;
-        return newArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -365,9 +361,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static char[] add(final char[] array, final char element) {
-        final char[] newArray = (char[]) copyArrayGrow1(array, Character.TYPE);
-        newArray[newArray.length - 1] = element;
-        return newArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -431,9 +425,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static double[] add(final double[] array, final double element) {
-        final double[] newArray = (double[]) copyArrayGrow1(array, Double.TYPE);
-        newArray[newArray.length - 1] = element;
-        return newArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -495,9 +487,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static float[] add(final float[] array, final float element) {
-        final float[] newArray = (float[]) copyArrayGrow1(array, Float.TYPE);
-        newArray[newArray.length - 1] = element;
-        return newArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -559,9 +549,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static int[] add(final int[] array, final int element) {
-        final int[] newArray = (int[]) copyArrayGrow1(array, Integer.TYPE);
-        newArray[newArray.length - 1] = element;
-        return newArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -659,9 +647,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static long[] add(final long[] array, final long element) {
-        final long[] newArray = (long[]) copyArrayGrow1(array, Long.TYPE);
-        newArray[newArray.length - 1] = element;
-        return newArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -755,9 +741,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static short[] add(final short[] array, final short element) {
-        final short[] newArray = (short[]) copyArrayGrow1(array, Short.TYPE);
-        newArray[newArray.length - 1] = element;
-        return newArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -837,19 +821,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static <T> T[] add(final T[] array, final T element) {
-        final Class<?> type;
-        if (array != null) {
-            type = array.getClass().getComponentType();
-        } else if (element != null) {
-            type = element.getClass();
-        } else {
-            throw new IllegalArgumentException("Arguments cannot both be null");
-        }
-        @SuppressWarnings("unchecked") // type must be T
-        final
-        T[] newArray = (T[]) copyArrayGrow1(array, type);
-        newArray[newArray.length - 1] = element;
-        return newArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -872,16 +844,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean[] addAll(final boolean[] array1, final boolean... array2) {
-        if (array1 == null) {
-            return clone(array2);
-        }
-        if (array2 == null) {
-            return clone(array1);
-        }
-        final boolean[] joinedArray = new boolean[array1.length + array2.length];
-        System.arraycopy(array1, 0, joinedArray, 0, array1.length);
-        System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
-        return joinedArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -904,16 +867,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static byte[] addAll(final byte[] array1, final byte... array2) {
-        if (array1 == null) {
-            return clone(array2);
-        }
-        if (array2 == null) {
-            return clone(array1);
-        }
-        final byte[] joinedArray = new byte[array1.length + array2.length];
-        System.arraycopy(array1, 0, joinedArray, 0, array1.length);
-        System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
-        return joinedArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -936,16 +890,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static char[] addAll(final char[] array1, final char... array2) {
-        if (array1 == null) {
-            return clone(array2);
-        }
-        if (array2 == null) {
-            return clone(array1);
-        }
-        final char[] joinedArray = new char[array1.length + array2.length];
-        System.arraycopy(array1, 0, joinedArray, 0, array1.length);
-        System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
-        return joinedArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -968,16 +913,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static double[] addAll(final double[] array1, final double... array2) {
-        if (array1 == null) {
-            return clone(array2);
-        }
-        if (array2 == null) {
-            return clone(array1);
-        }
-        final double[] joinedArray = new double[array1.length + array2.length];
-        System.arraycopy(array1, 0, joinedArray, 0, array1.length);
-        System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
-        return joinedArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1000,16 +936,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static float[] addAll(final float[] array1, final float... array2) {
-        if (array1 == null) {
-            return clone(array2);
-        }
-        if (array2 == null) {
-            return clone(array1);
-        }
-        final float[] joinedArray = new float[array1.length + array2.length];
-        System.arraycopy(array1, 0, joinedArray, 0, array1.length);
-        System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
-        return joinedArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1032,16 +959,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static int[] addAll(final int[] array1, final int... array2) {
-        if (array1 == null) {
-            return clone(array2);
-        }
-        if (array2 == null) {
-            return clone(array1);
-        }
-        final int[] joinedArray = new int[array1.length + array2.length];
-        System.arraycopy(array1, 0, joinedArray, 0, array1.length);
-        System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
-        return joinedArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1064,16 +982,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static long[] addAll(final long[] array1, final long... array2) {
-        if (array1 == null) {
-            return clone(array2);
-        }
-        if (array2 == null) {
-            return clone(array1);
-        }
-        final long[] joinedArray = new long[array1.length + array2.length];
-        System.arraycopy(array1, 0, joinedArray, 0, array1.length);
-        System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
-        return joinedArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1096,16 +1005,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static short[] addAll(final short[] array1, final short... array2) {
-        if (array1 == null) {
-            return clone(array2);
-        }
-        if (array2 == null) {
-            return clone(array1);
-        }
-        final short[] joinedArray = new short[array1.length + array2.length];
-        System.arraycopy(array1, 0, joinedArray, 0, array1.length);
-        System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
-        return joinedArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1135,29 +1035,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static <T> T[] addAll(final T[] array1, @SuppressWarnings("unchecked") final T... array2) {
-        if (array1 == null) {
-            return clone(array2);
-        }
-        if (array2 == null) {
-            return clone(array1);
-        }
-        final Class<T> type1 = getComponentType(array1);
-        final T[] joinedArray = arraycopy(array1, 0, 0, array1.length, () -> newInstance(type1, array1.length + array2.length));
-        try {
-            System.arraycopy(array2, 0, joinedArray, array1.length, array2.length);
-        } catch (final ArrayStoreException ase) {
-            // Check if problem was due to incompatible types
-            /*
-             * We do this here, rather than before the copy because: - it would be a wasted check most of the time - safer, in case check turns out to be too
-             * strict
-             */
-            final Class<?> type2 = array2.getClass().getComponentType();
-            if (!type1.isAssignableFrom(type2)) {
-                throw new IllegalArgumentException("Cannot store " + type2.getName() + " in an array of " + type1.getName(), ase);
-            }
-            throw ase; // No, so rethrow original
-        }
-        return joinedArray;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1204,7 +1082,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static boolean[] addFirst(final boolean[] array, final boolean element) {
-        return array == null ? add(array, element) : insert(0, array, element);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1230,7 +1108,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static byte[] addFirst(final byte[] array, final byte element) {
-        return array == null ? add(array, element) : insert(0, array, element);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1256,7 +1134,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static char[] addFirst(final char[] array, final char element) {
-        return array == null ? add(array, element) : insert(0, array, element);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1282,7 +1160,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static double[] addFirst(final double[] array, final double element) {
-        return array == null ? add(array, element) : insert(0, array, element);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1308,7 +1186,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static float[] addFirst(final float[] array, final float element) {
-        return array == null ? add(array, element) : insert(0, array, element);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1334,7 +1212,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static int[] addFirst(final int[] array, final int element) {
-        return array == null ? add(array, element) : insert(0, array, element);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1360,7 +1238,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static long[] addFirst(final long[] array, final long element) {
-        return array == null ? add(array, element) : insert(0, array, element);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1386,7 +1264,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static short[] addFirst(final short[] array, final short element) {
-        return array == null ? add(array, element) : insert(0, array, element);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1417,7 +1295,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static <T> T[] addFirst(final T[] array, final T element) {
-        return array == null ? add(array, element) : insert(0, array, element);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1437,7 +1315,7 @@ public class ArrayUtils {
      * @since 3.15.0
      */
     public static <T> T arraycopy(final T source, final int sourcePos, final int destPos, final int length, final Function<Integer, T> allocator) {
-        return arraycopy(source, sourcePos, allocator.apply(length), destPos, length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1457,7 +1335,7 @@ public class ArrayUtils {
      * @since 3.15.0
      */
     public static <T> T arraycopy(final T source, final int sourcePos, final int destPos, final int length, final Supplier<T> allocator) {
-        return arraycopy(source, sourcePos, allocator.get(), destPos, length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1477,8 +1355,7 @@ public class ArrayUtils {
      * @since 3.15.0
      */
     public static <T> T arraycopy(final T source, final int sourcePos, final T dest, final int destPos, final int length) {
-        System.arraycopy(source, sourcePos, dest, destPos, length);
-        return dest;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1491,7 +1368,7 @@ public class ArrayUtils {
      * @return the cloned array, {@code null} if {@code null} input.
      */
     public static boolean[] clone(final boolean[] array) {
-        return array != null ? array.clone() : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1504,7 +1381,7 @@ public class ArrayUtils {
      * @return the cloned array, {@code null} if {@code null} input.
      */
     public static byte[] clone(final byte[] array) {
-        return array != null ? array.clone() : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1517,7 +1394,7 @@ public class ArrayUtils {
      * @return the cloned array, {@code null} if {@code null} input.
      */
     public static char[] clone(final char[] array) {
-        return array != null ? array.clone() : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1530,7 +1407,7 @@ public class ArrayUtils {
      * @return the cloned array, {@code null} if {@code null} input.
      */
     public static double[] clone(final double[] array) {
-        return array != null ? array.clone() : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1543,7 +1420,7 @@ public class ArrayUtils {
      * @return the cloned array, {@code null} if {@code null} input.
      */
     public static float[] clone(final float[] array) {
-        return array != null ? array.clone() : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1556,7 +1433,7 @@ public class ArrayUtils {
      * @return the cloned array, {@code null} if {@code null} input.
      */
     public static int[] clone(final int[] array) {
-        return array != null ? array.clone() : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1569,7 +1446,7 @@ public class ArrayUtils {
      * @return the cloned array, {@code null} if {@code null} input.
      */
     public static long[] clone(final long[] array) {
-        return array != null ? array.clone() : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1582,7 +1459,7 @@ public class ArrayUtils {
      * @return the cloned array, {@code null} if {@code null} input.
      */
     public static short[] clone(final short[] array) {
-        return array != null ? array.clone() : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1599,7 +1476,7 @@ public class ArrayUtils {
      * @return the cloned array, {@code null} if {@code null} input.
      */
     public static <T> T[] clone(final T[] array) {
-        return array != null ? array.clone() : null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1619,19 +1496,7 @@ public class ArrayUtils {
      * @since 3.21.0
      */
     public static boolean[] concat(boolean[]... arrays) {
-        int totalLength = 0;
-        for (boolean[] array : arrays) {
-            totalLength = addExact(totalLength, array);
-        }
-        final boolean[] result = new boolean[totalLength];
-        int currentPos = 0;
-        for (boolean[] array : arrays) {
-            if (array != null && array.length > 0) {
-                System.arraycopy(array, 0, result, currentPos, array.length);
-                currentPos += array.length;
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1651,19 +1516,7 @@ public class ArrayUtils {
      * @since 3.21.0
      */
     public static byte[] concat(byte[]... arrays) {
-        int totalLength = 0;
-        for (byte[] array : arrays) {
-            totalLength = addExact(totalLength, array);
-        }
-        final byte[] result = new byte[totalLength];
-        int currentPos = 0;
-        for (byte[] array : arrays) {
-            if (array != null && array.length > 0) {
-                System.arraycopy(array, 0, result, currentPos, array.length);
-                currentPos += array.length;
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1683,19 +1536,7 @@ public class ArrayUtils {
      * @since 3.21.0
      */
     public static char[] concat(char[]... arrays) {
-        int totalLength = 0;
-        for (char[] array : arrays) {
-            totalLength = addExact(totalLength, array);
-        }
-        final char[] result = new char[totalLength];
-        int currentPos = 0;
-        for (char[] array : arrays) {
-            if (array != null && array.length > 0) {
-                System.arraycopy(array, 0, result, currentPos, array.length);
-                currentPos += array.length;
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1715,19 +1556,7 @@ public class ArrayUtils {
      * @since 3.21.0
      */
     public static double[] concat(double[]... arrays) {
-        int totalLength = 0;
-        for (double[] array : arrays) {
-            totalLength = addExact(totalLength, array);
-        }
-        final double[] result = new double[totalLength];
-        int currentPos = 0;
-        for (double[] array : arrays) {
-            if (array != null && array.length > 0) {
-                System.arraycopy(array, 0, result, currentPos, array.length);
-                currentPos += array.length;
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1747,19 +1576,7 @@ public class ArrayUtils {
      * @since 3.21.0
      */
     public static float[] concat(float[]... arrays) {
-        int totalLength = 0;
-        for (float[] array : arrays) {
-            totalLength = addExact(totalLength, array);
-        }
-        final float[] result = new float[totalLength];
-        int currentPos = 0;
-        for (float[] array : arrays) {
-            if (array != null && array.length > 0) {
-                System.arraycopy(array, 0, result, currentPos, array.length);
-                currentPos += array.length;
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1779,19 +1596,7 @@ public class ArrayUtils {
      * @since 3.21.0
      */
     public static int[] concat(int[]... arrays) {
-        int totalLength = 0;
-        for (int[] array : arrays) {
-            totalLength = addExact(totalLength, array);
-        }
-        final int[] result = new int[totalLength];
-        int currentPos = 0;
-        for (int[] array : arrays) {
-            if (array != null && array.length > 0) {
-                System.arraycopy(array, 0, result, currentPos, array.length);
-                currentPos += array.length;
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1811,19 +1616,7 @@ public class ArrayUtils {
      * @since 3.21.0
      */
     public static long[] concat(long[]... arrays) {
-        int totalLength = 0;
-        for (long[] array : arrays) {
-            totalLength = addExact(totalLength, array);
-        }
-        final long[] result = new long[totalLength];
-        int currentPos = 0;
-        for (long[] array : arrays) {
-            if (array != null && array.length > 0) {
-                System.arraycopy(array, 0, result, currentPos, array.length);
-                currentPos += array.length;
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1843,19 +1636,7 @@ public class ArrayUtils {
      * @since 3.21.0
      */
     public static short[] concat(short[]... arrays) {
-        int totalLength = 0;
-        for (short[] array : arrays) {
-            totalLength = addExact(totalLength, array);
-        }
-        final short[] result = new short[totalLength];
-        int currentPos = 0;
-        for (short[] array : arrays) {
-            if (array != null && array.length > 0) {
-                System.arraycopy(array, 0, result, currentPos, array.length);
-                currentPos += array.length;
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1869,7 +1650,7 @@ public class ArrayUtils {
      * @return {@code true} if the array contains the object.
      */
     public static boolean contains(final boolean[] array, final boolean valueToFind) {
-        return indexOf(array, valueToFind) != INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1887,7 +1668,7 @@ public class ArrayUtils {
      * @return {@code true} if the array contains the object.
      */
     public static boolean contains(final byte[] array, final byte valueToFind) {
-        return indexOf(array, valueToFind) != INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1906,7 +1687,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean contains(final char[] array, final char valueToFind) {
-        return indexOf(array, valueToFind) != INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1924,7 +1705,7 @@ public class ArrayUtils {
      * @return {@code true} if the array contains the object.
      */
     public static boolean contains(final double[] array, final double valueToFind) {
-        return indexOf(array, valueToFind) != INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1946,7 +1727,7 @@ public class ArrayUtils {
      * @return true if value falling within tolerance is in array.
      */
     public static boolean contains(final double[] array, final double valueToFind, final double tolerance) {
-        return indexOf(array, valueToFind, 0, tolerance) != INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1964,7 +1745,7 @@ public class ArrayUtils {
      * @return {@code true} if the array contains the object.
      */
     public static boolean contains(final float[] array, final float valueToFind) {
-        return indexOf(array, valueToFind) != INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1982,7 +1763,7 @@ public class ArrayUtils {
      * @return {@code true} if the array contains the object.
      */
     public static boolean contains(final int[] array, final int valueToFind) {
-        return indexOf(array, valueToFind) != INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2000,7 +1781,7 @@ public class ArrayUtils {
      * @return {@code true} if the array contains the object.
      */
     public static boolean contains(final long[] array, final long valueToFind) {
-        return indexOf(array, valueToFind) != INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2018,7 +1799,7 @@ public class ArrayUtils {
      * @return {@code true} if the array contains the object.
      */
     public static boolean contains(final Object[] array, final Object objectToFind) {
-        return indexOf(array, objectToFind) != INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2036,7 +1817,7 @@ public class ArrayUtils {
      * @return {@code true} if the array contains the object.
      */
     public static boolean contains(final short[] array, final short valueToFind) {
-        return indexOf(array, valueToFind) != INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2055,7 +1836,7 @@ public class ArrayUtils {
      * @since 3.18.0
      */
     public static boolean containsAny(final int[] array, final int... objectsToFind) {
-        return IntStreams.of(objectsToFind).anyMatch(e -> contains(array, e));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2074,7 +1855,7 @@ public class ArrayUtils {
      * @since 3.13.0
      */
     public static boolean containsAny(final Object[] array, final Object... objectsToFind) {
-        return Streams.of(objectsToFind).anyMatch(e -> contains(array, e));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2106,7 +1887,7 @@ public class ArrayUtils {
      * @since 3.11
      */
     public static <T> T get(final T[] array, final int index) {
-        return get(array, index, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2120,7 +1901,7 @@ public class ArrayUtils {
      * @since 3.11
      */
     public static <T> T get(final T[] array, final int index, final T defaultValue) {
-        return isArrayIndexValid(array, index) ? array[index] : defaultValue;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2132,7 +1913,7 @@ public class ArrayUtils {
      * @since 3.13.0
      */
     public static <T> Class<T> getComponentType(final T[] array) {
-        return ClassUtils.getComponentType(ObjectUtils.getClass(array));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2147,15 +1928,7 @@ public class ArrayUtils {
      * @see <a href="https://docs.oracle.com/javase/specs/jvms/se25/html/jvms-4.html#jvms-4.3">JVM specification Field Descriptors</a>
      */
     public static int getDimensions(final Object array) {
-        int dimensions = 0;
-        if (array != null) {
-            Class<?> arrayClass = array.getClass();
-            while (arrayClass.isArray()) {
-                dimensions++;
-                arrayClass = arrayClass.getComponentType();
-            }
-        }
-        return dimensions;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2179,7 +1952,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static int getLength(final Object array) {
-        return array != null ? Array.getLength(array) : 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2193,11 +1966,11 @@ public class ArrayUtils {
      * @see HashCodeBuilder
      */
     public static int hashCode(final Object array) {
-        return new HashCodeBuilder().append(array).toHashCode();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     static <K> void increment(final Map<K, MutableInt> occurrences, final K boxed) {
-        occurrences.computeIfAbsent(boxed, k -> new MutableInt()).increment();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2213,7 +1986,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final boolean[] array, final boolean valueToFind) {
-        return indexesOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2232,18 +2005,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final boolean[] array, final boolean valueToFind, int startIndex) {
-        final BitSet bitSet = new BitSet();
-        if (array != null) {
-            while (startIndex < array.length) {
-                startIndex = indexOf(array, valueToFind, startIndex);
-                if (startIndex == INDEX_NOT_FOUND) {
-                    break;
-                }
-                bitSet.set(startIndex);
-                ++startIndex;
-            }
-        }
-        return bitSet;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2259,7 +2021,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final byte[] array, final byte valueToFind) {
-        return indexesOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2278,18 +2040,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final byte[] array, final byte valueToFind, int startIndex) {
-        final BitSet bitSet = new BitSet();
-        if (array != null) {
-            while (startIndex < array.length) {
-                startIndex = indexOf(array, valueToFind, startIndex);
-                if (startIndex == INDEX_NOT_FOUND) {
-                    break;
-                }
-                bitSet.set(startIndex);
-                ++startIndex;
-            }
-        }
-        return bitSet;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2304,7 +2055,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final char[] array, final char valueToFind) {
-        return indexesOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2323,18 +2074,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final char[] array, final char valueToFind, int startIndex) {
-        final BitSet bitSet = new BitSet();
-        if (array != null) {
-            while (startIndex < array.length) {
-                startIndex = indexOf(array, valueToFind, startIndex);
-                if (startIndex == INDEX_NOT_FOUND) {
-                    break;
-                }
-                bitSet.set(startIndex);
-                ++startIndex;
-            }
-        }
-        return bitSet;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2349,7 +2089,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final double[] array, final double valueToFind) {
-        return indexesOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2370,7 +2110,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final double[] array, final double valueToFind, final double tolerance) {
-        return indexesOf(array, valueToFind, 0, tolerance);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2389,18 +2129,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final double[] array, final double valueToFind, int startIndex) {
-        final BitSet bitSet = new BitSet();
-        if (array != null) {
-            while (startIndex < array.length) {
-                startIndex = indexOf(array, valueToFind, startIndex);
-                if (startIndex == INDEX_NOT_FOUND) {
-                    break;
-                }
-                bitSet.set(startIndex);
-                ++startIndex;
-            }
-        }
-        return bitSet;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2425,18 +2154,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final double[] array, final double valueToFind, int startIndex, final double tolerance) {
-        final BitSet bitSet = new BitSet();
-        if (array != null) {
-            while (startIndex < array.length) {
-                startIndex = indexOf(array, valueToFind, startIndex, tolerance);
-                if (startIndex == INDEX_NOT_FOUND) {
-                    break;
-                }
-                bitSet.set(startIndex);
-                ++startIndex;
-            }
-        }
-        return bitSet;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2451,7 +2169,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final float[] array, final float valueToFind) {
-        return indexesOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2470,18 +2188,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final float[] array, final float valueToFind, int startIndex) {
-        final BitSet bitSet = new BitSet();
-        if (array != null) {
-            while (startIndex < array.length) {
-                startIndex = indexOf(array, valueToFind, startIndex);
-                if (startIndex == INDEX_NOT_FOUND) {
-                    break;
-                }
-                bitSet.set(startIndex);
-                ++startIndex;
-            }
-        }
-        return bitSet;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2496,7 +2203,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final int[] array, final int valueToFind) {
-        return indexesOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2515,18 +2222,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final int[] array, final int valueToFind, int startIndex) {
-        final BitSet bitSet = new BitSet();
-        if (array != null) {
-            while (startIndex < array.length) {
-                startIndex = indexOf(array, valueToFind, startIndex);
-                if (startIndex == INDEX_NOT_FOUND) {
-                    break;
-                }
-                bitSet.set(startIndex);
-                ++startIndex;
-            }
-        }
-        return bitSet;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2541,7 +2237,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final long[] array, final long valueToFind) {
-        return indexesOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2560,18 +2256,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final long[] array, final long valueToFind, int startIndex) {
-        final BitSet bitSet = new BitSet();
-        if (array != null) {
-            while (startIndex < array.length) {
-                startIndex = indexOf(array, valueToFind, startIndex);
-                if (startIndex == INDEX_NOT_FOUND) {
-                    break;
-                }
-                bitSet.set(startIndex);
-                ++startIndex;
-            }
-        }
-        return bitSet;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2586,7 +2271,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final Object[] array, final Object objectToFind) {
-        return indexesOf(array, objectToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2605,18 +2290,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final Object[] array, final Object objectToFind, int startIndex) {
-        final BitSet bitSet = new BitSet();
-        if (array != null) {
-            while (startIndex < array.length) {
-                startIndex = indexOf(array, objectToFind, startIndex);
-                if (startIndex == INDEX_NOT_FOUND) {
-                    break;
-                }
-                bitSet.set(startIndex);
-                ++startIndex;
-            }
-        }
-        return bitSet;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2631,7 +2305,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final short[] array, final short valueToFind) {
-        return indexesOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2650,18 +2324,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static BitSet indexesOf(final short[] array, final short valueToFind, int startIndex) {
-        final BitSet bitSet = new BitSet();
-        if (array != null) {
-            while (startIndex < array.length) {
-                startIndex = indexOf(array, valueToFind, startIndex);
-                if (startIndex == INDEX_NOT_FOUND) {
-                    break;
-                }
-                bitSet.set(startIndex);
-                ++startIndex;
-            }
-        }
-        return bitSet;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2675,7 +2338,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final boolean[] array, final boolean valueToFind) {
-        return indexOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2693,15 +2356,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final boolean[] array, final boolean valueToFind, final int startIndex) {
-        if (isEmpty(array)) {
-            return INDEX_NOT_FOUND;
-        }
-        for (int i = max0(startIndex); i < array.length; i++) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2715,7 +2370,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final byte[] array, final byte valueToFind) {
-        return indexOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2733,15 +2388,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final byte[] array, final byte valueToFind, final int startIndex) {
-        if (isEmpty(array)) {
-            return INDEX_NOT_FOUND;
-        }
-        for (int i = max0(startIndex); i < array.length; i++) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2756,7 +2403,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static int indexOf(final char[] array, final char valueToFind) {
-        return indexOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2775,15 +2422,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static int indexOf(final char[] array, final char valueToFind, final int startIndex) {
-        if (isEmpty(array)) {
-            return INDEX_NOT_FOUND;
-        }
-        for (int i = max0(startIndex); i < array.length; i++) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2797,7 +2436,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final double[] array, final double valueToFind) {
-        return indexOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2813,7 +2452,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final double[] array, final double valueToFind, final double tolerance) {
-        return indexOf(array, valueToFind, 0, tolerance);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2831,18 +2470,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final double[] array, final double valueToFind, final int startIndex) {
-        if (Double.isNaN(valueToFind)) {
-            return indexOfNaN(array, startIndex);
-        }
-        if (isEmpty(array)) {
-            return INDEX_NOT_FOUND;
-        }
-        for (int i = max0(startIndex); i < array.length; i++) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2862,20 +2490,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final double[] array, final double valueToFind, final int startIndex, final double tolerance) {
-        if (Double.isNaN(valueToFind)) {
-            return indexOfNaN(array, startIndex);
-        }
-        if (isEmpty(array)) {
-            return INDEX_NOT_FOUND;
-        }
-        final double min = valueToFind - tolerance;
-        final double max = valueToFind + tolerance;
-        for (int i = max0(startIndex); i < array.length; i++) {
-            if (array[i] >= min && array[i] <= max) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2889,7 +2504,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final float[] array, final float valueToFind) {
-        return indexOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2907,17 +2522,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final float[] array, final float valueToFind, final int startIndex) {
-        if (isEmpty(array)) {
-            return INDEX_NOT_FOUND;
-        }
-        final boolean searchNaN = Float.isNaN(valueToFind);
-        for (int i = max0(startIndex); i < array.length; i++) {
-            final float element = array[i];
-            if (valueToFind == element || searchNaN && Float.isNaN(element)) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2931,7 +2536,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final int[] array, final int valueToFind) {
-        return indexOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2949,15 +2554,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final int[] array, final int valueToFind, final int startIndex) {
-        if (isEmpty(array)) {
-            return INDEX_NOT_FOUND;
-        }
-        for (int i = max0(startIndex); i < array.length; i++) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2971,7 +2568,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final long[] array, final long valueToFind) {
-        return indexOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2989,15 +2586,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final long[] array, final long valueToFind, final int startIndex) {
-        if (isEmpty(array)) {
-            return INDEX_NOT_FOUND;
-        }
-        for (int i = max0(startIndex); i < array.length; i++) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3011,7 +2600,7 @@ public class ArrayUtils {
      * @return the index of the object within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final Object[] array, final Object objectToFind) {
-        return indexOf(array, objectToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3029,24 +2618,7 @@ public class ArrayUtils {
      * @return the index of the object within the array starting at the index, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final Object[] array, final Object objectToFind, int startIndex) {
-        if (isEmpty(array)) {
-            return INDEX_NOT_FOUND;
-        }
-        startIndex = max0(startIndex);
-        if (objectToFind == null) {
-            for (int i = startIndex; i < array.length; i++) {
-                if (array[i] == null) {
-                    return i;
-                }
-            }
-        } else {
-            for (int i = startIndex; i < array.length; i++) {
-                if (objectToFind.equals(array[i])) {
-                    return i;
-                }
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3060,7 +2632,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final short[] array, final short valueToFind) {
-        return indexOf(array, valueToFind, 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3078,15 +2650,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int indexOf(final short[] array, final short valueToFind, final int startIndex) {
-        if (isEmpty(array)) {
-            return INDEX_NOT_FOUND;
-        }
-        for (int i = max0(startIndex); i < array.length; i++) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3128,24 +2692,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static boolean[] insert(final int index, final boolean[] array, final boolean... values) {
-        if (array == null) {
-            return null;
-        }
-        if (isEmpty(values)) {
-            return clone(array);
-        }
-        if (index < 0 || index > array.length) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + array.length);
-        }
-        final boolean[] result = new boolean[array.length + values.length];
-        System.arraycopy(values, 0, result, index, values.length);
-        if (index > 0) {
-            System.arraycopy(array, 0, result, 0, index);
-        }
-        if (index < array.length) {
-            System.arraycopy(array, index, result, index + values.length, array.length - index);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3169,24 +2716,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static byte[] insert(final int index, final byte[] array, final byte... values) {
-        if (array == null) {
-            return null;
-        }
-        if (isEmpty(values)) {
-            return clone(array);
-        }
-        if (index < 0 || index > array.length) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + array.length);
-        }
-        final byte[] result = new byte[array.length + values.length];
-        System.arraycopy(values, 0, result, index, values.length);
-        if (index > 0) {
-            System.arraycopy(array, 0, result, 0, index);
-        }
-        if (index < array.length) {
-            System.arraycopy(array, index, result, index + values.length, array.length - index);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3210,24 +2740,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static char[] insert(final int index, final char[] array, final char... values) {
-        if (array == null) {
-            return null;
-        }
-        if (isEmpty(values)) {
-            return clone(array);
-        }
-        if (index < 0 || index > array.length) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + array.length);
-        }
-        final char[] result = new char[array.length + values.length];
-        System.arraycopy(values, 0, result, index, values.length);
-        if (index > 0) {
-            System.arraycopy(array, 0, result, 0, index);
-        }
-        if (index < array.length) {
-            System.arraycopy(array, index, result, index + values.length, array.length - index);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3251,24 +2764,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static double[] insert(final int index, final double[] array, final double... values) {
-        if (array == null) {
-            return null;
-        }
-        if (isEmpty(values)) {
-            return clone(array);
-        }
-        if (index < 0 || index > array.length) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + array.length);
-        }
-        final double[] result = new double[array.length + values.length];
-        System.arraycopy(values, 0, result, index, values.length);
-        if (index > 0) {
-            System.arraycopy(array, 0, result, 0, index);
-        }
-        if (index < array.length) {
-            System.arraycopy(array, index, result, index + values.length, array.length - index);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3292,24 +2788,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static float[] insert(final int index, final float[] array, final float... values) {
-        if (array == null) {
-            return null;
-        }
-        if (isEmpty(values)) {
-            return clone(array);
-        }
-        if (index < 0 || index > array.length) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + array.length);
-        }
-        final float[] result = new float[array.length + values.length];
-        System.arraycopy(values, 0, result, index, values.length);
-        if (index > 0) {
-            System.arraycopy(array, 0, result, 0, index);
-        }
-        if (index < array.length) {
-            System.arraycopy(array, index, result, index + values.length, array.length - index);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3333,24 +2812,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static int[] insert(final int index, final int[] array, final int... values) {
-        if (array == null) {
-            return null;
-        }
-        if (isEmpty(values)) {
-            return clone(array);
-        }
-        if (index < 0 || index > array.length) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + array.length);
-        }
-        final int[] result = new int[array.length + values.length];
-        System.arraycopy(values, 0, result, index, values.length);
-        if (index > 0) {
-            System.arraycopy(array, 0, result, 0, index);
-        }
-        if (index < array.length) {
-            System.arraycopy(array, index, result, index + values.length, array.length - index);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3374,24 +2836,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static long[] insert(final int index, final long[] array, final long... values) {
-        if (array == null) {
-            return null;
-        }
-        if (isEmpty(values)) {
-            return clone(array);
-        }
-        if (index < 0 || index > array.length) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + array.length);
-        }
-        final long[] result = new long[array.length + values.length];
-        System.arraycopy(values, 0, result, index, values.length);
-        if (index > 0) {
-            System.arraycopy(array, 0, result, 0, index);
-        }
-        if (index < array.length) {
-            System.arraycopy(array, index, result, index + values.length, array.length - index);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3415,24 +2860,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static short[] insert(final int index, final short[] array, final short... values) {
-        if (array == null) {
-            return null;
-        }
-        if (isEmpty(values)) {
-            return clone(array);
-        }
-        if (index < 0 || index > array.length) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + array.length);
-        }
-        final short[] result = new short[array.length + values.length];
-        System.arraycopy(values, 0, result, index, values.length);
-        if (index > 0) {
-            System.arraycopy(array, 0, result, 0, index);
-        }
-        if (index < array.length) {
-            System.arraycopy(array, index, result, index + values.length, array.length - index);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3458,33 +2886,7 @@ public class ArrayUtils {
      */
     @SafeVarargs
     public static <T> T[] insert(final int index, final T[] array, final T... values) {
-        /*
-         * Note on use of @SafeVarargs:
-         *
-         * By returning null when 'array' is null, we avoid returning the vararg
-         * array to the caller. We also avoid relying on the type of the vararg
-         * array, by inspecting the component type of 'array'.
-         */
-        if (array == null) {
-            return null;
-        }
-        if (isEmpty(values)) {
-            return clone(array);
-        }
-        if (index < 0 || index > array.length) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + array.length);
-        }
-        final Class<T> type = getComponentType(array);
-        final int length = array.length + values.length;
-        final T[] result = newInstance(type, length);
-        System.arraycopy(values, 0, result, index, values.length);
-        if (index > 0) {
-            System.arraycopy(array, 0, result, 0, index);
-        }
-        if (index < array.length) {
-            System.arraycopy(array, index, result, index + values.length, array.length - index);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3513,7 +2915,7 @@ public class ArrayUtils {
      * @since 3.8
      */
     public static <T> boolean isArrayIndexValid(final T[] array, final int index) {
-        return index >= 0 && getLength(array) > index;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3524,7 +2926,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean isEmpty(final boolean[] array) {
-        return isArrayEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3535,7 +2937,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean isEmpty(final byte[] array) {
-        return isArrayEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3546,7 +2948,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean isEmpty(final char[] array) {
-        return isArrayEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3557,7 +2959,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean isEmpty(final double[] array) {
-        return isArrayEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3568,7 +2970,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean isEmpty(final float[] array) {
-        return isArrayEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3579,7 +2981,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean isEmpty(final int[] array) {
-        return isArrayEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3590,7 +2992,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean isEmpty(final long[] array) {
-        return isArrayEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3601,7 +3003,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean isEmpty(final Object[] array) {
-        return isArrayEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3612,10 +3014,10 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean isEmpty(final short[] array) {
-        return isArrayEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-     /**
+    /**
      * Tests whether two arrays have equal content, using equals(), handling multidimensional arrays
      * correctly.
      * <p>
@@ -3641,7 +3043,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static boolean isNotEmpty(final boolean[] array) {
-        return !isEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3652,7 +3054,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static boolean isNotEmpty(final byte[] array) {
-        return !isEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3663,7 +3065,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static boolean isNotEmpty(final char[] array) {
-        return !isEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3674,7 +3076,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static boolean isNotEmpty(final double[] array) {
-        return !isEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3685,7 +3087,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static boolean isNotEmpty(final float[] array) {
-        return !isEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3696,7 +3098,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static boolean isNotEmpty(final int[] array) {
-        return !isEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3707,7 +3109,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static boolean isNotEmpty(final long[] array) {
-        return !isEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3718,7 +3120,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static boolean isNotEmpty(final short[] array) {
-        return !isEmpty(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3729,19 +3131,19 @@ public class ArrayUtils {
      * @return {@code true} if the array is not empty and not {@code null}.
      * @since 2.5
      */
-     public static <T> boolean isNotEmpty(final T[] array) {
-         return !isEmpty(array);
-     }
+    public static <T> boolean isNotEmpty(final T[] array) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
     /**
-      * Tests whether two arrays are the same length, treating {@code null} arrays as length {@code 0}.
-      *
-      * @param array1 the first array, may be {@code null}.
-      * @param array2 the second array, may be {@code null}.
-      * @return {@code true} if length of arrays matches, treating {@code null} as an empty array.
-      */
-     public static boolean isSameLength(final boolean[] array1, final boolean[] array2) {
-        return getLength(array1) == getLength(array2);
+     * Tests whether two arrays are the same length, treating {@code null} arrays as length {@code 0}.
+     *
+     * @param array1 the first array, may be {@code null}.
+     * @param array2 the second array, may be {@code null}.
+     * @return {@code true} if length of arrays matches, treating {@code null} as an empty array.
+     */
+    public static boolean isSameLength(final boolean[] array1, final boolean[] array2) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3752,7 +3154,7 @@ public class ArrayUtils {
      * @return {@code true} if length of arrays matches, treating {@code null} as an empty array.
      */
     public static boolean isSameLength(final byte[] array1, final byte[] array2) {
-        return getLength(array1) == getLength(array2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3763,7 +3165,7 @@ public class ArrayUtils {
      * @return {@code true} if length of arrays matches, treating {@code null} as an empty array.
      */
     public static boolean isSameLength(final char[] array1, final char[] array2) {
-        return getLength(array1) == getLength(array2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3774,7 +3176,7 @@ public class ArrayUtils {
      * @return {@code true} if length of arrays matches, treating {@code null} as an empty array.
      */
     public static boolean isSameLength(final double[] array1, final double[] array2) {
-        return getLength(array1) == getLength(array2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3785,7 +3187,7 @@ public class ArrayUtils {
      * @return {@code true} if length of arrays matches, treating {@code null} as an empty array.
      */
     public static boolean isSameLength(final float[] array1, final float[] array2) {
-        return getLength(array1) == getLength(array2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3796,7 +3198,7 @@ public class ArrayUtils {
      * @return {@code true} if length of arrays matches, treating {@code null} as an empty array.
      */
     public static boolean isSameLength(final int[] array1, final int[] array2) {
-        return getLength(array1) == getLength(array2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3807,7 +3209,7 @@ public class ArrayUtils {
      * @return {@code true} if length of arrays matches, treating {@code null} as an empty array.
      */
     public static boolean isSameLength(final long[] array1, final long[] array2) {
-        return getLength(array1) == getLength(array2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3822,7 +3224,7 @@ public class ArrayUtils {
      * @since 3.11
      */
     public static boolean isSameLength(final Object array1, final Object array2) {
-        return getLength(array1) == getLength(array2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3836,7 +3238,7 @@ public class ArrayUtils {
      * @return {@code true} if length of arrays matches, treating {@code null} as an empty array.
      */
     public static boolean isSameLength(final Object[] array1, final Object[] array2) {
-        return getLength(array1) == getLength(array2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3847,7 +3249,7 @@ public class ArrayUtils {
      * @return {@code true} if length of arrays matches, treating {@code null} as an empty array.
      */
     public static boolean isSameLength(final short[] array1, final short[] array2) {
-        return getLength(array1) == getLength(array2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3859,10 +3261,7 @@ public class ArrayUtils {
      * @throws IllegalArgumentException if either array is {@code null}.
      */
     public static boolean isSameType(final Object array1, final Object array2) {
-        if (array1 == null || array2 == null) {
-            throw new IllegalArgumentException("The Array must not be null");
-        }
-        return array1.getClass().getName().equals(array2.getClass().getName());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3873,19 +3272,7 @@ public class ArrayUtils {
      * @since 3.4
      */
     public static boolean isSorted(final boolean[] array) {
-        if (getLength(array) < 2) {
-            return true;
-        }
-        boolean previous = array[0];
-        final int n = array.length;
-        for (int i = 1; i < n; i++) {
-            final boolean current = array[i];
-            if (BooleanUtils.compare(previous, current) > 0) {
-                return false;
-            }
-            previous = current;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3896,19 +3283,7 @@ public class ArrayUtils {
      * @since 3.4
      */
     public static boolean isSorted(final byte[] array) {
-        if (getLength(array) < 2) {
-            return true;
-        }
-        byte previous = array[0];
-        final int n = array.length;
-        for (int i = 1; i < n; i++) {
-            final byte current = array[i];
-            if (Byte.compare(previous, current) > 0) {
-                return false;
-            }
-            previous = current;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3919,19 +3294,7 @@ public class ArrayUtils {
      * @since 3.4
      */
     public static boolean isSorted(final char[] array) {
-        if (getLength(array) < 2) {
-            return true;
-        }
-        char previous = array[0];
-        final int n = array.length;
-        for (int i = 1; i < n; i++) {
-            final char current = array[i];
-            if (CharUtils.compare(previous, current) > 0) {
-                return false;
-            }
-            previous = current;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3942,19 +3305,7 @@ public class ArrayUtils {
      * @since 3.4
      */
     public static boolean isSorted(final double[] array) {
-        if (getLength(array) < 2) {
-            return true;
-        }
-        double previous = array[0];
-        final int n = array.length;
-        for (int i = 1; i < n; i++) {
-            final double current = array[i];
-            if (Double.compare(previous, current) > 0) {
-                return false;
-            }
-            previous = current;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3965,19 +3316,7 @@ public class ArrayUtils {
      * @since 3.4
      */
     public static boolean isSorted(final float[] array) {
-        if (getLength(array) < 2) {
-            return true;
-        }
-        float previous = array[0];
-        final int n = array.length;
-        for (int i = 1; i < n; i++) {
-            final float current = array[i];
-            if (Float.compare(previous, current) > 0) {
-                return false;
-            }
-            previous = current;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -3988,19 +3327,7 @@ public class ArrayUtils {
      * @since 3.4
      */
     public static boolean isSorted(final int[] array) {
-        if (getLength(array) < 2) {
-            return true;
-        }
-        int previous = array[0];
-        final int n = array.length;
-        for (int i = 1; i < n; i++) {
-            final int current = array[i];
-            if (Integer.compare(previous, current) > 0) {
-                return false;
-            }
-            previous = current;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4011,19 +3338,7 @@ public class ArrayUtils {
      * @since 3.4
      */
     public static boolean isSorted(final long[] array) {
-        if (getLength(array) < 2) {
-            return true;
-        }
-        long previous = array[0];
-        final int n = array.length;
-        for (int i = 1; i < n; i++) {
-            final long current = array[i];
-            if (Long.compare(previous, current) > 0) {
-                return false;
-            }
-            previous = current;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4034,19 +3349,7 @@ public class ArrayUtils {
      * @since 3.4
      */
     public static boolean isSorted(final short[] array) {
-        if (getLength(array) < 2) {
-            return true;
-        }
-        short previous = array[0];
-        final int n = array.length;
-        for (int i = 1; i < n; i++) {
-            final short current = array[i];
-            if (Short.compare(previous, current) > 0) {
-                return false;
-            }
-            previous = current;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4059,7 +3362,7 @@ public class ArrayUtils {
      * @since 3.4
      */
     public static <T extends Comparable<? super T>> boolean isSorted(final T[] array) {
-        return isSorted(array, Comparable::compareTo);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4073,20 +3376,7 @@ public class ArrayUtils {
      * @since 3.4
      */
     public static <T> boolean isSorted(final T[] array, final Comparator<T> comparator) {
-        Objects.requireNonNull(comparator, "comparator");
-        if (getLength(array) < 2) {
-            return true;
-        }
-        T previous = array[0];
-        final int n = array.length;
-        for (int i = 1; i < n; i++) {
-            final T current = array[i];
-            if (comparator.compare(previous, current) > 0) {
-                return false;
-            }
-            previous = current;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4100,7 +3390,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final boolean[] array, final boolean valueToFind) {
-        return lastIndexOf(array, valueToFind, Integer.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4118,18 +3408,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final boolean[] array, final boolean valueToFind, int startIndex) {
-        if (isEmpty(array) || startIndex < 0) {
-            return INDEX_NOT_FOUND;
-        }
-        if (startIndex >= array.length) {
-            startIndex = array.length - 1;
-        }
-        for (int i = startIndex; i >= 0; i--) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4143,7 +3422,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final byte[] array, final byte valueToFind) {
-        return lastIndexOf(array, valueToFind, Integer.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4161,18 +3440,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final byte[] array, final byte valueToFind, int startIndex) {
-        if (array == null || startIndex < 0) {
-            return INDEX_NOT_FOUND;
-        }
-        if (startIndex >= array.length) {
-            startIndex = array.length - 1;
-        }
-        for (int i = startIndex; i >= 0; i--) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4187,7 +3455,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static int lastIndexOf(final char[] array, final char valueToFind) {
-        return lastIndexOf(array, valueToFind, Integer.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4206,18 +3474,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static int lastIndexOf(final char[] array, final char valueToFind, int startIndex) {
-        if (array == null || startIndex < 0) {
-            return INDEX_NOT_FOUND;
-        }
-        if (startIndex >= array.length) {
-            startIndex = array.length - 1;
-        }
-        for (int i = startIndex; i >= 0; i--) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4231,7 +3488,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final double[] array, final double valueToFind) {
-        return lastIndexOf(array, valueToFind, Integer.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4247,7 +3504,7 @@ public class ArrayUtils {
      * @return the index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final double[] array, final double valueToFind, final double tolerance) {
-        return lastIndexOf(array, valueToFind, Integer.MAX_VALUE, tolerance);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4265,18 +3522,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final double[] array, final double valueToFind, int startIndex) {
-        if (isEmpty(array) || startIndex < 0) {
-            return INDEX_NOT_FOUND;
-        }
-        if (startIndex >= array.length) {
-            startIndex = array.length - 1;
-        }
-        for (int i = startIndex; i >= 0; i--) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4296,20 +3542,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final double[] array, final double valueToFind, int startIndex, final double tolerance) {
-        if (isEmpty(array) || startIndex < 0) {
-            return INDEX_NOT_FOUND;
-        }
-        if (startIndex >= array.length) {
-            startIndex = array.length - 1;
-        }
-        final double min = valueToFind - tolerance;
-        final double max = valueToFind + tolerance;
-        for (int i = startIndex; i >= 0; i--) {
-            if (array[i] >= min && array[i] <= max) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4323,7 +3556,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final float[] array, final float valueToFind) {
-        return lastIndexOf(array, valueToFind, Integer.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4341,18 +3574,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final float[] array, final float valueToFind, int startIndex) {
-        if (isEmpty(array) || startIndex < 0) {
-            return INDEX_NOT_FOUND;
-        }
-        if (startIndex >= array.length) {
-            startIndex = array.length - 1;
-        }
-        for (int i = startIndex; i >= 0; i--) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4366,7 +3588,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final int[] array, final int valueToFind) {
-        return lastIndexOf(array, valueToFind, Integer.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4384,18 +3606,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final int[] array, final int valueToFind, int startIndex) {
-        if (array == null || startIndex < 0) {
-            return INDEX_NOT_FOUND;
-        }
-        if (startIndex >= array.length) {
-            startIndex = array.length - 1;
-        }
-        for (int i = startIndex; i >= 0; i--) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4409,7 +3620,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final long[] array, final long valueToFind) {
-        return lastIndexOf(array, valueToFind, Integer.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4427,18 +3638,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final long[] array, final long valueToFind, int startIndex) {
-        if (array == null || startIndex < 0) {
-            return INDEX_NOT_FOUND;
-        }
-        if (startIndex >= array.length) {
-            startIndex = array.length - 1;
-        }
-        for (int i = startIndex; i >= 0; i--) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4452,7 +3652,7 @@ public class ArrayUtils {
      * @return the last index of the object within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final Object[] array, final Object objectToFind) {
-        return lastIndexOf(array, objectToFind, Integer.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4470,26 +3670,7 @@ public class ArrayUtils {
      * @return the last index of the object within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final Object[] array, final Object objectToFind, int startIndex) {
-        if (array == null || startIndex < 0) {
-            return INDEX_NOT_FOUND;
-        }
-        if (startIndex >= array.length) {
-            startIndex = array.length - 1;
-        }
-        if (objectToFind == null) {
-            for (int i = startIndex; i >= 0; i--) {
-                if (array[i] == null) {
-                    return i;
-                }
-            }
-        } else if (array.getClass().getComponentType().isInstance(objectToFind)) {
-            for (int i = startIndex; i >= 0; i--) {
-                if (objectToFind.equals(array[i])) {
-                    return i;
-                }
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4503,7 +3684,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final short[] array, final short valueToFind) {
-        return lastIndexOf(array, valueToFind, Integer.MAX_VALUE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4521,18 +3702,7 @@ public class ArrayUtils {
      * @return the last index of the value within the array, {@link #INDEX_NOT_FOUND} ({@code -1}) if not found or {@code null} array input.
      */
     public static int lastIndexOf(final short[] array, final short valueToFind, int startIndex) {
-        if (array == null || startIndex < 0) {
-            return INDEX_NOT_FOUND;
-        }
-        if (startIndex >= array.length) {
-            startIndex = array.length - 1;
-        }
-        for (int i = startIndex; i >= 0; i--) {
-            if (valueToFind == array[i]) {
-                return i;
-            }
-        }
-        return INDEX_NOT_FOUND;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4547,8 +3717,7 @@ public class ArrayUtils {
      * @return a new array.
      * @throws E Thrown when the mapper function fails.
      */
-    private static <T, R, E extends Throwable> R[] map(final T[] array, final Class<R> componentType, final FailableFunction<? super T, ? extends R, E> mapper)
-            throws E {
+    private static <T, R, E extends Throwable> R[] map(final T[] array, final Class<R> componentType, final FailableFunction<? super T, ? extends R, E> mapper) throws E {
         return ArrayFill.fill(newInstance(componentType, array.length), i -> mapper.apply(array[i]));
     }
 
@@ -4566,9 +3735,10 @@ public class ArrayUtils {
      * @throws NullPointerException if the specified {@code componentType} parameter is null.
      * @since 3.13.0
      */
-    @SuppressWarnings("unchecked") // OK, because array and values are of type T
+    // OK, because array and values are of type T
+    @SuppressWarnings("unchecked")
     public static <T> T[] newInstance(final Class<T> componentType, final int length) {
-        return (T[]) Array.newInstance(componentType, length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4589,7 +3759,7 @@ public class ArrayUtils {
      * @since 3.15.0
      */
     public static <T> T[] nullTo(final T[] array, final T[] defaultArray) {
-        return isEmpty(array) ? defaultArray : array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4608,7 +3778,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static boolean[] nullToEmpty(final boolean[] array) {
-        return isEmpty(array) ? EMPTY_BOOLEAN_ARRAY : array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4627,7 +3797,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static Boolean[] nullToEmpty(final Boolean[] array) {
-        return nullTo(array, EMPTY_BOOLEAN_OBJECT_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4646,7 +3816,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static byte[] nullToEmpty(final byte[] array) {
-        return isEmpty(array) ? EMPTY_BYTE_ARRAY : array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4665,7 +3835,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static Byte[] nullToEmpty(final Byte[] array) {
-        return nullTo(array, EMPTY_BYTE_OBJECT_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4684,7 +3854,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static char[] nullToEmpty(final char[] array) {
-        return isEmpty(array) ? EMPTY_CHAR_ARRAY : array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4703,7 +3873,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static Character[] nullToEmpty(final Character[] array) {
-        return nullTo(array, EMPTY_CHARACTER_OBJECT_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4722,7 +3892,7 @@ public class ArrayUtils {
      * @since 3.2
      */
     public static Class<?>[] nullToEmpty(final Class<?>[] array) {
-        return nullTo(array, EMPTY_CLASS_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4741,7 +3911,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static double[] nullToEmpty(final double[] array) {
-        return isEmpty(array) ? EMPTY_DOUBLE_ARRAY : array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4760,7 +3930,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static Double[] nullToEmpty(final Double[] array) {
-        return nullTo(array, EMPTY_DOUBLE_OBJECT_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4779,7 +3949,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static float[] nullToEmpty(final float[] array) {
-        return isEmpty(array) ? EMPTY_FLOAT_ARRAY : array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4798,7 +3968,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static Float[] nullToEmpty(final Float[] array) {
-        return nullTo(array, EMPTY_FLOAT_OBJECT_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4817,7 +3987,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static int[] nullToEmpty(final int[] array) {
-        return isEmpty(array) ? EMPTY_INT_ARRAY : array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4836,7 +4006,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static Integer[] nullToEmpty(final Integer[] array) {
-        return nullTo(array, EMPTY_INTEGER_OBJECT_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4855,7 +4025,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static long[] nullToEmpty(final long[] array) {
-        return isEmpty(array) ? EMPTY_LONG_ARRAY : array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4874,7 +4044,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static Long[] nullToEmpty(final Long[] array) {
-        return nullTo(array, EMPTY_LONG_OBJECT_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4893,7 +4063,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static Object[] nullToEmpty(final Object[] array) {
-        return nullTo(array, EMPTY_OBJECT_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4912,7 +4082,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static short[] nullToEmpty(final short[] array) {
-        return isEmpty(array) ? EMPTY_SHORT_ARRAY : array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4931,7 +4101,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static Short[] nullToEmpty(final Short[] array) {
-        return nullTo(array, EMPTY_SHORT_OBJECT_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4950,7 +4120,7 @@ public class ArrayUtils {
      * @since 2.5
      */
     public static String[] nullToEmpty(final String[] array) {
-        return nullTo(array, EMPTY_STRING_ARRAY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -4968,13 +4138,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static <T> T[] nullToEmpty(final T[] array, final Class<T[]> type) {
-        if (type == null) {
-            throw new IllegalArgumentException("The type must not be null");
-        }
-        if (array == null) {
-            return type.cast(Array.newInstance(type.getComponentType(), 0));
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5011,7 +4175,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean[] remove(final boolean[] array, final int index) {
-        return (boolean[]) remove((Object) array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5039,7 +4203,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static byte[] remove(final byte[] array, final int index) {
-        return (byte[]) remove((Object) array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5067,7 +4231,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static char[] remove(final char[] array, final int index) {
-        return (char[]) remove((Object) array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5095,7 +4259,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static double[] remove(final double[] array, final int index) {
-        return (double[]) remove((Object) array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5123,7 +4287,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static float[] remove(final float[] array, final int index) {
-        return (float[]) remove((Object) array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5151,7 +4315,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static int[] remove(final int[] array, final int index) {
-        return (int[]) remove((Object) array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5179,7 +4343,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static long[] remove(final long[] array, final int index) {
-        return (long[]) remove((Object) array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5237,7 +4401,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static short[] remove(final short[] array, final int index) {
-        return (short[]) remove((Object) array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5265,9 +4429,10 @@ public class ArrayUtils {
      * @throws IndexOutOfBoundsException if the index is out of range (index &lt; 0 || index &gt;= array.length), or if the array is {@code null}.
      * @since 2.1
      */
-    @SuppressWarnings("unchecked") // remove() always creates an array of the same type as its input
+    // remove() always creates an array of the same type as its input
+    @SuppressWarnings("unchecked")
     public static <T> T[] remove(final T[] array, final int index) {
-        return (T[]) remove((Object) array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5292,7 +4457,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static boolean[] removeAll(final boolean[] array, final int... indices) {
-        return (boolean[]) removeAll((Object) array, indices);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5321,7 +4486,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static byte[] removeAll(final byte[] array, final int... indices) {
-        return (byte[]) removeAll((Object) array, indices);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5350,7 +4515,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static char[] removeAll(final char[] array, final int... indices) {
-        return (char[]) removeAll((Object) array, indices);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5379,7 +4544,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static double[] removeAll(final double[] array, final int... indices) {
-        return (double[]) removeAll((Object) array, indices);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5408,7 +4573,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static float[] removeAll(final float[] array, final int... indices) {
-        return (float[]) removeAll((Object) array, indices);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5437,7 +4602,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static int[] removeAll(final int[] array, final int... indices) {
-        return (int[]) removeAll((Object) array, indices);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5466,7 +4631,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static long[] removeAll(final long[] array, final int... indices) {
-        return (long[]) removeAll((Object) array, indices);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5478,48 +4643,7 @@ public class ArrayUtils {
      */
     // package protected for access by unit tests
     static Object removeAll(final Object array, final int... indices) {
-        if (array == null) {
-            return null;
-        }
-        final int length = getLength(array);
-        int diff = 0; // number of distinct indexes, i.e. number of entries that will be removed
-        final int[] clonedIndices = ArraySorter.sort(clone(indices));
-        // identify length of result array
-        if (isNotEmpty(clonedIndices)) {
-            int i = clonedIndices.length;
-            int prevIndex = length;
-            while (--i >= 0) {
-                final int index = clonedIndices[i];
-                if (index < 0 || index >= length) {
-                    throw new IndexOutOfBoundsException("Index: " + index + ", Length: " + length);
-                }
-                if (index >= prevIndex) {
-                    continue;
-                }
-                diff++;
-                prevIndex = index;
-            }
-        }
-        // create result array
-        final Object result = Array.newInstance(array.getClass().getComponentType(), length - diff);
-        if (diff < length && clonedIndices != null) {
-            int end = length; // index just after last copy
-            int dest = length - diff; // number of entries so far not copied
-            for (int i = clonedIndices.length - 1; i >= 0; i--) {
-                final int index = clonedIndices[i];
-                if (end - index > 1) { // same as (cp > 0)
-                    final int cp = end - index - 1;
-                    dest -= cp;
-                    System.arraycopy(array, index + 1, result, dest, cp);
-                    // After this copy, we still have room for dest items.
-                }
-                end = index;
-            }
-            if (end > 0) {
-                System.arraycopy(array, 0, result, 0, end);
-            }
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5548,7 +4672,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static short[] removeAll(final short[] array, final int... indices) {
-        return (short[]) removeAll((Object) array, indices);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5573,9 +4697,10 @@ public class ArrayUtils {
      * @throws IndexOutOfBoundsException if any index is out of range (index &lt; 0 || index &gt;= array.length).
      * @since 3.0.1
      */
-    @SuppressWarnings("unchecked") // removeAll() always creates an array of the same type as its input
+    // removeAll() always creates an array of the same type as its input
+    @SuppressWarnings("unchecked")
     public static <T> T[] removeAll(final T[] array, final int... indices) {
-        return (T[]) removeAll((Object) array, indices);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5764,7 +4889,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static boolean[] removeAllOccurrences(final boolean[] array, final boolean element) {
-        return (boolean[]) removeAt(array, indexesOf(array, element));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5781,7 +4906,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static byte[] removeAllOccurrences(final byte[] array, final byte element) {
-        return (byte[]) removeAt(array, indexesOf(array, element));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5798,7 +4923,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static char[] removeAllOccurrences(final char[] array, final char element) {
-        return (char[]) removeAt(array, indexesOf(array, element));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5815,7 +4940,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static double[] removeAllOccurrences(final double[] array, final double element) {
-        return (double[]) removeAt(array, indexesOf(array, element));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5832,7 +4957,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static float[] removeAllOccurrences(final float[] array, final float element) {
-        return (float[]) removeAt(array, indexesOf(array, element));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5849,7 +4974,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static int[] removeAllOccurrences(final int[] array, final int element) {
-        return (int[]) removeAt(array, indexesOf(array, element));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5866,7 +4991,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static long[] removeAllOccurrences(final long[] array, final long element) {
-        return (long[]) removeAt(array, indexesOf(array, element));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5883,7 +5008,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static short[] removeAllOccurrences(final short[] array, final short element) {
-        return (short[]) removeAt(array, indexesOf(array, element));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5901,7 +5026,7 @@ public class ArrayUtils {
      * @since 3.10
      */
     public static <T> T[] removeAllOccurrences(final T[] array, final T element) {
-        return (T[]) removeAt(array, indexesOf(array, element));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5913,35 +5038,7 @@ public class ArrayUtils {
      */
     // package protected for access by unit tests
     static Object removeAt(final Object array, final BitSet indices) {
-        if (array == null) {
-            return null;
-        }
-        final int srcLength = getLength(array);
-        // No need to check maxIndex here, because method only currently called from removeElements()
-        // which guarantee to generate only valid bit entries.
-//        final int maxIndex = indices.length();
-//        if (maxIndex > srcLength) {
-//            throw new IndexOutOfBoundsException("Index: " + (maxIndex-1) + ", Length: " + srcLength);
-//        }
-        final int removals = indices.cardinality(); // true bits are items to remove
-        final Object result = Array.newInstance(array.getClass().getComponentType(), srcLength - removals);
-        int srcIndex = 0;
-        int destIndex = 0;
-        int count;
-        int set;
-        while ((set = indices.nextSetBit(srcIndex)) != -1) {
-            count = set - srcIndex;
-            if (count > 0) {
-                System.arraycopy(array, srcIndex, result, destIndex, count);
-                destIndex += count;
-            }
-            srcIndex = indices.nextClearBit(set);
-        }
-        count = srcLength - srcIndex;
-        if (count > 0) {
-            System.arraycopy(array, srcIndex, result, destIndex, count);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -5970,8 +5067,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static boolean[] removeElement(final boolean[] array, final boolean element) {
-        final int index = indexOf(array, element);
-        return index == INDEX_NOT_FOUND ? clone(array) : remove(array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6000,8 +5096,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static byte[] removeElement(final byte[] array, final byte element) {
-        final int index = indexOf(array, element);
-        return index == INDEX_NOT_FOUND ? clone(array) : remove(array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6030,8 +5125,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static char[] removeElement(final char[] array, final char element) {
-        final int index = indexOf(array, element);
-        return index == INDEX_NOT_FOUND ? clone(array) : remove(array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6060,8 +5154,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static double[] removeElement(final double[] array, final double element) {
-        final int index = indexOf(array, element);
-        return index == INDEX_NOT_FOUND ? clone(array) : remove(array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6090,8 +5183,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static float[] removeElement(final float[] array, final float element) {
-        final int index = indexOf(array, element);
-        return index == INDEX_NOT_FOUND ? clone(array) : remove(array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6120,8 +5212,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static int[] removeElement(final int[] array, final int element) {
-        final int index = indexOf(array, element);
-        return index == INDEX_NOT_FOUND ? clone(array) : remove(array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6150,8 +5241,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static long[] removeElement(final long[] array, final long element) {
-        final int index = indexOf(array, element);
-        return index == INDEX_NOT_FOUND ? clone(array) : remove(array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6180,8 +5270,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static short[] removeElement(final short[] array, final short element) {
-        final int index = indexOf(array, element);
-        return index == INDEX_NOT_FOUND ? clone(array) : remove(array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6211,8 +5300,7 @@ public class ArrayUtils {
      * @since 2.1
      */
     public static <T> T[] removeElement(final T[] array, final Object element) {
-        final int index = indexOf(array, element);
-        return index == INDEX_NOT_FOUND ? clone(array) : remove(array, index);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6243,25 +5331,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static boolean[] removeElements(final boolean[] array, final boolean... values) {
-        if (isEmpty(array) || isEmpty(values)) {
-            return clone(array);
-        }
-        final HashMap<Boolean, MutableInt> occurrences = new HashMap<>(2); // only two possible values here
-        for (final boolean v : values) {
-            increment(occurrences, Boolean.valueOf(v));
-        }
-        final BitSet toRemove = new BitSet();
-        for (int i = 0; i < array.length; i++) {
-            final boolean key = array[i];
-            final MutableInt count = occurrences.get(key);
-            if (count != null) {
-                if (count.decrementAndGet() == 0) {
-                    occurrences.remove(key);
-                }
-                toRemove.set(i);
-            }
-        }
-        return (boolean[]) removeAt(array, toRemove);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6292,25 +5362,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static byte[] removeElements(final byte[] array, final byte... values) {
-        if (isEmpty(array) || isEmpty(values)) {
-            return clone(array);
-        }
-        final HashMap<Byte, MutableInt> occurrences = new HashMap<>(values.length);
-        for (final byte v : values) {
-            increment(occurrences, Byte.valueOf(v));
-        }
-        final BitSet toRemove = new BitSet();
-        for (int i = 0; i < array.length; i++) {
-            final byte key = array[i];
-            final MutableInt count = occurrences.get(key);
-            if (count != null) {
-                if (count.decrementAndGet() == 0) {
-                    occurrences.remove(key);
-                }
-                toRemove.set(i);
-            }
-        }
-        return (byte[]) removeAt(array, toRemove);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6341,25 +5393,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static char[] removeElements(final char[] array, final char... values) {
-        if (isEmpty(array) || isEmpty(values)) {
-            return clone(array);
-        }
-        final HashMap<Character, MutableInt> occurrences = new HashMap<>(values.length);
-        for (final char v : values) {
-            increment(occurrences, Character.valueOf(v));
-        }
-        final BitSet toRemove = new BitSet();
-        for (int i = 0; i < array.length; i++) {
-            final char key = array[i];
-            final MutableInt count = occurrences.get(key);
-            if (count != null) {
-                if (count.decrementAndGet() == 0) {
-                    occurrences.remove(key);
-                }
-                toRemove.set(i);
-            }
-        }
-        return (char[]) removeAt(array, toRemove);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6390,25 +5424,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static double[] removeElements(final double[] array, final double... values) {
-        if (isEmpty(array) || isEmpty(values)) {
-            return clone(array);
-        }
-        final HashMap<Double, MutableInt> occurrences = new HashMap<>(values.length);
-        for (final double v : values) {
-            increment(occurrences, Double.valueOf(v));
-        }
-        final BitSet toRemove = new BitSet();
-        for (int i = 0; i < array.length; i++) {
-            final double key = array[i];
-            final MutableInt count = occurrences.get(key);
-            if (count != null) {
-                if (count.decrementAndGet() == 0) {
-                    occurrences.remove(key);
-                }
-                toRemove.set(i);
-            }
-        }
-        return (double[]) removeAt(array, toRemove);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6439,25 +5455,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static float[] removeElements(final float[] array, final float... values) {
-        if (isEmpty(array) || isEmpty(values)) {
-            return clone(array);
-        }
-        final HashMap<Float, MutableInt> occurrences = new HashMap<>(values.length);
-        for (final float v : values) {
-            increment(occurrences, Float.valueOf(v));
-        }
-        final BitSet toRemove = new BitSet();
-        for (int i = 0; i < array.length; i++) {
-            final float key = array[i];
-            final MutableInt count = occurrences.get(key);
-            if (count != null) {
-                if (count.decrementAndGet() == 0) {
-                    occurrences.remove(key);
-                }
-                toRemove.set(i);
-            }
-        }
-        return (float[]) removeAt(array, toRemove);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6488,25 +5486,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static int[] removeElements(final int[] array, final int... values) {
-        if (isEmpty(array) || isEmpty(values)) {
-            return clone(array);
-        }
-        final HashMap<Integer, MutableInt> occurrences = new HashMap<>(values.length);
-        for (final int v : values) {
-            increment(occurrences, Integer.valueOf(v));
-        }
-        final BitSet toRemove = new BitSet();
-        for (int i = 0; i < array.length; i++) {
-            final int key = array[i];
-            final MutableInt count = occurrences.get(key);
-            if (count != null) {
-                if (count.decrementAndGet() == 0) {
-                    occurrences.remove(key);
-                }
-                toRemove.set(i);
-            }
-        }
-        return (int[]) removeAt(array, toRemove);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6537,25 +5517,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static long[] removeElements(final long[] array, final long... values) {
-        if (isEmpty(array) || isEmpty(values)) {
-            return clone(array);
-        }
-        final HashMap<Long, MutableInt> occurrences = new HashMap<>(values.length);
-        for (final long v : values) {
-            increment(occurrences, Long.valueOf(v));
-        }
-        final BitSet toRemove = new BitSet();
-        for (int i = 0; i < array.length; i++) {
-            final long key = array[i];
-            final MutableInt count = occurrences.get(key);
-            if (count != null) {
-                if (count.decrementAndGet() == 0) {
-                    occurrences.remove(key);
-                }
-                toRemove.set(i);
-            }
-        }
-        return (long[]) removeAt(array, toRemove);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6586,25 +5548,7 @@ public class ArrayUtils {
      * @since 3.0.1
      */
     public static short[] removeElements(final short[] array, final short... values) {
-        if (isEmpty(array) || isEmpty(values)) {
-            return clone(array);
-        }
-        final HashMap<Short, MutableInt> occurrences = new HashMap<>(values.length);
-        for (final short v : values) {
-            increment(occurrences, Short.valueOf(v));
-        }
-        final BitSet toRemove = new BitSet();
-        for (int i = 0; i < array.length; i++) {
-            final short key = array[i];
-            final MutableInt count = occurrences.get(key);
-            if (count != null) {
-                if (count.decrementAndGet() == 0) {
-                    occurrences.remove(key);
-                }
-                toRemove.set(i);
-            }
-        }
-        return (short[]) removeAt(array, toRemove);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6637,27 +5581,7 @@ public class ArrayUtils {
      */
     @SafeVarargs
     public static <T> T[] removeElements(final T[] array, final T... values) {
-        if (isEmpty(array) || isEmpty(values)) {
-            return clone(array);
-        }
-        final HashMap<T, MutableInt> occurrences = new HashMap<>(values.length);
-        for (final T v : values) {
-            increment(occurrences, v);
-        }
-        final BitSet toRemove = new BitSet();
-        for (int i = 0; i < array.length; i++) {
-            final T key = array[i];
-            final MutableInt count = occurrences.get(key);
-            if (count != null) {
-                if (count.decrementAndGet() == 0) {
-                    occurrences.remove(key);
-                }
-                toRemove.set(i);
-            }
-        }
-        @SuppressWarnings("unchecked") // removeAll() always creates an array of the same type as its input
-        final T[] result = (T[]) removeAt(array, toRemove);
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6669,9 +5593,7 @@ public class ArrayUtils {
      * @param array  the array to reverse, may be {@code null}.
      */
     public static void reverse(final boolean[] array) {
-        if (array != null) {
-            reverse(array, 0, array.length);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6691,19 +5613,7 @@ public class ArrayUtils {
      * @since 3.2
      */
     public static void reverse(final boolean[] array, final int startIndexInclusive, final int endIndexExclusive) {
-        if (array == null) {
-            return;
-        }
-        int i = Math.max(startIndexInclusive, 0);
-        int j = Math.min(array.length, endIndexExclusive) - 1;
-        boolean tmp;
-        while (j > i) {
-            tmp = array[j];
-            array[j] = array[i];
-            array[i] = tmp;
-            j--;
-            i++;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6715,9 +5625,7 @@ public class ArrayUtils {
      * @param array  the array to reverse, may be {@code null}.
      */
     public static void reverse(final byte[] array) {
-        if (array != null) {
-            reverse(array, 0, array.length);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6733,19 +5641,7 @@ public class ArrayUtils {
      * @since 3.2
      */
     public static void reverse(final byte[] array, final int startIndexInclusive, final int endIndexExclusive) {
-        if (array == null) {
-            return;
-        }
-        int i = Math.max(startIndexInclusive, 0);
-        int j = Math.min(array.length, endIndexExclusive) - 1;
-        byte tmp;
-        while (j > i) {
-            tmp = array[j];
-            array[j] = array[i];
-            array[i] = tmp;
-            j--;
-            i++;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6757,9 +5653,7 @@ public class ArrayUtils {
      * @param array  the array to reverse, may be {@code null}.
      */
     public static void reverse(final char[] array) {
-        if (array != null) {
-            reverse(array, 0, array.length);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6775,19 +5669,7 @@ public class ArrayUtils {
      * @since 3.2
      */
     public static void reverse(final char[] array, final int startIndexInclusive, final int endIndexExclusive) {
-        if (array == null) {
-            return;
-        }
-        int i = Math.max(startIndexInclusive, 0);
-        int j = Math.min(array.length, endIndexExclusive) - 1;
-        char tmp;
-        while (j > i) {
-            tmp = array[j];
-            array[j] = array[i];
-            array[i] = tmp;
-            j--;
-            i++;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6799,9 +5681,7 @@ public class ArrayUtils {
      * @param array  the array to reverse, may be {@code null}
      */
     public static void reverse(final double[] array) {
-        if (array != null) {
-            reverse(array, 0, array.length);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6817,19 +5697,7 @@ public class ArrayUtils {
      * @since 3.2
      */
     public static void reverse(final double[] array, final int startIndexInclusive, final int endIndexExclusive) {
-        if (array == null) {
-            return;
-        }
-        int i = Math.max(startIndexInclusive, 0);
-        int j = Math.min(array.length, endIndexExclusive) - 1;
-        double tmp;
-        while (j > i) {
-            tmp = array[j];
-            array[j] = array[i];
-            array[i] = tmp;
-            j--;
-            i++;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6841,9 +5709,7 @@ public class ArrayUtils {
      * @param array  the array to reverse, may be {@code null}.
      */
     public static void reverse(final float[] array) {
-        if (array != null) {
-            reverse(array, 0, array.length);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6859,19 +5725,7 @@ public class ArrayUtils {
      * @since 3.2
      */
     public static void reverse(final float[] array, final int startIndexInclusive, final int endIndexExclusive) {
-        if (array == null) {
-            return;
-        }
-        int i = Math.max(startIndexInclusive, 0);
-        int j = Math.min(array.length, endIndexExclusive) - 1;
-        float tmp;
-        while (j > i) {
-            tmp = array[j];
-            array[j] = array[i];
-            array[i] = tmp;
-            j--;
-            i++;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6883,9 +5737,7 @@ public class ArrayUtils {
      * @param array  the array to reverse, may be {@code null}.
      */
     public static void reverse(final int[] array) {
-        if (array != null) {
-            reverse(array, 0, array.length);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6905,19 +5757,7 @@ public class ArrayUtils {
      * @since 3.2
      */
     public static void reverse(final int[] array, final int startIndexInclusive, final int endIndexExclusive) {
-        if (array == null) {
-            return;
-        }
-        int i = Math.max(startIndexInclusive, 0);
-        int j = Math.min(array.length, endIndexExclusive) - 1;
-        int tmp;
-        while (j > i) {
-            tmp = array[j];
-            array[j] = array[i];
-            array[i] = tmp;
-            j--;
-            i++;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6929,9 +5769,7 @@ public class ArrayUtils {
      * @param array  the array to reverse, may be {@code null}.
      */
     public static void reverse(final long[] array) {
-        if (array != null) {
-            reverse(array, 0, array.length);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6951,19 +5789,7 @@ public class ArrayUtils {
      * @since 3.2
      */
     public static void reverse(final long[] array, final int startIndexInclusive, final int endIndexExclusive) {
-        if (array == null) {
-            return;
-        }
-        int i = Math.max(startIndexInclusive, 0);
-        int j = Math.min(array.length, endIndexExclusive) - 1;
-        long tmp;
-        while (j > i) {
-            tmp = array[j];
-            array[j] = array[i];
-            array[i] = tmp;
-            j--;
-            i++;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -6978,9 +5804,7 @@ public class ArrayUtils {
      * @param array  the array to reverse, may be {@code null}.
      */
     public static void reverse(final Object[] array) {
-        if (array != null) {
-            reverse(array, 0, array.length);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7000,19 +5824,7 @@ public class ArrayUtils {
      * @since 3.2
      */
     public static void reverse(final Object[] array, final int startIndexInclusive, final int endIndexExclusive) {
-        if (array == null) {
-            return;
-        }
-        int i = Math.max(startIndexInclusive, 0);
-        int j = Math.min(array.length, endIndexExclusive) - 1;
-        Object tmp;
-        while (j > i) {
-            tmp = array[j];
-            array[j] = array[i];
-            array[i] = tmp;
-            j--;
-            i++;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7024,9 +5836,7 @@ public class ArrayUtils {
      * @param array  the array to reverse, may be {@code null}.
      */
     public static void reverse(final short[] array) {
-        if (array != null) {
-            reverse(array, 0, array.length);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7046,19 +5856,7 @@ public class ArrayUtils {
      * @since 3.2
      */
     public static void reverse(final short[] array, final int startIndexInclusive, final int endIndexExclusive) {
-        if (array == null) {
-            return;
-        }
-        int i = Math.max(startIndexInclusive, 0);
-        int j = Math.min(array.length, endIndexExclusive) - 1;
-        short tmp;
-        while (j > i) {
-            tmp = array[j];
-            array[j] = array[i];
-            array[i] = tmp;
-            j--;
-            i++;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7075,10 +5873,7 @@ public class ArrayUtils {
      * @since 3.13.0
      */
     public static <T> T[] setAll(final T[] array, final IntFunction<? extends T> generator) {
-        if (array != null && generator != null) {
-            Arrays.setAll(array, generator);
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7095,12 +5890,7 @@ public class ArrayUtils {
      * @since 3.13.0
      */
     public static <T> T[] setAll(final T[] array, final Supplier<? extends T> generator) {
-        if (array != null && generator != null) {
-            for (int i = 0; i < array.length; i++) {
-                array[i] = generator.get();
-            }
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7116,9 +5906,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final boolean[] array, final int offset) {
-        if (array != null) {
-            shift(array, 0, array.length, offset);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7141,36 +5929,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final boolean[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
-        if (array == null || startIndexInclusive >= array.length - 1 || endIndexExclusive <= 0) {
-            return;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = Math.min(endIndexExclusive, array.length);
-        int n = endIndexExclusive - startIndexInclusive;
-        if (n <= 1) {
-            return;
-        }
-        offset %= n;
-        if (offset < 0) {
-            offset += n;
-        }
-        // For algorithm explanations and proof of O(n) time complexity and O(1) space complexity
-        // see https://beradrian.wordpress.com/2015/04/07/shift-an-array-in-on-in-place/
-        while (n > 1 && offset > 0) {
-            final int nOffset = n - offset;
-            if (offset > nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + n - nOffset,  nOffset);
-                n = offset;
-                offset -= nOffset;
-            } else if (offset < nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset,  offset);
-                startIndexInclusive += offset;
-                n = nOffset;
-            } else {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset, offset);
-                break;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7186,9 +5945,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final byte[] array, final int offset) {
-        if (array != null) {
-            shift(array, 0, array.length, offset);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7211,36 +5968,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final byte[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
-        if (array == null || startIndexInclusive >= array.length - 1 || endIndexExclusive <= 0) {
-            return;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = Math.min(endIndexExclusive, array.length);
-        int n = endIndexExclusive - startIndexInclusive;
-        if (n <= 1) {
-            return;
-        }
-        offset %= n;
-        if (offset < 0) {
-            offset += n;
-        }
-        // For algorithm explanations and proof of O(n) time complexity and O(1) space complexity
-        // see https://beradrian.wordpress.com/2015/04/07/shift-an-array-in-on-in-place/
-        while (n > 1 && offset > 0) {
-            final int nOffset = n - offset;
-            if (offset > nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + n - nOffset,  nOffset);
-                n = offset;
-                offset -= nOffset;
-            } else if (offset < nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset,  offset);
-                startIndexInclusive += offset;
-                n = nOffset;
-            } else {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset, offset);
-                break;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7256,9 +5984,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final char[] array, final int offset) {
-        if (array != null) {
-            shift(array, 0, array.length, offset);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7281,36 +6007,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final char[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
-        if (array == null || startIndexInclusive >= array.length - 1 || endIndexExclusive <= 0) {
-            return;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = Math.min(endIndexExclusive, array.length);
-        int n = endIndexExclusive - startIndexInclusive;
-        if (n <= 1) {
-            return;
-        }
-        offset %= n;
-        if (offset < 0) {
-            offset += n;
-        }
-        // For algorithm explanations and proof of O(n) time complexity and O(1) space complexity
-        // see https://beradrian.wordpress.com/2015/04/07/shift-an-array-in-on-in-place/
-        while (n > 1 && offset > 0) {
-            final int nOffset = n - offset;
-            if (offset > nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + n - nOffset,  nOffset);
-                n = offset;
-                offset -= nOffset;
-            } else if (offset < nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset,  offset);
-                startIndexInclusive += offset;
-                n = nOffset;
-            } else {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset, offset);
-                break;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7326,9 +6023,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final double[] array, final int offset) {
-        if (array != null) {
-            shift(array, 0, array.length, offset);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7351,36 +6046,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final double[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
-        if (array == null || startIndexInclusive >= array.length - 1 || endIndexExclusive <= 0) {
-            return;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = Math.min(endIndexExclusive, array.length);
-        int n = endIndexExclusive - startIndexInclusive;
-        if (n <= 1) {
-            return;
-        }
-        offset %= n;
-        if (offset < 0) {
-            offset += n;
-        }
-        // For algorithm explanations and proof of O(n) time complexity and O(1) space complexity
-        // see https://beradrian.wordpress.com/2015/04/07/shift-an-array-in-on-in-place/
-        while (n > 1 && offset > 0) {
-            final int nOffset = n - offset;
-            if (offset > nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + n - nOffset,  nOffset);
-                n = offset;
-                offset -= nOffset;
-            } else if (offset < nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset,  offset);
-                startIndexInclusive += offset;
-                n = nOffset;
-            } else {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset, offset);
-                break;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7396,9 +6062,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final float[] array, final int offset) {
-        if (array != null) {
-            shift(array, 0, array.length, offset);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7421,36 +6085,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final float[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
-        if (array == null || startIndexInclusive >= array.length - 1 || endIndexExclusive <= 0) {
-            return;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = Math.min(endIndexExclusive, array.length);
-        int n = endIndexExclusive - startIndexInclusive;
-        if (n <= 1) {
-            return;
-        }
-        offset %= n;
-        if (offset < 0) {
-            offset += n;
-        }
-        // For algorithm explanations and proof of O(n) time complexity and O(1) space complexity
-        // see https://beradrian.wordpress.com/2015/04/07/shift-an-array-in-on-in-place/
-        while (n > 1 && offset > 0) {
-            final int nOffset = n - offset;
-            if (offset > nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + n - nOffset,  nOffset);
-                n = offset;
-                offset -= nOffset;
-            } else if (offset < nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset,  offset);
-                startIndexInclusive += offset;
-                n = nOffset;
-            } else {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset, offset);
-                break;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7466,9 +6101,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final int[] array, final int offset) {
-        if (array != null) {
-            shift(array, 0, array.length, offset);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7491,36 +6124,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final int[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
-        if (array == null || startIndexInclusive >= array.length - 1 || endIndexExclusive <= 0) {
-            return;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = Math.min(endIndexExclusive, array.length);
-        int n = endIndexExclusive - startIndexInclusive;
-        if (n <= 1) {
-            return;
-        }
-        offset %= n;
-        if (offset < 0) {
-            offset += n;
-        }
-        // For algorithm explanations and proof of O(n) time complexity and O(1) space complexity
-        // see https://beradrian.wordpress.com/2015/04/07/shift-an-array-in-on-in-place/
-        while (n > 1 && offset > 0) {
-            final int nOffset = n - offset;
-            if (offset > nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + n - nOffset,  nOffset);
-                n = offset;
-                offset -= nOffset;
-            } else if (offset < nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset,  offset);
-                startIndexInclusive += offset;
-                n = nOffset;
-            } else {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset, offset);
-                break;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7536,9 +6140,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final long[] array, final int offset) {
-        if (array != null) {
-            shift(array, 0, array.length, offset);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7561,36 +6163,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final long[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
-        if (array == null || startIndexInclusive >= array.length - 1 || endIndexExclusive <= 0) {
-            return;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = Math.min(endIndexExclusive, array.length);
-        int n = endIndexExclusive - startIndexInclusive;
-        if (n <= 1) {
-            return;
-        }
-        offset %= n;
-        if (offset < 0) {
-            offset += n;
-        }
-        // For algorithm explanations and proof of O(n) time complexity and O(1) space complexity
-        // see https://beradrian.wordpress.com/2015/04/07/shift-an-array-in-on-in-place/
-        while (n > 1 && offset > 0) {
-            final int nOffset = n - offset;
-            if (offset > nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + n - nOffset,  nOffset);
-                n = offset;
-                offset -= nOffset;
-            } else if (offset < nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset,  offset);
-                startIndexInclusive += offset;
-                n = nOffset;
-            } else {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset, offset);
-                break;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7606,9 +6179,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final Object[] array, final int offset) {
-        if (array != null) {
-            shift(array, 0, array.length, offset);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7631,36 +6202,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final Object[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
-        if (array == null || startIndexInclusive >= array.length - 1 || endIndexExclusive <= 0) {
-            return;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = Math.min(endIndexExclusive, array.length);
-        int n = endIndexExclusive - startIndexInclusive;
-        if (n <= 1) {
-            return;
-        }
-        offset %= n;
-        if (offset < 0) {
-            offset += n;
-        }
-        // For algorithm explanations and proof of O(n) time complexity and O(1) space complexity
-        // see https://beradrian.wordpress.com/2015/04/07/shift-an-array-in-on-in-place/
-        while (n > 1 && offset > 0) {
-            final int nOffset = n - offset;
-            if (offset > nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + n - nOffset,  nOffset);
-                n = offset;
-                offset -= nOffset;
-            } else if (offset < nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset,  offset);
-                startIndexInclusive += offset;
-                n = nOffset;
-            } else {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset, offset);
-                break;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7676,9 +6218,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final short[] array, final int offset) {
-        if (array != null) {
-            shift(array, 0, array.length, offset);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7701,36 +6241,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void shift(final short[] array, int startIndexInclusive, int endIndexExclusive, int offset) {
-        if (array == null || startIndexInclusive >= array.length - 1 || endIndexExclusive <= 0) {
-            return;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = Math.min(endIndexExclusive, array.length);
-        int n = endIndexExclusive - startIndexInclusive;
-        if (n <= 1) {
-            return;
-        }
-        offset %= n;
-        if (offset < 0) {
-            offset += n;
-        }
-        // For algorithm explanations and proof of O(n) time complexity and O(1) space complexity
-        // see https://beradrian.wordpress.com/2015/04/07/shift-an-array-in-on-in-place/
-        while (n > 1 && offset > 0) {
-            final int nOffset = n - offset;
-            if (offset > nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + n - nOffset,  nOffset);
-                n = offset;
-                offset -= nOffset;
-            } else if (offset < nOffset) {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset,  offset);
-                startIndexInclusive += offset;
-                n = nOffset;
-            } else {
-                swap(array, startIndexInclusive, startIndexInclusive + nOffset, offset);
-                break;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7749,7 +6260,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final boolean[] array) {
-        shuffle(array, random());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7762,11 +6273,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final boolean[] array, final Random random) {
-        if (array != null && random != null) {
-            for (int i = array.length; i > 1; i--) {
-                swap(array, i - 1, random.nextInt(i), 1);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7785,7 +6292,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final byte[] array) {
-        shuffle(array, random());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7798,11 +6305,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final byte[] array, final Random random) {
-        if (array != null && random != null) {
-            for (int i = array.length; i > 1; i--) {
-                swap(array, i - 1, random.nextInt(i), 1);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7821,7 +6324,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final char[] array) {
-        shuffle(array, random());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7834,11 +6337,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final char[] array, final Random random) {
-        if (array != null && random != null) {
-            for (int i = array.length; i > 1; i--) {
-                swap(array, i - 1, random.nextInt(i), 1);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7857,7 +6356,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final double[] array) {
-        shuffle(array, random());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7870,11 +6369,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final double[] array, final Random random) {
-        if (array != null && random != null) {
-            for (int i = array.length; i > 1; i--) {
-                swap(array, i - 1, random.nextInt(i), 1);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7893,7 +6388,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final float[] array) {
-        shuffle(array, random());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7906,11 +6401,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final float[] array, final Random random) {
-        if (array != null && random != null) {
-            for (int i = array.length; i > 1; i--) {
-                swap(array, i - 1, random.nextInt(i), 1);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7929,7 +6420,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final int[] array) {
-        shuffle(array, random());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7942,11 +6433,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final int[] array, final Random random) {
-        if (array != null && random != null) {
-            for (int i = array.length; i > 1; i--) {
-                swap(array, i - 1, random.nextInt(i), 1);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7965,7 +6452,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final long[] array) {
-        shuffle(array, random());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -7978,11 +6465,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final long[] array, final Random random) {
-        if (array != null && random != null) {
-            for (int i = array.length; i > 1; i--) {
-                swap(array, i - 1, random.nextInt(i), 1);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8001,7 +6484,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final Object[] array) {
-        shuffle(array, random());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8014,11 +6497,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final Object[] array, final Random random) {
-        if (array != null && random != null) {
-            for (int i = array.length; i > 1; i--) {
-                swap(array, i - 1, random.nextInt(i), 1);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8037,7 +6516,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final short[] array) {
-        shuffle(array, random());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8050,11 +6529,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static void shuffle(final short[] array, final Random random) {
-        if (array != null && random != null) {
-            for (int i = array.length; i > 1; i--) {
-                swap(array, i - 1, random.nextInt(i), 1);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8069,27 +6544,7 @@ public class ArrayUtils {
      * @since 3.18.0
      */
     public static boolean startsWith(final byte[] data, final byte[] expected) {
-        if (data == expected) {
-            return true;
-        }
-        if (data == null || expected == null) {
-            return false;
-        }
-        final int dataLen = data.length;
-        if (expected.length > dataLen) {
-            return false;
-        }
-        if (expected.length == dataLen) {
-            // delegate to Arrays.equals() which has optimizations on Java > 8
-            return Arrays.equals(data, expected);
-        }
-        // Once we are on Java 9+ we can delegate to Arrays here as well (or not).
-        for (int i = 0; i < expected.length; i++) {
-            if (data[i] != expected[i]) {
-                return false;
-            }
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8107,16 +6562,7 @@ public class ArrayUtils {
      * @see Arrays#copyOfRange(boolean[], int, int)
      */
     public static boolean[] subarray(final boolean[] array, int startIndexInclusive, int endIndexExclusive) {
-        if (array == null) {
-            return null;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = max0(Math.min(endIndexExclusive, array.length));
-        final int newSize = endIndexExclusive - startIndexInclusive;
-        if (newSize <= 0) {
-            return EMPTY_BOOLEAN_ARRAY;
-        }
-        return arraycopy(array, startIndexInclusive, 0, newSize, boolean[]::new);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8134,16 +6580,7 @@ public class ArrayUtils {
      * @see Arrays#copyOfRange(byte[], int, int)
      */
     public static byte[] subarray(final byte[] array, int startIndexInclusive, int endIndexExclusive) {
-        if (array == null) {
-            return null;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = max0(Math.min(endIndexExclusive, array.length));
-        final int newSize = endIndexExclusive - startIndexInclusive;
-        if (newSize <= 0) {
-            return EMPTY_BYTE_ARRAY;
-        }
-        return arraycopy(array, startIndexInclusive, 0, newSize, byte[]::new);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8161,16 +6598,7 @@ public class ArrayUtils {
      * @see Arrays#copyOfRange(char[], int, int)
      */
     public static char[] subarray(final char[] array, int startIndexInclusive, int endIndexExclusive) {
-        if (array == null) {
-            return null;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = max0(Math.min(endIndexExclusive, array.length));
-        final int newSize = endIndexExclusive - startIndexInclusive;
-        if (newSize <= 0) {
-            return EMPTY_CHAR_ARRAY;
-        }
-        return arraycopy(array, startIndexInclusive, 0, newSize, char[]::new);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8188,16 +6616,7 @@ public class ArrayUtils {
      * @see Arrays#copyOfRange(double[], int, int)
      */
     public static double[] subarray(final double[] array, int startIndexInclusive, int endIndexExclusive) {
-        if (array == null) {
-            return null;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = max0(Math.min(endIndexExclusive, array.length));
-        final int newSize = endIndexExclusive - startIndexInclusive;
-        if (newSize <= 0) {
-            return EMPTY_DOUBLE_ARRAY;
-        }
-        return arraycopy(array, startIndexInclusive, 0, newSize, double[]::new);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8215,16 +6634,7 @@ public class ArrayUtils {
      * @see Arrays#copyOfRange(float[], int, int)
      */
     public static float[] subarray(final float[] array, int startIndexInclusive, int endIndexExclusive) {
-        if (array == null) {
-            return null;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = max0(Math.min(endIndexExclusive, array.length));
-        final int newSize = endIndexExclusive - startIndexInclusive;
-        if (newSize <= 0) {
-            return EMPTY_FLOAT_ARRAY;
-        }
-        return arraycopy(array, startIndexInclusive, 0, newSize, float[]::new);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8242,16 +6652,7 @@ public class ArrayUtils {
      * @see Arrays#copyOfRange(int[], int, int)
      */
     public static int[] subarray(final int[] array, int startIndexInclusive, int endIndexExclusive) {
-        if (array == null) {
-            return null;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = max0(Math.min(endIndexExclusive, array.length));
-        final int newSize = endIndexExclusive - startIndexInclusive;
-        if (newSize <= 0) {
-            return EMPTY_INT_ARRAY;
-        }
-        return arraycopy(array, startIndexInclusive, 0, newSize, int[]::new);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8269,16 +6670,7 @@ public class ArrayUtils {
      * @see Arrays#copyOfRange(long[], int, int)
      */
     public static long[] subarray(final long[] array, int startIndexInclusive, int endIndexExclusive) {
-        if (array == null) {
-            return null;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = max0(Math.min(endIndexExclusive, array.length));
-        final int newSize = endIndexExclusive - startIndexInclusive;
-        if (newSize <= 0) {
-            return EMPTY_LONG_ARRAY;
-        }
-        return arraycopy(array, startIndexInclusive, 0, newSize, long[]::new);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8296,16 +6688,7 @@ public class ArrayUtils {
      * @see Arrays#copyOfRange(short[], int, int)
      */
     public static short[] subarray(final short[] array, int startIndexInclusive, int endIndexExclusive) {
-        if (array == null) {
-            return null;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = max0(Math.min(endIndexExclusive, array.length));
-        final int newSize = endIndexExclusive - startIndexInclusive;
-        if (newSize <= 0) {
-            return EMPTY_SHORT_ARRAY;
-        }
-        return arraycopy(array, startIndexInclusive, 0, newSize, short[]::new);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8333,17 +6716,7 @@ public class ArrayUtils {
      * @see Arrays#copyOfRange(Object[], int, int)
      */
     public static <T> T[] subarray(final T[] array, int startIndexInclusive, int endIndexExclusive) {
-        if (array == null) {
-            return null;
-        }
-        startIndexInclusive = max0(startIndexInclusive);
-        endIndexExclusive = max0(Math.min(endIndexExclusive, array.length));
-        final int newSize = endIndexExclusive - startIndexInclusive;
-        final Class<T> type = getComponentType(array);
-        if (newSize <= 0) {
-            return newInstance(type, 0);
-        }
-        return arraycopy(array, startIndexInclusive, 0, newSize, () -> newInstance(type, newSize));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8368,7 +6741,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final boolean[] array, final int offset1, final int offset2) {
-        swap(array, offset1, offset2, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8396,17 +6769,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final boolean[] array, int offset1, int offset2, int len) {
-        if (isEmpty(array) || offset1 >= array.length || offset2 >= array.length) {
-            return;
-        }
-        offset1 = max0(offset1);
-        offset2 = max0(offset2);
-        len = Math.min(Math.min(len, array.length - offset1), array.length - offset2);
-        for (int i = 0; i < len; i++, offset1++, offset2++) {
-            final boolean aux = array[offset1];
-            array[offset1] = array[offset2];
-            array[offset2] = aux;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8431,7 +6794,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final byte[] array, final int offset1, final int offset2) {
-        swap(array, offset1, offset2, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8459,17 +6822,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final byte[] array, int offset1, int offset2, int len) {
-        if (isEmpty(array) || offset1 >= array.length || offset2 >= array.length) {
-            return;
-        }
-        offset1 = max0(offset1);
-        offset2 = max0(offset2);
-        len = Math.min(Math.min(len, array.length - offset1), array.length - offset2);
-        for (int i = 0; i < len; i++, offset1++, offset2++) {
-            final byte aux = array[offset1];
-            array[offset1] = array[offset2];
-            array[offset2] = aux;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8494,7 +6847,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final char[] array, final int offset1, final int offset2) {
-        swap(array, offset1, offset2, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8522,17 +6875,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final char[] array, int offset1, int offset2, int len) {
-        if (isEmpty(array) || offset1 >= array.length || offset2 >= array.length) {
-            return;
-        }
-        offset1 = max0(offset1);
-        offset2 = max0(offset2);
-        len = Math.min(Math.min(len, array.length - offset1), array.length - offset2);
-        for (int i = 0; i < len; i++, offset1++, offset2++) {
-            final char aux = array[offset1];
-            array[offset1] = array[offset2];
-            array[offset2] = aux;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8557,7 +6900,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final double[] array, final int offset1, final int offset2) {
-        swap(array, offset1, offset2, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8584,18 +6927,8 @@ public class ArrayUtils {
      * @param len the number of elements to swap starting with the given indices.
      * @since 3.5
      */
-    public static void swap(final double[] array,  int offset1, int offset2, int len) {
-        if (isEmpty(array) || offset1 >= array.length || offset2 >= array.length) {
-            return;
-        }
-        offset1 = max0(offset1);
-        offset2 = max0(offset2);
-        len = Math.min(Math.min(len, array.length - offset1), array.length - offset2);
-        for (int i = 0; i < len; i++, offset1++, offset2++) {
-            final double aux = array[offset1];
-            array[offset1] = array[offset2];
-            array[offset2] = aux;
-        }
+    public static void swap(final double[] array, int offset1, int offset2, int len) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8620,7 +6953,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final float[] array, final int offset1, final int offset2) {
-        swap(array, offset1, offset2, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8648,18 +6981,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final float[] array, int offset1, int offset2, int len) {
-        if (isEmpty(array) || offset1 >= array.length || offset2 >= array.length) {
-            return;
-        }
-        offset1 = max0(offset1);
-        offset2 = max0(offset2);
-        len = Math.min(Math.min(len, array.length - offset1), array.length - offset2);
-        for (int i = 0; i < len; i++, offset1++, offset2++) {
-            final float aux = array[offset1];
-            array[offset1] = array[offset2];
-            array[offset2] = aux;
-        }
-
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8684,7 +7006,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final int[] array, final int offset1, final int offset2) {
-        swap(array, offset1, offset2, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8711,18 +7033,8 @@ public class ArrayUtils {
      * @param len the number of elements to swap starting with the given indices.
      * @since 3.5
      */
-    public static void swap(final int[] array,  int offset1, int offset2, int len) {
-        if (isEmpty(array) || offset1 >= array.length || offset2 >= array.length) {
-            return;
-        }
-        offset1 = max0(offset1);
-        offset2 = max0(offset2);
-        len = Math.min(Math.min(len, array.length - offset1), array.length - offset2);
-        for (int i = 0; i < len; i++, offset1++, offset2++) {
-            final int aux = array[offset1];
-            array[offset1] = array[offset2];
-            array[offset2] = aux;
-        }
+    public static void swap(final int[] array, int offset1, int offset2, int len) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8747,7 +7059,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final long[] array, final int offset1, final int offset2) {
-        swap(array, offset1, offset2, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8774,18 +7086,8 @@ public class ArrayUtils {
      * @param len the number of elements to swap starting with the given indices.
      * @since 3.5
      */
-    public static void swap(final long[] array,  int offset1, int offset2, int len) {
-        if (isEmpty(array) || offset1 >= array.length || offset2 >= array.length) {
-            return;
-        }
-        offset1 = max0(offset1);
-        offset2 = max0(offset2);
-        len = Math.min(Math.min(len, array.length - offset1), array.length - offset2);
-        for (int i = 0; i < len; i++, offset1++, offset2++) {
-            final long aux = array[offset1];
-            array[offset1] = array[offset2];
-            array[offset2] = aux;
-        }
+    public static void swap(final long[] array, int offset1, int offset2, int len) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8810,7 +7112,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final Object[] array, final int offset1, final int offset2) {
-        swap(array, offset1, offset2, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8837,18 +7139,8 @@ public class ArrayUtils {
      * @param len the number of elements to swap starting with the given indices.
      * @since 3.5
      */
-    public static void swap(final Object[] array,  int offset1, int offset2, int len) {
-        if (isEmpty(array) || offset1 >= array.length || offset2 >= array.length) {
-            return;
-        }
-        offset1 = max0(offset1);
-        offset2 = max0(offset2);
-        len = Math.min(Math.min(len, array.length - offset1), array.length - offset2);
-        for (int i = 0; i < len; i++, offset1++, offset2++) {
-            final Object aux = array[offset1];
-            array[offset1] = array[offset2];
-            array[offset2] = aux;
-        }
+    public static void swap(final Object[] array, int offset1, int offset2, int len) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8873,7 +7165,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final short[] array, final int offset1, final int offset2) {
-        swap(array, offset1, offset2, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8901,20 +7193,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static void swap(final short[] array, int offset1, int offset2, int len) {
-        if (isEmpty(array) || offset1 >= array.length || offset2 >= array.length) {
-            return;
-        }
-        offset1 = max0(offset1);
-        offset2 = max0(offset2);
-        if (offset1 == offset2) {
-            return;
-        }
-        len = Math.min(Math.min(len, array.length - offset1), array.length - offset2);
-        for (int i = 0; i < len; i++, offset1++, offset2++) {
-            final short aux = array[offset1];
-            array[offset1] = array[offset2];
-            array[offset2] = aux;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8923,12 +7202,12 @@ public class ArrayUtils {
      * The Java language does not allow an array to be created from a generic type:
      * </p>
      * <pre>
-    public static &lt;T&gt; T[] createAnArray(int size) {
-        return new T[size]; // compiler error here
-    }
-    public static &lt;T&gt; T[] createAnArray(int size) {
-        return (T[]) new Object[size]; // ClassCastException at runtime
-    }
+     *    public static &lt;T&gt; T[] createAnArray(int size) {
+     *        return new T[size]; // compiler error here
+     *    }
+     *    public static &lt;T&gt; T[] createAnArray(int size) {
+     *        return (T[]) new Object[size]; // ClassCastException at runtime
+     *    }
      * </pre>
      * <p>
      * Therefore new arrays of generic types can be created with this method.
@@ -8957,7 +7236,7 @@ public class ArrayUtils {
      * @since 3.0
      */
     public static <T> T[] toArray(@SuppressWarnings("unchecked") final T... items) {
-        return items;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -8982,30 +7261,7 @@ public class ArrayUtils {
      * @throws IllegalArgumentException if the array contains elements other than {@link java.util.Map.Entry} and an Array.
      */
     public static Map<Object, Object> toMap(final Object[] array) {
-        if (array == null) {
-            return null;
-        }
-        final Map<Object, Object> map = new HashMap<>((int) (array.length * 1.5));
-        for (int i = 0; i < array.length; i++) {
-            final Object object = array[i];
-            if (object instanceof Map.Entry<?, ?>) {
-                final Map.Entry<?, ?> entry = (Map.Entry<?, ?>) object;
-                map.put(entry.getKey(), entry.getValue());
-            } else if (object instanceof Object[]) {
-                final Object[] entry = (Object[]) object;
-                if (entry.length < 2) {
-                    throw new IllegalArgumentException("Array element " + i + ", '"
-                        + object
-                        + "', has a length less than 2");
-                }
-                map.put(entry[0], entry[1]);
-            } else {
-                throw new IllegalArgumentException("Array element " + i + ", '"
-                        + object
-                        + "', is neither of type Map.Entry nor an Array");
-            }
-        }
-        return map;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9017,13 +7273,7 @@ public class ArrayUtils {
      * @return a {@link Boolean} array, {@code null} if null array input.
      */
     public static Boolean[] toObject(final boolean[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_BOOLEAN_OBJECT_ARRAY;
-        }
-        return setAll(new Boolean[array.length], i -> array[i] ? Boolean.TRUE : Boolean.FALSE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9035,13 +7285,7 @@ public class ArrayUtils {
      * @return a {@link Byte} array, {@code null} if null array input.
      */
     public static Byte[] toObject(final byte[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_BYTE_OBJECT_ARRAY;
-        }
-        return setAll(new Byte[array.length], i -> Byte.valueOf(array[i]));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9053,14 +7297,8 @@ public class ArrayUtils {
      * @return a {@link Character} array, {@code null} if null array input.
      */
     public static Character[] toObject(final char[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_CHARACTER_OBJECT_ARRAY;
-        }
-        return setAll(new Character[array.length], i -> Character.valueOf(array[i]));
-     }
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
     /**
      * Converts an array of primitive doubles to objects.
@@ -9071,13 +7309,7 @@ public class ArrayUtils {
      * @return a {@link Double} array, {@code null} if null array input.
      */
     public static Double[] toObject(final double[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_DOUBLE_OBJECT_ARRAY;
-        }
-        return setAll(new Double[array.length], i -> Double.valueOf(array[i]));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9089,13 +7321,7 @@ public class ArrayUtils {
      * @return a {@link Float} array, {@code null} if null array input.
      */
     public static Float[] toObject(final float[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_FLOAT_OBJECT_ARRAY;
-        }
-        return setAll(new Float[array.length], i -> Float.valueOf(array[i]));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9107,13 +7333,7 @@ public class ArrayUtils {
      * @return an {@link Integer} array, {@code null} if null array input.
      */
     public static Integer[] toObject(final int[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_INTEGER_OBJECT_ARRAY;
-        }
-        return setAll(new Integer[array.length], i -> Integer.valueOf(array[i]));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9125,13 +7345,7 @@ public class ArrayUtils {
      * @return a {@link Long} array, {@code null} if null array input.
      */
     public static Long[] toObject(final long[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_LONG_OBJECT_ARRAY;
-        }
-        return setAll(new Long[array.length], i -> Long.valueOf(array[i]));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9143,13 +7357,7 @@ public class ArrayUtils {
      * @return a {@link Short} array, {@code null} if null array input.
      */
     public static Short[] toObject(final short[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_SHORT_OBJECT_ARRAY;
-        }
-        return setAll(new Short[array.length], i -> Short.valueOf(array[i]));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9165,7 +7373,7 @@ public class ArrayUtils {
      * @return a {@code boolean} array, {@code null} if null array input.
      */
     public static boolean[] toPrimitive(final Boolean[] array) {
-        return toPrimitive(array, false);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9179,18 +7387,7 @@ public class ArrayUtils {
      * @return a {@code boolean} array, {@code null} if null array input.
      */
     public static boolean[] toPrimitive(final Boolean[] array, final boolean valueForNull) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_BOOLEAN_ARRAY;
-        }
-        final boolean[] result = new boolean[array.length];
-        for (int i = 0; i < array.length; i++) {
-            final Boolean b = array[i];
-            result[i] = b == null ? valueForNull : b.booleanValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9204,17 +7401,7 @@ public class ArrayUtils {
      * @throws NullPointerException if an array element is {@code null}.
      */
     public static byte[] toPrimitive(final Byte[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_BYTE_ARRAY;
-        }
-        final byte[] result = new byte[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i].byteValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9228,18 +7415,7 @@ public class ArrayUtils {
      * @return a {@code byte} array, {@code null} if null array input.
      */
     public static byte[] toPrimitive(final Byte[] array, final byte valueForNull) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_BYTE_ARRAY;
-        }
-        final byte[] result = new byte[array.length];
-        for (int i = 0; i < array.length; i++) {
-            final Byte b = array[i];
-            result[i] = b == null ? valueForNull : b.byteValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9253,17 +7429,7 @@ public class ArrayUtils {
      * @throws NullPointerException if an array element is {@code null}.
      */
     public static char[] toPrimitive(final Character[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_CHAR_ARRAY;
-        }
-        final char[] result = new char[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i].charValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9277,18 +7443,7 @@ public class ArrayUtils {
      * @return a {@code char} array, {@code null} if null array input.
      */
     public static char[] toPrimitive(final Character[] array, final char valueForNull) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_CHAR_ARRAY;
-        }
-        final char[] result = new char[array.length];
-        for (int i = 0; i < array.length; i++) {
-            final Character b = array[i];
-            result[i] = b == null ? valueForNull : b.charValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9302,17 +7457,7 @@ public class ArrayUtils {
      * @throws NullPointerException if an array element is {@code null}.
      */
     public static double[] toPrimitive(final Double[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_DOUBLE_ARRAY;
-        }
-        final double[] result = new double[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i].doubleValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9326,18 +7471,7 @@ public class ArrayUtils {
      * @return a {@code double} array, {@code null} if null array input.
      */
     public static double[] toPrimitive(final Double[] array, final double valueForNull) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_DOUBLE_ARRAY;
-        }
-        final double[] result = new double[array.length];
-        for (int i = 0; i < array.length; i++) {
-            final Double b = array[i];
-            result[i] = b == null ? valueForNull : b.doubleValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9351,17 +7485,7 @@ public class ArrayUtils {
      * @throws NullPointerException if an array element is {@code null}.
      */
     public static float[] toPrimitive(final Float[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_FLOAT_ARRAY;
-        }
-        final float[] result = new float[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i].floatValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9375,18 +7499,7 @@ public class ArrayUtils {
      * @return a {@code float} array, {@code null} if null array input.
      */
     public static float[] toPrimitive(final Float[] array, final float valueForNull) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_FLOAT_ARRAY;
-        }
-        final float[] result = new float[array.length];
-        for (int i = 0; i < array.length; i++) {
-            final Float b = array[i];
-            result[i] = b == null ? valueForNull : b.floatValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9400,17 +7513,7 @@ public class ArrayUtils {
      * @throws NullPointerException if an array element is {@code null}.
      */
     public static int[] toPrimitive(final Integer[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_INT_ARRAY;
-        }
-        final int[] result = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i].intValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9424,18 +7527,7 @@ public class ArrayUtils {
      * @return an {@code int} array, {@code null} if null array input.
      */
     public static int[] toPrimitive(final Integer[] array, final int valueForNull) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_INT_ARRAY;
-        }
-        final int[] result = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
-            final Integer b = array[i];
-            result[i] = b == null ? valueForNull : b.intValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9449,17 +7541,7 @@ public class ArrayUtils {
      * @throws NullPointerException if an array element is {@code null}.
      */
     public static long[] toPrimitive(final Long[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_LONG_ARRAY;
-        }
-        final long[] result = new long[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i].longValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9473,18 +7555,7 @@ public class ArrayUtils {
      * @return a {@code long} array, {@code null} if null array input.
      */
     public static long[] toPrimitive(final Long[] array, final long valueForNull) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_LONG_ARRAY;
-        }
-        final long[] result = new long[array.length];
-        for (int i = 0; i < array.length; i++) {
-            final Long b = array[i];
-            result[i] = b == null ? valueForNull : b.longValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9498,36 +7569,7 @@ public class ArrayUtils {
      * @since 3.5
      */
     public static Object toPrimitive(final Object array) {
-        if (array == null) {
-            return null;
-        }
-        final Class<?> ct = array.getClass().getComponentType();
-        final Class<?> pt = ClassUtils.wrapperToPrimitive(ct);
-        if (Boolean.TYPE.equals(pt)) {
-            return toPrimitive((Boolean[]) array);
-        }
-        if (Character.TYPE.equals(pt)) {
-            return toPrimitive((Character[]) array);
-        }
-        if (Byte.TYPE.equals(pt)) {
-            return toPrimitive((Byte[]) array);
-        }
-        if (Integer.TYPE.equals(pt)) {
-            return toPrimitive((Integer[]) array);
-        }
-        if (Long.TYPE.equals(pt)) {
-            return toPrimitive((Long[]) array);
-        }
-        if (Short.TYPE.equals(pt)) {
-            return toPrimitive((Short[]) array);
-        }
-        if (Double.TYPE.equals(pt)) {
-            return toPrimitive((Double[]) array);
-        }
-        if (Float.TYPE.equals(pt)) {
-            return toPrimitive((Float[]) array);
-        }
-        return array;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9541,17 +7583,7 @@ public class ArrayUtils {
      * @throws NullPointerException if an array element is {@code null}.
      */
     public static short[] toPrimitive(final Short[] array) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_SHORT_ARRAY;
-        }
-        final short[] result = new short[array.length];
-        for (int i = 0; i < array.length; i++) {
-            result[i] = array[i].shortValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9565,18 +7597,7 @@ public class ArrayUtils {
      * @return a {@code byte} array, {@code null} if null array input.
      */
     public static short[] toPrimitive(final Short[] array, final short valueForNull) {
-        if (array == null) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_SHORT_ARRAY;
-        }
-        final short[] result = new short[array.length];
-        for (int i = 0; i < array.length; i++) {
-            final Short b = array[i];
-            result[i] = b == null ? valueForNull : b.shortValue();
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9593,7 +7614,7 @@ public class ArrayUtils {
      * @return a String representation of the array, '{}' if null array input.
      */
     public static String toString(final Object array) {
-        return toString(array, "{}");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9611,7 +7632,7 @@ public class ArrayUtils {
      * @return a String representation of the array.
      */
     public static String toString(final Object array, final String stringIfNull) {
-        return array != null ? new ToStringBuilder(array, ToStringStyle.SIMPLE_STYLE).append(array).toString() : stringIfNull;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9625,7 +7646,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static String[] toStringArray(final Object[] array) {
-        return toStringArray(array, "null");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -9640,13 +7661,7 @@ public class ArrayUtils {
      * @since 3.6
      */
     public static String[] toStringArray(final Object[] array, final String valueForNullElements) {
-        if (null == array) {
-            return null;
-        }
-        if (array.length == 0) {
-            return EMPTY_STRING_ARRAY;
-        }
-        return map(array, String.class, e -> Objects.toString(e, valueForNullElements));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

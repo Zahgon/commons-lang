@@ -14,12 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3;
 
 import java.io.Closeable;
 import java.util.function.Consumer;
-
 import org.apache.commons.lang3.function.Consumers;
 import org.apache.commons.lang3.function.FailableConsumer;
 
@@ -41,9 +39,7 @@ public class AutoCloseables {
      * @throws Exception if an error occurs.
      */
     public static void close(final AutoCloseable closeable) throws Exception {
-        if (closeable != null) {
-            closeable.close();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -54,13 +50,7 @@ public class AutoCloseables {
      * @throws Exception As thrown by the consumer.
      */
     public static void close(final AutoCloseable closeable, final FailableConsumer<Exception, Exception> consumer) throws Exception {
-        if (closeable != null) {
-            try {
-                closeable.close();
-            } catch (final Exception e) {
-                FailableConsumer.accept(consumer, e);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -73,7 +63,7 @@ public class AutoCloseables {
      * @see Throwable#addSuppressed(Throwable)
      */
     public static void closeQuietly(final AutoCloseable closeable) {
-        closeQuietly(closeable, (Consumer<Exception>) null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -83,13 +73,7 @@ public class AutoCloseables {
      * @param consumer  Consumes the Exception thrown by {@link AutoCloseable#close()}.
      */
     public static void closeQuietly(final AutoCloseable closeable, final Consumer<Exception> consumer) {
-        if (closeable != null) {
-            try {
-                closeable.close();
-            } catch (final Exception e) {
-                Consumers.accept(consumer, e);
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -102,9 +86,7 @@ public class AutoCloseables {
      * @see #closeQuietly(AutoCloseable)
      */
     public static void closeQuietly(final Iterable<AutoCloseable> closeables) {
-        if (closeables != null) {
-            closeables.forEach(AutoCloseables::closeQuietly);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -133,8 +115,7 @@ public class AutoCloseables {
      * @see Throwable#addSuppressed(Throwable)
      */
     public static <T extends Throwable> T closeQuietlySuppress(final Closeable closeable, final T throwable) {
-        closeQuietly(closeable, throwable::addSuppressed);
-        return throwable;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**

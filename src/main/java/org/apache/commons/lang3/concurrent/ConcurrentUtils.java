@@ -20,7 +20,6 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
@@ -39,7 +38,9 @@ public class ConcurrentUtils {
      */
     static final class ConstantFuture<T> implements Future<T> {
 
-        /** The constant value. */
+        /**
+         * The constant value.
+         */
         private final T value;
 
         /**
@@ -58,7 +59,7 @@ public class ConcurrentUtils {
          */
         @Override
         public boolean cancel(final boolean mayInterruptIfRunning) {
-            return false;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -66,7 +67,7 @@ public class ConcurrentUtils {
          */
         @Override
         public T get() {
-            return value;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -75,7 +76,7 @@ public class ConcurrentUtils {
          */
         @Override
         public T get(final long timeout, final TimeUnit unit) {
-            return value;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -84,7 +85,7 @@ public class ConcurrentUtils {
          */
         @Override
         public boolean isCancelled() {
-            return false;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -94,7 +95,7 @@ public class ConcurrentUtils {
          */
         @Override
         public boolean isDone() {
-            return true;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -108,8 +109,7 @@ public class ConcurrentUtils {
      * checked exception
      */
     static Throwable checkedException(final Throwable ex) {
-        Validate.isTrue(ExceptionUtils.isChecked(ex), "Not a checked exception: %s", ex);
-        return ex;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -127,7 +127,7 @@ public class ConcurrentUtils {
      * @return an instance of Future that will return the value, never null
      */
     public static <T> Future<T> constantFuture(final T value) {
-        return new ConstantFuture<>(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -150,17 +150,8 @@ public class ConcurrentUtils {
      * not be the object created by the {@link ConcurrentInitializer}
      * @throws ConcurrentException if the initializer throws an exception
      */
-    public static <K, V> V createIfAbsent(final ConcurrentMap<K, V> map, final K key,
-            final ConcurrentInitializer<V> init) throws ConcurrentException {
-        if (map == null || init == null) {
-            return null;
-        }
-
-        final V value = map.get(key);
-        if (value == null) {
-            return putIfAbsent(map, key, init.get());
-        }
-        return value;
+    public static <K, V> V createIfAbsent(final ConcurrentMap<K, V> map, final K key, final ConcurrentInitializer<V> init) throws ConcurrentException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -178,13 +169,8 @@ public class ConcurrentUtils {
      * not be the object created by the {@link ConcurrentInitializer}
      * @throws ConcurrentRuntimeException if the initializer throws an exception
      */
-    public static <K, V> V createIfAbsentUnchecked(final ConcurrentMap<K, V> map,
-            final K key, final ConcurrentInitializer<V> init) {
-        try {
-            return createIfAbsent(map, key, init);
-        } catch (final ConcurrentException cex) {
-            throw new ConcurrentRuntimeException(cex.getCause());
-        }
+    public static <K, V> V createIfAbsentUnchecked(final ConcurrentMap<K, V> map, final K key, final ConcurrentInitializer<V> init) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -206,11 +192,7 @@ public class ConcurrentUtils {
      * @return a {@link ConcurrentException} with the checked cause
      */
     public static ConcurrentException extractCause(final ExecutionException ex) {
-        if (ex == null || ex.getCause() == null) {
-            return null;
-        }
-        ExceptionUtils.throwUnchecked(ex.getCause());
-        return new ConcurrentException(ex.getMessage(), ex.getCause());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -226,11 +208,7 @@ public class ConcurrentUtils {
      * @return a {@link ConcurrentRuntimeException} with the checked cause
      */
     public static ConcurrentRuntimeException extractCauseUnchecked(final ExecutionException ex) {
-        if (ex == null || ex.getCause() == null) {
-            return null;
-        }
-        ExceptionUtils.throwUnchecked(ex.getCause());
-        return new ConcurrentRuntimeException(ex.getMessage(), ex.getCause());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -247,10 +225,7 @@ public class ConcurrentUtils {
      * ExecutionException} is a checked exception
      */
     public static void handleCause(final ExecutionException ex) throws ConcurrentException {
-        final ConcurrentException cause = extractCause(ex);
-        if (cause != null) {
-            throw cause;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -267,10 +242,7 @@ public class ConcurrentUtils {
      * wrapped in the thrown runtime exception
      */
     public static void handleCauseUnchecked(final ExecutionException ex) {
-        final ConcurrentRuntimeException cause = extractCauseUnchecked(ex);
-        if (cause != null) {
-            throw cause;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -286,9 +258,8 @@ public class ConcurrentUtils {
      * @throws ConcurrentException if the {@link ConcurrentInitializer} throws
      * an exception
      */
-    public static <T> T initialize(final ConcurrentInitializer<T> initializer)
-            throws ConcurrentException {
-        return initializer != null ? initializer.get() : null;
+    public static <T> T initialize(final ConcurrentInitializer<T> initializer) throws ConcurrentException {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -305,11 +276,7 @@ public class ConcurrentUtils {
      * @throws ConcurrentRuntimeException if the initializer throws an exception
      */
     public static <T> T initializeUnchecked(final ConcurrentInitializer<T> initializer) {
-        try {
-            return initialize(initializer);
-        } catch (final ConcurrentException cex) {
-            throw new ConcurrentRuntimeException(cex.getCause());
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -345,11 +312,7 @@ public class ConcurrentUtils {
      * @return the value stored in the map after this operation
      */
     public static <K, V> V putIfAbsent(final ConcurrentMap<K, V> map, final K key, final V value) {
-        if (map == null) {
-            return null;
-        }
-        final V result = map.putIfAbsent(key, value);
-        return result != null ? result : value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -358,5 +321,4 @@ public class ConcurrentUtils {
      */
     private ConcurrentUtils() {
     }
-
 }

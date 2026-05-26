@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -28,7 +27,9 @@ import java.util.function.IntUnaryOperator;
  */
 public interface FailableIntUnaryOperator<E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
     FailableIntUnaryOperator NOP = t -> 0;
 
@@ -39,7 +40,7 @@ public interface FailableIntUnaryOperator<E extends Throwable> {
      * @return a unary operator that always returns its input argument
      */
     static <E extends Throwable> FailableIntUnaryOperator<E> identity() {
-        return t -> t;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -50,7 +51,7 @@ public interface FailableIntUnaryOperator<E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <E extends Throwable> FailableIntUnaryOperator<E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -62,8 +63,7 @@ public interface FailableIntUnaryOperator<E extends Throwable> {
      * @see #compose(FailableIntUnaryOperator)
      */
     default FailableIntUnaryOperator<E> andThen(final FailableIntUnaryOperator<E> after) {
-        Objects.requireNonNull(after);
-        return (final int t) -> after.applyAsInt(applyAsInt(t));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -84,7 +84,6 @@ public interface FailableIntUnaryOperator<E extends Throwable> {
      * @see #andThen(FailableIntUnaryOperator)
      */
     default FailableIntUnaryOperator<E> compose(final FailableIntUnaryOperator<E> before) {
-        Objects.requireNonNull(before);
-        return (final int v) -> applyAsInt(before.applyAsInt(v));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

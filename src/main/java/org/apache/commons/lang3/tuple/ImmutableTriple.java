@@ -51,7 +51,9 @@ public class ImmutableTriple<L, M, R> extends Triple<L, M, R> {
     @SuppressWarnings("rawtypes")
     private static final ImmutableTriple NULL = new ImmutableTriple<>(null, null, null);
 
-    /** Serialization version. */
+    /**
+     * Serialization version.
+     */
     private static final long serialVersionUID = 1L;
 
     /**
@@ -65,7 +67,7 @@ public class ImmutableTriple<L, M, R> extends Triple<L, M, R> {
      */
     @SuppressWarnings("unchecked")
     public static <L, M, R> ImmutableTriple<L, M, R>[] emptyArray() {
-        return (ImmutableTriple<L, M, R>[]) EMPTY_ARRAY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -79,7 +81,7 @@ public class ImmutableTriple<L, M, R> extends Triple<L, M, R> {
      */
     @SuppressWarnings("unchecked")
     public static <L, M, R> ImmutableTriple<L, M, R> nullTriple() {
-        return NULL;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -94,7 +96,7 @@ public class ImmutableTriple<L, M, R> extends Triple<L, M, R> {
      * @return an immutable triple formed from the three parameters, not null.
      */
     public static <L, M, R> ImmutableTriple<L, M, R> of(final L left, final M middle, final R right) {
-        return left != null | middle != null || right != null ? new ImmutableTriple<>(left, middle, right) : nullTriple();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -111,17 +113,22 @@ public class ImmutableTriple<L, M, R> extends Triple<L, M, R> {
      * @since 3.13.0
      */
     public static <L, M, R> ImmutableTriple<L, M, R> ofNonNull(final L left, final M middle, final R right) {
-        return of(Objects.requireNonNull(left, "left"), Objects.requireNonNull(middle, "middle"), Objects.requireNonNull(right, "right"));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** Left object. */
-
+    /**
+     * Left object.
+     */
     public final L left;
 
-    /** Middle object. */
+    /**
+     * Middle object.
+     */
     public final M middle;
 
-    /** Right object. */
+    /**
+     * Right object.
+     */
     public final R right;
 
     /**
@@ -142,7 +149,7 @@ public class ImmutableTriple<L, M, R> extends Triple<L, M, R> {
      */
     @Override
     public L getLeft() {
-        return left;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -150,7 +157,7 @@ public class ImmutableTriple<L, M, R> extends Triple<L, M, R> {
      */
     @Override
     public M getMiddle() {
-        return middle;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -158,7 +165,6 @@ public class ImmutableTriple<L, M, R> extends Triple<L, M, R> {
      */
     @Override
     public R getRight() {
-        return right;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }
-

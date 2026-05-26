@@ -34,7 +34,9 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
      */
     protected enum State {
 
-        /** The closed state. */
+        /**
+         * The closed state.
+         */
         CLOSED {
 
             /**
@@ -42,11 +44,13 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
              */
             @Override
             public State oppositeState() {
-                return OPEN;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
-        },
-
-        /** The open state. */
+        }
+        ,
+        /**
+         * The open state.
+         */
         OPEN {
 
             /**
@@ -54,9 +58,10 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
              */
             @Override
             public State oppositeState() {
-                return CLOSED;
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
-        };
+        }
+        ;
 
         /**
          * Returns the opposite state to the represented state. This is useful
@@ -80,13 +85,17 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
      * @return the boolean open flag
      */
     protected static boolean isOpen(final State state) {
-        return state == State.OPEN;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** The current state of this circuit breaker. */
+    /**
+     * The current state of this circuit breaker.
+     */
     protected final AtomicReference<State> state = new AtomicReference<>(State.CLOSED);
 
-    /** An object for managing change listeners registered at this instance. */
+    /**
+     * An object for managing change listeners registered at this instance.
+     */
     private final PropertyChangeSupport changeSupport;
 
     /**
@@ -104,7 +113,7 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
      * @param listener the listener to be added
      */
     public void addChangeListener(final PropertyChangeListener listener) {
-        changeSupport.addPropertyChangeListener(listener);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -114,9 +123,7 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
      * @param newState the new state to be set
      */
     protected void changeState(final State newState) {
-        if (state.compareAndSet(newState.oppositeState(), newState)) {
-            changeSupport.firePropertyChange(PROPERTY_NAME, !isOpen(newState), isOpen(newState));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -130,7 +137,7 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
      */
     @Override
     public void close() {
-        changeState(State.CLOSED);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -144,7 +151,7 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
      */
     @Override
     public boolean isClosed() {
-        return !isOpen();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -152,7 +159,7 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
      */
     @Override
     public boolean isOpen() {
-        return isOpen(state.get());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -160,7 +167,7 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
      */
     @Override
     public void open() {
-        changeState(State.OPEN);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -169,7 +176,6 @@ public abstract class AbstractCircuitBreaker<T> implements CircuitBreaker<T> {
      * @param listener the listener to be removed
      */
     public void removeChangeListener(final PropertyChangeListener listener) {
-        changeSupport.removePropertyChangeListener(listener);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

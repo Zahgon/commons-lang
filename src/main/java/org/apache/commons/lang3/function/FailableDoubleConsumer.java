@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.lang3.function;
 
 import java.util.Objects;
@@ -29,9 +28,13 @@ import java.util.function.DoubleConsumer;
 @FunctionalInterface
 public interface FailableDoubleConsumer<E extends Throwable> {
 
-    /** NOP singleton */
+    /**
+     * NOP singleton
+     */
     @SuppressWarnings("rawtypes")
-    FailableDoubleConsumer NOP = t -> { /* NOP */ };
+    FailableDoubleConsumer NOP = t -> {
+        /* NOP */
+    };
 
     /**
      * Gets the NOP singleton.
@@ -41,7 +44,7 @@ public interface FailableDoubleConsumer<E extends Throwable> {
      */
     @SuppressWarnings("unchecked")
     static <E extends Throwable> FailableDoubleConsumer<E> nop() {
-        return NOP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -60,10 +63,6 @@ public interface FailableDoubleConsumer<E extends Throwable> {
      * @throws NullPointerException when {@code after} is null.
      */
     default FailableDoubleConsumer<E> andThen(final FailableDoubleConsumer<E> after) {
-        Objects.requireNonNull(after);
-        return (final double t) -> {
-            accept(t);
-            after.accept(t);
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

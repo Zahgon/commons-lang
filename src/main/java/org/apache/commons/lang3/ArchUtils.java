@@ -18,7 +18,6 @@ package org.apache.commons.lang3;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import org.apache.commons.lang3.arch.Processor;
 import org.apache.commons.lang3.stream.Streams;
 
@@ -74,7 +73,7 @@ public class ArchUtils {
      * @return A {@link Processor} when supported, else {@code null}.
      */
     public static Processor getProcessor() {
-        return getProcessor(SystemProperties.getOsArch());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -85,7 +84,7 @@ public class ArchUtils {
      * @return A {@link Processor} when it exists, else {@code null}.
      */
     public static Processor getProcessor(final String value) {
-        return ARCH_TO_PROCESSOR.get(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static void init() {
@@ -145,5 +144,4 @@ public class ArchUtils {
     public ArchUtils() {
         // empty
     }
-
 }

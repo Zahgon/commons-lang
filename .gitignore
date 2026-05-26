@@ -27,3 +27,8 @@ site-content
 # NetBeans files
 nb-configuration.xml
 nbactions.xml
+
+.aider*
+logs/
+.commit0_scripts/
+.github/workflows/
